@@ -88,7 +88,7 @@ alert('请正确填写信息！');
 		}else{
 			//提交表单
 alert('正确');
-			shouhuoxin.submit();
+			shouhuoxinxi.submit();
 		}
 	}
 	
