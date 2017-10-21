@@ -156,7 +156,6 @@ public class ProductServiceImpl implements ProductService{
 		if (onsale != null) {
 			sb.append(" or onsale=");
 			sb.append(onsale);
-			
 		}
 		
 		if (cid != null) {
