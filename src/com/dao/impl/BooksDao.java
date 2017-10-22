@@ -20,7 +20,7 @@ public class BooksDao {
 	//根据部分书名，查询类似的书名
 	Connection conn=null;
 	 public BooksDao(){
-		 conn=ConnOracleTomcatDataSource.getConnection();
+		 conn=ConnOracle.getConnection();
 	 }
 	 
  public List<Book> findBooksAjax(String name) throws SQLException {
