@@ -18,6 +18,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="staticTheStore/js/jsAddress.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
+		<% 
+			Order1 order = (Order1)session.getAttribute("order");
+			String shouhuoren = order.getShouhuorenname();
+			String address = order.getAddress();
+			long tel = order.getTel();
+			
+			Address addrs = (Address)request.getAttribute("addrs");
+			String sheng = addrs.getSheng();
+			String shi = addrs.getShi();
+			String qu = addrs.getQu();
+		%>
 		<a name="top"></a>
 		<div id="all">
 			<div id="top">
@@ -47,10 +58,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							...............................
 							<div id="address_info">
-								<p><span><b> 张三</b> 收</span></p>
-								<p><span> 北京市 大兴区 亦庄</span></p>
-								<p><span> 详细地址</span></p>
-								<p><span> 1300*****00</span></p>
+								<p><span><b> <%=shouhuoren%></b> 收</span></p>
+								<p><span> <%=sheng%>   <%=shi%>  <%=qu%> </span></p>
+								<p><span> <%=address.substring(address.indexOf("~")+1) %></span></p>
+								<p><span> <%=tel%></span></p>
 								<sub class="xiabiao"><img src="staticTheStore/img/xiabiao.png"/></sub>
 							</div>	
 								</li>
@@ -95,16 +106,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<li>
 					<div class="fukuanfangshi">
-			<span>     <input type="radio" name="zhifufangshi" id="" value=""/><b> 货到付款</b>                 任意方式支持现金、刷银行卡、刷斯玛特卡和杉德卡                                                        <span id="zhankai">展开︿</span> </span>
+			<span>     <input type="radio" disabled="disabled" name="zhifufangshi" id="" value=""/><b> 货到付款</b>                 任意方式支持现金、刷银行卡、刷斯玛特卡和杉德卡                                                        <span id="zhankai">展开︿</span> </span>
 			</div>
 			<div class="fukuanfangshi" id="fuxianjin">
-				<span>    	 <input type="radio" name="zhifufangshi" id="" value="" />    货到付现金      	    很抱歉，不提供货到付现金的服务，请选择其他支付方式。      </span>
+				<span>    	 <input type="radio" disabled="disabled" name="zhifufangshi" id="" value="" />    货到付现金      	    很抱歉，不提供货到付现金的服务，请选择其他支付方式。      </span>
 			</div>
 				</li>
 				
 				<li>
 					<div class="fukuanfangshi">
-			<span>     <input type="radio" name="zhifufangshi" id="" value="" /><b> 银行转账</b>                 订单金额小于￥5000，不支持银行转账</span>
+			<span>     <input type="radio" name="zhifufangshi" disabled="disabled" id="" value="" /><b> 银行转账</b>                 订单金额小于￥5000，不支持银行转账</span>
 			</div>
 				</li>
 			</ul>
@@ -130,8 +141,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="tijiaodingdan">
 						<span id="jin_e">           商品金额<span><b>18.4</b></span>元</span><br/>
 						<span id="xuzhifu"><b>您需为订单支付<span>18.4</span>元</b></span><br/>
-						<form action="submitSuccess.html" method="post">
-							<a href="submitSuccess.html">简单代替submit</a>
+						<form action="DingdanServlet" method="post">
+							<input type="hidden" name="action" value="submitSuccess" />
+							
 							<input type="submit" name="tijiao" id="tijiao" value="提交订单" />
 						</form>
 						

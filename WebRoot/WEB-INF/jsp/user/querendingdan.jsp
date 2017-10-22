@@ -49,9 +49,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="text" name="uname" id="uname" value="姓名" /><span></span><br/>
 						<span class="te">  <div class="xing">* </div> 收货地址:</span>
 						<label class="xuanzequyu">
-							<select id="select1"></select>
-							<select id="select2"></select>
-							<select id="select3"></select>
+							<select name="select1" id="select1"></select>
+							<select name="select2" id="select2"></select>
+							<select name="select3" id="select3"></select>
 						</label>
 						<br/>
 						<span class="te">  <div class="xing">* </div> 详细地址:</span>

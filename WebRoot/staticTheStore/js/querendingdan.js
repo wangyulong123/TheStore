@@ -84,11 +84,9 @@ var tijiaodingdan = (function () {
 		
 		if(errorSpanArr.length>0){//有错误的信息
 			//不提交表单
-alert('请正确填写信息！');
 		}else{
 			//提交表单
-alert('正确');
-			shouhuoxinxi.submit();
+			$("#shouhuoxinxi").submit();
 		}
 	}
 	

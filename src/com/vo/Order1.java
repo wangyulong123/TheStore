@@ -6,9 +6,17 @@ public class Order1 {
 	private double orderprice;
 	private String orderdesc;
 	private String shouhuorenname;
-	private int tel;
+	private long tel;
 	private int userid;
 	private int orderstatus;//0表示未付款，1表示已付款，2表示已发货，3表示已完成
+	private String address;
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public int getOrderid() {
 		return orderid;
 	}
@@ -16,10 +24,10 @@ public class Order1 {
 		this.orderid = orderid;
 	}
 	
-	public int getTel() {
+	public long getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(long tel) {
 		this.tel = tel;
 	}
 	public String getOrdertime() {

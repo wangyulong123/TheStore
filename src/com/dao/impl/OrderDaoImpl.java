@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.dao.inter.OrderDao;
-import com.dao.inter.UserDao;
 import com.util.ConnOracle;
 import com.vo.Order1;
 import com.vo.User;
@@ -27,17 +27,21 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public int addOrder(Order1 order) throws Exception {
 		int count = 0;
-		String sql = "INSERT INTO order1 VALUES(seq_order1.nextval,to_date('?','YYYY-MM-DD HH24:MI:SS'),?,?,?,?,?,?)";
+		Random random = new Random();
+		int num1 = random.nextInt(10000);
+		int num2 = random.nextInt(1000);
+		
+		String sql = "INSERT INTO order1 VALUES("+num1+"||"+num2+"||seq_order1.nextval,to_date('"+order.getOrdertime()+"','YYYY-MM-DD HH24:MI:SS'),?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null;
 		// 三.建立通道
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, order.getOrdertime());
-			pstmt.setDouble(2, order.getOrderprice());
-			pstmt.setString(3,order.getOrderdesc());
-			pstmt.setString(4,order.getShouhuorenname());
-			pstmt.setInt(5, order.getTel());
-			pstmt.setInt(6,order.getOrderid());
+			pstmt.setDouble(1, order.getOrderprice());
+			pstmt.setString(2,order.getOrderdesc());
+			pstmt.setString(3,order.getShouhuorenname());
+			pstmt.setLong(4, order.getTel());
+			pstmt.setInt(5,order.getUserid());
+			pstmt.setString(6,order.getAddress());
 			pstmt.setInt(7,order.getOrderstatus());
 
 			// 四.执行并返回结果集

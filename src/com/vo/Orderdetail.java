@@ -5,7 +5,7 @@ public class Orderdetail {
 	private int orderid;
 	private int pid;
 	private Product product;
-	
+
 	public Product getProduct() {
 		return product;
 	}
