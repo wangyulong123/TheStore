@@ -65,11 +65,12 @@ public class CategoryServlet extends HttpServlet {
 			request.setAttribute("msg", "添加一级商品种类失败");
 			e.printStackTrace();
 		}
+		
 		//三.转发视图
 		target = "/WEB-INF/msg.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(target);
-		
 		rd.forward(request, response);
+		
 	}
 	
 	public void getAll(HttpServletRequest request, HttpServletResponse response)
@@ -78,6 +79,8 @@ System.out.println("test!!!");
 		
 		String target = "";
 		//1.填充数据
+		String requestPage = request.getParameter("requestPage");
+		
 		//2.调用业务逻辑
 		CategoryService service = new CategoryServiceImpl();
 		
@@ -104,23 +107,20 @@ System.out.println("test!!!");
 		
 		
 		try {
-			
-			//先查询有没有对应的二级商品种类 如果有 不能删除
+			//2.调用业务逻辑
 			Category2Service service = new Category2ServiceImpl();
-			
 			int count = service.getCategory2SumByCategory1(Integer.parseInt(cid));
 			
-			if(count>0){
-				request.setAttribute("msg", "删除失败");
-				request.setAttribute("msgDetail", "已找到子记录 请先删除子种类 再继续删除");
+			if(count > 0){
+				request.setAttribute("msg", "删除失败！");
+				request.setAttribute("msgDetail", "已找到子记录，请先删除子种类，再继续删除！");
 			}else{
-				//2.调用业务逻辑
 				CategoryService service2 = new CategoryServiceImpl();
-				
 				service2.deleteCategoryById(cid);
 				request.setAttribute("msg", "删除成功!");
 			}
-		
+			
+			
 			this.getPageByQuery(request, response);
 		} catch (Exception e) {
 			request.setAttribute("msg", e.getMessage());
@@ -187,14 +187,12 @@ System.out.println("test!!!");
 		String target = "";
 		//1.填充数据
 		String requestPage = request.getParameter("requestPage");
-		
 		try {
 			
 			//查询一共多少条记录
 			CategoryService service = new CategoryServiceImpl();
 			
 			int totalRecordCount = service.getTotalRecordCount();
-			
 			PageInfo pageInfo = new PageInfo(Integer.parseInt(requestPage));
 			pageInfo.setTotalRecordCount(totalRecordCount);
 			
@@ -222,7 +220,6 @@ System.out.println("test!!!");
 		String target = "";
 		//1.填充数据
 		String searchCondition = request.getParameter("searchCondition");
-		
 		String requestPage = request.getParameter("requestPage");
 		if(requestPage==null){
 			
@@ -232,14 +229,17 @@ System.out.println("test!!!");
 		Category category = new Category();
 		
 		if(searchCondition!=null&&!searchCondition.equals("")){
+			
+		}else{
+			searchCondition = "%";
+		}
 			category.setCname(searchCondition);
 			category.setCdesc(searchCondition);
-		}
 		
 		try {
 			
 			
-			//按照条件查询一共多少条记录
+			//查询一共多少条记录
 			CategoryService service = new CategoryServiceImpl();
 			
 			int totalRecordCount = service.getTotalRecordCount(category);
@@ -263,7 +263,6 @@ System.out.println("test!!!");
 		
 	}
 	
-	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -271,3 +270,5 @@ System.out.println("test!!!");
 	}
 
 }
+
+

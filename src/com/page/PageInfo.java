@@ -5,7 +5,7 @@ public class PageInfo {
 
 	private int totalRecordCount;//总共有多少条记录
 	
-	private int perPageRecordCount = 5;//每页显示多少条
+	private int perPageRecordCount;//每页显示多少条
 	
 	private int requestPage;//请求第几页
 	
@@ -40,9 +40,8 @@ public class PageInfo {
 	}
 
 	public void computerTotalPageCount(){
-		
 		//totalPageCount =  总的记录数%每页多少条==0?(总的记录/每页多少条):(总的记录/每页多少条)+1;
-		this.totalPageCount = totalRecordCount%perPageRecordCount==0?(totalRecordCount/perPageRecordCount):(totalRecordCount/perPageRecordCount)+1;
+		this.totalPageCount = totalRecordCount%this.getPerPageRecordCount()==0?(totalRecordCount/this.getPerPageRecordCount()):(totalRecordCount/this.getPerPageRecordCount())+1;
 	}
 	
 	public PageInfo(){
@@ -50,27 +49,29 @@ public class PageInfo {
 	}
 	
 	public PageInfo(int requestPage){
-		this.requestPage = requestPage;
 		
-		this.begin = (requestPage-1) * perPageRecordCount + 1;
-		this.end = requestPage * perPageRecordCount;
-		 
+		this.requestPage = requestPage;
+		this.perPageRecordCount = 5;
+		this.begin = (requestPage-1) * this.getPerPageRecordCount() + 1;
+		this.end = requestPage * this.getPerPageRecordCount();
+		
 		//设置当前页  
 		this.setCurrentPage(requestPage);
 		
 		
 	}
 	
-	public PageInfo(int requestPage,int perPageRecordCount){
+	public PageInfo(int requestPage,int recordsPerPage){
+		
 		this.requestPage = requestPage;
-		this.perPageRecordCount = perPageRecordCount;
-		this.begin = (requestPage-1) * perPageRecordCount + 1;
-		this.end = requestPage * perPageRecordCount;
+		this.perPageRecordCount = recordsPerPage;
+		this.setPerPageRecordCount(recordsPerPage);
+		
+		this.begin = (requestPage-1) * this.getPerPageRecordCount() + 1;
+		this.end = requestPage * this.getPerPageRecordCount();
 		 
 		//设置当前页  
 		this.setCurrentPage(requestPage);
-		
-		
 	}
 
 	public int getTotalRecordCount() {
@@ -89,7 +90,7 @@ public class PageInfo {
 	}
 
 	public int getPerPageRecordCount() {
-		return perPageRecordCount;
+		return this.perPageRecordCount;
 	}
 
 	public void setPerPageRecordCount(int perPageRecordCount) {
@@ -143,5 +144,7 @@ public class PageInfo {
 	public void setNextPage(int nextPage) {
 		this.nextPage = nextPage;
 	}
+	
+	
 	
 }

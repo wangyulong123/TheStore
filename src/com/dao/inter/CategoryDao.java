@@ -18,4 +18,5 @@ public interface CategoryDao {
 	public List<Category> getPageByQuery(String sql) throws Exception;
 	//6.根据sql查询 总共有多少条记录
 	public int getTotalRecordCount(String sql) throws Exception;
+	
 }

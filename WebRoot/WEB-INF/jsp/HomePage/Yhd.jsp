@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
 		<meta charset="UTF-8">
 		<title>网上超市1号店，省力省钱省时间</title>
-		<link rel="shortcut icon" href="img/icon.png"/>
+		<link rel="shortcut icon" href="staticTheStore/img/icon.png"/>
 		<!-- src="staticTheStore/ -->
 		<link rel="stylesheet" type="text/css" href="staticTheStore/css/bootstrap-3.3.6/dist/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="staticTheStore/css/css.css" />

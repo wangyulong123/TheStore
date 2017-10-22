@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dao.inter.ProductDao;
-import com.util.ConnOracle;
+import com.util.ConnOracleTomcatDataSource;
+import com.vo.Category2;
 import com.vo.Product;
 
 public class ProductDaoImpl implements ProductDao {
@@ -18,12 +19,13 @@ public class ProductDaoImpl implements ProductDao {
 	private Connection conn;
 
 	public ProductDaoImpl() {
-		conn = ConnOracle.getConnection();
+		conn = ConnOracleTomcatDataSource.getConnection();
 	}
 
+	
 	@Override
-	public int addProduct(Product product) throws Exception {
-		// 刚刚插入的商品处于"下架"状态 所以onsale 的值为0 1 表示上架 0 表示下架
+	public int addProduct(Product product) throws Exception{
+		//刚刚插入的商品处于"下架"状态 所以onsale 的值为0    1 表示上架   0 表示下架
 		String sql = "insert into product(pid,pname,price,pingjiasum,productSum,dianpuName,pdesc,onsale,cid) values(seq_product.nextval,?,?,0,?,?,?,0,?)";
 		PreparedStatement pstmt = null;
 		// 三.建立通道
@@ -38,58 +40,53 @@ public class ProductDaoImpl implements ProductDao {
 			pstmt.setInt(6, product.getCid());
 			// 四.执行并返回结果集
 			count = pstmt.executeUpdate();
-
+			
 		} catch (SQLException e) {
 			System.out.println("建立通道失败");
 			e.printStackTrace();
 			throw new Exception("添加商品失败");
 		} finally {
 			// 五.关闭
-			ConnOracle.closeConnection(null, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
 
 		}
-
+		
 		return count;
 
 	}
 
 	@Override
-	public int deleteProduct(Product product) throws Exception {
+	public int deleteProduct(Product product) throws Exception{
 		String sql = "delete from product where pid=?";
 		PreparedStatement pstmt = null;
 		// 三.建立通道
-		int count;
+		int count = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, product.getPid());
 
 			// 四.执行并返回结果集
 			count = pstmt.executeUpdate();// 执行dml 或 ddl语句的 返回受影响的行数
-			if (count >= 1) {
-				System.out.println("删除商品成功!");
-			} else {
-				System.out.println("没有删除任何商品!");
-			}
+			
 
 		} catch (SQLException e) {
 			System.out.println("建立通道失败");
 			e.printStackTrace();
-			throw new Exception("删除商品失败");
+			throw new Exception("删除商品失败!");
 		} finally {
 			// 五.关闭
-			ConnOracle.closeConnection(null, pstmt, conn);
-
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
 		}
 
 		return count;
-
 	}
 
-	public int updateProduct(Product product) throws Exception{
+	// 三.修改
+	public int updateProduct(Product product) throws Exception {
 		String sql = "update product set pname=?,price=?,productSum=?,dianpuName=?,pdesc=?,cid=? where pid=?";
 		PreparedStatement pstmt = null;
-		//三.建立通道
-		int count;
+		// 三.建立通道
+		int count = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, product.getPname());
@@ -99,30 +96,26 @@ public class ProductDaoImpl implements ProductDao {
 			pstmt.setString(5, product.getPdesc());
 			pstmt.setInt(6, product.getCid());
 			pstmt.setInt(7, product.getPid());
-
-			//四.执行并返回结果集
+			
+			
+			// 四.执行并返回结果集
 			count = pstmt.executeUpdate();// 执行dml 或 ddl语句的 返回受影响的行数
-			if (count >= 1) {
-				System.out.println("修改商品成功!");
-			} else {
-				System.out.println("没有修改任何商品!");
-			}
-
+			
 		} catch (SQLException e) {
 			System.out.println("建立通道失败");
 			e.printStackTrace();
-			throw new Exception("修改商品失败");
+			throw new Exception("修改商品失败!");
 		} finally {
-			//五.关闭
-			ConnOracle.closeConnection(null, pstmt, conn);
+			// 五.关闭
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
 
 		}
-		
-		return count;
 
+		return count;
 	}
 
-	public Product getProductById(Integer pid) throws Exception {
+	// 四.查1
+	public Product getProductById(Integer pid) throws Exception{
 		Product product = new Product();
 
 		String sql = "select * from product where pid=?";
@@ -134,45 +127,29 @@ public class ProductDaoImpl implements ProductDao {
 			pstmt.setInt(1, pid);
 
 			// 四.执行并返回结果集
-			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				product.setPid(rs.getInt(1));
-				product.setPname(rs.getString(2));
-				product.setPrice(rs.getInt(3));
-				
-				product.setPingjiaSum(rs.getInt(4));
-				product.setDianpuName(rs.getString(5));
-				product.setProductListLargeImage(rs.getString(6));
-				
-				product.setProductListSmallImage1(rs.getString(7));
-				product.setProductListSmallImage2(rs.getString(8));
-				product.setProductListSmallImage3(rs.getString(9));
-				
-				product.setPdesc(rs.getString(10));
-				product.setProductSum(rs.getInt(11));
-				
-				product.setDetailLargeImg(rs.getString(12));
-				product.setDetailSmallImg1(rs.getString(13));
-				product.setDetailSmallImg2(rs.getString(14));
-				product.setDetailSmallImg3(rs.getString(15));
-				product.setDetailSmallImg4(rs.getString(16));
-				product.setDetailSmallImg5(rs.getString(17));
-				
-				product.setShoppingCarImg(rs.getString(18));
-				
-				product.setOnsale(rs.getInt(19));
-				product.setCid(rs.getInt(20));
+				product.setPid(rs.getInt("pid"));
+				product.setPname(rs.getString("pname"));
+				product.setCid(rs.getInt("cid"));
+				product.setPingjiaSum(rs.getInt("pingjiaSum"));
+				product.setProductListLargeImage(rs.getString("productListLargeImage"));
+				product.setPdesc(rs.getString("pdesc"));
+				product.setProductSum(rs.getInt("productsum"));
+				product.setPrice(rs.getInt("price"));
+				product.setDianpuName(rs.getString("dianpuname"));
 			}
 
 		} catch (SQLException e) {
 			System.out.println("建立通道失败");
 			e.printStackTrace();
-			throw new Exception("查询单一商品失败");
+			throw new Exception("查询单一商品失败!");
 		} finally {
 			// 五.关闭
-			ConnOracle.closeConnection(rs, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(rs, pstmt, conn);
+
 		}
+
 		return product;
 	}
 
@@ -184,6 +161,7 @@ public class ProductDaoImpl implements ProductDao {
 		List<Product> list = new ArrayList<Product>();
 
 		Product product = null;
+		Category2 category2 = null;
 
 		// 三.建立通道
 		try {
@@ -196,41 +174,40 @@ public class ProductDaoImpl implements ProductDao {
 
 				product.setPid(rs.getInt("pid"));
 				product.setPname(rs.getString("pname"));
-				product.setPrice(rs.getDouble("price"));
-				product.setPingjiaSum(rs.getInt("pingjiasum"));
-				product.setDianpuName(rs.getString("dianpuName"));
-				product.setProductListLargeImage(rs.getString("productListLargeImage"));
-				product.setProductListSmallImage1(rs.getString("productListSmallImage1"));
-				product.setProductListSmallImage2(rs.getString("productListSmallImage2"));
-				product.setProductListSmallImage3(rs.getString("productListSmallImage3"));
 				product.setPdesc(rs.getString("pdesc"));
-				product.setProductSum(rs.getInt("productSum"));
-				product.setDetailLargeImg(rs.getString("detailLargeImg"));
-				product.setDetailSmallImg1(rs.getString("detailSmallImg1"));
-				product.setDetailSmallImg2(rs.getString("detailSmallImg2"));
-				product.setDetailSmallImg3(rs.getString("detailSmallImg3"));
-				product.setDetailSmallImg4(rs.getString("detailSmallImg4"));
-				product.setDetailSmallImg5(rs.getString("detailSmallImg5"));
-				product.setShoppingCarImg(rs.getString("shoppingCarImg"));
+				product.setPrice(rs.getDouble("price"));
+				product.setDianpuName(rs.getString("dianpuname"));
+				product.setProductSum(rs.getInt("productsum"));
 				product.setOnsale(rs.getInt("onsale"));
-				product.setCid(rs.getInt("cid"));
+				product.setProductListLargeImage(rs.getString("productListLargeImage"));
+				product.setPingjiaSum(rs.getInt("pingjiasum"));
+				
+				category2 = new Category2();
+				category2.setCid(rs.getInt("cid"));
+				category2.setCname(rs.getString("cname"));
+				category2.setCdesc(rs.getString("cdesc"));
+				category2.setFid(rs.getInt("fid"));
 
+				product.setCategory2(category2);
+				
 				list.add(product);
 			}
 
 		} catch (SQLException e) {
 			System.out.println("建立通道失败!");
 			e.printStackTrace();
-			throw new Exception("查询商品失败");
+			throw new Exception("查询商品失败!");
 		} finally {
 			// 五.关闭
-			ConnOracle.closeConnection(rs, stmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(rs, stmt, conn);
 		}
 
 		return list;
 	}
 
-	public int getTotalRecordSum(String sql) throws Exception {
+	
+	
+	public int getTotalRecordSum(String sql) throws Exception{
 		int totalRecordSum = 0;
 
 		PreparedStatement pstmt = null;
@@ -238,7 +215,7 @@ public class ProductDaoImpl implements ProductDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-
+			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				totalRecordSum = rs.getInt(1);
@@ -249,14 +226,38 @@ public class ProductDaoImpl implements ProductDao {
 			e.printStackTrace();
 			throw new Exception("查询商品数量失败!");
 		} finally {
-
-			ConnOracle.closeConnection(rs, pstmt, conn);
+		
+			ConnOracleTomcatDataSource.closeConnection(rs, pstmt, conn);
 		}
 
 		return totalRecordSum;
 	}
+
+
+	@Override
+	public int updateOnSale(String sql) throws Exception {
+		int count = 0;
+
+		Statement stmt = null;
+
+		try {
+			stmt = conn.createStatement();
+			
+			count = stmt.executeUpdate(sql);
+			
+		} catch (SQLException e) {
+			System.out.println("建立通道失败");
+			e.printStackTrace();
+			throw new Exception("更改上下架状态失败!");
+		} finally {
+		
+			ConnOracleTomcatDataSource.closeConnection(null, stmt, conn);
+		}
+
+		return count;
+	}
 	
-	public void updateProductImageNames(Product product) throws Exception{
+	public void updateProductImageNames(Product product) {
 		String sql = "update product set productListLargeImage=?,productListSmallImage1=?,productListSmallImage2=?,productListSmallImage3=?,detailLargeImg=?,detailSmallImg1=?,detailSmallImg2=?,detailSmallImg3=?,detailSmallImg4=?,detailSmallImg5=?,shoppingCarImg=? where pid=?";
 		PreparedStatement pstmt = null;
 		// 三.建立通道
@@ -282,28 +283,21 @@ public class ProductDaoImpl implements ProductDao {
 			pstmt.setInt(12, product.getPid());
 			// 四.执行并返回结果集
 			int count = pstmt.executeUpdate();// 执行dml 或 ddl语句的 返回受影响的行数
-			
+			if (count >= 1) {
+				System.out.println("修改商品图片成功!");
+			} else {
+				System.out.println("没有修改任何商品图片!");
+			}
+
 		} catch (SQLException e) {
 			System.out.println("建立通道失败");
 			e.printStackTrace();
-			throw new Exception("修改商品图片失败");
 		} finally {
-			// 五.关闭
-			ConnOracle.closeConnection(null, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
 		}
 
 	}
 
-	public static void main(String[] args) throws Exception {
-		Product p = new Product();
-		p.setPname("iphone6s");
-		p.setPrice(5288);
-		p.setProductSum(10);
-		p.setDianpuName("京东Apple产品专营店");
-		p.setPdesc("苹果最新手机");
-		p.setCid(62);
-		ProductDaoImpl dao = new ProductDaoImpl();
-		dao.addProduct(p);
-	}
+	
 
 }

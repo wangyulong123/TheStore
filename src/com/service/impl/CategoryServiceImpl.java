@@ -27,7 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<Category> getAllCategorys() throws Exception {
 		List<Category> list = null;
 
-		String sql = "select * from category";
+		String sql = "select * from category order by cid asc";
 		list = dao.getPageByQuery(sql);
 		return list;
 	}
@@ -118,21 +118,6 @@ public class CategoryServiceImpl implements CategoryService {
 
 		list = dao.getPageByQuery(sql);
 		return list;
-	}
-	
-	public static void main(String[] args) throws Exception {
-		CategoryServiceImpl service = new CategoryServiceImpl();
-
-		Category category = new Category();
-		
-		PageInfo pageInfo = new PageInfo(1);
-		
-		List<Category> list = service.getPageByQuery(category, pageInfo);
-		
-		for(Category temp:list){
-			System.out.println(temp);
-		}
-		
 	}
 	
 	//根据条件查询 总共有多少条记录

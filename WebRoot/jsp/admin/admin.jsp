@@ -123,10 +123,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul data-menu="submenu-1" class="menu__level">
 		
 					<li class="menu__item" ><a class="menu__link"  href="JDDispatcherServlet?target=admin/category/addCategory.jsp" target="mainIFrame">添加一级商品管理</a></li>
-					
 					<li class="menu__item"><a class="menu__link" href="CategoryServlet?action=getAllByPage&requestPage=1" target="mainIFrame">管理一级商品种类</a></li>
-					<li class="menu__item"><a class="menu__link" href="Category2Servlet?action=getAllCategoryForAddCategory2" target="mainIFrame">添加二级商品种类</a></li>
-					<li class="menu__item"><a class="menu__link" href="Category2Servlet?action=getMenuForPage" target="mainIFrame">二级商品种类查询</a></li>
+					<li class="menu__item"><a class="menu__link" href="Category2Servlet?action=getCategory1ForAddCategory2" target="mainIFrame">添加二级商品种类</a></li>
+					<li class="menu__item"><a class="menu__link" href="Category2Servlet?action=getAllByPage&requestPage=1" target="mainIFrame">管理二级商品种类</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1-1" href="#">待开发</a></li>
 				</ul>
 				<!-- Submenu 1-1 -->
@@ -138,10 +137,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 				<!-- Submenu 2 -->
 				<ul data-menu="submenu-2" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=getAllCategoryForAddProduct" target="mainIFrame">添加商品</a></li>
-					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=uploadPhoto" target="mainIFrame">上传照片</a></li>
-					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=getAllByPage&target=productMainUpDown&requestPage=1" target="mainIFrame">上架/下架</a></li>
-					<li class="menu__item"><a class="menu__link"href="ProductServlet?action=getPageByQuery&target=productMain" target="mainIFrame">商品查询</a>
+								
+					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=getAllCategorysForAddProduct" target="mainIFrame">添加商品</a></li>
+					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=getAllByPage&target=uploadImg&requestPage=1" target="mainIFrame">上传照片</a></li>
+					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=shangxiajia&target=productOnSaleMain&requestPage=1" target="mainIFrame">上架/下架</a></li>
+					<li class="menu__item"><a class="menu__link"href="ProductServlet?action=getAllByPage&target=productMain&requestPage=1" target="mainIFrame">管理商品</a>
 					<li class="menu__item"><a class="menu__link" href="#">待开发</a></li>
 				</ul>
 				<!-- Submenu 2-1 -->

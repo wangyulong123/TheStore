@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,38 +10,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.service.impl.ProductServiceImpl;
 import com.service.impl.ShoppingCartServiceImpl;
+import com.service.inter.ProductService;
+import com.service.inter.ShoppingCartService;
 import com.vo.Product;
 
-public class ShoppingCartServlet extends HttpServlet {
+public class ShoppingCarServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-
 		String action = request.getParameter("action");
-		if ("addToCart".equals(action)) {
-			this.addToCart(request, response);
-		} else if ("queryShoppingCart".equals(action)) {
+		
+		if("getProduct".equals(action)){
+			this.getProductToAdd(request, response);
+		}else if ("queryShoppingCart".equals(action)) {
 			this.queryShoppingCart(request, response);
+		}else if("delete".equals(action)){
+			this.delete(request,response);
 		}
 
+		
+		
 	}
 
-	public void addToCart(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
+	public void getProductToAdd(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
 		String target = "";
-		// 一.填充数据
 		String pid = request.getParameter("pid");
-		System.out.println("pid=" + pid);
-
+		String buyNum = request.getParameter("buyNums");
+		System.out.println("购买数量--"+buyNum);
+		//二.调用业务逻辑
+		ProductService service = new ProductServiceImpl();
 		try {
-			ProductServiceImpl productService = new ProductServiceImpl();
-			Product product = productService.getProductById(pid);
+			Product product = service.getProductById(pid);
+			product.setShoppingSum(Integer.parseInt(buyNum));
 			
 			ShoppingCartServiceImpl shoppingCartService = new ShoppingCartServiceImpl();
 
@@ -51,23 +57,25 @@ public class ShoppingCartServlet extends HttpServlet {
 			// 没有相关联的session 返回null
 			HttpSession session = request.getSession(true);// 必须要使用true
 			shoppingCartService.addToCart(session, product);
-
+			
 			// 三.转发视图
-			target = "/WEB-INF/jsp/user/addToShoppingCart.jsp";
+			target = "/WEB-INF/jsp/user/user/addToShoppingCart.jsp";
 			request.setAttribute("product", product);
+			
 		} catch (Exception e) {
 			target = "/WEB-INF/msg.jsp";
 			request.setAttribute("msg", e.getMessage());
 			e.printStackTrace();
 		}
-		// 二.调用业务逻辑
-
+		
+		//3.转发视图
 		request.getRequestDispatcher(target).forward(request, response);
 	}
-
+	
 	public void queryShoppingCart(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
+		//设置服务器相应地数据类型 为application/json
+		response.setContentType("application/json");
 		String target = "";
 		// 一.填充数据
 		// 二.调用业务逻辑
@@ -77,18 +85,49 @@ public class ShoppingCartServlet extends HttpServlet {
 				.getAttribute("shoppingCart");
 		
 		if(list==null||list.size()==0){
-			target = "/WEB-INF/msg.jsp";
-			request.setAttribute("msg", "购物车内暂时没有商品，登录后将显示您之前加入的商品 ");
-		}else{
 			request.setAttribute("list", list);
-			target = "/WEB-INF/jsp/user/shoppingCart.jsp";
+			target = "/WEB-INF/jsp/user/user/shoppingCartNoProduct.jsp";
+		}
+		else{
+			request.setAttribute("list", list);
+			target = "/WEB-INF/jsp/user/user/shoppingCart.jsp";
 		}
 		// 三.转发视图
 		
 		request.getRequestDispatcher(target).forward(request, response);
 
 	}
-
+	
+	public void delete(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		String target = "";
+		String pid = request.getParameter("pid");
+		System.out.println(pid);
+		
+		HttpSession session = request.getSession(true);
+		List<Product> list = (List<Product>) session
+				.getAttribute("shoppingCart");
+			
+		try{
+			//二.调用业务逻辑
+			ProductService service = new ProductServiceImpl();
+			Product product = service.getProductById(pid);
+			ShoppingCartService service2 = new ShoppingCartServiceImpl();
+			service2.delete(session, product);
+			// 三.转发视图
+			this.queryShoppingCart(request, response);
+		} catch (Exception e) {
+			target = "/WEB-INF/msg.jsp";
+			request.setAttribute("msg", e.getMessage());
+			e.printStackTrace();
+			//3.转发视图
+			request.getRequestDispatcher(target).forward(request, response);
+		}
+		
+		
+	}
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
