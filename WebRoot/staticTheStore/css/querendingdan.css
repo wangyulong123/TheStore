@@ -109,7 +109,7 @@ span.error {
 }
 
 span.success {
-	background: url(../img/success.png) no-repeat 10px center;
+	background: url(../img/success.png) no-repeat 0px center;
 	padding-left: 27px;
 }
 

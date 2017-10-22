@@ -17,9 +17,6 @@ public class OrderServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		
 		String action = request.getParameter("action");
 		
 		if("checkOrder".equals(action)){
@@ -47,7 +44,7 @@ public class OrderServlet extends HttpServlet {
 			//三.转发视图
 			request.setAttribute("list", list);
 			
-			target = "/WEB-INF/jsp/user/jiesuan.jsp";
+			target = "/WEB-INF/jsp/user/user/jiesuan.jsp";
 		}else{
 			//跳到登陆页面
 			target = "/jsp/user/login.jsp";

@@ -1,22 +1,23 @@
 package com.page;
 
 public class OrderCondition {
-	// 条件
-	private String orderCondition = "price";// 默认按商品名称排序
-	private String ascOrDesc = "asc";// 默认升序
-	
-	public String getOrderCondition() {
-		return orderCondition;
+	private String orderBy;
+	private String asc;
+	public String getOrderBy() {
+		return orderBy;
 	}
-	public void setOrderCondition(String orderCondition) {
-		this.orderCondition = orderCondition;
+	public void setOrderBy(String orderBy) {
+		this.orderBy = orderBy;
 	}
-	public String getAscOrDesc() {
-		return ascOrDesc;
+	public String getAsc() {
+		return asc;
 	}
-	public void setAscOrDesc(String ascOrDesc) {
-		this.ascOrDesc = ascOrDesc;
+	public void setAsc(String asc) {
+		this.asc = asc;
 	}
-	
+	@Override
+	public String toString() {
+		return "OrderCondition [orderBy=" + orderBy + ", asc=" + asc + "]";
+	}
 	
 }

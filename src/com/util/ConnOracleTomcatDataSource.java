@@ -23,8 +23,6 @@ public class ConnOracleTomcatDataSource {
 			context = new InitialContext();// 创建JNDI资源池
 			ds = (DataSource) context.lookup("java:/comp/env/jdbc/ts");// 根据资源名
 																		// 找到对应的资源
-																		// 该资源名为server.xml配置的资源名name
-			System.out.println(ds);
 		} catch (NamingException e) {
 
 			e.printStackTrace();

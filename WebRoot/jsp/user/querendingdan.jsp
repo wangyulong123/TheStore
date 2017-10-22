@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  		<jsp:forward page="/dingdanServlet">
+  		<jsp:forward page="/DingdanServlet">
 			<jsp:param name="action" value="guanlishouhuodizhi" />
 		</jsp:forward>
   </body>

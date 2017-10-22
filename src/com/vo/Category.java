@@ -1,12 +1,25 @@
 package com.vo;
 
+import java.util.List;
 
+//java     数据库
+//1.类		表
+//2.属性	        字段
 public class Category {
 
 	private int cid;
-	private String cname1;
+	private String cname;
 	private String cdesc;
+	private List<Category2> list;
 	
+	public List<Category2> getList() {
+		return list;
+	}
+
+	public void setList(List<Category2> list) {
+		this.list = list;
+	}
+
 	public int getCid() {
 		return cid;
 	}
@@ -16,11 +29,11 @@ public class Category {
 	}
 
 	public String getCname() {
-		return cname1;
+		return cname;
 	}
 
 	public void setCname(String cname) {
-		this.cname1 = cname;
+		this.cname = cname;
 	}
 
 	public String getCdesc() {
@@ -33,8 +46,8 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [cid=" + cid + ", cname=" + cname1 + ", cdesc=" + cdesc
-				+ "]";
+		return "Category [cid=" + cid + ", cname=" + cname + ", cdesc=" + cdesc
+				+ ", list=" + list + "]";
 	}
 
 }

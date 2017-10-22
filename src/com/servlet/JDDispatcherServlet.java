@@ -16,8 +16,9 @@ public class JDDispatcherServlet extends HttpServlet {
 		String target = request.getParameter("target");
 		
 		target = "/WEB-INF/jsp/" + target;
+	
 		System.out.println(target);
-		
+
 		request.getRequestDispatcher(target).forward(request, response);
 	}
 

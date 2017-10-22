@@ -3,6 +3,7 @@ package com.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.service.inter.ShoppingCartService;
@@ -18,8 +19,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 			//第一次买东西
 			System.out.println("第一次买东西");
 			list = new ArrayList<Product>();
-	
-			product.setShoppingCarSum(1);
+			if(product.getShoppingSum()==0){
+				product.setShoppingSum(1);
+			}
+			
 			list.add(product);//加入购物车
 			
 		}else{
@@ -36,8 +39,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 					//数量+1
 					System.out.println("数量+1");
 					
-					int shoppingCarSum = oldProduct.getShoppingCarSum();
-					oldProduct.setShoppingCarSum(shoppingCarSum + 1);
+					int shoppingCarSum = oldProduct.getShoppingSum();
+					oldProduct.setShoppingSum(shoppingCarSum + product.getShoppingSum());
 					
 					ifBeforeBuy = true;
 					
@@ -50,16 +53,36 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 			
 			if(!ifBeforeBuy){//之前如果没买过
 				System.out.println("之前没买过");
-				product.setShoppingCarSum(1);
+				//product.setShoppingSum(1);
 				list.add(product);//加入购物车
 			}
 			
 		}
+		session.setAttribute("shoppingCart", list);
+	}
+
+	@Override
+	public void delete(HttpSession session, Product product) {
+		List<Product> list = (List<Product>)session.getAttribute("shoppingCart");
+		List<Product> deleteList = new ArrayList<Product>();
+		int pid = product.getPid();
 		
+		for(Product oldProduct:list){
+			if(pid==oldProduct.getPid()){
+				product.setShoppingSum(0);
+				//java.util.ConcurrentModificationException
+				//不能在遍历的时候删除
+				deleteList.add(product);
+				
+				System.out.println("删除后："+list.size());
+			}
+		}
+		
+		list.remove(product);
 		
 		session.setAttribute("shoppingCart", list);
-		
-		
 	}
+	
+	
 
 }
