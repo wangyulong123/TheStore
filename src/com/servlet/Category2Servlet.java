@@ -71,7 +71,7 @@ public class Category2Servlet extends HttpServlet {
 			
 			request.setAttribute("list", list);
 			
-			target = "/WEB-INF/jsp/user/welcome.jsp";
+			target = "jsp/HomePage/Yhd.jsp";
 		} catch (Exception e) {
 			request.setAttribute("msg", "查询一级商品种类失败!");
 			e.printStackTrace();
