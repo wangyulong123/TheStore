@@ -5,10 +5,19 @@
     <servlet-name>DingdanServlet</servlet-name>
     <servlet-class>com.servlet.DingdanServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>PayServlet</servlet-name>
+    <servlet-class>com.servlet.PayServlet</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>DingdanServlet</servlet-name>
     <url-pattern>/DingdanServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PayServlet</servlet-name>
+    <url-pattern>/PayServlet</url-pattern>
   </servlet-mapping>
 	<servlet>
 		<servlet-name>CategoryServlet</servlet-name>
