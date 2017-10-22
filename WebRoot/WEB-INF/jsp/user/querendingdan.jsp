@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="java.util.*,com.vo.*" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -11,7 +11,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta charset="utf-8" />
 		<base href="<%=basePath%>">
 		<title>1号店,只为更好的生活</title>
+<<<<<<< HEAD
 		<link rel="shortcut icon" href="img/icon.png"/>
+=======
+		<link rel="shortcut icon" href="staticTheStore/img/icon.png"/>
+>>>>>>> branch 'master' of https://github.com/wangyulong123/TheStore.git
 		<link rel="stylesheet" type="text/css" href="staticTheStore/css/querendingdan.css"/>
 		<script src="staticTheStore/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="staticTheStore/js/querendingdan.js" type="text/javascript" charset="utf-8"></script>
@@ -35,15 +39,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div id="content">
 					<div id="zhuti">
+						<% 
+							User user = (User)session.getAttribute("user");
+							
+						%>
+						<!-- int userid = user.getUserid(); -->
+					<form id="shouhuoxinxi" action="DingdanServlet" method="post" class="shouhuoxinxi"><b><span class="t"> 收货信息</span></b><br/>
+						<input type="hidden" name="action" value="querendingdan"/>
+						<input type="hidden" name="userid" value="4" />
 						
-					<form id="shouhuoxinxi" action="#" method="post" class="shouhuoxinxi"><b><span class="t"> 收货信息</span></b><br/>
+						
 						<span class="te">  <div class="xing">* </div> 收 货 人:</span>
 						<input type="text" name="uname" id="uname" value="姓名" /><span></span><br/>
 						<span class="te">  <div class="xing">* </div> 收货地址:</span>
 						<label class="xuanzequyu">
-							<select id="select1"></select>
-							<select id="select2"></select>
-							<select id="select3"></select>
+							<select name="select1" id="select1"></select>
+							<select name="select2" id="select2"></select>
+							<select name="select3" id="select3"></select>
 						</label>
 						<br/>
 						<span class="te">  <div class="xing">* </div> 详细地址:</span>
@@ -56,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="text" name="biaoqian" id="biaoqian" value="支持自定义标签" /><span></span><br/>
 						<span>           </span><input type="button" class="biaoqian" name="jia" id="jia" value="家" /><span> </span><input type="button" class="biaoqian" name="fumujia" id="fumujia" value="父母家" /><span> </span><input type="button" class="biaoqian" name="gongsi" id="gongsi" value="公司" /><span> </span><input type="button" class="biaoqian" name="xuexiao" id="xuexiao" value="学校" />
 						<br/><span>   <input type="checkbox" name="changyong" id="changyong"/> 设为常用地址</span>	
-						<br/><a href="querendingdan2.html"><input type="button" name="queding" id="queding" value="确定" /></a>
+						<br/><input type="button" name="queding" id="queding" value="确定" />
 						<br/>
 					<hr/>
 					</form>
