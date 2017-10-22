@@ -14,38 +14,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta charset="UTF-8">
 		<title>网上超市1号店，省力省钱省时间</title>
 		<link rel="shortcut icon" href="img/icon.png"/>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.6/dist/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/css.css" />
+		<!-- src="staticTheStore/ -->
+		<link rel="stylesheet" type="text/css" href="staticTheStore/css/bootstrap-3.3.6/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="staticTheStore/css/css.css" />
 		<!--收货地址-->
-		<link rel="stylesheet" type="text/css" href="css/hzw-city-picker.css">
+		<link rel="stylesheet" type="text/css" href="staticTheStore/css/hzw-city-picker.css">
 
-		<link rel="stylesheet" type="text/css" href="css/yidong.css"/>
-		<link rel="stylesheet" type="text/css" href="css/Mycss.css" />
+		<link rel="stylesheet" type="text/css" href="staticTheStore/css/yidong.css"/>
+		<link rel="stylesheet" type="text/css" href="staticTheStore/css/Mycss.css" />
 		
 			<!--
         	动态边框
         -->
-        <link rel="stylesheet" type="text/css" href="css/动态边框.css"/>
-		<script src="js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/sc.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="staticTheStore/css/动态边框.css"/>
+		<script src="staticTheStore/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="staticTheStore/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="staticTheStore/js/sc.js" type="text/javascript" charset="utf-8"></script>
 		<!--导航栏-->
-		<script src="js/Myjs.js" type="text/javascript" charset="utf-8"></script>
+		<script src="staticTheStore/js/Myjs.js" type="text/javascript" charset="utf-8"></script>
 		<!--送货地址-->
 			
-	<script type="text/javascript" src="js/city-data.js"></script>
-	<script type="text/javascript" src="js/hzw-city-picker.min.js"></script>
+	<script type="text/javascript" src="staticTheStore/js/city-data.js"></script>
+	<script type="text/javascript" src="staticTheStore/js/hzw-city-picker.min.js"></script>
 		<!--倒计时-->
-		<script src="js/leftTime.js" type="text/javascript" charset="utf-8"></script>
+		<script src="staticTheStore/js/leftTime.js" type="text/javascript" charset="utf-8"></script>
 		<!--图片轮播-->
-		<script src="js/图片轮播.js" type="text/javascript" charset="utf-8"></script>
+		<script src="staticTheStore/js/图片轮播.js" type="text/javascript" charset="utf-8"></script>
 		<!-- 图片偏移-->
-		<!--<script src="js/图片偏移.js" type="text/javascript" charset="utf-8"></script>-->
+		<!--<script src="staticTheStore/js/图片偏移.js" type="text/javascript" charset="utf-8"></script>-->
 		<!--左右划照片-->
-		<script src="js/yidong.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/右侧悬停.js" type="text/javascript" charset="utf-8"></script>
+		<script src="staticTheStore/js/yidong.js" type="text/javascript" charset="utf-8"></script>
+		<script src="staticTheStore/js/右侧悬停.js" type="text/javascript" charset="utf-8"></script>
 	   <!-- 动态边框-->
-	   <script src="js/动态边框.js" type="text/javascript" charset="utf-8"></script>
+	   <script src="staticTheStore/js/动态边框.js" type="text/javascript" charset="utf-8"></script>
 	   
 	</head>
 
@@ -55,11 +56,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 
 		 <div class="side">
 	<ul>
-		<li><a href="#" ><div class="sidebox" ><img src="图片/个人中心.png" style="width:34px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">个人中心</a></div></a></li>
-		<li style="text-align: center;"><a href="#" ><div class="sidebox" style="text-align: center;"><img src="图片/购物车空.png" style="width: 30px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">购物车</a></div></a></li>
-		<li><a href="javascript:void(0);" ><div class="sidebox"><img src="图片/会员卡卷3.png" style="width: 32px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">我的卡卷</a></div></a></li>
-		<li style="top:370px ;"><a href="javascript:void(0);" ><div class="sidebox"><img src="图片/用户反馈.png"style="width: 30px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">用户反馈</a></div></a></li>
-		<li style="border:none; top: 380px; " ><a href="javascript:goTop();" class="sidetop"><img src="图片/回到顶部.png"style="width: 28px;height: 25px;"><a href="#" class="main-right-a"> 	</a></a></li>
+		<li><a href="#" ><div class="sidebox" ><img src="staticTheStore/图片/个人中心.png" style="width:34px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">个人中心</a></div></a></li>
+		<li style="text-align: center;"><a href="#" ><div class="sidebox" style="text-align: center;"><img src="staticTheStore/图片/购物车空.png" style="width: 30px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">购物车</a></div></a></li>
+		<li><a href="javascript:void(0);" ><div class="sidebox"><img src="staticTheStore/图片/会员卡卷3.png" style="width: 32px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">我的卡卷</a></div></a></li>
+		<li style="top:370px ;"><a href="javascript:void(0);" ><div class="sidebox"><img src="staticTheStore/图片/用户反馈.png"style="width: 30px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">用户反馈</a></div></a></li>
+		<li style="border:none; top: 380px; " ><a href="javascript:goTop();" class="sidetop"><img src="staticTheStore/图片/回到顶部.png"style="width: 28px;height: 25px;"><a href="#" class="main-right-a"> 	</a></a></li>
 	</ul>
 </div>
 		 </div>
@@ -131,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--1号店logo-->
 		<div id="logo" >
 			<div class="logo-left">
-				<img src="图片/login.png" />
+				<img src="staticTheStore/图片/login.png" />
 			</div>
 			<div class="logo-center" style="position: relative; top: 50px;">
 			
@@ -210,17 +211,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- 幻灯片内容 -->
 			<div class="carousel-inner" role="listbox" style="width: 990px; height:410px;position: relative; left: 215px;">
 				<div class="item active">
-					<img src="图片/images1.jpg" style="width: 1200px; height: 404px;">
+					<img src="staticTheStore/图片/images1.jpg" style="width: 1200px; height: 404px;">
 
 				</div>
 
 				<div class="item">
-					<img src="图片/images2.jpg " style="width: 1200px; height: 404px;">
+					<img src="staticTheStore/图片/images2.jpg " style="width: 1200px; height: 404px;">
 
 				</div>
 
 				<div class="item">
-					<img src="图片/images3.jpg" style="width: 1200px; height: 404px;">
+					<img src="staticTheStore/图片/images3.jpg" style="width: 1200px; height: 404px;">
 
 				</div>
 			</div>
@@ -254,7 +255,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 %>
 	
 								
-			<h4><a href="#" ><img src="导航栏图片/img1.png" />&nbsp;&nbsp;		
+			<h4><a href="#" ><img src="staticTheStore/img/img1.png" />&nbsp;&nbsp;		
 			<%
 			 for(int i=0;i<3;i++){
 			  %>
@@ -267,7 +268,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</li>
 		 <li class="tab-item">
 								<div class="thname">
-									<h4><a href="freeFood.html"><img src="图片/食品.png" />&nbsp;&nbsp;		
+									<h4><a href="freeFood.html"><img src="staticTheStore/图片/食品.png" />&nbsp;&nbsp;		
 									<%
 									  for(int i=3;i<5;i++){
 									   %>
@@ -284,67 +285,67 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/童装煮洗.png" />&nbsp;&nbsp;母婴/玩具/童装/</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/童装煮洗.png" />&nbsp;&nbsp;母婴/玩具/童装/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/童装煮洗.png" />&nbsp;&nbsp;纸巾/清洁用品/</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/童装煮洗.png" />&nbsp;&nbsp;纸巾/清洁用品/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/家具.png" />&nbsp;&nbsp;家具/家纺/家装/宠物/</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/家具.png" />&nbsp;&nbsp;家具/家纺/家装/宠物/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/美妆.png" />&nbsp;&nbsp;美妆个人清洁/洗护/</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/美妆.png" />&nbsp;&nbsp;美妆个人清洁/洗护/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/女装.png" />&nbsp;&nbsp;女装/男装/内衣/珠宝/</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/女装.png" />&nbsp;&nbsp;女装/男装/内衣/珠宝/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/鞋靴.png" />&nbsp;&nbsp;鞋靴/箱包/运动户外</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/鞋靴.png" />&nbsp;&nbsp;鞋靴/箱包/运动户外</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/手机.png" />&nbsp;&nbsp;手机/数码/电脑办公/</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/手机.png" />&nbsp;&nbsp;手机/数码/电脑办公/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/家用电器.png" />&nbsp;&nbsp;家用电器/汽车用品/</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/家用电器.png" />&nbsp;&nbsp;家用电器/汽车用品/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/医药.png" />&nbsp;&nbsp;医药/保健滋补/成人/</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/医药.png" />&nbsp;&nbsp;医药/保健滋补/成人/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/旅行.png" />&nbsp;&nbsp;旅行/票卷/生活广告/</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/旅行.png" />&nbsp;&nbsp;旅行/票卷/生活广告/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="图片/理财.png" />&nbsp;&nbsp;理财/众筹/保险/</a></h4>
+									<h4><a href="#"><img src="staticTheStore/图片/理财.png" />&nbsp;&nbsp;理财/众筹/保险/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
@@ -463,7 +464,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                                          
                         <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>
@@ -571,7 +572,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                                                      
                       <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                         
                         </div>
                        
@@ -649,7 +650,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                          <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>
@@ -725,7 +726,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                          <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>
@@ -802,7 +803,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                          <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>   
@@ -878,7 +879,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                         <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>    
@@ -954,7 +955,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                         <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>    
@@ -1030,7 +1031,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                         <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>    
@@ -1106,7 +1107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                        <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>    
@@ -1182,7 +1183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                        <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>    
@@ -1258,7 +1259,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                        <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>    
@@ -1334,7 +1335,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                        <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>    
@@ -1410,7 +1411,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </div>
                          <div class="item-promotions " style="position: relative; right: 30px; top: 20px;" >
-                            <a href="# "><img src="img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
+                            <a href="# "><img src="staticTheStore/img/ib9.jpg" alt=" " width="175 " height="300 "/></a>
                          
                         </div>
                     </div>    
@@ -1459,7 +1460,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/1.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/1.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>
@@ -1475,7 +1476,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/2.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/2.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>
@@ -1490,7 +1491,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/3.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/3.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>
@@ -1505,7 +1506,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/4.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/4.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>
@@ -1520,7 +1521,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/5.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/5.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>						
@@ -1535,7 +1536,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/6.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/6.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>
@@ -1550,7 +1551,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/7.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/7.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>						
@@ -1565,7 +1566,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/8.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/8.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>
@@ -1580,7 +1581,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/3.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/3.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>
@@ -1595,7 +1596,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/1.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/1.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>						
@@ -1610,7 +1611,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/2.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/2.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>
@@ -1625,7 +1626,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<p class="cankao">参考价：￥<span>298</span></p>
 								</div>
 								
-								<img class="detail_img" src="img/4.jpg"/>
+								<img class="detail_img" src="staticTheStore/img/4.jpg"/>
 								<div class="marking_label">已售76%</div>
 							</a>
 						</div>						
@@ -1643,7 +1644,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <!-- 品牌特卖-->
     <div id="sample-sale"  class="scroll-floor floor3" >
     	    <div class="sample-sale-left">
-    	    	<img src="图片/liudan.png" style="width: 210px; height: 320px;"/>
+    	    	<img src="staticTheStore/图片/liudan.png" style="width: 210px; height: 320px;"/>
     	    	<div class="sample-sale-left-center img" >	
     	    		<a href="" style="font-size: 15px; line-height: 10px;">品牌特卖</a><br />
     	    		<hr  style="width: 20px ; background-color: #000000;line-height: 10px;"/>
@@ -1654,18 +1655,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<div class="sample-sale-middle">
     			<h4 title="团购" style="line-height: 32px; text-align: center; background-color: #FB6233;width: 120px;color:white ; margin: auto; ">团购</h4>
     		     <div class="sample-sale-middle-left">
-    		     	<img src="图片/kuzi.png"/ style="width:200px ; height: 288px;">
+    		     	<img src="staticTheStore/图片/kuzi.png"/ style="width:200px ; height: 288px;">
     		     </div>
     		     <div class="sample-sale-middle-right">
     		     	<div class="sample-sale-middle-right-top">
     		     		 <h3 style="color: red;">1号 量饭团</h3>
     		     		 <h4>俞兆林礼品装</h4>
-    		     		 <img src="图片/饼干.jpg " class="devia" style=" left:0px;top:0px;width: 120px; height: 90px;position: relative;"/>
+    		     		 <img src="staticTheStore/图片/饼干.jpg " class="devia" style=" left:0px;top:0px;width: 120px; height: 90px;position: relative;"/>
     		     	</div>
     		     	<div class="sample-sale-middle-right-under">
     		     		<h3 style="color: red;">1号 品牌团</h3>
     		     		 <h4>稻花村月饼</h4>
-    		     		 <img src="图片/蛋糕.jpg" class="devia" style="left:0px;top:0px;width: 120px; height: 90px; position: relative;	"/>
+    		     		 <img src="staticTheStore/图片/蛋糕.jpg" class="devia" style="left:0px;top:0px;width: 120px; height: 90px; position: relative;	"/>
     		     	</div>
     		     </div>
     		</div>
@@ -1696,14 +1697,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 <div class="tab-pane-img" > 
 				  <table border="0" cellspacing="" cellpadding="" width="570px" height="260px" id="tab-pane-img-table">
 				  	<tr>
-				  		<td><img src="图片/排行1.jpg"  class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">INMAN/茵曼 2017</a></td>
-				  		<td><img src="图片/排行2.jpg"/><br/><a href="">洛芊 秋冬新款大码</a></td>
-				  		<td><img src="图片/排行3.jpg"   class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">Meters/bonwe美特</a></td>
+				  		<td><img src="staticTheStore/图片/排行1.jpg"  class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">INMAN/茵曼 2017</a></td>
+				  		<td><img src="staticTheStore/图片/排行2.jpg"/><br/><a href="">洛芊 秋冬新款大码</a></td>
+				  		<td><img src="staticTheStore/图片/排行3.jpg"   class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">Meters/bonwe美特</a></td>
 				  	</tr>
 				  	<tr>
-				  		<td><img src="图片/排行4.jpg"  class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">初语 2017春季新</a></td>
-				  			<td><img src="图片/排行5.jpg"/><br/><a href="">裂帛 女装2017秋</a></td>
-				  				<td><img src="图片/排行6.jpg" class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">洛芊 新款秋冬休闲</a></td>
+				  		<td><img src="staticTheStore/图片/排行4.jpg"  class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">初语 2017春季新</a></td>
+				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="">裂帛 女装2017秋</a></td>
+				  				<td><img src="staticTheStore/图片/排行6.jpg" class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">洛芊 新款秋冬休闲</a></td>
 				  	
 				  	</tr>
 				  	
@@ -1713,14 +1714,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="tab-pane" id="parameter">
 				 <table border="0" cellspacing="" cellpadding="" width="570px" height="260px" id="tab-pane-img-table">
 				  	<tr>
-				  		<td><img src="排行榜图片/21.jpg" class="img"/><br/><a href="">美滋滋天天见坚果</a></td>
-				  		<td><img src="排行榜图片/22.jpg"/><br/><a href="">土豆薯条</a></td>
-				  		<td><img src="排行榜图片/23.jpg" class="img2"/><br/><a href="">鸡蛋干</a></td>
+				  		<td><img src="staticTheStore/排行榜图片/21.jpg" class="img"/><br/><a href="">美滋滋天天见坚果</a></td>
+				  		<td><img src="staticTheStore/排行榜图片/22.jpg"/><br/><a href="">土豆薯条</a></td>
+				  		<td><img src="staticTheStore/排行榜图片/23.jpg" class="img2"/><br/><a href="">鸡蛋干</a></td>
 				  	</tr>
 				  	<tr>
-				  		<td><img src="排行榜图片/24.jpg" class="img"/><br/><a href="">百草味</a></td>
-				  			<td><img src="排行榜图片/25.jpg"/><br/><a href="">手撕风干牛肉干</a></td>
-				  				<td><img src="排行榜图片/26.jpg" class="img"/><br/><a href="">三只松鼠</a></td>
+				  		<td><img src="staticTheStore/排行榜图片/24.jpg" class="img"/><br/><a href="">百草味</a></td>
+				  			<td><img src="staticTheStore/排行榜图片/25.jpg"/><br/><a href="">手撕风干牛肉干</a></td>
+				  				<td><img src="staticTheStore/排行榜图片/26.jpg" class="img"/><br/><a href="">三只松鼠</a></td>
 				  	
 				  	</tr>
 				  	
@@ -1729,14 +1730,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="tab-pane" id="qingdan">
 				 <table border="0" cellspacing="" cellpadding="" width="570px" height="260px" id="tab-pane-img-table">
 				  	<tr>
-				  		<td><img src="图片/排行1.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  		<td><img src="图片/排行2.jpg"/><br/><a href="">排行1</a></td>
-				  		<td><img src="图片/排行3.jpg" class="img2"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行1.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行2.jpg"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行3.jpg" class="img2"/><br/><a href="">排行1</a></td>
 				  	</tr>
 				  	<tr>
-				  		<td><img src="图片/排行4.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  			<td><img src="图片/排行5.jpg"/><br/><a href="">排行1</a></td>
-				  				<td><img src="图片/排行6.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行4.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="">排行1</a></td>
+				  				<td><img src="staticTheStore/图片/排行6.jpg" class="img"/><br/><a href="">排行1</a></td>
 				  	
 				  	</tr>
 				  	
@@ -1745,14 +1746,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="tab-pane" id="pingjia">
 				 <table border="0" cellspacing="" cellpadding="" width="570px" height="260px" id="tab-pane-img-table">
 				  	<tr>
-				  		<td><img src="图片/排行1.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  		<td><img src="图片/排行2.jpg"/><br/><a href="">排行1</a></td>
-				  		<td><img src="图片/排行3.jpg" class="img2"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行1.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行2.jpg"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行3.jpg" class="img2"/><br/><a href="">排行1</a></td>
 				  	</tr>
 				  	<tr>
-				  		<td><img src="图片/排行4.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  			<td><img src="图片/排行5.jpg"/><br/><a href="">排行1</a></td>
-				  				<td><img src="图片/排行6.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行4.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="">排行1</a></td>
+				  				<td><img src="staticTheStore/图片/排行6.jpg" class="img"/><br/><a href="">排行1</a></td>
 				  	
 				  	</tr>
 				  	
@@ -1761,14 +1762,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="tab-pane" id="shouhou">
 				 <table border="0" cellspacing="" cellpadding="" width="570px" height="260px" id="tab-pane-img-table">
 				  	<tr>
-				  		<td><img src="图片/排行2.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  		<td><img src="图片/排行1.jpg"/><br/><a href="">排行1</a></td>
-				  		<td><img src="图片/排行5.jpg" class="img2"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行2.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行1.jpg"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行5.jpg" class="img2"/><br/><a href="">排行1</a></td>
 				  	</tr>
 				  	<tr>
-				  		<td><img src="图片/排行4.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  			<td><img src="图片/排行5.jpg"/><br/><a href="">排行1</a></td>
-				  				<td><img src="图片/排行6.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行4.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="">排行1</a></td>
+				  				<td><img src="staticTheStore/图片/排行6.jpg" class="img"/><br/><a href="">排行1</a></td>
 				  	
 				  	</tr>
 				  	
@@ -1780,13 +1781,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     	<!--领卷中心-->
     	<div id="discount" class="scroll-floor floor4">
-    		<img src="图片/优惠券.png"/>
+    		<img src="staticTheStore/图片/优惠券.png"/>
     	</div>
     	<div class="clear">
     <!--  全球进口-->
      <div id="allear" class="scroll-floor floor5">
      <div class="allear-left">
-        <img src="图片/牛奶.png" style="float: left;"/>
+        <img src="staticTheStore/图片/牛奶.png" style="float: left;"/>
     <div class="banner_link"  >
 		<ul class="clearfix-allear">
 		<li><a title="进口饼干" target="_blank" href="//search.yhd.com/c5020-0-0/mbname-b/a-s1-v0-p1-price-d0-f0-m1-rt0-pid-mid0-color-size-k/">进口饼干</a></li>
@@ -1800,14 +1801,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	 </div>
      	  <div class="allear-center">
      	  <div class="allear-center-top">
-     	  	<img src="图片/没戏.png"  class="allearimg" width="404px" height="224px" />
+     	  	<img src="staticTheStore/图片/没戏.png"  class="allearimg" width="404px" height="224px" />
      	  </div>
      	  <div class="allear-center-under">
      	  	  <div class="allear-center-under-left">
-     	  	  	 <img src="图片/啤酒.png"  class="allearimg" width="202.5px" height="225px"/>
+     	  	  	 <img src="staticTheStore/图片/啤酒.png"  class="allearimg" width="202.5px" height="225px"/>
      	  	  </div>
      	  	  <div class="allear-center-under-right">
-     	  	  	<img src="图片/零食.png"width="202.5px" height="224px"  class="allearimg"/>
+     	  	  	<img src="staticTheStore/图片/零食.png"width="202.5px" height="224px"  class="allearimg"/>
      	  	  </div>
      	  	
      	  </div>
@@ -1815,10 +1816,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </div> 
      <div class="allear-center2">
      	   <div class="allear-center2-top">
-     	   	 <img src="图片/零食.png" width="215px" height="224px"  class="allearimg"/>
+     	   	 <img src="staticTheStore/图片/零食.png" width="215px" height="224px"  class="allearimg"/>
      	   </div>	
      	  	<div class="allear-center2-under">
-     	   	<img src="图片/咖啡.png" 	width="216px" height="225px"  class="allearimg"/>
+     	   	<img src="staticTheStore/图片/咖啡.png" 	width="216px" height="225px"  class="allearimg"/>
      	   </div>
      	  	
      	  </div>
@@ -1829,7 +1830,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<p class="pro_tit">进口美护</p>
 		<p class="pro_sub_tit">BEAUTY</p>
 		<p class="pro_color"></p>
-		<img src="图片/进口美户.png" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
+		<img src="staticTheStore/图片/进口美户.png" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
 		</a>
 		</li>
 		<li class="jk_my">
@@ -1837,7 +1838,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<p class="pro_tit">进口母婴</p>
 		<p class="pro_sub_tit">MOM&amp;BABY</p>
 		<p class="pro_color"></p>
-		<img src="图片/进口母婴.png" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
+		<img src="staticTheStore/图片/进口母婴.png" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
 		</a>
 		</li>
 		<li class="jk_sx">
@@ -1845,7 +1846,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<p class="pro_tit">进口生鲜</p>
 		<p class="pro_sub_tit">FRESH</p>
 		<p class="pro_color"></p>
-		<img src="图片/进口生鲜.png" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
+		<img src="staticTheStore/图片/进口生鲜.png" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
 		</a>
 		</li>
 		<li class="jk_jj">
@@ -1853,7 +1854,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<p class="pro_tit">进口家居</p>
 		<p class="pro_sub_tit">HOME</p>
 		<p class="pro_color"></p>
-		<img src="图片/进口家具.png" width="130" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
+		<img src="staticTheStore/图片/进口家具.png" width="130" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
 		</a>
 		</li>
 		<li class="jk_cw">
@@ -1861,7 +1862,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<p class="pro_tit">进口厨卫清洁</p>
 		<p class="pro_sub_tit">CLEANING</p>
 		<p class="pro_color"></p>
-		<img src="图片/进口清洁.png" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
+		<img src="staticTheStore/图片/进口清洁.png" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
 		</a>
 		</li>
 		<li class="jk_bj">
@@ -1869,7 +1870,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<p class="pro_tit">进口保健品</p>
 		<p class="pro_sub_tit">HEALTH</p>
 		<p class="pro_color"></p>
-		<img src="图片/进口保健品.png" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
+		<img src="staticTheStore/图片/进口保健品.png" width="100" height="100" alt="进口美护" data-imgattr="original" style=" left:0px;top:0px; opacity:100;position: relative;"  class="devia">
 		</a>
 		</li>
 		</ul>
@@ -1879,12 +1880,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 个户美妆-->
      <div id="ghmz" class="scroll-floor floor6">
 	     	<div class="cn_gobuy" style="height: 300px;">
-	    <div class="search_y"><a href="#"><img src="图片/新品.png"  width="50"/></a></div>
+	    <div class="search_y"><a href="#"><img src="staticTheStore/图片/新品.png"  width="50"/></a></div>
 	    <div class="biankuang biankuang_1"></div>
 	    <div class="biankuang biankuang_2"></div>
 	    <div class="biankuang biankuang_3"></div>
 	    <div class="biankuang biankuang_4"></div>
-	    <a class="tp_gobuy" href="#"><img src="图片/iphonne7.jpg" alt="Voyager 3" title="Voyager 3"></a>
+	    <a class="tp_gobuy" href="#"><img src="staticTheStore/图片/iphonne7.jpg" alt="Voyager 3" title="Voyager 3"></a>
 	    <a class="top_text" href="#">iphone7</a>
 	    <div class="text_gobuy">
 	        <br/>
@@ -1894,7 +1895,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <div class="a_add_divboc">
 	            <div id="boynow">
 	                <a href="#">
-	              <img src="图片/加入购物车 .png" width="30" height="30" > &nbsp;&nbsp;<img src="图片/热度对比.png" width="30" height="30"/>
+	              <img src="staticTheStore/图片/加入购物车 .png" width="30" height="30" > &nbsp;&nbsp;<img src="staticTheStore/图片/热度对比.png" width="30" height="30"/>
 	                 	<!--<button type="button" class="btn btn-default" style="width: 90px;height: 30px; background-color: #FF4040; color: white; position: relative; top: -10px;">加入购物车</button>-->
 	                </a>
 	            </div>
@@ -1941,21 +1942,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a title="好货优选" target="_blank" href="//shop.yhd.com/m-5170.html" data-tc="ad.0.0.22112-47089412.1" data-ref="22112_47089412_1">
 					<p class="pro_tit">富安娜九月超闪</p>
 					<p class="pro_sub_tit">好货优选</p>
-					<img src="图片/好货优品.png"  calt="富安娜九月超闪" width="130" height="130" style="left: 0px; right: 0px; position: absolute;" data-imgattr="original">
+					<img src="staticTheStore/图片/好货优品.png"  calt="富安娜九月超闪" width="130" height="130" style="left: 0px; right: 0px; position: absolute;" data-imgattr="original">
 					</a>
 					</div>
 					<div class="pro_wrap">
 					<a title="缤纷的餐具" target="_blank" href="//cms.yhd.com/sale/cuuyQcQyunC" data-tc="ad.0.0.22113-47721164.1" data-ref="22113_47721164_1">
 					<p class="pro_tit">缤纷的餐具</p>
 					<p class="pro_sub_tit">爆款直降</p>
-					<img src="图片/爆款直降.png" alt="缤纷的餐具" width="130" height="130" data-imgattr="original">
+					<img src="staticTheStore/图片/爆款直降.png" alt="缤纷的餐具" width="130" height="130" data-imgattr="original">
 					</a>
 					</div>
 					<div class="pro_wrap">
 					<a title="厨具焕新" target="_blank" href="//list.yhd.com/c7262-0-0/" data-tc="ad.0.0.22114-47721165.1" data-ref="22114_47721165_1">
 					<p class="pro_tit">厨具焕新</p>
 					<p class="pro_sub_tit">品质甄选</p>
-					<img src="图片/好货优品.png" alt="厨具焕新" width="130" height="130" data-imgattr="original">
+					<img src="staticTheStore/图片/好货优品.png" alt="厨具焕新" width="130" height="130" data-imgattr="original">
 					</a>
 </div>
 </div>	
@@ -1964,21 +1965,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a title="收纳洗晒" target="_blank" href="//list.yhd.com/c950344-0-0/" data-tc="ad.0.0.22115-46608798.1" data-ref="22115_46608798_1">
 			<p class="pro_tit">收纳洗晒</p>
 			<p class="pro_sub_tit">换季焕新家</p>
-			<img src="图片/换季换新家.jpg" alt="收纳洗晒" width="252" height="194" data-imgattr="original">
+			<img src="staticTheStore/图片/换季换新家.jpg" alt="收纳洗晒" width="252" height="194" data-imgattr="original">
 			</a>
 			</div>
 			<div class="pro_wrap">
 			<a title="家装建材" target="_blank" href="//list.yhd.com/c36939-0-0/" data-tc="ad.0.0.22116-46608805.1" data-ref="22116_46608805_1">
 			<p class="pro_tit">家装建材</p>
 			<p class="pro_sub_tit">爆款直降</p>
-			<img src="图片/家装.png" alt="家装建材" width="252" height="194" data-imgattr="original">
+			<img src="staticTheStore/图片/家装.png" alt="家装建材" width="252" height="194" data-imgattr="original">
 			</a>
 			</div>
 			<div class="pro_wrap">
 			<a title="焕新家具" target="_blank" href="//list.yhd.com/c950343-0-0/" data-tc="ad.0.0.22117-46608812.1" data-advid="22117" data-advcode="PCSY_JJSH_DPHDW_TP3" data-ajax="1" data-fee="" data-done="" data-nsf="" data-ref="22117_46608812_1">
 			<p class="pro_tit">焕新家具</p>
 			<p class="pro_sub_tit">极致好货</p>
-			<img src="图片/极致好货.png" alt="焕新家具" width="252" height="194" data-imgattr="original">
+			<img src="staticTheStore/图片/极致好货.png" alt="焕新家具" width="252" height="194" data-imgattr="original">
 			</a>
 </div>
 </div>  	
@@ -1990,7 +1991,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<ul>
 			<li data-singlemodule="1">
 			<a class="pro_img clearfix" title="SAMSUNG 三星 55英寸  超高清  LED  液晶  4K智能网络曲面  HDR  电视机  UA55KU6880JXXZ  黑色" target="_blank" href="//item.yhd.com/item/64721946" data-advid="22118" data-advcode="PCSY_JJSH_RMSP_SPW1" data-ajax="1" data-fee="" data-done="1" data-nsf="1" data-ref="" data-tc="4.4.5.55496549.1" data-tce="request-fe44ce3ca3bbda4cfeaaa74a89d07a60abf6,section-1013,n-3" data-recordtracker="1">
-			<img alt="SAMSUNG 三星 55英寸  超高清  LED  液晶  4K智能网络曲面  HDR  电视机  UA55KU6880JXXZ  黑色" src="图片/手机排行2.jpg" width="60" height="60"   stydata-done="1">
+			<img alt="SAMSUNG 三星 55英寸  超高清  LED  液晶  4K智能网络曲面  HDR  电视机  UA55KU6880JXXZ  黑色" src="staticTheStore/图片/手机排行2.jpg" width="60" height="60"   stydata-done="1">
 			<i>1</i>
 			<div class="rank_detail">
 			<p class="pro_name">SAMSUNG 三星 55英寸  超高清  LED  液晶  4K智能网络曲面  HDR  电视机  UA55KU6880JXXZ  黑色</p>
@@ -2000,7 +2001,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</li>
 			<li data-singlemodule="1">
 			<a class="pro_img clearfix" title="Joyoung九阳 JYZ-V919低速榨汁机大口径家用多功能电动炸果汁机" target="_blank" href="//item.yhd.com/item/66738964" data-advid="22119" data-advcode="PCSY_JJSH_RMSP_SPW2" data-ajax="1" data-fee="" data-done="1" data-nsf="1" data-ref="" data-tc="4.4.5.57226559.2" data-tce="request-fe44ce3ca3bbda4cfeaaa74a89d07a60abf6,section-1013,n-3" data-recordtracker="1">
-			<img alt="Joyoung九阳 JYZ-V919低速榨汁机大口径家用多功能电动炸果汁机" src="图片/手机排行3.jpg" width="60" height="60" data-done="1">
+			<img alt="Joyoung九阳 JYZ-V919低速榨汁机大口径家用多功能电动炸果汁机" src="staticTheStore/图片/手机排行3.jpg" width="60" height="60" data-done="1">
 			<i class="rank_second">2</i>
 			<div class="rank_detail">
 			<p class="pro_name">Joyoung九阳 JYZ-V919低速榨汁机大口径家用多功能电动炸果汁机</p>
@@ -2010,7 +2011,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</li>
 			<li data-singlemodule="1">
 			<a class="pro_img clearfix" title="Nan Ji ren 南极人 全棉四件套 纯棉斜纹印花床上用品套件 床单式四件套 （被套200*230cm）似水流年1.5-1.8m床通用" target="_blank" href="//item.yhd.com/item/54468744" data-tc="ad.0.0.22120-45318035.1" data-ref="22120_45318035_1">
-			<img alt="Nan Ji ren 南极人 全棉四件套 纯棉斜纹印花床上用品套件 床单式四件套 （被套200*230cm）似水流年1.5-1.8m床通用" src="图片/手机排行1.jpg" width="60" height="60" data-imgattr="original">
+			<img alt="Nan Ji ren 南极人 全棉四件套 纯棉斜纹印花床上用品套件 床单式四件套 （被套200*230cm）似水流年1.5-1.8m床通用" src="staticTheStore/图片/手机排行1.jpg" width="60" height="60" data-imgattr="original">
 			<i class="rank_third">3</i>
 			<div class="rank_detail">
 			<p class="pro_name">Nan Ji ren 南极人 全棉四件套 纯棉斜纹印花床上用品套件 床单式四件套 （被套200*230cm）似水流年1.5-1.8m床通用</p>
@@ -2032,23 +2033,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div id="ft_wrap" class="scroll-floor floor7">
      	<div class="ft_wrap_top">
          <a href="#">
-         	<img src="图片/正常保障.png"/>
+         	<img src="staticTheStore/图片/正常保障.png"/>
          	<b>正品保障</b>
          	<span>正品行货 放心选购</span>
          </a>
             <a href="#">
-            	<img src="图片/满68.png"/>
+            	<img src="staticTheStore/图片/满68.png"/>
             	<b>满68包邮</b>
          	<span>满68元 免运费</span>
             </a>
            
                <a href="#">
-               	<img src="图片/售后无忧.png"/>
+               	<img src="staticTheStore/图片/售后无忧.png"/>
                	<b>售后无忧</b>
          	<span>7天无理由退货</span>
                </a>
                   <a href="#">
-                  	<img src="图片/准时送达.png"/>
+                  	<img src="staticTheStore/图片/准时送达.png"/>
                   <b>准时送达</b>
          	<span>收货时间由你做主</span>
                   </a>
@@ -2097,11 +2098,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      		<div class="ft_wrap_center_right">
      	  <div class="ft_wrap_center_right_left"</div>
      	  	<p>APP更优惠</p>
-     	  	<img src="图片/APP.png"/>
+     	  	<img src="staticTheStore/图片/APP.png"/>
      		</div>
      		 <div class="ft_wrap_center_right_left"</div>
      	  	<p>加微信查订单</p>
-     	  	<img src="图片/APP.png"/>
+     	  	<img src="staticTheStore/图片/APP.png"/>
      		</div>
      		
      	</div>
@@ -2139,19 +2140,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      		</p>
      		<small class="ft_wrap_small">
      			 <span style="display:inline-block;position:relative;width:auto; height: 32px;margin: 0 4px;"></span>
-     			 	<img src="图片/可信网站.png"/>
-     			 	<img src="图片/银联.png"/>
-     			 	<img src="图片/上海.png"/>
-     			 	<img src="图片/网络.png"/>
-     			 	<img src="图片/纠纷.png"/>
-     			 	<img src="图片/视频.png"/>
-     			 	<img src="图片/上海上.png"/>
+     			 	<img src="staticTheStore/图片/可信网站.png"/>
+     			 	<img src="staticTheStore/图片/银联.png"/>
+     			 	<img src="staticTheStore/图片/上海.png"/>
+     			 	<img src="staticTheStore/图片/网络.png"/>
+     			 	<img src="staticTheStore/图片/纠纷.png"/>
+     			 	<img src="staticTheStore/图片/视频.png"/>
+     			 	<img src="staticTheStore/图片/上海上.png"/>
      			 </span>
      		</small>
      	</div>
      	ft_wrap_center
      </div>
-     <script src="js/左侧悬浮栏.js" type="text/javascript" charset="utf-8"></script>
+     <script src="staticTheStore/js/左侧悬浮栏.js" type="text/javascript" charset="utf-8"></script>
   
     
       
