@@ -5,10 +5,19 @@
     <servlet-name>dingdanServlet</servlet-name>
     <servlet-class>com.servlet.dingdanServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>PayServlet</servlet-name>
+    <servlet-class>com.servlet.PayServlet</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>dingdanServlet</servlet-name>
     <url-pattern>/dingdanServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PayServlet</servlet-name>
+    <url-pattern>/PayServlet</url-pattern>
   </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

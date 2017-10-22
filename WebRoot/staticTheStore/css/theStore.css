@@ -36,7 +36,6 @@ body {
 
 #otherDiv {
 	width: 1315px;
-	/*height: 15000px;*/
 	position: absolute;
 	top: 816px;
 }
@@ -273,7 +272,7 @@ li>ul {
 	opacity: 0.9;
 	position: relative;
 	left: 75px;
-	top: 35px;
+	top: 40px;
 	z-index: 1;
 }
 

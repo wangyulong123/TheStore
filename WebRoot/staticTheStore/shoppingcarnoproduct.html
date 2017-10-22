@@ -716,16 +716,16 @@ s {
 	height: 26px;
 	margin: 0 auto;
 	width: 990px;
-	position: relative;
-	margin-bottom: 5px;
+	position: relative; margin-bottom : 5px;
 	padding-top: 5px;
+	margin-bottom: 5px;
 }
 
 .div2login {
 	margin-top: 95px;
 }
 
-.div2-1 { 
+.div2-1 {
 	float: left;
 	position: relative;
 	font-weight: 700;
@@ -1824,6 +1824,26 @@ img {
 	position: relative;
 	left: 60px;
 }
+
+.cart-empty .message {
+	height: 98px;
+	padding-left: 341px;
+	background: url(img/no-login-icon.png) 250px 22px no-repeat;
+}
+
+.cart-empty .message .txt {
+	font-size: 14px;
+}
+
+.cart-empty .message li {
+	line-height: 26px;
+}
+
+.cart-empty {
+	height: 98px;
+	padding: 80px 0 120px;
+	color: #333;
+}
 </style>
 
 </head>
@@ -1876,203 +1896,16 @@ img {
 			</div>
 		</div>
 	</div>
-	
-	<div class="nologin-tip">
-		<span class="wicon"></span> 您还没有登录！登录后购物车的商品将保存到您账号中 <a
-			class="btn-1 ml10" href="login.html"
-			clstag="clickcart|keycount|xincart|cart_pageTopLogin">立即登录</a>
-	</div>
-	<!-- 标题处 -->
-	<div class="div2">
-		<a href="#" class="toRed"><em class="div2-1 ">全部商品&nbsp;</em><span
-			class="number switch">1</span></a> <a href="#"><em class="div2-1"
-			style="margin-left: 27px;">1号大药房</em></a>
-		<div class="sendToHere">
-			<div>北京朝阳区</div>
-			<b class="div2-b"></b>
-		</div>
-		<div class="sendTo">配送至：</div>
 
-	</div>
-	<div class="w-line">
-		<div style="width: 82px; left: 0px;" class="floater"></div>
-	</div>
-	<div class="div2-line"></div>
-	<div class="div3">
-		<div class="cart-checkbox">
-			<input checked="checked" id="selectAll2" class="jdcheckbox"
-				type="checkbox" style="position: relative;top:1px;"> <label
-				class="checked" for="">全选</label>
-			<div class="t-goods">商品</div>
-			<div class="t-price">单价(元)</div>
-			<div class="t-quantity">数量</div>
-			<div class="t-sum">小计(元)</div>
-			<div class="t-action">操作</div>
-		</div>
-	</div>
-
-
-	<!-- 1号商店-->
-	<div class="goods">
-		<!--1号自营那一条-->
-		<div class="shop">
-			<div class="shop-mes">
-				<span>购满￥99.00&nbsp;已免运费</span> <span class="tips-icon"></span>
-			</div>
-		</div>
-		<!--单品-->
-		<div class="buygoods buygoodsselected item-list">
-			<!--图片及名称-->
-			<div class="p-checkbox cell">
-				<input checked="checked" id="selectGoods" class="jdcheckbox"
-					type="checkbox" />
-			</div>
-			<!-- 手机图片 -->
-			<div class="p-img">
-				<a target="_blank"><img alt="小米 Note 全网通 黑色 移动联通电信4G手机 双卡双待"
-					src="img/images2/phone1.jpg" /></a>
-			</div>
-			<div class="p-name">
-				<a href="//item.jd.com/1601978.html" target="_blank">小米 Note 全网通
-					黑色 移动联通电信4G手机 双卡双待</a>
-			</div>
-			<div class="p-extend">
-				<span class="promise"><i></i><a>购买礼品包装</a></span><br /> <span
-					class="promise"><i style="background-position: 0 -23px;"></i><a
-					class="jd-service" href="#none">购买增值保障</a></span>
-			</div>
-			<div class="p-div2">
-				<div class="props-txt" title="黑">颜色：黑</div>
-				<div class="props-txt" title="标准(16GB)">尺码：标准(16GB)</div>
-			</div>
-			<div class="cell p-price p-div3">
-				<strong>1499.00</strong>
-			</div>
-			<div class="quantity-form">
-				<a class="decrement">-</a> <input value="1" type="text"
-					autocomplete="off" class="p-quantity-itxt" /> <a class="increment">+</a>
-			</div>
-
-			<div class="cell p-sum div4">
-				<strong>1499.00</strong>
-			</div>
-			<div class="cell p-ops div5">
-				<!--单品-->
-				<a>删除</a> <a class="a1">移到我的关注</a>
-			</div>
-		</div>
-
-		<!--单品-->
-		<div class="buygoods buygoodsselected item-list">
-			<!--图片及名称-->
-			<div class="p-checkbox cell">
-				<input checked="checked" id="selectGoods" class="jdcheckbox"
-					type="checkbox" />
-			</div>
-			<!-- 手机图片 -->
-			<div class="p-img">
-				<a target="_blank"><img alt="小米 Note 全网通 黑色 移动联通电信4G手机 双卡双待"
-					src="img/images2/phone1.jpg" /></a>
-			</div>
-			<div class="p-name">
-				<a href="//item.jd.com/1601978.html" target="_blank">小米 Note 全网通
-					黑色 移动联通电信4G手机 双卡双待</a>
-			</div>
-			<div class="p-extend">
-				<span class="promise"><i></i><a>购买礼品包装</a></span><br /> <span
-					class="promise"><i style="background-position: 0 -23px;"></i><a
-					class="jd-service" href="#none">购买增值保障</a></span>
-			</div>
-			<div class="p-div2">
-				<div class="props-txt" title="黑">颜色：黑</div>
-				<div class="props-txt" title="标准(16GB)">尺码：标准(16GB)</div>
-			</div>
-			<div class="cell p-price p-div3">
-				<strong>1499.00</strong>
-			</div>
-			<div class="quantity-form">
-				<a class="decrement">-</a> <input value="1" type="text"
-					autocomplete="off" class="p-quantity-itxt" /> <a class="increment">+</a>
-			</div>
-
-			<div class="cell p-sum div4">
-				<strong>1499.00</strong>
-			</div>
-			<div class="cell p-ops div5">
-				<!--单品-->
-				<a>删除</a> <a class="a1">移到我的关注</a>
-			</div>
-		</div>
-
-		<!--单品-->
-		<div class="buygoods buygoodsselected item-list">
-			<!--图片及名称-->
-			<div class="p-checkbox cell">
-				<input checked="checked" id="selectGoods" class="jdcheckbox"
-					type="checkbox" />
-			</div>
-			<!-- 手机图片 -->
-			<div class="p-img">
-				<a target="_blank"><img alt="小米 Note 全网通 黑色 移动联通电信4G手机 双卡双待"
-					src="img/images2/phone1.jpg" /></a>
-			</div>
-			<div class="p-name">
-				<a href="//item.jd.com/1601978.html" target="_blank">小米 Note 全网通
-					黑色 移动联通电信4G手机 双卡双待</a>
-			</div>
-			<div class="p-extend">
-				<span class="promise"><i></i><a>购买礼品包装</a></span><br /> <span
-					class="promise"><i style="background-position: 0 -23px;"></i><a
-					class="jd-service" href="#none">购买增值保障</a></span>
-			</div>
-			<div class="p-div2">
-				<div class="props-txt" title="黑">颜色：黑</div>
-				<div class="props-txt" title="标准(16GB)">尺码：标准(16GB)</div>
-			</div>
-			<div class="cell p-price p-div3">
-				<strong>1499.00</strong>
-			</div>
-			<div class="quantity-form">
-				<a class="decrement">-</a> <input value="1" type="text"
-					autocomplete="off" class="p-quantity-itxt" /> <a class="increment">+</a>
-			</div>
-
-			<div class="cell p-sum div4">
-				<strong>1499.00</strong>
-			</div>
-			<div class="cell p-ops div5">
-				<!--单品-->
-				<a>删除</a> <a class="a1">移到我的关注</a>
-			</div>
-		</div>
-	</div>
-
-	<!-- 结算 -->
-	<div class="check" id="selectall_div">
-		<div class="selectall">
-			<div style="float: left;" class="cart-checkbox">
-				<input id="selectAll1" checked="checked"
-					class="jdcheckbox selectall-box" type="checkbox"> <label
-					class="checked" for="">全选</label>
-			</div>
-			<div class="operation">
-				<a href="#none" class="remove-batch">删除选中的商品</a> <a href="#none"
-					class="follow-batch">移到我的关注</a>
-			</div>
-		</div>
-	</div>
-	<div class="toolbar-right">
-		<div class="amount-sum">
-			已选择<em>1</em>件商品<b class="up"></b>
-		</div>
-		<div class="toolbar-right-money">
-			<span class="txt">总价（不含运费）：</span> <span class="price sumPrice"><em>￥1499.00</em></span><br />
-
-			<span class="txt toolbar-right-money-span ">已节省：</span> <span
-				class="price totalRePrice toolbar-right-money-span">-￥0.00</span>
-		</div>
-		<div class="btn-area">
-			<a class="submit-btn" href="querendingdan.html"> 去结算<b></b></a>
+	<div class="cart-empty" style="position:relative;left:200px;top:40px;">
+		<div class="message">
+			<ul>
+				<li class="txt" style="width:400px;">购物车内暂时没有商品，登录后将显示您之前加入的商品
+				</li>
+				<li style="position:relative;right:340px;top:30px;"><a
+					href="jsp/user/login.jsp" class="btn-1 login-btn mr10">登录</a> <a
+					href="jsp/user/index.jsp" class="ftx-05"> 去购物&gt; </a></li>
+			</ul>
 		</div>
 	</div>
 
@@ -2353,11 +2186,11 @@ img {
 			//$("#ttbar-login").addClass("nologin");
 			$(".nologin-tip").show();
 			$(".div2").removeClass("div2login");
-		} /* else {
+		} else {
 			//$("#ttbar-login").removeClass("nologin");
 			$(".nologin-tip").hide();
 			$(".div2").addClass("div2login");
-		} */
+		}
 	});
 	$(function() {
 		<!--选中店铺-->
