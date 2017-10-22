@@ -214,7 +214,7 @@ public class ProductDaoImpl implements ProductDao {
 				product.setShoppingCarImg(rs.getString("shoppingCarImg"));
 				product.setOnsale(rs.getInt("onsale"));
 				product.setCid(rs.getInt("cid"));
-
+			//	System.out.println(product);
 				list.add(product);
 			}
 

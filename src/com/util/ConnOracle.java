@@ -18,9 +18,9 @@ public class ConnOracle {
 		Connection conn = null;
 		
 		String className = "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1521:test";
-		String user = "jidi16";
-		String password = "123456";
+		String url = "jdbc:oracle:thin:@pgos:1521:orcl11";
+		String user = "scott";
+		String password = "tiger";
 		//1.¼ÓÔØÇý¶¯
 		try {
 			Class.forName(className);

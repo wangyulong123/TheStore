@@ -1,7 +1,7 @@
-* {
+﻿* {
 	margin: 0 auto;
 	font-size: 12px;
-	font-family: "微软雅黑";
+	font-family: "寰蒋闆呴粦";
 }
 
 a {
@@ -15,7 +15,7 @@ ul li {
 	padding-right: 15px;
 }
 
-/*顶部账号信息*/
+/*椤堕儴璐﹀彿淇℃伅*/
 
 #top {
 	height: 30px;
@@ -31,7 +31,7 @@ ul li {
 }
 
 .layout::before {
-	/*清除浮动*/
+	/*娓呴櫎娴姩*/
 	content: "";
 	display: table;
 }
@@ -127,7 +127,7 @@ ul li {
 }
 
 
-/*大搜索框*/
+/*澶ф悳绱㈡*/
 
 #search1 {
 	height: 110px;
@@ -256,8 +256,6 @@ ul li {
 }
 
 
-/*搜索手机栏*/
-
 #search2 {
 	height: 40px;
 	line-height: 40px;
@@ -313,7 +311,7 @@ ul li {
 }
 
 
-/*商品筛选条件*/
+/*鍟嗗搧绛涢�鏉′欢*/
 
 #category {
 	height: 329px;
@@ -487,6 +485,23 @@ a[id="aaa"] {
 #sort1 ul li:hover{
 	color: #FF855B;
 }
+.fp-txt {
+	line-height: 23px;
+	margin-right: 20px;
+	font-family: verdana
+}
+.fp-prev, .fp-next {
+	display: inline-block;
+	width: 46px;
+	height: 23px;
+	border: 1px solid #DDD;
+	background: #FFF;
+	line-height: 23px;
+	font-family: "\5b8b\4f53";
+	text-align: center;
+	font-size: 16px;
+	color: #AAA;
+}
 .xuanZhongTiaoJian{
 	color: #FFFFFF !important;
 	background: #F27E56 !important;	
@@ -562,7 +577,7 @@ a[id="aaa"] {
 }
 
 .layout1::before {
-	/*清除浮动*/
+	/*娓呴櫎娴姩*/
 	content: "";
 	display: table;
 }
@@ -582,9 +597,8 @@ a[id="aaa"] {
 	cursor: pointer;
 }
 
-#first,
-#second {
-	height: 452px;
+#first {
+	height: 880px;
 }
 
 .goods {
@@ -611,7 +625,7 @@ a[id="aaa"] {
 }
 
 .goods:hover {
-	/*设置阴影*/
+	/*璁剧疆闃村奖*/
 	border: 1px solid #EAEAEA;
 	box-shadow: 1px 1px 0px 6px #FAFAFA;
 }
@@ -719,7 +733,6 @@ a[class="compare"] {
 #page {
 	padding-top: 45px;
 	padding-bottom: 35px;
-	margin-bottom: 30px;
 	height: 25px;
 }
 

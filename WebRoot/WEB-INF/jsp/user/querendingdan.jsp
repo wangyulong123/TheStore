@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<base href="<%=basePath%>">
 		<title>1号店,只为更好的生活</title>
 		<link rel="shortcut icon" href="img/icon.png"/>
-		<link rel="stylesheet" type="text/css" href="css/querendingdan.css"/>
+		<link rel="stylesheet" type="text/css" href="staticTheStore/css/querendingdan.css"/>
 		<script src="staticTheStore/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="staticTheStore/js/querendingdan.js" type="text/javascript" charset="utf-8"></script>
 		<script src="staticTheStore/js/jsAddress.js" type="text/javascript" charset="utf-8"></script>

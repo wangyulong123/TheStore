@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.page.PageInfo;
+import com.vo.Category2;
 import com.vo.Product;
 
 public interface ProductService {
@@ -45,4 +46,8 @@ public interface ProductService {
 
 	//保存图片的路径到商品表
 	public void saveImagePathInTable(String pid, List<String> fileNameList) throws Exception;
+	
+	//查询二级商品种类下对应的商品
+	public List<Product> getAllProductByCategory2(int cid) throws Exception;
+
 }

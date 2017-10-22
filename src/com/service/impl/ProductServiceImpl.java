@@ -19,6 +19,7 @@ import com.dao.inter.ProductDao;
 import com.page.PageInfo;
 import com.service.inter.ProductService;
 import com.util.SQLUtil;
+import com.vo.Category2;
 import com.vo.Product;
 
 public class ProductServiceImpl implements ProductService{
@@ -417,4 +418,14 @@ public class ProductServiceImpl implements ProductService{
 		//保存详细页图片名称到指定字段
 		dao2.updateProductImageNames(product);
 	}
+
+	// 查询一级商品种类下对应的二级商品种类
+	public List<Product> getAllProductByCategory2(int cid) throws Exception {
+		List<Product> list = null;
+
+		String sql = "select * from product where onsale=1 and cid=" + cid;
+		list = dao.getPageByQuery(sql);
+		return list;
+	}
+
 }
