@@ -14,7 +14,7 @@ import com.service.impl.OrderServiceImpl;
 import com.service.inter.OrderService;
 import com.vo.Address;
 import com.vo.Order1;
-
+//¶©µ¥
 public class DingdanServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
