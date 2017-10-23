@@ -516,7 +516,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 					</div>
-					<a href="#shangPinJieShao">
+					<a href="#shangPinJieShao" >
 
 						<div id="shouJiDetail">
 							<ul>

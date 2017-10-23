@@ -195,6 +195,95 @@ where r>=9 and r<=16*/
 		product = dao.getProductById(new Integer(pid));
 		return product;
 	}
+	@Override
+	public int getPhonesSumBySearchCondition(Product product,String low,String high)throws Exception{
+		int totalRecordSum = 0;
+		StringBuilder sb = new StringBuilder(
+				"select count(*) as totalRecordSum from product where 1=1 and onsale=1");
 
+		// select count(*) as totalRecordSum from category where 1=1 and
+		// cname='商品种类描述' or cdesc like '%商品种类描述%'		
+		Integer cid = product.getCid();
+		Integer lowInteger = Integer.parseInt(low);
+		Integer highInteger = Integer.parseInt(high);
+		if (cid != null) {
+			sb.append(" and cid=");
+			sb.append(cid);
+			
+		}	
+		if(lowInteger!=null){
+			sb.append(" and price>=");
+			sb.append(low);
+		}
+		if(highInteger!=null){
+			sb.append(" and price<=");
+			sb.append(high);
+		}
+		String sql = sb.toString();
+		System.out.println(sql);
+
+		totalRecordSum = dao.getTotalRecordSum(sql);
+
+		return totalRecordSum;
+		
+	}
+
+	@Override
+	public List<Product> getPhonesPageByQuery(Product product, String low,
+			String high, PageInfo pageInfo) throws Exception {
+		List<Product> list = null;
+		/*select * from (select c.*,rownum r from (select * from product where 1=1 and onsale=1 and pname='手机' or dianpuName like '%手机%' or 
+
+		cid=62 order by price asc) c)
+
+		where r>=9 and r<=16*/
+		
+		StringBuilder sb = new StringBuilder(
+						"select * from (select c.*,rownum r from (select * from product where 1=1 and onsale=1");
+
+				Integer cid = product.getCid();
+				Integer lowInteger = Integer.parseInt(low);
+				Integer highInteger = Integer.parseInt(high);
+				String orderCondition = product.getOrderConditionObj().getOrderCondition();
+				String ascOrDesc = product.getOrderConditionObj().getAscOrDesc();				
+				
+				if (cid != null) {
+					sb.append(" and cid=");
+					sb.append(cid);
+					
+				}
+				if(lowInteger!=null&&!lowInteger.equals("")){
+					sb.append(" and price>=");
+					sb.append(low);
+				}
+				if(highInteger!=null&&!highInteger.equals("")){
+					sb.append(" and price<=");
+					sb.append(high);
+				}
+				if (orderCondition != null && !orderCondition.trim().equals("")) {
+					sb.append(" order by ");
+					
+					sb.append(orderCondition);
+					sb.append(" ");
+					
+					if("asc".equals(ascOrDesc)){
+						
+						sb.append("asc");
+					}else{
+						sb.append("desc");
+					}
+					
+				}
+					
+				sb.append(") c) where r>=");
+				sb.append(pageInfo.getBegin());
+				sb.append(" and r<=");
+				sb.append(pageInfo.getEnd());
+
+				String sql = sb.toString();
+				System.out.println(sql);
+				list = dao.getPageByQuery(sql);
+				return list;
+	}
 }
  

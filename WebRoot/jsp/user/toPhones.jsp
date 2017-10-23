@@ -23,9 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-      <jsp:forward page="/UserProductServlet">
-      		<jsp:param name="action" value="getProductListByCategory" />
+      <jsp:forward page="/PhonesServlet">
+      		<jsp:param name="action" value="getPageByQuery" />
 			<jsp:param name="cid" value="62" />
+			<jsp:param name="orderCondition" value="price"/>
+			<jsp:param name="ascOrDesc" value="asc"/>
+			<jsp:param name="requestPage" value="1"/>
 		</jsp:forward>
   </body>
 </html>

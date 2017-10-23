@@ -11,7 +11,6 @@ $(function() {
 			$(this).addClass("trBianKuang");
 		}
 	});
-	
 		//单击时背景色变换
 	$("#sort1>ul>li").click(function(){
 		

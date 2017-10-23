@@ -29,7 +29,7 @@
 		<url-pattern>/PhonesServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>UserPeoductServlet</servlet-name>
+		<servlet-name>UserProductServlet</servlet-name>
 		<url-pattern>/UserProductServlet</url-pattern>
 	</servlet-mapping>
   <servlet-mapping>
@@ -51,11 +51,11 @@
 		<servlet-class>com.servlet.Category2Servlet</servlet-class>
 	</servlet>
 
-	<servlet>
+<!-- 	<servlet>
 
 		<servlet-name>UserProductServlet</servlet-name>
 		<servlet-class>com.servlet.UserProductServlet</servlet-class>
-	</servlet>
+	</servlet> -->
 
 	<servlet>
 		<servlet-name>ProductServlet</servlet-name>

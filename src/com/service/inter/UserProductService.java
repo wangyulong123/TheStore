@@ -20,4 +20,11 @@ public interface UserProductService {
 	
 	// 查1
 	public Product getProductById(String pid) throws Exception;
+	
+	//根据商品价格区间获取商品总数
+	public int getPhonesSumBySearchCondition(Product product,String low,String high)throws Exception;
+	
+	//根据对应价格区间获取商品列表
+	public List<Product> getPhonesPageByQuery(Product product,String low,String high,PageInfo pageInfo)throws Exception;
+
 }

@@ -18,7 +18,6 @@
 <link rel="shortcut icon" href="staticTheStore/img/mobile/icon.png" />
 <link href="staticTheStore/css/phones.css" rel="stylesheet"
 	type="text/css" />
-
 <script type="text/javascript" src="staticTheStore/js/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="staticTheStore/js/phones.js"></script>
 </head>
@@ -74,10 +73,20 @@
 			</div>
 			<div id="logoRight">
 				<div id="sousuo">
-					<div id="sousuokuang">
-						<input type="text" placeholder="三门智控冰箱抢免单" /> <img
-							src="staticTheStore/img/mobile/sousuo.png" />
-					</div>
+					<form id="categoryForm"
+						action="PhonesServlet?action=getPageByQuery" method="post">
+						<div id="sousuokuang">
+							<input id="input1" type="text" placeholder="三门智控冰箱抢免单"
+								id="searchCondition" name="searchCondition"
+								value="${requestScope.searchCondition}" /> <input id="input2"
+								type="image" width="53px" height="41px"
+								src="staticTheStore/img/mobile/sousuo.png" alt="Submit" />
+							<!-- 								<img src="staticTheStore/img/mobile/sousuo.png" />
+
+ -->
+						</div>
+					</form>
+
 					<div id="shoppingCar">
 						<img src="staticTheStore/img/mobile/shoppingCar.png" />&nbsp;&nbsp;购物车
 					</div>
@@ -238,7 +247,7 @@
 			<div id="require6" class="require requires">
 				<div class="layout">
 
-					<div id="price" class="tiaojian">价格</div>
+					<div id="price1" class="tiaojian">价格</div>
 					<div class="zhonglei">
 						<ul>
 							<li><a href="#">0-413元</a></li>
@@ -255,43 +264,36 @@
 					</div>
 				</div>
 			</div>
-			<div id="require7" class="require requires">
+			<!-- <div id="require7" class="require requires">
 				<div class="layout">
 					<div id="more" class="tiaojian">更多筛选项</div>
 					<div class="zhonglei">
-						<li>摄像头像素
-							<ul>
-								<li><a href="#">800-1199万</a></li>
-								<li><a href="#">300万以下</a></li>
-								<li><a href="#">无摄像头</a></li>
-								<li>
-									<div class="mChoices">多选</div>
-								</li>
-								<li><a href="#">300-799万</a></li>
-								<li><a href="#">1200-1599万</a></li>
-								<li><a href="#">1600万及以上</a></li>
-							</ul>
-						</li>
-						<li>系统
+					<div id="shexiangtou1">	<label>摄像头像素</label>
+					</div>
+							<div id="shexiangtou">
+								<ul>摄像头像素
+									<li><a href="#">无摄像头</a></li>
+									<li><a href="#">300万以下</a></li>
+									<li><a href="#">300-799万</a></li>
+									<li><a href="#">800-1199万</a></li>
+									<li><a href="#">1200-1599万</a></li>
+									<li><a href="#">1600万及以上</a></li>
+								</ul>
+							</div>
+						<li class="xiala2">系统
 							<ul>
 								<li><a href="#">Android</a></li>
 								<li><a href="#">IOS</a></li>
 								<li><a href="#">Windowphone</a></li>
-								<li>
-									<div class="mChoices">多选</div>
-								</li>
 								<li><a href="#">非智能手机</a></li>
 								<li><a href="#">其他智能系统</a></li>
 							</ul>
 						</li>
-						<li>手机内存
+						<li class="xiala2">手机内存
 							<ul>
 								<li><a href="#">16GB</a></li>
 								<li><a href="#">64GB</a></li>
 								<li><a href="#">2GB</a></li>
-								<li>
-									<div class="mChoices">多选</div>
-								</li>
 								<li><a href="#">32GB</a></li>
 								<li><a href="#">4GB</a></li>
 								<li><a href="#">256MB</a></li>
@@ -303,21 +305,18 @@
 								<li><a href="#">450GB</a></li>
 							</ul>
 						</li>
-						<li>单卡双卡
+						<li class="xiala2">单卡双卡
 							<ul>
 								<li><a href="#">双卡双待</a></li>
 								<li><a href="#">单卡单待</a></li>
 								<li><a href="#">单卡多模</a></li>
-								<li>
-									<div class="mChoices">多选</div>
-								</li>
 								<li><a href="#">双卡单待</a></li>
 							</ul>
 						</li>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 
 	<div id="sort">
@@ -326,10 +325,10 @@
 				<div id="sort1">
 					<ul>
 						<li id="zonghe" class="xuanZhongTiaoJian">综合</li>
-						<li id="xiaoliang">销量⬇</li>
-						<li id="xinpin">新品⬇</li>
-						<li id="pinglun">评论 ⬇</li>
-						<li id="jiage">价格 ⬇</li>
+						<li >销量<b>⬇</b></li>
+						<li >新品<b>⬇</b></li>
+						<li id="pingjiaSum">评论<b>⬇</b></li>
+						<li id="price">价格<b>⬇</b></li>
 
 					</ul>
 					<div id="jiaGeQingDan">
@@ -339,18 +338,18 @@
 						</div>
 						<div id="jiaGeLieBiao">
 							<p>
-								<input type="text" placeholder="￥"><span>&nbsp;&nbsp;-&nbsp;&nbsp;</span><input
-									type="text" placeholder="￥"><label id="qingChu">清除</label><label
-									id="queDing">确定</label>
+								<input id="low" type="text" placeholder="￥"><span>&nbsp;&nbsp;-&nbsp;&nbsp;</span><input
+									id="high" type="text" placeholder="￥"><label
+									id="qingChu">清除</label><label id="queDing">确定</label>
 							</p>
 							<ul>
-								<li>0-79元</li>
-								<li>80-299元</li>
-								<li>300-799元</li>
-								<li>800-1299元</li>
-								<li>1300-2399元</li>
-								<li>2400-4599元</li>
-								<li>4600-2474099元</li>
+								<li><label>0</label>-<label>79</label>元</li>
+								<li><label>80</label>-<label>299</label>元</li>
+								<li><label>300</label>-<label>799</label>元</li>
+								<li><label>800</label>-<label>1299</label>元</li>
+								<li><label>1300</label>-<label>2399</label>元</li>
+								<li><label>2400</label>-<label>4599</label>元</li>
+								<li><label>4600</label>-<label>2474099</label>元</li>
 							</ul>
 						</div>
 					</div>
@@ -404,32 +403,9 @@
 			<div id="ffirst" class="dot">
 				<%
 					List<Product> list = (List<Product> )request.getAttribute("list");
-												for(Product product:list){
+																												for(Product product:list){
 				%>
-				<!-- 				<div id="first1" class="goods">
-					<img src="staticTheStore/img/mobile/荣耀9.jpg" />
-					<div class="top-right">
-						<img src="staticTheStore/img/mobile/new.png">
-					</div>
-					<p class="jiage">￥2699.00</p>
-					<p class="desc1">
-						<a href="#">荣耀9&nbsp;全网通高配版&nbsp;6GB+64GB(知更鸟蓝)</a>
-					</p>
-					<p class="desc2">
-						<a href="#">2000万变焦双射，3D曲面极光玻璃，美得有声有色！</a>
-					</p>
-					<div class="sc">
-						<a class="shopping" href="#">加入购物车</a> <a class="compare" href="#"><span>□</span>&nbsp;对比</a>
-					</div>
-					<p class="pingLun">
-						<a href="#" class="estimate"><img src="staticTheStore/img/mobile/pingJia.jpg">1033</a><span><img
-							src="staticTheStore/img/mobile/zan.png">&nbsp;98%</span>
-					</p>
-					<p class="shopName">
-						<a href="#">1号店自营&nbsp;荣耀品牌馆</a>
-					</p>
-				</div>
- -->
+
 
 				<a href="PhonesServlet?action=getOnePhone&pid=<%=product.getPid()%>"
 					target="_blank">
@@ -446,12 +422,13 @@
 							<a href="#"><%=product.getPdesc()%></a>
 						</p>
 						<div class="sc">
-							<a class="shopping" href="#">加入购物车</a> <a class="compare"
-								href="#"><span>□</span>&nbsp;对比</a>
+							<a class="shopping"
+								href="PhonesServlet?action=getOnePhone&pid=<%=product.getPid()%>"
+								target="_blank">查看详情</a>
 						</div>
 						<p class="pingLun">
 							<a href="#" class="estimate"><img
-								src="staticTheStore/img/mobile/pingJia.jpg">256</a><span><img
+								src="staticTheStore/img/mobile/pingJia.jpg"><%=product.getPingjiaSum()%></a><span><img
 								src="staticTheStore/img/mobile/zan.png">&nbsp;98%</span>
 						</p>
 						<p class="shopName">
@@ -463,168 +440,6 @@
 				<%
 					}
 				%>
-				<!-- 				<div id="first3" class="goods">
-					<img src="staticTheStore/img/mobile/HUAWEIMate9.jpg" />
-					<div class="top-right">
-						<img src="staticTheStore/img/mobile/new.png">
-					</div>
-					<p class="jiage">￥2798.00</p>
-					<p class="desc3">
-						<a href="#">华为&nbsp;HUAWEI/华为mate9&nbsp;全网通&nbsp;5.9英寸&nbsp;内存32G/128G可选&nbsp;八核&nbsp;双卡双待</a>
-					</p>
-					<div class="sc">
-						<a class="shopping" href="#">加入购物车</a> <a class="compare" href="#"><span>□</span>&nbsp;对比</a>
-					</div>
-					<p class="pingLun">
-						<a href="#" class="estimate"><img src="staticTheStore/img/mobile/pingJia.jpg">128</a><span><img
-							src="staticTheStore/img/mobile/zan.png">&nbsp;100%</span>
-					</p>
-					<p class="shopName">
-						<a href="#">阿门手机专营店</a>
-					</p>
-				</div>
-				<div id="first4" class="goods">
-					<img src="staticTheStore/img/mobile/iphone7.jpg" />
-					<div class="top-right">
-						<img src="staticTheStore/img/mobile/new.png">
-					</div>
-					<p class="jiage">￥4548</p>
-					<p class="desc3">
-						<a href="#">Apple&nbsp;苹果7&nbsp;A1660&nbsp;iphone7&nbsp;全网通&nbsp;4.7英寸&nbsp;移动/联通/电信&nbsp;4G智能手机金色</a>
-					</p>
-					<div class="sc">
-						<a class="shopping" href="#">加入购物车</a> <a class="compare" href="#"><span>□</span>&nbsp;对比</a>
-					</div>
-					<p class="pingLun">
-						<a href="#" class="estimate"><img src="staticTheStore/img/mobile/pingJia.jpg">413</a><span><img
-							src="staticTheStore/img/mobile/zan.png">&nbsp;100%</span>
-					</p>
-					<p class="shopName">
-						<a href="#">阿门手机专营店</a>
-					</p>
-				</div>
-				<div id="first5" class="goods">
-					<img src="staticTheStore/img/mobile/坚果Pro.jpg" />
-					<p class="jiage">￥1558</p>
-					<p class="desc3">
-						<a href="#">锤子&nbsp;坚果Pro&nbsp;全网通&nbsp;移动联通电信4G手机&nbsp;双卡双待碳黑色</a>
-					</p>
-					<div class="sc">
-						<a class="shopping" href="#">加入购物车</a> <a class="compare" href="#"><span>□</span>&nbsp;对比</a>
-					</div>
-					<p class="pingLun">
-						<a href="#" class="estimate"><img src="staticTheStore/img/mobile/pingJia.jpg">145</a><span><img
-							src="staticTheStore/img/mobile/zan.png">&nbsp;100%</span>
-					</p>
-					<p class="shopName">
-						<a href="#">华科手机专营店</a>
-					</p>
-				</div>
-			</div>
-		</div>
- -->
-
-				<!-- 	<div id="second">
-		<div class="layout1">
-			<div id="ssecond" class="dot">
-				<div id="second1" class="goods">
-					<img src="staticTheStore/img/mobile/魅蓝note5.jpg" />
-					<p class="jiage">￥949</p>
-					<p class="desc3">
-						<a href="#">魅族&nbsp;魅蓝Note&nbsp;5&nbsp;5.5英寸、&nbsp;1920x1080像素、&nbsp;500W/1300W像素&nbsp;指纹识别，主</a>
-					</p>
-					<div class="sc">
-						<a class="shopping" href="#">加入购物车</a> <a class="compare" href="#"><span>□</span>&nbsp;对比</a>
-					</div>
-					<p class="pingLun">
-						<a href="#" class="estimate"><img src="staticTheStore/img/mobile/pingJia.jpg">139</a><span><img
-							src="staticTheStore/img/mobile/zan.png">&nbsp;97%</span>
-					</p>
-					<p class="shopName">
-						<a href="#">汇通手机专营店</a>
-					</p>
-				</div>
-				<div id="second2" class="goods">
-					<img src="staticTheStore/img/mobile/小米5c.jpg" />
-					<div class="top-right">
-						<img src="staticTheStore/img/mobile/new.png">
-					</div>
-					<p class="jiage">￥1299</p>
-					<p class="desc1">
-						<a href="#">MI/小米&nbsp;小米5c&nbsp;移动版&nbsp;3GB+64GB金色</a>
-					</p>
-					<p class="desc2">
-						<a href="#"></a>
-					</p>
-					<div class="sc">
-						<a class="shopping" href="#">加入购物车</a> <a class="compare" href="#"><span>□</span>&nbsp;对比</a>
-					</div>
-					<p class="pingLun">
-						<a href="#" class="estimate"><img src="staticTheStore/img/mobile/pingJia.jpg">1</a><span><img
-							src="staticTheStore/img/mobile/zan.png">&nbsp;98%</span>
-					</p>
-					<p class="shopName">
-						<a href="#">潮品手机专营店</a>
-					</p>
-				</div>
-				<div id="second3" class="goods">
-					<img src="staticTheStore/img/mobile/小米MIX.jpg" />
-					<p class="jiage">￥3499</p>
-					<p class="desc1">
-						<a href="#">小米/MIX&nbsp;全网通&nbsp;标准版&nbsp;4GB内存&nbsp;128GB金色ROM&nbsp;陶瓷黑&nbsp;移动联通电信4G手机</a>
-					</p>
-					<div class="sc">
-						<a class="shopping" href="#">加入购物车</a> <a class="compare" href="#"><span>□</span>&nbsp;对比</a>
-					</div>
-					<p class="pingLun">
-						<a href="#" class="estimate"><img src="staticTheStore/img/mobile/pingJia.jpg">62</a><span><img
-							src="staticTheStore/img/mobile/zan.png">&nbsp;95%</span>
-					</p>
-					<p class="shopName">
-						<a href="#">1号店自营&nbsp;小米品牌馆</a>
-					</p>
-				</div>
-				<div id="second4" class="goods">
-					<img src="staticTheStore/img/mobile/HUAWEInova2Plus.jpg" />
-					<p class="jiage">￥2899</p>
-					<p class="desc1">
-						<a href="#">华为&nbsp;HUAWEI5c&nbsp;nova&nbsp;2&nbsp;4GB+128GB&nbsp;全网通&nbsp;极光蓝</a>
-					</p>
-					<div class="sc">
-						<a class="shopping" href="#">加入购物车</a> <a class="compare" href="#"><span>□</span>&nbsp;对比</a>
-					</div>
-					<p class="pingLun">
-						<a href="#" class="estimate"><img src="staticTheStore/img/mobile/pingJia.jpg">415</a><span><img
-							src="staticTheStore/img/mobile/zan.png">&nbsp;99%</span>
-					</p>
-					<p class="shopName">
-						<a href="#">1号店&nbsp;华为品牌馆</a>
-					</p>
-				</div>
-				<div id="second5" class="goods">
-					<img src="staticTheStore/img/mobile/OPPOA77.jpg" />
-					<div class="top-right">
-						<img src="staticTheStore/img/mobile/new.png">
-					</div>
-					<p class="jiage">￥2199</p>
-					<p class="desc3">
-						<a href="#">OPPO&nbsp;A77&nbsp;全网通4G手机&nbsp;玫瑰金&nbsp;内存32G/128G可选&nbsp;八核&nbsp;双卡双待</a>
-					</p>
-					<div class="sc">
-						<a class="shopping" href="#">加入购物车</a> <a class="compare" href="#"><span>□</span>&nbsp;对比</a>
-					</div>
-					<p class="pingLun">
-						<a href="#" class="estimate"><img src="staticTheStore/img/mobile/pingJia.jpg">155</a><span><img
-							src="staticTheStore/img/mobile/zan.png">&nbsp;100%</span>
-					</p>
-					<p class="shopName">
-						<a href="#">1号店&nbsp;OPPO品牌馆</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
- -->
 			</div>
 		</div>
 	</div>
@@ -633,12 +448,91 @@
 			<div id="manYiDu">
 				您对当前页面的结果是否满意？ <a href="#">满意</a> <a href="#">不满意</a>
 			</div>
-			<div id="pageNumb">
-				<a href="javascript:void(0)" class="xuanZhongTiaoJian">1</a> <a
-					href="javascript:void(0)">2</a> <a href="javascript:void(0)">3</a>...
-				<a href="javascript:void(0)">下一页</a>
+			<div class="pageNumb">
+				<div class="p-wrap">
+					<span class="p-num"> <a id="previous"
+						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getPreviousPage()%>"
+						class="pn-prev"> <i><</i> <em>上一页</em>
+					</a> <%
+ 	int totalPageCount = pageInfo.getTotalPageCount();
+            								int currentPage = pageInfo.getCurrentPage();
+            								
+            								if(totalPageCount<=10){
+            									//全部打印出来
+            									for(int i=1;i<=totalPageCount;i++){
+ %> <a pageNum="pageNum"
+						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
+						<%
+							}
+																																																																							
+																																																																							
+																																																																						}else{
+																																																																							//当前页的样式为 class="curr"
+																																																																							//打印一部分
+
+																																																																							if(currentPage<=5){
+																																																																								//从1开始打印 打印到 当前页数 + 2页
+																																																																								for(int i=1;i<=currentPage+2;i++){
+						%> <a pageNum="pageNum"
+						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
+						<%
+							}
+						%> <!--  打印..--> <b class="pn-break">...</b> <!-- 打印最后一页(即总共的页数) -->
+						<a pageNum="pageNum"
+						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=totalPageCount%>"><%=totalPageCount%></a>
+						<%
+							}else if(currentPage<totalPageCount-3){//当前页<总页数-3   8
+						%> <!--始终打印10个
+												先打印1  和 ..  --> <a pageNum="pageNum"
+						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=1">1</a>
+						<b class="pn-break">...</b> <%
+ 	//从当前页-3 开始打印  打印到当前页+2
+            										for(int i=currentPage-3;i<=currentPage+2;i++){
+ %> <a pageNum="pageNum"
+						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
+						<%
+							}
+						%> <!--  打印 ..  和最后一页--> <b class="pn-break">...</b> <a
+						pageNum="pageNum"
+						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=totalPageCount%>"><%=totalPageCount%></a>
+						<%
+							}else {//8
+						%> <!-- 先 打印 1 和 .. --> <a pageNum="pageNum"
+						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=1">1</a>
+						<b class="pn-break">...</b> <%
+ 	//再打印 当前页-3 到剩下的
+            										for(int i=currentPage-3;i<=totalPageCount;i++){
+ %> <a pageNum="pageNum"
+						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
+						<%
+							}
+																																																																							}
+																																																																							
+																																																																							
+																																																																						
+																																																																						}
+						%> <a id="next"
+						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getNextPage()%>"
+						class="pn-prev"> <em>下一页</em> <i>></i>
+					</a>
+					</span> <span class="p-skip">
+						<form id="productForm2"
+							action="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}"
+							method="post">
+							<em>共<b><%=totalPageCount%></b>页&nbsp;&nbsp;到第
+							</em> <input class="input-txt" type="text" name="requestPage"
+								id="requestPage" value="<%=pageInfo.getCurrentPage()%>" /><em>页</em>
+							<a id="submitProductForm2Link" href="javascript:void(0)"
+								class="btn btn-default">确定</a>
+						</form>
+					</span>
+
+				</div>
+
 			</div>
 		</div>
+
+	</div>
 	</div>
 
 	<div id="introduce">
@@ -805,12 +699,115 @@
 	</div>
 	<script type="text/javascript">
 		$(function() {
+
+			//给排序按钮绑定mouseover事件
+			/* 			$("#sort1 ul li").click(function(){
+			
+			 if(!$(this).attr("class").contains("xuanZhongTiaoJian")){//不是当前使用的条件 才回悬浮变红
+			 alert($(this).eq(0).text());
+			 //$(this).find(":nth-child(2)").css("background-image","url(img/product/arrow/redDown.png)");
+			 } */
+			//修改排序的状态图标
+			var orderCondition = "${orderConditionObj.orderCondition}";
+
+			var ascOrDesc = "${orderConditionObj.ascOrDesc}";
+
+	 		var currentA = "#sort1>ul>li[id='" + orderCondition + "']";
+			// $(currentA).addClass("cur");
+			 if ("asc" == ascOrDesc) {//如果是升序		
+				$(currentA).find("b").html("⬇");//
+				
+				$(currentA).addClass("xuanZhongTiaoJian");
+				$(currentA).siblings().removeClass("xuanZhongTiaoJian");
+			 } else {
+				$(currentA).find("b").html("⬆");
+				$(currentA).addClass("xuanZhongTiaoJian");
+				$(currentA).siblings().removeClass("xuanZhongTiaoJian");
+			 }
+
+			var lastAscOrDesc = "${orderConditionObj.ascOrDesc}";
+			//给价格超链接绑定事件   第一次点击降序 第二次点击升序  第三次降序 第四次 升序  依次类推
+			$("#price")
+					.click(
+							function() {
+								if (lastAscOrDesc == "asc") {//先降序
+									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=price&ascOrDesc=desc";
+									location.assign(target);
+								} else if (lastAscOrDesc == "desc") {
+									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=price&ascOrDesc=asc";
+									location.assign(target);
+								
+								}
+							});
+
+			//按评价数量排序
+			$("#pingjiaSum")
+					.click(
+							function() {
+							
+
+								if (lastAscOrDesc == "asc") {//先降序
+
+									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pingjiaSum&ascOrDesc=desc";
+
+									location.assign(target);
+								} else if (lastAscOrDesc == "desc") {
+
+									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pingjiaSum&ascOrDesc=asc";
+
+									location.assign(target);
+								}
+
+							});
+
+			//按销量排序
+			$("#xiaoliang")
+					.click(
+							function() {
+								if (lastAscOrDesc == "asc") {
+									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=desc";
+									location.assign(target);
+								} else if (lastAscOrDesc == "desc") {
+									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=asc";
+									location.assign(target);
+								}
+							});
+
+			//按上架时间排序
+			$("#xinpin")
+					.click(
+							function() {
+								if (lastAscOrDesc == "asc") {
+									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=desc";
+									location.assign(target);
+								} else if (lastAscOrDesc == "desc") {
+									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=asc";
+									location.assign(target);
+								}
+							});
+			$("#zonghe")
+					.click(
+							function() {
+								if (lastAscOrDesc == "asc") {
+									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=desc";
+									location.assign(target);
+								} else if (lastAscOrDesc == "desc") {
+									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=asc";
+									location.assign(target);
+								}
+							});
 			var currentPage =
 	<%=pageInfo.getCurrentPage()%>
 		;
 			var totalPageCount =
 	<%=pageInfo.getTotalPageCount()%>
 		;
+			if (currentPage == totalPageCount) {
+				//最后一页时 "下一页"和"尾页"不能能用
+				$("#fp-nextLink").addClass("disabled");
+				$("#next").addClass("disabled");
+
+			}
 			if (currentPage == 1) {
 				$("#fp-prevLink").addClass("disabled");
 				$("#previous").addClass("disabled");
@@ -820,6 +817,41 @@
 				$("#next").addClass("disabled");
 
 			}
+//给submitProductForm2A超链接绑定事件
+		$("#submitProductForm2Link").click(function() {
+
+
+			//点击这个超链接 提交表单
+			$("#productForm2").submit();
+		});
+			//价格筛选绑定事件
+			$("#jiaGeLieBiao>ul>li").click(function() {
+				var low = $(this).children().eq(0).html();
+				var high = $(this).children().eq(1).html();
+				//alert(low);
+				//alert(high);
+				$("#low").val(low);
+				$("#high").val(high);
+			});
+			//发送价格区间
+
+			$("#queDing")
+					.click(
+							function() {
+								if (low.value != "" && high.value != "") {
+									var target = "/TheStore/PhonesServlet?action=getProductByPrice&cid=62&requestPage=1&orderCondition=price&ascOrDesc=desc&low="
+											+ low.value + "&high=" + high.value;
+									location.assign(target);
+								} else {
+									$("#jiaGeLieBiao").hide();
+									$("#jiaGeQingDan").show();
+								}
+							});
+			$("#qingChu").click(function() {
+				$("#low").val("");
+				$("#high").val("");
+			});
+
 		});
 	</script>
 </body>
