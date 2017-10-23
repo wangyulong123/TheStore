@@ -3,6 +3,7 @@ package com.servlet;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,10 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.page.PageInfo;
+import com.service.impl.Category2ServiceImpl;
+import com.service.impl.CategoryServiceImpl;
 import com.service.impl.OrderServiceImpl;
+import com.service.impl.ProductServiceImpl;
+import com.service.inter.Category2Service;
+import com.service.inter.CategoryService;
 import com.service.inter.OrderService;
+import com.service.inter.ProductService;
 import com.vo.Address;
+import com.vo.Category;
+import com.vo.Category2;
 import com.vo.Order1;
+import com.vo.Product;
 //订单
 public class DingdanServlet extends HttpServlet {
 
@@ -26,6 +37,16 @@ public class DingdanServlet extends HttpServlet {
 			this.querendingdan(request,response);
 		}else if("submitSuccess".equals(action)){
 			this.submitSuccess(request,response);
+		}else if("getAllByPage".equals(action)){	
+			this.getAllByPage(request,response);
+		}else if("getPageByQuery".equals(action)){	
+			this.getPageByQuery(request,response);
+		}else if("delete".equals(action)){	
+			this.delete(request,response);
+		}else if("getOneForUpdate".equals(action)){	
+			this.getOneForUpdate(request,response);
+		}else if("update".equals(action)){	
+			this.update(request,response);
 		}
 	}
 
@@ -105,6 +126,200 @@ System.out.println("DingdanServlet.querendingdan()");
 		//三.转发视图
 		target = "/WEB-INF/jsp/user/submitSuccess.jsp";
 		request.getRequestDispatcher(target).forward(request, response);
+	}
+
+	public void getAllByPage(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String target = request.getParameter("target");
+		//1.填充数据
+		String requestPage = request.getParameter("requestPage");
+		String recordsPerPage = request.getParameter("recordsPerPage");
+		try {
+			//查询一共多少条记录
+			OrderService service = new OrderServiceImpl();
+			int totalRecordCount = service.getTotalRecordCount();
+			if(recordsPerPage == null){
+				recordsPerPage = "5";
+			}
+			
+			if(requestPage == null){
+				requestPage = "1";
+			}
+			PageInfo pageInfo = new PageInfo(Integer.parseInt(requestPage),Integer.parseInt(recordsPerPage));
+			
+			pageInfo.setTotalRecordCount(totalRecordCount);
+			pageInfo.setPerPageRecordCount(Integer.parseInt(recordsPerPage));
+			
+			
+			//2.调用业务逻辑
+			OrderService service2 = new OrderServiceImpl();
+			
+			List<Order1> list = service2.getAllByPage(pageInfo);
+			request.setAttribute("list", list);
+			request.setAttribute("pageInfo", pageInfo);
+			target = "/WEB-INF/jsp/admin/dingdan/"+target+".jsp";
+		} catch (Exception e) {
+			request.setAttribute("msg", e.getMessage());
+			e.printStackTrace();
+			target = "/WEB-INF/msg.jsp";
+		}
+		//3.转发视图
+		request.getRequestDispatcher(target).forward(request, response);
+		
+	}
+	
+	public void getPageByQuery(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		
+		String target = request.getParameter("target");
+		//1.填充数据
+		String searchCondition = request.getParameter("searchCondition");
+		String requestPage = request.getParameter("requestPage");
+		String recordsPerPage = request.getParameter("recordsPerPage");
+		
+		if(requestPage==null){
+			
+			requestPage = "1";
+		}
+		
+		Order1 order = new Order1();
+		
+		if(searchCondition!=null&&!searchCondition.trim().equals("")){
+			
+		}else{
+			searchCondition = "%";
+		}
+		
+		if(recordsPerPage == null){
+			recordsPerPage = "5";
+		}
+		
+		order.setShouhuorenname(searchCondition);
+		order.setAddress(searchCondition);
+		order.setOrderdesc(searchCondition);
+		
+		try {
+			//查询一共多少条记录
+			OrderService service = new OrderServiceImpl();
+			
+			int totalRecordCount = service.getTotalRecordCount(order);
+			
+			PageInfo pageInfo = new PageInfo(Integer.parseInt(requestPage),Integer.parseInt(recordsPerPage));
+			pageInfo.setTotalRecordCount(totalRecordCount);
+			
+			//2.调用业务逻辑
+			OrderService service2 = new OrderServiceImpl();
+
+			List<Order1> list = service2.getPageByQuery(order, pageInfo);
+			request.setAttribute("list", list);
+			request.setAttribute("searchCondition", searchCondition);
+			request.setAttribute("pageInfo", pageInfo);
+			target = "/WEB-INF/jsp/admin/dingdan/"+target+".jsp";
+		} catch (Exception e) {
+			request.setAttribute("msg", e.getMessage());
+			e.printStackTrace();
+			target = "/WEB-INF/msg.jsp";
+		}
+		//3.转发视图
+		request.getRequestDispatcher(target).forward(request, response);
+		
+	}
+
+	public void delete(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String target = "";
+		//1.填充数据
+		String orderid = request.getParameter("orderid");
+		
+		
+		try {
+			//2.调用业务逻辑
+			OrderService service = new OrderServiceImpl();
+			
+			service.deleteOrderById(orderid);
+			request.setAttribute("msg", "删除成功!");
+			this.getAllByPage(request, response);
+		} catch (Exception e) {
+			request.setAttribute("msg", e.getMessage());
+			target = "/WEB-INF/msg.jsp";
+			e.printStackTrace();
+			//3.转发视图
+			request.getRequestDispatcher(target).forward(request, response);
+		}
+		
+	}
+	
+	public void getOneForUpdate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String target = "";
+		//1.填充数据
+		String orderid = request.getParameter("orderid");
+		String recordsPerPage = request.getParameter("recordsPerPage");
+		String requestPage = request.getParameter("requestPage");
+		String searchCondition = request.getParameter("searchCondition");
+		//2.调用业务逻辑
+		OrderService service = new OrderServiceImpl();
+		
+		try {
+			Order1 order = service.getOrderById(orderid);
+
+			request.setAttribute("order", order);
+			request.setAttribute("target", request.getParameter("target"));
+			request.setAttribute("requestPage", requestPage);
+			request.setAttribute("searchCondition", searchCondition);
+			request.setAttribute("recordsPerPage", recordsPerPage);
+			
+			target = "/WEB-INF/jsp/admin/dingdan/updateOrder.jsp?recordsPerPage="+recordsPerPage;
+		} catch (Exception e) {
+			
+			request.setAttribute("msg", e.getMessage());
+			e.printStackTrace();
+			target= "/WEB-INF/msg.jsp";
+		}
+		//3.转发视图
+		request.getRequestDispatcher(target).forward(request, response);
+	}
+	
+	public void update(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		String target = "";
+		//1.填充数据
+		String orderid = request.getParameter("orderid");
+		String shouhuorenname =request.getParameter("shouhuorenname");
+		String tel = request.getParameter("tel");
+		String address = request.getParameter("address");
+		String orderprice = request.getParameter("orderprice");
+		String orderdesc = request.getParameter("orderdesc");
+		String orderstatus = request.getParameter("orderstatus");
+		
+		String recordsPerPage = request.getParameter("recordsPerPage");
+		
+		Order1 order = new Order1();
+		order.setOrderid(Integer.parseInt(orderid));
+		order.setShouhuorenname(shouhuorenname);
+		order.setTel(Long.parseLong(tel));
+		order.setAddress(address);
+		order.setOrderdesc(orderdesc);
+		order.setOrderprice(Double.parseDouble(orderprice));
+		order.setOrderstatus(Integer.parseInt(orderstatus));
+		
+		//2.调用业务逻辑
+		OrderService service = new OrderServiceImpl();
+		try {
+			service.updateOrder(order);
+			request.setAttribute("msg", "修改订单成功!");
+			request.setAttribute("recordsPerPage",recordsPerPage);
+			this.getAllByPage(request, response);
+		} catch (Exception e) {
+			request.setAttribute("msg", e.getMessage());
+			e.printStackTrace();
+			target = "/WEB-INF/msg.jsp";
+			//3.转发视图
+			request.getRequestDispatcher(target).forward(request,response);
+		}
+		
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -310,7 +310,7 @@ public class Category2Servlet extends HttpServlet {
 			
 			request.setAttribute("list", list);
 			
-			target = "/WEB-INF/jsp/user/welcome.jsp";
+			target = "/WEB-INF/jsp/HomePage/Yhd.jsp";
 		} catch (Exception e) {
 			request.setAttribute("msg", e.getMessage());
 			e.printStackTrace();

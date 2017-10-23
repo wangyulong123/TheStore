@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="staticTheStore/js/jsAddress.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
+	
 		<a name="top"></a>
 		<div id="all">
 			<div id="top">

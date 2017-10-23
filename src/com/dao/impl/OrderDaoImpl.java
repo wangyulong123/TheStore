@@ -11,7 +11,9 @@ import java.util.Random;
 
 import com.dao.inter.OrderDao;
 import com.util.ConnOracle;
+import com.util.ConnOracleTomcatDataSource;
 import com.vo.Order1;
+import com.vo.Product;
 import com.vo.User;
 
 public class OrderDaoImpl implements OrderDao {
@@ -229,7 +231,145 @@ public class OrderDaoImpl implements OrderDao {
 
 		return totalRecordSum;
 	}
-
-
 	
+	// 七.按SQL语句查
+	public List<Order1> getOrderPageByQuery(String sql) throws Exception{
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		List<Order1> list = new ArrayList<Order1>();
+
+		Order1 order = null;
+
+		// 三.建立通道
+		try {
+			stmt = conn.createStatement();
+			// 四.执行并返回结果集
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				order = new Order1();
+				order.setOrderid(rs.getInt("orderid"));
+				order.setOrdertime(rs.getString("ordertime"));
+				order.setShouhuorenname(rs.getString("shouhuorenname"));
+				order.setTel(rs.getLong("tel"));
+				order.setAddress(rs.getString("address"));
+				order.setOrderdesc(rs.getString("orderdesc"));
+				order.setOrderprice(rs.getDouble("orderprice"));
+				order.setOrderstatus(rs.getInt("orderstatus"));
+				
+				list.add(order);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("建立通道失败!");
+			e.printStackTrace();
+			throw new Exception("查询用户失败");
+		} finally {
+			// 五.关闭
+			ConnOracle.closeConnection(rs, stmt, conn);
+		}
+
+		return list;
+	}
+	
+	@Override
+	public int deleteOrder(Order1 order) throws Exception{
+		String sql = "delete from order1 where orderid=?";
+		PreparedStatement pstmt = null;
+		// 三.建立通道
+		int count = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, order.getOrderid());
+
+			// 四.执行并返回结果集
+			count = pstmt.executeUpdate();// 执行dml 或 ddl语句的 返回受影响的行数
+			
+
+		} catch (SQLException e) {
+			System.out.println("建立通道失败");
+			e.printStackTrace();
+			throw new Exception("删除订单失败!");
+		} finally {
+			// 五.关闭
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
+		}
+
+		return count;
+	}
+
+	// 三.修改
+	public int updateOrder(Order1 order) throws Exception {
+//		UPDATE order1 SET orderprice = 0.01 ,orderdesc ='买一赠一',tel='15300000000',address='浩瀚的宇宙',orderstatus = 1 WHERE ORDERid = 748330027
+		String sql = "update order1 SET orderprice = ? ,orderdesc = ?,tel=?,address=?,orderstatus = ? WHERE ORDERid = ?";
+		PreparedStatement pstmt = null;
+		// 三.建立通道
+		int count = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setDouble(1, order.getOrderprice());
+			pstmt.setString(2, order.getOrderdesc());
+			pstmt.setLong(3, order.getTel());
+			pstmt.setString(4,order.getAddress());
+			pstmt.setInt(5, order.getOrderstatus());
+			pstmt.setInt(6, order.getOrderid());
+			
+			// 四.执行并返回结果集
+			count = pstmt.executeUpdate();// 执行dml 或 ddl语句的 返回受影响的行数
+			
+		} catch (SQLException e) {
+			System.out.println("建立通道失败");
+			e.printStackTrace();
+			throw new Exception("修改订单失败!");
+		} finally {
+			// 五.关闭
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
+
+		}
+
+		return count;
+	}
+
+	// 四.查1
+	public Order1 getOrderById(int orderid) throws Exception{
+		Order1 order = new Order1();
+		
+		String sql = "select * from order1 where orderid=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// 三.建立通道
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, orderid);
+
+			// 四.执行并返回结果集
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+			
+				order.setOrderid(rs.getInt("orderid"));
+				order.setAddress(rs.getString("address"));
+				order.setOrderdesc(rs.getString("orderdesc"));
+				order.setOrderprice(rs.getDouble("orderprice"));
+				order.setOrderstatus(rs.getInt("orderstatus"));
+				order.setShouhuorenname(rs.getString("shouhuorenname"));
+				order.setTel(rs.getLong("tel"));
+				order.setUserid(rs.getInt("userid"));
+				
+			}
+
+		} catch (SQLException e) {
+			System.out.println("建立通道失败");
+			e.printStackTrace();
+			throw new Exception("查询单一订单失败!");
+		} finally {
+			// 五.关闭
+			ConnOracleTomcatDataSource.closeConnection(rs, pstmt, conn);
+
+		}
+
+		return order;
+	}
+
+
 }
