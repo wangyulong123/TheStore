@@ -1,0 +1,470 @@
+*{
+	margin:0px;/*为了保证每个浏览器默认间距都为0  因为不同浏览器默认间距不一样 为了兼容性*/
+}
+
+body{
+	overflow: :scroll;
+	overflow-x: hidden;
+}
+
+.imgjianrong{
+	border:0px solid white;
+}
+
+div.head{
+	width:1366px;
+	height:82px;
+	border-bottom: solid;
+	border-color:#E1E1E1;
+	border-width: thin;
+}
+
+
+#helpcenter{
+	color:black;
+}
+		
+	
+		
+div.body{
+	width:1366px;
+	height:630px;
+	background-color:#FCFCFC;
+}
+
+	#title{
+		
+		background-color:white;
+	}
+
+	#hd_menu{
+	width:115px;
+	height:170px;
+	
+	position: relative;
+	left:200px;
+	bottom: 25px;
+	text-align:center;
+}
+
+	#xuanting{
+		width:115px;
+		height:32px;
+		line-height: 32px;
+		
+	}
+	
+	#xialakuang{
+		width:113px;
+		height:135px;
+		
+	/*	border:1px solid #DEDEDE;*/
+		display: none;
+		position: relative;
+		background-color:white;
+
+	}
+	.fenlei{
+		width:95px;
+		height:25px;
+		line-height: 25px;
+		position:relative;
+		right:25px;
+	}
+		#help{
+			position: relative;
+			top:5px;
+			
+		}
+		
+		#open1{
+			position: relative;
+			top:3px;
+		}
+		
+		
+	
+
+		#shurukuang{
+			width: 318px;		
+	 	    position: relative;  	   
+   		    height: 28px;
+    		margin-bottom: 10px;
+   		    padding: 12px 6px;
+   		    border: 1px solid #DEDEDE;
+            background: #FFF none repeat scroll 0% 0%;
+            line-height: 24px;
+        }
+        #mimakuang{
+       	    width: 318px;		
+	 	    position: relative;  	   
+   		    height: 28px;
+    		margin-bottom: 10px;
+   		    padding: 12px 6px;
+   		    border: 1px solid #DEDEDE;
+            background: #FFF none repeat scroll 0% 0%;
+            line-height: 24px;
+        }
+        		
+		#label1{
+		display: inline-block;
+		width: 30px;
+		vertical-align: middle;
+		color: #666;
+		position: relative;
+		right:10px;
+		}
+		#label2{
+		display: inline-block;
+		width: 30px;
+		vertical-align: middle;
+		color: #666;
+		position: relative;
+		right:10px;
+		}
+
+		#denglu{
+			width:400px;
+			height:428px;
+			background-color:white;
+			position:absolute;
+			top:108px;
+			left:781px;
+			text-height:center;
+		}
+		#dengluziti{
+			float: left;
+			font-family: "微软雅黑";
+			font-size: 14px;
+			color: #666;
+			text-height:center;
+			line-height: 30px;
+			position:absolute;
+			top:44px;
+			left:38px;	
+		}
+		#zhucexinzhanghao{
+
+			font-family: "微软雅黑";
+			font-size:12px;
+			display:inline-block;
+			font-weight: normal;
+		}
+		#title{
+			color: #999;
+			font-family: "微软雅黑";
+			width:330px;
+			height:63px;
+			border:none;
+			
+		}
+		
+		#username{
+			    width: 230px;
+   				height: 24px;
+    			padding-left: 3px;
+    			border:none;
+   				ine-height: 24px;
+   				 vertical-align: middle;
+   				 font-family: "微软雅黑";
+   				 font-size: 14px;
+   				 color:#B5B5B5;
+   				 outline:none;
+
+		}
+		
+		#password{
+				 width: 230px;
+   				height: 24px;
+    			padding-left: 3px;
+    			border: none;
+   				ine-height: 24px;
+   				vertical-align: middle;
+   				font-family: "微软雅黑";
+   				font-size: 14px;
+   				 color:#B5B5B5;
+   				 outline:none;
+		}
+		#wangjimima{
+			width:330px;
+			height:25px;
+			color: #999;
+			font-family: "微软雅黑";
+			border:soild;
+			border-width: thin;
+			border-color:#DEDEDE;
+			font-size: 13px;
+			text-align: center;
+			line-height: 25px;
+		}
+		
+		#warn{
+			color:white;
+			font-family:"微软雅黑";
+			border:none;
+		}
+		
+		#dengluanniu{
+			width:330px;
+			height:52px;
+			background-color:#FF3C3C;
+			color:#FFFFFF;
+			font-family: "微软雅黑";
+			text-align: center;
+			line-height: 52px;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		#gengduo{
+			color: #666;
+			width:330px;
+			height:25px;
+			border:soild;
+			border-width: thin;
+			border-color:#DEDEDE;
+			font-size: 12px;
+			font-family: "微软雅黑";
+			line-height: 25px;
+		}
+		
+	
+		
+		
+		
+		form>div{
+				margin-bottom: 10px;
+			}
+	
+		ul {
+			list-style-type:none;
+			padding:0px 25px;/*新浏览器 firefox safari 都是使用内边距控制缩进的 新ie也是*/
+			margin:0px;/*老ie是使用外边距缩进的 所以光设置padding:0px 老id 不会去掉索引 为了兼容老ie*/
+		}
+		li{
+			float: left;
+			padding:0px 8px;
+		}
+		.ul{
+			float: left;
+			padding:0px 24px;
+			position: relative;
+			top:10px;
+		}
+		
+	
+		#fourlink{
+			width:261px;
+			height:39px;
+			position:relative;
+			right:75px;
+		}
+		
+	
+		#more{
+			width:110px;
+			height:38px;
+			color:#999999;
+			text-decoration:none;
+			font-family:"微软雅黑";
+			font-size:12px;
+			position: relative;
+			bottom:49px;
+			left:120px;
+			line-height: 38px;
+			
+			
+			cursor: pointer;
+		
+		}
+		
+		
+		
+		
+		#morebox{
+			width:420px;
+			margin: 0px;
+			font-family: "微软雅黑";
+			font-size: 13px;
+			position: relative;
+			right:15px;		
+			bottom:50px;
+			z-index: 100px;
+		/*	visibility: hidden;*/
+		display:none;
+		}
+		.morebox ul{
+			list-style-type: none;
+		}
+		.morebox ul li{
+			width:48px;
+			float:left;
+			padding:0px 20px;
+		}
+			#close{
+				display:none;
+			}
+		
+div.tail{
+	width:1366px;
+	height:50px;
+	background-color:#FCFCFC;
+	text-align: center;
+	line-height: 50px;
+	font: 12px Arial,Helvetica,sans-serif;
+	color:#333;
+	position:relative;
+	top:480px;
+
+}
+
+
+#img{
+	width:510px;
+	height:315px;
+	position:absolute;
+	top:151px;
+	left:187px;
+	
+}
+
+#right{
+	width:330px;
+	height:484px;
+}
+
+#imglogo{
+	position: absolute;
+	top:17px;
+	left:84px;
+}
+
+#fontlogo{
+	font-family: "SimSun";
+	font-size:12px;
+	color: #999;
+	float:left;
+	position: absolute;
+	top:21px;
+	left:990px;
+}
+
+
+
+a:link{color:blue;text-decoration:none;}
+a:visited{color:blue;}
+a:hover{text-decoration:none;color:red;}
+a:active{color:red;}
+
+
+h3.a{
+	a:link{color:blue;text-decoration:none;}
+a:visited{color:blue;}
+a:hover{text-decoration:none;color:red;}
+a:active{color:red;}
+}
+
+div>a:link{color:#FFFFFF;text-decoration:none;}
+div>a:visited{color:#FFFFFF;}
+div>a:hover{text-decoration:none;color:#FFFFFF;}
+div>a:active{color:#FFFFFF;}
+ 
+span>a:link{color:#999999;text-decoration:none;font-family:"微软雅黑";font-size:12px;}
+span>a:visited{color:#999999;font-family:"微软雅黑";font-size:12px;}
+span>a:hover{text-decoration:none;color:#999999;font-family:"微软雅黑";font-size:12px;}
+span>a:active{color:#999999;font-family:"微软雅黑";font-size:12px;}
+
+/*
+.hd_menu>a:link{color:#000000;text-decoration:none;font-family:"微软雅黑";font-size:12px;}
+.hd_menu>a:visited{color:#000000;font-family:"微软雅黑";font-size:12px;}
+.hd_menu>a:hover{text-decoration:none;color:#000000;font-family:"微软雅黑";font-size:12px;}
+.hd_menu>a:active{color:#000000;font-family:"微软雅黑";font-size:12px;}
+*/
+
+
+li>a:link{color:black;text-decoration:none;}
+li>a:visited{color:black;}
+li>a:hover{text-decoration:none;color:red;}
+li>a:active{color:red;}
+			
+ul>a:link{color:black;text-decoration:none;}
+ul>a:visited{color:black;}
+ul>a:hover{text-decoration:none;color:red;}
+ul>a:active{color:red;}
+
+
+   #divClass1{
+                 width:80px;
+                 height:80px;
+                 background:url("../img/change.png");
+                 background-position:-62px 0px;
+                 display:inline-block;
+                 float:right;
+                 position:relative;
+                 bottom:80px;
+            } 
+     #divClass2{
+                 width:70px;
+                 height:70px;
+                 background:url("../img/change.png");
+                 background-position:0px 70px;
+                 float:right;
+                position:relative;
+                top:90px;
+            } 
+            
+#denglu2{
+			width:400px;
+			height:428px;
+			background-color:white;
+			position:absolute;
+			top:108px;
+			left:781px;
+			text-height:center;
+			display:none;  
+		}
+		
+#saoma{
+	width:400px;
+	height:390px;
+	
+	text-align:center;
+	
+}
+#biaoti{
+	position:relative;
+	top:50px;
+
+}
+#label3{
+	color:red;
+	}
+
+#erweima{
+	position:relative;
+	top: 60px;;
+
+}
+
+#shuaxin{
+	position:relative;
+	top:70px;
+	
+	color:#666666;
+	font-size:12px;
+	font-family: "微软雅黑";
+}
+#shibai{
+	width:146px;
+	height:35px;
+	font-size:12px;
+	color:#999999;
+	background-color:#FFF7D1;
+	border: 1px solid #E5DEBC;
+	position:relative;
+	top:80px;
+	left:125px;
+	text-align:center;
+	line-height: 35px;	
+}
+
+

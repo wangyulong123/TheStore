@@ -46,12 +46,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="width:1100px;height:450px;position: relative;">
 					<div style="position: absolute;left:30%;top:10%;"><img src="staticTheStore/img/submitSuccess.png"/></div>
 					<div style="font-size:26px;position: absolute;left:40%;top:20%;">
-						<b>您已成功提交订单！</b><span style="font-size:16px;">查看 <a href="GRZX/html/NewYiHaoDian.html">我的订单</a></span>
+						<b>您已成功提交订单！</b><span style="font-size:16px;">查看 <a href="DingdanServlet?action=examineOrder">我的订单</a></span>
 					</div>
 					<div style="font-size:16px;position: absolute;left:45%;top:40%;">
 						
 						<br/>
-						  <span id="span1" style="font-size:18px;">10</span> 秒后	<a href="一号店首页.html">返回首页</a>
+						  <span id="span1" style="font-size:18px;">10</span> 秒后	<a href="jsp/user/一号店首页.jsp">返回首页</a>
 					</div>
 				</div>
 				<br/>

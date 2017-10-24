@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.service.impl.OrderServiceImpl;
+import com.service.impl.ProductServiceImpl;
 import com.service.inter.OrderService;
+import com.service.inter.ProductService;
 import com.vo.Address;
 import com.vo.Order1;
+import com.vo.Product;
 //订单
 public class DingdanServlet extends HttpServlet {
 
@@ -26,7 +29,10 @@ public class DingdanServlet extends HttpServlet {
 			this.querendingdan(request,response);
 		}else if("submitSuccess".equals(action)){
 			this.submitSuccess(request,response);
+		}else if("examineOrder".equals(action)){
+			this.examineOrder(request,response);
 		}
+		
 	}
 
 	public void guanlishouhuodizhi(HttpServletRequest request, HttpServletResponse response)
@@ -49,7 +55,7 @@ System.out.println("DingdanServlet.querendingdan()");
 		Order1 order = new Order1();
 		Address addrs = new Address();
 		
-		//一.填充数据
+		//一.填充数据		
 		HttpSession session = request.getSession(true);
 		String userid = request.getParameter("userid");
 		String shouhuoren = request.getParameter("uname");
@@ -89,6 +95,21 @@ System.out.println("DingdanServlet.querendingdan()");
 		
 		session.setAttribute("order", order);
 		request.setAttribute("addrs", addrs);
+		
+		/*//一.填充数据
+		String pid = request.getParameter("pid");
+		String count = request.getParameter("count");
+		//二.调用业务逻辑
+		ProductService service1 = new ProductServiceImpl();
+		Product product;
+		try {
+			product = service1.getProductById(pid);
+			product.setShoppingSum(Integer.parseInt(count));
+		} catch (Exception e) {
+			target = "/WEB-INF/msg.jsp";
+			request.setAttribute("msg", e.getMessage());
+			e.printStackTrace();
+		}*/
 		//三.转发视图
 		target = "/WEB-INF/jsp/user/querendingdan2.jsp";
 		request.getRequestDispatcher(target).forward(request, response);
@@ -104,6 +125,19 @@ System.out.println("DingdanServlet.querendingdan()");
 		
 		//三.转发视图
 		target = "/WEB-INF/jsp/user/submitSuccess.jsp";
+		request.getRequestDispatcher(target).forward(request, response);
+	}
+	
+	public void examineOrder(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String target = "";
+		//一.填充数据
+		
+		//二.调用业务逻辑
+		
+		//三.转发视图
+		target = "/WEB-INF/jsp/user/NewYiHaoDian.jsp";
 		request.getRequestDispatcher(target).forward(request, response);
 	}
 	

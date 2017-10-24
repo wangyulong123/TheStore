@@ -143,10 +143,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tbody>
 				
 					<%
-						List<Product> list = (List<Product>)request.getAttribute("list");
-						
-						for(Product product:list){
-					%>
+										List<Product> list = (List<Product>)request.getAttribute("list");
+																																									
+																																									for(Product product:list){
+									%>
 						
 						<tr>
 							<td><%=product.getPid() %></td>

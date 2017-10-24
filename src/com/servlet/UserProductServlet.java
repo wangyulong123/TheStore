@@ -574,7 +574,7 @@ public class UserProductServlet extends HttpServlet {
 			ProductServiceImpl service = new ProductServiceImpl();
 			product = service.getProductById(pid);
 			request.setAttribute("product", product);
-			target = "/WEB-INF/jsp/user/user/product.jsp";
+			target = "/WEB-INF/jsp/user/singleCategory.jsp";
 		} catch (Exception e) {
 			request.setAttribute("msg", e.getMessage());
 			e.printStackTrace();

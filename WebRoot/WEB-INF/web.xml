@@ -9,7 +9,9 @@
     <servlet-name>PayServlet</servlet-name>
     <servlet-class>com.servlet.PayServlet</servlet-class>
   </servlet>
-
+	<session-config>
+	<session-timeout>14400</session-timeout>
+	</session-config>
 
   <servlet-mapping>
     <servlet-name>DingdanServlet</servlet-name>
@@ -45,13 +47,13 @@
 		<servlet-class>com.servlet.ProductServlet</servlet-class>
 		<init-param>
 			<param-name>productImageUploadPath</param-name>
-			<param-value>D:/jidi16WorkSpace2/JD1.8新/WebRoot/img/productImage</param-value>
+			<param-value>D:/WorkSpace/TheStore/WebRoot/img/productImage</param-value>
 		</init-param>
 	</servlet>
 
 	<servlet>
-		<servlet-name>ShoppingCartServlet</servlet-name>
-		<servlet-class>com.servlet.ShoppingCartServlet</servlet-class>
+		<servlet-name>ShoppingCarServlet</servlet-name>
+		<servlet-class>com.servlet.ShoppingCarServlet</servlet-class>
 	</servlet>
 
 	<servlet>
@@ -98,8 +100,8 @@
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>ShoppingCartServlet</servlet-name>
-		<url-pattern>/ShoppingCartServlet</url-pattern>
+		<servlet-name>ShoppingCarServlet</servlet-name>
+		<url-pattern>/ShoppingCarServlet</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>

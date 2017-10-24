@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			String shi = addrs.getShi();
 			String qu = addrs.getQu();
 		%>
-		<a name="top"></a>
+		<a name="top" id="top"></a>
 		<div id="all">
 			<div id="top">
 				<a id="logo" href="#"><img src="staticTheStore/img/yhd.png"/></a>
@@ -124,23 +124,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<hr/></div>
 					
 					<div class="shangpinxinxi"><b><span class="t"> 商品信息</span></b>
+						<%
+						List<Product> list = (List<Product>)session.getAttribute("list");
+						
+						double productTotalPrice = 0;
+						//String count = (String)session.getAttribute("count");	
+						//String count = request.getParameter("count");		
+						if(list!=null){
+							for(Product product:list){
+								//int shoppingCarSum = Integer.parseInt(count);
+								int shoppingCarSum = product.getShoppingSum();
+								double price = product.getPrice();
+								double singleProductTotalPrice = price * shoppingCarSum;
+								productTotalPrice = productTotalPrice + singleProductTotalPrice;
+					%>
 						<div >
 							<table class="tab">
 								<tr class="shouhang">
 									<td>包裹</td><td>商品名称</td><td>数 量(个)</td><td >重 量(kg)</td><td>金额小计</td>
 								</tr>
 								<tr>
-									<td>包裹1</td><td>	好丽友 派 巧克力味涂饰蛋类芯饼 204g/盒（6枚） 
-										不支持无理由退货</td><td>2 </td><td>0.252 </td><td>¥18.4 </td>
+								<!-- 好丽友 派 巧克力味涂饰蛋类芯饼 204g/盒（6枚）  -->
+									<td>包裹1</td>
+									<td><%=product.getPname()%>	不支持无理由退货</td>
+									<td><%=shoppingCarSum %> </td>
+									<td>22 </td>
+									<td>¥<%=singleProductTotalPrice %> </td>
 								</tr>
 							</table>
-							<div id="xiadan"><img id="warning" src="staticTheStore/img/warning.png" alt="" /><span>  您的订单含不支持“7天无理由退货”商品，请确认后下单</span></div>
-						</div>
+						</div><hr/>
+					<%				
+				    		}
+				    	}
+				    %>
+						<div id="xiadan"><img id="warning" src="staticTheStore/img/warning.png" alt="" /><span>  您的订单含不支持“7天无理由退货”商品，请确认后下单</span></div>
 					<hr/></div>
 					
 					<div class="tijiaodingdan">
-						<span id="jin_e">           商品金额<span><b>18.4</b></span>元</span><br/>
-						<span id="xuzhifu"><b>您需为订单支付<span>18.4</span>元</b></span><br/>
+						<span id="jin_e">商品金额<span><b><%=productTotalPrice %></b></span>元</span><br/>
+						<span id="xuzhifu"><b>您需为订单支付<span><%=productTotalPrice %></span>元</b></span><br/>
 						<form action="DingdanServlet" method="post">
 							<input type="hidden" name="action" value="submitSuccess" />
 							
@@ -158,7 +180,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="fixedImg">
 				
 				<a href="" class="fankui"><img id="fkh" src="staticTheStore/img/fankuihover.png" alt="用户反馈" title="用户反馈"/><br/><img src="staticTheStore/img/fankui.png"/></a><br/>
-				<a href="#top" class="huidingbu"><img src="staticTheStore/img/fanhuidingbu.png" /><br/><img id="hdb" src="staticTheStore/img/dingbuhover.png" alt="返回顶部" title="返回顶部"/></a><br/>
+				<a href="javascript:void(0)" onclick="document.getElementById('top').scrollIntoView()" class="huidingbu"><img src="staticTheStore/img/fanhuidingbu.png" /><br/><img id="hdb" src="staticTheStore/img/dingbuhover.png" alt="返回顶部" title="返回顶部"/></a><br/>
 				
 			</div>
 			
