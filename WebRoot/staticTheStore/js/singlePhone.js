@@ -54,7 +54,7 @@ $(function() {
 		}
 	});
 
-	$("#banben>div").click(function() {
+	$("#banbenaa>div").click(function() {
 		if($(this).attr("class") == "border") {
 			$(this).removeClass("border");
 			$(this).addClass("man_nameandadr_1_1");
@@ -78,7 +78,7 @@ $(function() {
 		text_number++;
 		if(text_number > 1) {
 
-			$(this).parent().next().children().attr("src", "images/down2.png");
+			$(this).parent().next().children().attr("src", "staticTheStore/img/mobile/down2.png");
 		}
 		if(text_number <= 1) {
 
@@ -98,10 +98,10 @@ $(function() {
 		var text_number = $(this).parent().parent().parent().find("input").val();
 
 		if(text_number > 1) {
-			$(this).attr("src", "images/down2.png");
+			$(this).attr("src", "staticTheStore/img/mobile/down2.png");
 			text_number--;
 		}else{
-			$(this).attr("src", "images/down1.png");
+			$(this).attr("src", "staticTheStore/img/mobile/down1.png");
 		}
 		$(this).parent().parent().parent().find("input").val(text_number);
 

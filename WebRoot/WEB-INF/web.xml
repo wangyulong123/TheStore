@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>TheStore</display-name>
+	<servlet>
+		<servlet-name>dingdanServlet</servlet-name>
+		<servlet-class>com.servlet.dingdanServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PhonesServlet</servlet-name>
+		<servlet-class>com.servlet.PhonesServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UserProductServlet</servlet-name>
+		<servlet-class>com.servlet.UserProductServlet</servlet-class>
+	</servlet>
   <servlet>
     <servlet-name>DingdanServlet</servlet-name>
     <servlet-class>com.servlet.DingdanServlet</servlet-class>
@@ -13,6 +27,18 @@
 	<session-timeout>14400</session-timeout>
 	</session-config>
 
+	<servlet-mapping>
+		<servlet-name>dingdanServlet</servlet-name>
+		<url-pattern>/dingdanServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PhonesServlet</servlet-name>
+		<url-pattern>/PhonesServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UserProductServlet</servlet-name>
+		<url-pattern>/UserProductServlet</url-pattern>
+	</servlet-mapping>
   <servlet-mapping>
     <servlet-name>DingdanServlet</servlet-name>
     <url-pattern>/DingdanServlet</url-pattern>
@@ -34,12 +60,6 @@
 
 		<servlet-name>Category2Servlet</servlet-name>
 		<servlet-class>com.servlet.Category2Servlet</servlet-class>
-	</servlet>
-
-	<servlet>
-
-		<servlet-name>UserProductServlet</servlet-name>
-		<servlet-class>com.servlet.UserProductServlet</servlet-class>
 	</servlet>
 
 	<servlet>
@@ -69,6 +89,11 @@
     <servlet-name>Servlet</servlet-name>
     <servlet-class>com.servlet.Servlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>com.servlet.AdminServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>   
     <servlet-name>Servlet</servlet-name>
     <url-pattern>/Servlet</url-pattern>
@@ -94,12 +119,6 @@
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>UserProductServlet</servlet-name>
-		<url-pattern>/UserProductServlet</url-pattern>
-
-	</servlet-mapping>
-
-	<servlet-mapping>
 		<servlet-name>ShoppingCarServlet</servlet-name>
 		<url-pattern>/ShoppingCarServlet</url-pattern>
 	</servlet-mapping>
@@ -113,6 +132,10 @@
 		<servlet-name>OrderServlet</servlet-name>
 		<url-pattern>/OrderServlet</url-pattern>
 	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

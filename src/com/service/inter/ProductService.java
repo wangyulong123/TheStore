@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.page.OrderCondition;
 import com.page.PageInfo;
+import com.vo.Category2;
 import com.vo.Product;
 
 public interface ProductService {
@@ -32,6 +33,13 @@ public interface ProductService {
 	public void productDown(int pid) throws Exception;
 	//上传图片
 	public void upload(HttpServletRequest request, String productListUploadPath) throws Exception;
+
+	//保存图片的路径到商品表
+/*	public void saveImagePathInTable(String pid, List<String> fileNameList) throws Exception;
+*/	
+	//查询二级商品种类下对应的商品
+	public List<Product> getAllProductByCategory2(int cid) throws Exception;
+
 	//在数据库保存图片名称
 	public void saveProductListImageNamesForOneProduct(String pid,
 			List<String> fileNameList) throws Exception;

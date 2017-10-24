@@ -186,9 +186,12 @@ public class ProductDaoImpl implements ProductDao {
 				product.setDianpuName(rs.getString("dianpuname"));
 				product.setProductSum(rs.getInt("productsum"));
 				product.setOnsale(rs.getInt("onsale"));
+
+				product.setCid(rs.getInt("cid"));
+			//	System.out.println(product);
 				product.setProductListLargeImage(rs.getString("productListLargeImage"));
 				product.setPingjiaSum(rs.getInt("pingjiasum"));
-				
+				System.out.println(product);
 				category2 = new Category2();
 				category2.setCid(rs.getInt("cid"));
 				category2.setCname(rs.getString("cname"));
@@ -211,7 +214,50 @@ public class ProductDaoImpl implements ProductDao {
 
 		return list;
 	}
+	public List<Product> getProductByPageByQuery(String sql) throws Exception {
+		Statement stmt = null;
+		ResultSet rs = null;
 
+		List<Product> list = new ArrayList<Product>();
+
+		Product product = null;
+
+		// 三.建立通道
+		try {
+			stmt = conn.createStatement();
+			// 四.执行并返回结果集
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				product = new Product();
+
+				product.setPid(rs.getInt("pid"));
+				product.setPname(rs.getString("pname"));
+				product.setPdesc(rs.getString("pdesc"));
+				product.setPrice(rs.getDouble("price"));
+				product.setDianpuName(rs.getString("dianpuname"));
+				product.setProductSum(rs.getInt("productsum"));
+				product.setOnsale(rs.getInt("onsale"));
+
+				product.setCid(rs.getInt("cid"));
+			//	System.out.println(product);
+				product.setProductListLargeImage(rs.getString("productListLargeImage"));
+				product.setPingjiaSum(rs.getInt("pingjiasum"));
+				System.out.println(product);			
+				list.add(product);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("建立通道失败!");
+			e.printStackTrace();
+			throw new Exception("查询商品失败!");
+		} finally {
+			// 五.关闭
+			ConnOracleTomcatDataSource.closeConnection(rs, stmt, conn);
+		}
+
+		return list;
+	}
 	
 	
 	public int getTotalRecordSum(String sql) throws Exception{

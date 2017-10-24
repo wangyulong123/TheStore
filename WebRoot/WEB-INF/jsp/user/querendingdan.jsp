@@ -11,6 +11,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta charset="utf-8" />
 		<base href="<%=basePath%>">
 		<title>1号店,只为更好的生活</title>
+
+		<link rel="shortcut icon" href="img/icon.png"/>
+
 		<link rel="shortcut icon" href="staticTheStore/img/icon.png"/>
 		<link rel="stylesheet" type="text/css" href="staticTheStore/css/querendingdan.css"/>
 		<script src="js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
@@ -19,6 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 	<body>
 		<a name="top" id="top"></a>
+	
+		<a name="top"></a>
 		<div id="all">
 			<div id="top">
 				<a id="logo" href="javascript:void(0);"><img src="staticTheStore/img/yhd.png"/></a>

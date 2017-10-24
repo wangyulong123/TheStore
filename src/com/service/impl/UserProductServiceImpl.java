@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.dao.impl.ProductDaoImpl;
 import com.dao.inter.ProductDao;
+import com.page.OrderCondition;
 import com.page.PageInfo;
 import com.service.inter.UserProductService;
 import com.util.SQLUtil;
@@ -267,7 +268,34 @@ public class UserProductServiceImpl implements UserProductService {
 		list = dao.getPageByQuery(sql);
 		return list;
 	}
+	//查询指定商品种类下的所有商品  + 排序 然后分页
+		public List<Product> getAllByPageByCategory(PageInfo pageInfo,String cid,OrderCondition orderConditionObj) throws Exception{
 
+
+			//String sql = "select * from (select c.*,rownum r from (select * from product where onsale=1 and cid=62
+			// order by price asc) c) where r>=1 and r<=8"; 
+			String orderCondition = orderConditionObj.getOrderCondition();
+			String ascOrDesc = orderConditionObj.getAscOrDesc();
+			
+			
+			String sql = "select * from (select c.*,rownum r from (select * from product where onsale=1 and cid=" + cid + 
+			
+			" order by " + orderCondition + " " + ascOrDesc;
+			
+			sql = sql + ") c) where r>=";
+			
+			sql = sql + pageInfo.getBegin();
+			
+			sql = sql + " and r<=";
+			
+			sql = sql + pageInfo.getEnd();
+			
+			System.out.println(sql);
+			List<Product> list = null;
+
+			list = dao.getProductByPageByQuery(sql);
+			return list;
+		}
 	
 	@Override
 	public int getTotalRecordSum() throws Exception {
@@ -384,7 +412,52 @@ public class UserProductServiceImpl implements UserProductService {
 		list = dao.getPageByQuery(sql);
 		return list;
 	}
-	
+	@Override
+	public List<Product> getPageByQuery1(Product product, PageInfo pageInfo) throws Exception {
+		List<Product> list = null;
+
+		// String sql =
+		// "select * from (select c.*,rownum r from category c where 1=1 and cname='商品种类名称' or cdesc like '%商品种类描述%') where r>=1 and r<=5";
+
+		StringBuilder sb = new StringBuilder(
+				"select * from (select c.*,rownum r from product c where 1=1 and onsale=1");
+
+		String pname = product.getPname();
+		String dianpuName = product.getDianpuName();
+		Integer cid = product.getCid();
+		Integer onsale = product.getOnsale();
+		
+		if (pname != null && !pname.trim().equals("")) {
+			sb.append(" and pname='");
+			sb.append(pname);
+			sb.append("'");
+		}
+
+		if (dianpuName != null && !dianpuName.trim().equals("")) {
+			sb.append(" or dianpuName like '%");
+			sb.append(dianpuName);
+			sb.append("%'");
+		}
+		
+		
+		if (cid != null) {
+			sb.append(" or cid=");
+			sb.append(cid);
+			
+		}
+		
+
+		sb.append(" order by pid asc) where r>=");
+		sb.append(pageInfo.getBegin());
+		sb.append(" and r<=");
+		sb.append(pageInfo.getEnd());
+
+		
+		String sql = sb.toString();
+		System.out.println(sql);
+		list = dao.getProductByPageByQuery(sql);
+		return list;
+	}
 	//产品下架
 	public void productDown(Integer pid){
 		String sql = "update product set onsale=0 where pid=" + pid;
@@ -423,6 +496,95 @@ public class UserProductServiceImpl implements UserProductService {
 			System.out.println(product.getPname());
 		}
 	}
+	@Override
+	public int getPhonesSumBySearchCondition(Product product,String low,String high)throws Exception{
+		int totalRecordSum = 0;
+		StringBuilder sb = new StringBuilder(
+				"select count(*) as totalRecordSum from product where 1=1 and onsale=1");
 
+		// select count(*) as totalRecordSum from category where 1=1 and
+		// cname='��Ʒ��������' or cdesc like '%��Ʒ��������%'		
+		Integer cid = product.getCid();
+		Integer lowInteger = Integer.parseInt(low);
+		Integer highInteger = Integer.parseInt(high);
+		if (cid != null) {
+			sb.append(" and cid=");
+			sb.append(cid);
+			
+		}	
+		if(lowInteger!=null){
+			sb.append(" and price>=");
+			sb.append(low);
+		}
+		if(highInteger!=null){
+			sb.append(" and price<=");
+			sb.append(high);
+		}
+		String sql = sb.toString();
+		System.out.println(sql);
+
+		totalRecordSum = dao.getTotalRecordSum(sql);
+
+		return totalRecordSum;
+		
+	}
+
+	@Override
+	public List<Product> getPhonesPageByQuery(Product product, String low,
+			String high, PageInfo pageInfo) throws Exception {
+		List<Product> list = null;
+		/*select * from (select c.*,rownum r from (select * from product where 1=1 and onsale=1 and pname='�ֻ�' or dianpuName like '%�ֻ�%' or 
+
+		cid=62 order by price asc) c)
+
+		where r>=9 and r<=16*/
+		
+		StringBuilder sb = new StringBuilder(
+						"select * from (select c.*,rownum r from (select * from product where 1=1 and onsale=1");
+
+				Integer cid = product.getCid();
+				Integer lowInteger = Integer.parseInt(low);
+				Integer highInteger = Integer.parseInt(high);
+				String orderCondition = product.getOrderConditionObj().getOrderCondition();
+				String ascOrDesc = product.getOrderConditionObj().getAscOrDesc();				
+				
+				if (cid != null) {
+					sb.append(" and cid=");
+					sb.append(cid);
+					
+				}
+				if(lowInteger!=null&&!lowInteger.equals("")){
+					sb.append(" and price>=");
+					sb.append(low);
+				}
+				if(highInteger!=null&&!highInteger.equals("")){
+					sb.append(" and price<=");
+					sb.append(high);
+				}
+				if (orderCondition != null && !orderCondition.trim().equals("")) {
+					sb.append(" order by ");
+					
+					sb.append(orderCondition);
+					sb.append(" ");
+					
+					if("asc".equals(ascOrDesc)){
+						
+						sb.append("asc");
+					}else{
+						sb.append("desc");
+					}
+					
+				}
+					
+				sb.append(") c) where r>=");
+				sb.append(pageInfo.getBegin());
+				sb.append(" and r<=");
+				sb.append(pageInfo.getEnd());
+
+				String sql = sb.toString();
+				System.out.println(sql);
+				list = dao.getProductByPageByQuery(sql);
+				return list;
+	}
 }
  

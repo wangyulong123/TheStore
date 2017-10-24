@@ -2096,11 +2096,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      		</div>
      		<!--二维码-->
      		<div class="ft_wrap_center_right">
-     	  <div class="ft_wrap_center_right_left"</div>
+     	  <div class="ft_wrap_center_right_left"></div>
      	  	<p>APP更优惠</p>
      	  	<img src="staticTheStore/图片/APP.png"/>
      		</div>
-     		 <div class="ft_wrap_center_right_left"</div>
+     		 <div class="ft_wrap_center_right_left"></div>
      	  	<p>加微信查订单</p>
      	  	<img src="staticTheStore/图片/APP.png"/>
      		</div>

@@ -39,4 +39,7 @@ public interface Category2Service {
 	//形参: cid 二级种类的cid
 	//返回值: 所属一级种类的cid
 	public int getParentCategoryById(int cid) throws Exception;
+	// 根据商品种类名字得到Category2	
+	public Category2 getCategoryByName(String cname) throws Exception;
+
 }

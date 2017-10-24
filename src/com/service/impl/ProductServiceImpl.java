@@ -19,6 +19,8 @@ import com.dao.inter.ProductDao;
 import com.page.OrderCondition;
 import com.page.PageInfo;
 import com.service.inter.ProductService;
+import com.util.SQLUtil;
+import com.vo.Category2;
 import com.vo.Product;
 
 public class ProductServiceImpl implements ProductService{
@@ -439,5 +441,22 @@ public class ProductServiceImpl implements ProductService{
 
 		dao2.updateProductImageNames(product);
 	}
+
+	// 查询一级商品种类下对应的二级商品种类
+	public List<Product> getAllProductByCategory2(int cid) throws Exception {
+		List<Product> list = null;
+
+		String sql = "select * from product where onsale=1 and cid=" + cid;
+		list = dao.getPageByQuery(sql);
+		return list;
+	}
+
+/*	@Override
+	public void saveImagePathInTable(String pid, List<String> fileNameList)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+	}*/
+
 				
 }

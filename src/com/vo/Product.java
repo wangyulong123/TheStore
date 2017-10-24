@@ -1,5 +1,7 @@
 package com.vo;
 
+import com.page.OrderCondition;
+
 public class Product {
 	private int pid;
 	private String pname;
@@ -21,6 +23,16 @@ public class Product {
 	private Integer onsale;
 	private String shoppingCarImg;
 	private Category2 category2;
+	
+	private OrderCondition orderConditionObj = new OrderCondition();
+
+	public OrderCondition getOrderConditionObj() {
+		return orderConditionObj;
+	}
+
+	public void setOrderConditionObj(OrderCondition orderConditionObj) {
+		this.orderConditionObj = orderConditionObj;
+	}
 	
 	private int shoppingSum;
 	
