@@ -12,8 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="expires" content="0">
-		<link rel="stylesheet" type="text/css" href="staticTheStore/css/bootstrap/css/bootstrap.css"/>
-		<link rel="stylesheet" type="text/css" href="staticTheStore/css/jQuery-confirm/jquery-confirm.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jQuery-confirm/jquery-confirm.css"/>
 		<style type="text/css">
 			body {
 				background-color:white;
@@ -237,9 +237,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 
-		<script src="staticTheStore/css/bootstrap/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
-		<script src="staticTheStore/css/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-		<script src="staticTheStore/css/jQuery-confirm/jquery-confirm.js" type="text/javascript" charset="utf-8"></script>
+		<script src="css/bootstrap/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="css/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="css/jQuery-confirm/jquery-confirm.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			
 			$(function(){

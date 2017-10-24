@@ -19,6 +19,11 @@
     <servlet-name>DingdanServlet</servlet-name>
     <servlet-class>com.servlet.DingdanServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>PayServlet</servlet-name>
+    <servlet-class>com.servlet.PayServlet</servlet-class>
+  </servlet>
+
 
 	<servlet-mapping>
 		<servlet-name>dingdanServlet</servlet-name>
@@ -35,6 +40,10 @@
   <servlet-mapping>
     <servlet-name>DingdanServlet</servlet-name>
     <url-pattern>/DingdanServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PayServlet</servlet-name>
+    <url-pattern>/PayServlet</url-pattern>
   </servlet-mapping>
 	<servlet>
 		<servlet-name>CategoryServlet</servlet-name>
@@ -80,6 +89,20 @@
 		<servlet-name>OrderServlet</servlet-name>
 		<servlet-class>com.servlet.OrderServlet</servlet-class>
 	</servlet>
+	<servlet>
+    <servlet-name>Servlet</servlet-name>
+    <servlet-class>com.servlet.Servlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>com.servlet.AdminServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>   
+    <servlet-name>Servlet</servlet-name>
+    <url-pattern>/Servlet</url-pattern>
+  </servlet-mapping>
+	
 
 	<servlet-mapping>
 		<servlet-name>CategoryServlet</servlet-name>
@@ -119,6 +142,10 @@
 		<servlet-name>OrderServlet</servlet-name>
 		<url-pattern>/OrderServlet</url-pattern>
 	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
@@ -134,3 +161,5 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 </web-app>
+
+

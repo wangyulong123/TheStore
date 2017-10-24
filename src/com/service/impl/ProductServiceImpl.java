@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.dao.impl.ProductDaoImpl;
 import com.dao.inter.ProductDao;
+import com.page.OrderCondition;
 import com.page.PageInfo;
 import com.service.inter.ProductService;
 import com.util.SQLUtil;
@@ -25,6 +26,7 @@ import com.vo.Product;
 public class ProductServiceImpl implements ProductService{
 
 	private ProductDao dao;
+	int a ;
 	
 	public ProductServiceImpl(){
 		
@@ -37,186 +39,213 @@ public class ProductServiceImpl implements ProductService{
 		return count;
 	}
 	
-	@Override
+	// 查询总共有多少条记录
+	public int getTotalRecordCount() throws Exception {
+		int totalRecordCount = -1;
+
+		String sql = "SELECT COUNT(*) FROM product p INNER JOIN category2 c ON (p.cid = c.cid)";
+		totalRecordCount = dao.getTotalRecordSum(sql);
+		return totalRecordCount;
+	}
+	
+	// 查询所有后分页
+	public List<Product> getAllByPage(PageInfo pageInfo) throws Exception {
+
+		String sql = "SELECT * FROM (SELECT t.*,ROWNUM r FROM (SELECT * FROM product p INNER JOIN category2 c ON (p.cid = c.cid) order by p.pid) t) WHERE "+
+" r>= "+pageInfo.getBegin()+" AND r<="+pageInfo.getEnd();
+		System.out.println(sql);
+
+		List<Product> list = null;
+
+		list = dao.getPageByQuery(sql);
+		return list;
+	}
+	
+	// 删除单个商品
 	public int deleteProductById(String pid) throws Exception {
+	
 		Product product = new Product();
-		product.setPid(new Integer(pid));
+		product.setPid(Integer.parseInt(pid));
 		int count = dao.deleteProduct(product);
 		return count;
 	}
 	
-	@Override
-	public int getTotalRecordSum() throws Exception {
-		String sql = "select count(*) as totalRecordSum from product";
+	// 查1
+	public Product getProductById(String pid) throws Exception {
 
-		int totalRecordSum = 0;
+		Product product = null;
 
-		totalRecordSum = dao.getTotalRecordSum(sql);
-
-		return totalRecordSum;
+		product = dao.getProductById(Integer.parseInt(pid));
+		return product;
 	}
 	
-	@Override
-	public int updateProduct(Product product) throws Exception{
-
+	// 修改
+	public int updateProduct(Product product) throws Exception {
 		int count = dao.updateProduct(product);
 		return count;
 	}
 	
-	@Override
-	public List<Product> getAllByPage(PageInfo pageInfo) throws Exception {
+	//根据条件查询 总共有多少条记录
+	public int getTotalRecordCount(Product product) throws Exception{
+		
+		int totalRecordCount = -1;
 
-		String sql = "select * from (select c.*,rownum r from product c order by pid asc) where r>="
-				+ pageInfo.getBegin() + " and r<=" + pageInfo.getEnd();
-		System.out.println(sql);
-		List<Product> list = null;
-
-		list = dao.getPageByQuery(sql);
-		return list;
-	}
-	
-	@Override
-	public List<Product> getPageByQuery(Product product, PageInfo pageInfo) throws Exception{
-		List<Product> list = null;
-
-		// String sql =
-		// "select * from (select c.*,rownum r from category c where 1=1 and cname='商品种类名称' or cdesc like '%商品种类描述%') where r>=1 and r<=5";
-
-		StringBuilder sb = new StringBuilder(
-				"select * from (select c.*,rownum r from product c where 1=1");
+		StringBuffer sb = new StringBuffer(
+				"SELECT count(*) FROM (SELECT t.*,ROWNUM r FROM (SELECT * FROM product p INNER JOIN category2 c ON (p.cid = c.cid) WHERE 1=1 AND p.pname like '%");
 
 		String pname = product.getPname();
 		String dianpuName = product.getDianpuName();
-		Integer cid = product.getCid();
-		Integer onsale = product.getOnsale();
-		
+		String cname = product.getCategory2().getCname();
+
 		if (pname != null && !pname.trim().equals("")) {
-			sb.append(" and pname='");
+
 			sb.append(pname);
-			sb.append("'");
 		}
 
-		if (dianpuName != null && !dianpuName.trim().equals("")) {
-			sb.append(" or dianpuName like '%");
+		if(dianpuName != null && !dianpuName.trim().equals("")){
+			
+			sb.append("%' OR p.dianpuname LIKE '%");
 			sb.append(dianpuName);
-			sb.append("%'");
 		}
 		
-		if (onsale != null) {
-			sb.append(" or onsale=");
-			sb.append(onsale);
+		if (cname != null && !cname.trim().equals("")) {
+			sb.append("%' OR c.cname LIKE '%");
+			sb.append(cname);
 			
 		}
 		
-		if (cid != null) {
-			sb.append(" or cid=");
-			sb.append(cid);
-			
-		}
+		sb.append("%' ORDER BY p.pid ) t)");		
+		String sql = sb.toString();
+		System.out.println(sql);
+		totalRecordCount = dao.getTotalRecordSum(sql);
+		return totalRecordCount;
+	}
+	
+	// 根据条件查询 然后分页
+	public List<Product> getPageByQuery(Product product, PageInfo pageInfo,OrderCondition orderCondition)
+			throws Exception {
 		
+		List<Product> list = null;
+		String asc ="";
 		
+		// String sql =
+//		SELECT * FROM (SELECT t.*,ROWNUM r FROM (SELECT * FROM product p INNER JOIN category2 c ON (p.cid = c.cid) WHERE 1=1 AND p.pname like '%
+//				手机%' OR p.dianpuname LIKE '%手机%' OR c.cname LIKE '%手机%' 
+//		ORDER BY p.pid ) t)
+//		WHERE r>=1 AND r<=5 
+		
+		StringBuffer sb = new StringBuffer(
+				"SELECT * FROM (SELECT t.*,ROWNUM r FROM (SELECT * FROM product p INNER JOIN category2 c ON (p.cid = c.cid) WHERE 1=1 AND p.pname like '%");
 
-		sb.append(" order by pid asc) where r>=");
+		String pname = product.getPname();
+		String dianpuName = product.getDianpuName();
+		String cname = product.getCategory2().getCname();
+
+		if (pname != null && !pname.trim().equals("")) {
+
+			sb.append(pname);
+		}
+
+		if(dianpuName != null && !dianpuName.trim().equals("")){
+			
+			sb.append("%' OR p.dianpuname LIKE '%");
+			sb.append(dianpuName);
+		}
+		
+		if (cname != null && !cname.trim().equals("")) {
+			sb.append("%' OR c.cname LIKE '%");
+			sb.append(cname);
+			
+		}
+		System.out.println("根据这个条件排序-------"+orderCondition.getOrderBy());
+		if(orderCondition.getOrderBy()==null){
+			orderCondition.setOrderBy("pid");
+			orderCondition.setAsc("asc");
+		}
+		
+		sb.append("%' ORDER BY p."+ orderCondition.getOrderBy() +" "+ orderCondition.getAsc() +") t)");		
+		sb.append(" where r>=");
 		sb.append(pageInfo.getBegin());
 		sb.append(" and r<=");
 		sb.append(pageInfo.getEnd());
-
 		
 		String sql = sb.toString();
 		System.out.println(sql);
+
+		list = dao.getPageByQuery(sql);
+		return list;
+	}
+
+	public List<Product> getPageByQuery(Product product, PageInfo pageInfo)
+			throws Exception {
+		
+		List<Product> list = null;
+		String asc ="";
+		
+		// String sql =
+//		SELECT * FROM (SELECT t.*,ROWNUM r FROM (SELECT * FROM product p INNER JOIN category2 c ON (p.cid = c.cid) WHERE 1=1 AND p.pname like '%
+//				手机%' OR p.dianpuname LIKE '%手机%' OR c.cname LIKE '%手机%' 
+//		ORDER BY p.pid ) t)
+//		WHERE r>=1 AND r<=5 
+		
+		StringBuffer sb = new StringBuffer(
+				"SELECT * FROM (SELECT t.*,ROWNUM r FROM (SELECT * FROM product p INNER JOIN category2 c ON (p.cid = c.cid) WHERE 1=1 AND p.pname like '%");
+
+		String pname = product.getPname();
+		String dianpuName = product.getDianpuName();
+		String cname = product.getCategory2().getCname();
+
+		if (pname != null && !pname.trim().equals("")) {
+
+			sb.append(pname);
+		}
+
+		if(dianpuName != null && !dianpuName.trim().equals("")){
+			
+			sb.append("%' OR p.dianpuname LIKE '%");
+			sb.append(dianpuName);
+		}
+		
+		if (cname != null && !cname.trim().equals("")) {
+			sb.append("%' OR c.cname LIKE '%");
+			sb.append(cname);
+			
+		}
+		
+		sb.append("%' ORDER BY p.pid ) t)");		
+		sb.append(" where r>=");
+		sb.append(pageInfo.getBegin());
+		sb.append(" and r<=");
+		sb.append(pageInfo.getEnd());
+		
+		String sql = sb.toString();
+		System.out.println(sql);
+
 		list = dao.getPageByQuery(sql);
 		return list;
 	}
 	
 	@Override
-	public int getTotalRecordSumBySearchCondition(Product product) throws Exception {
-		int totalRecordSum = 0;
-		StringBuilder sb = new StringBuilder(
-				"select count(*) as totalRecordSum from product where 1=1");
-
-		// select count(*) as totalRecordSum from category where 1=1 and
-		// cname='商品种类描述' or cdesc like '%商品种类描述%'
-		String pname = product.getPname();
-		String dianpuName = product.getDianpuName();
-		Integer onsale = product.getOnsale();
-		
-		Integer cid = product.getCid();
-
-		if (pname != null && !pname.trim().equals("")) {
-			sb.append(" and pname='");
-			sb.append(pname);
-			sb.append("'");
-		}
-
-		if (dianpuName != null && !dianpuName.trim().equals("")) {
-			sb.append(" or dianpuName like '%");
-			sb.append(dianpuName);
-			sb.append("%'");
-		}
-		
-		if (onsale != null) {
-			sb.append(" or onsale=");
-			sb.append(onsale);
-		}
-		
-		if (cid != null) {
-			sb.append(" or cid=");
-			sb.append(cid);
-			
-		}
-
-		String sql = sb.toString();
-		System.out.println(sql);
-
-		totalRecordSum = dao.getTotalRecordSum(sql);
-
-		return totalRecordSum;
+	public void productUp(int pid) throws Exception {
+		String sql = "update product set onsale=1 where pid = "+pid;
+		dao.updateOnSale(sql);
 	}
-	
-	//产品上架
-	public void productUp(Integer pid) throws Exception{
-		String sql = "update product set onsale=1 where pid=" + pid;
-		System.out.println(sql);
-		SQLUtil sqlUtil = new SQLUtil();
-		try {
-			sqlUtil.executeExceptDQL(sql);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new Exception("上架失败");
-		}
-			
-	}
-	
-	//产品下架
-	public void productDown(Integer pid) throws Exception{
-		String sql = "update product set onsale=0 where pid=" + pid;
-		System.out.println(sql);
-		SQLUtil sqlUtil = new SQLUtil();
-		try {
-			sqlUtil.executeExceptDQL(sql);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new Exception("下架失败");
-		}
-				
+
+	@Override
+	public void productDown(int pid) throws Exception {
+		String sql = "update product set onsale=0 where pid = "+pid;
+		dao.updateOnSale(sql);
 	}
 	
 	@Override
-	public Product getProductById(String pid) throws Exception{
-		Product product = null;
-		product = dao.getProductById(new Integer(pid));
-		return product;
-	}
-	
-	@Override
-	public void upload(HttpServletRequest request, String productListUploadPath) throws Exception{
+	public void upload(HttpServletRequest request, String productListUploadPath) throws Exception {
 		String pid = "";
 
 		DiskFileItemFactory itemFactory = new DiskFileItemFactory();
 		// 设置内存缓冲区的阀值为512K
 		itemFactory.setSizeThreshold(0x80000);
 
-		File tempDir = new File("D:\\temp");
+		File tempDir = new File("D:\\productImg");
 		if (!tempDir.exists()) {
 			tempDir.mkdirs();
 		}
@@ -236,13 +265,13 @@ public class ProductServiceImpl implements ProductService{
 			System.out.println("size=" + fileItems.size());
 			Iterator<FileItem> it = fileItems.iterator();
 
-			boolean flag = true;//一个产品的图片  放到一个文件夹 为了保证86行只执行一次
+			boolean flag = true;//一个产品的图片  放到一个文件夹 为了保证234行只执行一次
 			
 			while (it.hasNext()) {
 					
 
 				FileItem item = it.next();
-				// 判断是否是文件域
+				// 判断是否是文件域,input都算fileItem
 				if (!item.isFormField()) {
 					System.out.println("是文件");
 
@@ -250,7 +279,7 @@ public class ProductServiceImpl implements ProductService{
 
 					long size = item.getSize();
 
-					if ((name == null || name.equals("")) && size == 0) {
+					if ((name == null || name.trim().equals("")) && size == 0) {
 						fileNameList.add("");
 						continue;
 					}
@@ -345,24 +374,17 @@ public class ProductServiceImpl implements ProductService{
 		}
 		
 		ProductServiceImpl service2 = new ProductServiceImpl();
-		service2.saveImagePathInTable(pid, fileNameWithDirectoryList);
+		service2.saveProductListImageNamesForOneProduct(pid, fileNameWithDirectoryList);
 	}
 	
 	@Override
-	public void saveImagePathInTable(String pid,
-			List<String> fileNameList) throws Exception{
+	public void saveProductListImageNamesForOneProduct(String pid,
+			List<String> fileNameList) throws Exception {
 
 		System.out.println("fileNameList size=" + fileNameList.size());
 		
 		//先把以前的查出来
-		Product product;
-		try {
-			product = dao.getProductById(Integer.parseInt(pid));
-		} catch (Exception e1) {
-			e1.printStackTrace();
-			throw new Exception("保存商品图片路径时 查询单一商品失败!");
-		
-		}
+		Product product = dao.getProductById(Integer.parseInt(pid));
 
 		ProductDaoImpl dao2 = new ProductDaoImpl();
 
@@ -416,6 +438,7 @@ public class ProductServiceImpl implements ProductService{
 		}*/
 		
 		//保存详细页图片名称到指定字段
+
 		dao2.updateProductImageNames(product);
 	}
 
@@ -428,4 +451,12 @@ public class ProductServiceImpl implements ProductService{
 		return list;
 	}
 
+/*	@Override
+	public void saveImagePathInTable(String pid, List<String> fileNameList)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+	}*/
+
+				
 }

@@ -100,9 +100,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<header class="bp-header cf">
 			<div class="dummy-logo" >
 				<div > <img src="staticTheStore/img/thestore.png" style="width:150px;height:130px;position:relative;bottom:20px;right:10px;" ></div>
-<!-- 				<h2 class="dummy-heading" style="color: white;">京东</h2> -->
 			</div>
+			<iframe allowtransparency="true" id="tianqi" frameborder="0" width="150" height="40" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=3&z=3&t=1&v=0&d=3&bd=0&k=&f=&q=1&e=1&a=1&c=54511&w=180&h=36&align=left" style="background:white;position:relative;left:300px;" ></iframe>
 			<div class="bp-header__main">
+			
 			
 				<h1 class="bp-header__title">1号店,为了更好的生活</h1>
 				
@@ -123,10 +124,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul data-menu="submenu-1" class="menu__level">
 		
 					<li class="menu__item" ><a class="menu__link"  href="JDDispatcherServlet?target=admin/category/addCategory.jsp" target="mainIFrame">添加一级商品管理</a></li>
-					
 					<li class="menu__item"><a class="menu__link" href="CategoryServlet?action=getAllByPage&requestPage=1" target="mainIFrame">管理一级商品种类</a></li>
-					<li class="menu__item"><a class="menu__link" href="Category2Servlet?action=getAllCategoryForAddCategory2" target="mainIFrame">添加二级商品种类</a></li>
-					<li class="menu__item"><a class="menu__link" href="Category2Servlet?action=getMenuForPage" target="mainIFrame">二级商品种类查询</a></li>
+					<li class="menu__item"><a class="menu__link" href="Category2Servlet?action=getCategory1ForAddCategory2" target="mainIFrame">添加二级商品种类</a></li>
+					<li class="menu__item"><a class="menu__link" href="Category2Servlet?action=getAllByPage&requestPage=1" target="mainIFrame">管理二级商品种类</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1-1" href="#">待开发</a></li>
 				</ul>
 				<!-- Submenu 1-1 -->
@@ -138,10 +138,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 				<!-- Submenu 2 -->
 				<ul data-menu="submenu-2" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=getAllCategoryForAddProduct" target="mainIFrame">添加商品</a></li>
-					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=uploadPhoto" target="mainIFrame">上传照片</a></li>
-					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=getAllByPage&target=productMainUpDown&requestPage=1" target="mainIFrame">上架/下架</a></li>
-					<li class="menu__item"><a class="menu__link"href="ProductServlet?action=getPageByQuery&target=productMain" target="mainIFrame">商品查询</a>
+								
+					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=getAllCategorysForAddProduct" target="mainIFrame">添加商品</a></li>
+					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=getAllByPage&target=uploadImg&requestPage=1" target="mainIFrame">上传照片</a></li>
+					<li class="menu__item"><a class="menu__link" href="ProductServlet?action=shangxiajia&target=productOnSaleMain&requestPage=1" target="mainIFrame">上架/下架</a></li>
+					<li class="menu__item"><a class="menu__link"href="ProductServlet?action=getAllByPage&target=productMain&requestPage=1" target="mainIFrame">管理商品</a>
 					<li class="menu__item"><a class="menu__link" href="#">待开发</a></li>
 				</ul>
 				<!-- Submenu 2-1 -->
@@ -152,8 +153,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 				<!-- Submenu 3 -->
 				<ul data-menu="submenu-3" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="#">查看订单</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">修改订单</a></li>
+					<li class="menu__item"><a class="menu__link" href="DingdanServlet?action=getAllByPage&target=dingdanMain&requestPage=1" target="mainIFrame">管理订单</a></li>
 
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">待开发</a></li>
 				</ul>
@@ -238,7 +238,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}, 700); */
 		}
 	})();
+	
 	</script>
+	 <script>
+	        //天气预报
+	        window.onload = function() {
+	            setTimeout("loadweather()", 500);
+	        }
+	        function loadweather(url) {
+	            var url = "http://tianqi.2345.com/plugin/widget/index.htm?s=3&z=3&t=1&v=0&d=3&bd=0&k=&f=&q=1&e=1&a=1&c=54511&w=180&h=36&align=left";
+	            $("#tianqi").attr("src", url);          
+	       }       
+	    </script>
 </body>
 
 </html>

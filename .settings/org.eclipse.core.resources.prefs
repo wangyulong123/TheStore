@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//WebRoot/staticTheStore/css/phones.css=UTF-8
+=======
+encoding//src/com/service/impl/UserProductServiceImpl.java=UTF-8
+>>>>>>> branch 'master' of https://github.com/wangyulong123/TheStore.git

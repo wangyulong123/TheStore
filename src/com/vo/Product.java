@@ -3,7 +3,7 @@ package com.vo;
 import com.page.OrderCondition;
 
 public class Product {
-	private Integer pid;
+	private int pid;
 	private String pname;
 	private double price;
 	private int pingjiaSum;
@@ -15,19 +15,16 @@ public class Product {
 	private String pdesc;
 	private int productSum;
 	private String detailLargeImg;
-
+	private String detailSmallImg1;
+	private String detailSmallImg2;
+	private String detailSmallImg3;
+	private String detailSmallImg4;
+	private String detailSmallImg5;
+	private Integer onsale;
+	private String shoppingCarImg;
+	private Category2 category2;
+	
 	private OrderCondition orderConditionObj = new OrderCondition();
-
-	//购物车中该商品的数量
-	private int shoppingCarSum;
-
-	public int getShoppingCarSum() {
-		return shoppingCarSum;
-	}
-
-	public void setShoppingCarSum(int shoppingCarSum) {
-		this.shoppingCarSum = shoppingCarSum;
-	}
 
 	public OrderCondition getOrderConditionObj() {
 		return orderConditionObj;
@@ -35,6 +32,16 @@ public class Product {
 
 	public void setOrderConditionObj(OrderCondition orderConditionObj) {
 		this.orderConditionObj = orderConditionObj;
+	}
+	
+	private int shoppingSum;
+	
+	public int getShoppingSum() {
+		return shoppingSum;
+	}
+
+	public void setShoppingSum(int shoppingSum) {
+		this.shoppingSum = shoppingSum;
 	}
 
 	public String getShoppingCarImg() {
@@ -45,13 +52,13 @@ public class Product {
 		this.shoppingCarImg = shoppingCarImg;
 	}
 
-	private String detailSmallImg1;
-	private String detailSmallImg2;
-	private String detailSmallImg3;
-	private String detailSmallImg4;
-	private String detailSmallImg5;
-	private String shoppingCarImg;
-	private Integer onsale;
+	public Category2 getCategory2() {
+		return category2;
+	}
+
+	public void setCategory2(Category2 category2) {
+		this.category2 = category2;
+	}
 
 	public Integer getOnsale() {
 		return onsale;
@@ -63,11 +70,11 @@ public class Product {
 
 	private Integer cid;
 
-	public Integer getPid() {
+	public int getPid() {
 		return pid;
 	}
 
-	public void setPid(Integer pid) {
+	public void setPid(int pid) {
 		this.pid = pid;
 	}
 
@@ -199,6 +206,7 @@ public class Product {
 		this.detailSmallImg5 = detailSmallImg5;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Product [pid=" + pid + ", pname=" + pname + ", price=" + price
@@ -213,6 +221,20 @@ public class Product {
 
 	public void setCid(Integer cid) {
 		this.cid = cid;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj.getClass() == Product.class){//类型相同
+			if(((Product)obj).getPid() == this.getPid()){//自定义相等规则，id相同
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+		
 	}
 
 }

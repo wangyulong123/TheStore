@@ -516,10 +516,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 					</div>
-					<a href="#shangPinJieShao" >
-
+					<a href="javascript:void(0)" onclick="document.getElementById('shangPinJieShao').scrollIntoView();">
 						<div id="shouJiDetail">
-							<ul>
 								<li class="beChoose">商品介绍</li>
 					</a>
 					<a href="#pingJia">
@@ -527,12 +525,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							评价<label><%=product.getPingjiaSum() %></label>
 						</li>
 					</a>
-					<a id="guiGeJiBaoZhuang" href="#guiGeJiCanShu">
+					<a href="javascript:void(0)" onclick="document.getElementById('guiGeJiCanShu').scrollIntoView();">
 						<li>
 							规格及包装
 						</li>
 					</a>
-					<a href="#shouHouFuWu">
+					<a href="javascript:void(0)" onclick="document.getElementById('shouHouFuWu').scrollIntoView();">
 						<li>
 							售后服务
 						</li>
@@ -541,7 +539,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 
 					<div id="guiGeCanShu">
-						<a name="shangPinJieShao"></a>
+						<a id="shangPinJieShao"></a>
 						<p><span>规格参数</span><label><a href="javaScript:void(0)" id="chaKan">查看更多   »</a></label></p>
 						<dd title="品牌：华为(HUAWEI)">品牌：华为(HUAWEI)</dd>
 						<dd title="商品名称：华为（HUAWEI） 华为P10 手机 草绿色 全网通4G(4GB+128GB)">商品名称：华为（HUAWEI） 华为P10 手机 草绿色 全网通4G(4GB+128GB)</dd>
@@ -822,7 +820,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h3>包装清单</h3>
 						<p id="qingDan">手机（含内置电池） x 1、大电流华为SuperCharge充电器 x 1、USB数据线 x 1、半入耳式线控耳机 x 1、快速指南 x 1、三包凭证 x 1、取卡针 x 1、保护壳 x 1</p>
 					</div>
-					<a name="shouHouFuWu">
+					<a id="shouHouFuWu">
 						<div id="shengMing">
 							<p class="desc6">1号店承诺</p>
 							<p class="desc7">1号店平台卖家销售并发货的商品，由平台卖家提供发票和相应的售后服务。请您放心购买！</p>
@@ -1052,7 +1050,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<li>APP更优惠
 									<ul>
 										<br />
-										<li><img src="staticTheStore/img/mobile/5.webp.jpg" /></li>
+										<li><img src="staticTheStore/img/mobile/APPQRcode.jpg" /></li>
 									</ul>
 								</li>
 

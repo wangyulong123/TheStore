@@ -131,7 +131,8 @@ public class PhonesServlet extends HttpServlet {
 
 		String orderCondition = request.getParameter("orderCondition");
 		String ascOrDesc = request.getParameter("ascOrDesc");
-
+		System.out.println(ascOrDesc);
+		System.out.println(orderCondition);
 		OrderCondition orderConditionObj = new OrderCondition();
 
 		if (orderCondition != null && !orderCondition.trim().equals("")) {
@@ -225,7 +226,7 @@ public class PhonesServlet extends HttpServlet {
 				pageInfo.setTotalRecordCount(totalRecordSum);
 
 				UserProductServiceImpl service2 = new UserProductServiceImpl();
-				List<Product> list = service2.getPageByQuery(product, pageInfo);
+				List<Product> list = service2.getPageByQuery1(product, pageInfo);
 
 				// 三.转发视图
 				target = "/WEB-INF/jsp/user/phones.jsp";

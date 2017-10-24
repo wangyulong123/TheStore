@@ -1,6 +1,7 @@
 package com.dao.inter;
 
 import java.util.List;
+
 import com.vo.Product;
 //商品管理的DAO接口
 public interface ProductDao {
@@ -16,5 +17,10 @@ public interface ProductDao {
 	public List<Product> getPageByQuery(String sql) throws Exception;
 	//六.查询总共有多少条记录
 	public int getTotalRecordSum(String sql) throws Exception;
+	//更改上下架状态
+	public int updateOnSale(String sql) throws Exception;
+	//更新产品列表页的图片
+	public void updateProductImageNames(Product product);
 	
+	public List<Product> getProductByPageByQuery(String sql) throws Exception;
 }

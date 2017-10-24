@@ -19,8 +19,8 @@ public class CategoryDaoImpl implements CategoryDao {
 	private Connection conn;
 
 	public CategoryDaoImpl() {
-		//conn = ConnOracleTomcatDataSource.getConnection();
-		conn = ConnOracle.getConnection();
+		conn = ConnOracleTomcatDataSource.getConnection();
+//		conn = ConnOracle.getConnection();
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class CategoryDaoImpl implements CategoryDao {
 			throw new Exception("商品种类添加失败");//异常转译
 		} finally {
 			// 5.关闭
-			ConnOracle.closeConnection(null, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
 		}
 
 		return count;
@@ -92,7 +92,7 @@ public class CategoryDaoImpl implements CategoryDao {
 			throw new Exception("删除一级商品种类失败!");
 		} finally {
 			// 5.关闭
-			ConnOracle.closeConnection(null, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
 		}
 
 		return count;
@@ -126,7 +126,7 @@ public class CategoryDaoImpl implements CategoryDao {
 			throw new Exception("修改一级商品种类失败!");
 		} finally {
 			// 5.关闭
-			ConnOracle.closeConnection(null, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
 		}
 
 		return count;
@@ -159,7 +159,7 @@ public class CategoryDaoImpl implements CategoryDao {
 			throw new Exception("查询单个一级商品种类失败");
 		} finally {
 			// 5.关闭
-			ConnOracle.closeConnection(rs, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(rs, pstmt, conn);
 		}
 
 		return category;
@@ -196,7 +196,7 @@ public class CategoryDaoImpl implements CategoryDao {
 			
 		} finally {
 			// 5.关闭
-			ConnOracle.closeConnection(rs, stmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(rs, stmt, conn);
 		}
 
 		return list;
@@ -226,7 +226,7 @@ public class CategoryDaoImpl implements CategoryDao {
 			
 		} finally {
 			// 5.关闭
-			ConnOracle.closeConnection(rs, stmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(rs, stmt, conn);
 		}
 
 		return totalRecordCount;

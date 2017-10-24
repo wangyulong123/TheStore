@@ -326,7 +326,7 @@
 					<ul>
 						<li id="zonghe" class="xuanZhongTiaoJian">综合</li>
 						<li >销量<b>⬇</b></li>
-						<li >新品<b>⬇</b></li>
+						<li id="pid">新品<b>⬇</b></li>
 						<li id="pingjiaSum">评论<b>⬇</b></li>
 						<li id="price">价格<b>⬇</b></li>
 
@@ -366,13 +366,11 @@
 								<span class="fp-txt"> <b><%=pageInfo.getCurrentPage()%></b>
 									<em>/</em> <i><%=pageInfo.getTotalPageCount()%></i>
 								</span> <a id="fp-prevLink" class="fp-prev"
-									href="UserProductServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getPreviousPage()%>">
+									href="/ts0.1/PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getPreviousPage()%>">
 									<</a> <a id="fp-nextLink" class="fp-next"
-									href="UserProductServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getNextPage()%>">></a>
+									href="/ts0.1/PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getNextPage()%>">></a>
 							</div>
-							<div id="img1"><</div>
-							<div id="img2">></div>
-
+						
 						</li>
 					</ul>
 				</div>
@@ -731,10 +729,10 @@
 					.click(
 							function() {
 								if (lastAscOrDesc == "asc") {//先降序
-									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=price&ascOrDesc=desc";
+									var target = "/ts0.1/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=price&ascOrDesc=desc";
 									location.assign(target);
 								} else if (lastAscOrDesc == "desc") {
-									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=price&ascOrDesc=asc";
+									var target = "/ts0.1/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=price&ascOrDesc=asc";
 									location.assign(target);
 								
 								}
@@ -748,12 +746,12 @@
 
 								if (lastAscOrDesc == "asc") {//先降序
 
-									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pingjiaSum&ascOrDesc=desc";
+									var target = "/ts0.1/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pingjiaSum&ascOrDesc=desc";
 
 									location.assign(target);
 								} else if (lastAscOrDesc == "desc") {
 
-									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pingjiaSum&ascOrDesc=asc";
+									var target = "/ts0.1/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pingjiaSum&ascOrDesc=asc";
 
 									location.assign(target);
 								}
@@ -765,10 +763,10 @@
 					.click(
 							function() {
 								if (lastAscOrDesc == "asc") {
-									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=desc";
+									var target = "/ts0.1/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=desc";
 									location.assign(target);
 								} else if (lastAscOrDesc == "desc") {
-									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=asc";
+									var target = "/ts0.1/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=asc";
 									location.assign(target);
 								}
 							});
@@ -778,24 +776,14 @@
 					.click(
 							function() {
 								if (lastAscOrDesc == "asc") {
-									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=desc";
+									var target = "/ts0.1/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=desc";
 									location.assign(target);
 								} else if (lastAscOrDesc == "desc") {
-									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=asc";
+									var target = "/ts0.1/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=asc";
 									location.assign(target);
 								}
 							});
-			$("#zonghe")
-					.click(
-							function() {
-								if (lastAscOrDesc == "asc") {
-									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=desc";
-									location.assign(target);
-								} else if (lastAscOrDesc == "desc") {
-									var target = "/TheStore/PhonesServlet?action=getPageByQuery&cid=62&searchCondition=${requestScope.searchCondition}&requestPage=1&orderCondition=pid&ascOrDesc=asc";
-									location.assign(target);
-								}
-							});
+
 			var currentPage =
 	<%=pageInfo.getCurrentPage()%>
 		;
@@ -839,7 +827,7 @@
 					.click(
 							function() {
 								if (low.value != "" && high.value != "") {
-									var target = "/TheStore/PhonesServlet?action=getProductByPrice&cid=62&requestPage=1&orderCondition=price&ascOrDesc=desc&low="
+									var target = "/ts0.1/PhonesServlet?action=getProductByPrice&cid=62&requestPage=1&orderCondition=price&ascOrDesc=desc&low="
 											+ low.value + "&high=" + high.value;
 									location.assign(target);
 								} else {
