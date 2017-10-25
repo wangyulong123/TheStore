@@ -178,7 +178,7 @@ label.productInfoLabel {
 <body>
 	<%
 		Product product = (Product)request.getAttribute("product");
-	 %>
+	%>
 	<div>
 			<ul class="breadcrumb">
 				<li><a href="jsp/admin/admin.jsp">首页</a></li>

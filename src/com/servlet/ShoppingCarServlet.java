@@ -30,9 +30,6 @@ public class ShoppingCarServlet extends HttpServlet {
 		}else if("delete".equals(action)){
 			this.delete(request,response);
 		}
-
-		
-		
 	}
 
 	public void getProductToAdd(HttpServletRequest request, HttpServletResponse response)
@@ -40,13 +37,15 @@ public class ShoppingCarServlet extends HttpServlet {
 		
 		String target = "";
 		String pid = request.getParameter("pid");
-		String buyNum = request.getParameter("buyNums");
-		System.out.println("购买数量--"+buyNum);
+		
+		String count = request.getParameter("count");
+		
+		System.out.println("购买数量"+count);
 		//二.调用业务逻辑
 		ProductService service = new ProductServiceImpl();
 		try {
 			Product product = service.getProductById(pid);
-			product.setShoppingSum(Integer.parseInt(buyNum));
+			product.setShoppingSum(Integer.parseInt(count));
 			
 			ShoppingCartServiceImpl shoppingCartService = new ShoppingCartServiceImpl();
 
@@ -59,7 +58,7 @@ public class ShoppingCarServlet extends HttpServlet {
 			shoppingCartService.addToCart(session, product);
 			
 			// 三.转发视图
-			target = "/WEB-INF/jsp/user/user/addToShoppingCart.jsp";
+			target = "/WEB-INF/jsp/user/jiarushoppingcar.jsp";
 			request.setAttribute("product", product);
 			
 		} catch (Exception e) {
@@ -72,32 +71,6 @@ public class ShoppingCarServlet extends HttpServlet {
 		request.getRequestDispatcher(target).forward(request, response);
 	}
 	
-	public void queryShoppingCart(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		//设置服务器相应地数据类型 为application/json
-		response.setContentType("application/json");
-		String target = "";
-		// 一.填充数据
-		// 二.调用业务逻辑
-		HttpSession session = request.getSession(true);
-
-		List<Product> list = (List<Product>) session
-				.getAttribute("shoppingCart");
-		
-		if(list==null||list.size()==0){
-			request.setAttribute("list", list);
-			target = "/WEB-INF/jsp/user/user/shoppingCartNoProduct.jsp";
-		}
-		else{
-			request.setAttribute("list", list);
-			target = "/WEB-INF/jsp/user/user/shoppingCart.jsp";
-		}
-		// 三.转发视图
-		
-		request.getRequestDispatcher(target).forward(request, response);
-
-	}
-	
 	public void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -106,8 +79,7 @@ public class ShoppingCarServlet extends HttpServlet {
 		System.out.println(pid);
 		
 		HttpSession session = request.getSession(true);
-		List<Product> list = (List<Product>) session
-				.getAttribute("shoppingCart");
+		List<Product> list = (List<Product>) session.getAttribute("shoppingCart");
 			
 		try{
 			//二.调用业务逻辑
@@ -126,6 +98,31 @@ public class ShoppingCarServlet extends HttpServlet {
 		}
 		
 		
+	}
+	
+	public void queryShoppingCart(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		//设置服务器相应地数据类型 为application/json
+		response.setContentType("application/json");
+		String target = "";
+		// 一.填充数据
+		// 二.调用业务逻辑
+		HttpSession session = request.getSession(true);
+
+		List<Product> list = (List<Product>) session.getAttribute("shoppingCart");
+		
+		if(list==null||list.size()==0){
+			request.setAttribute("list", list);
+			target = "/WEB-INF/jsp/user/shoppingCartNoProduct.jsp";
+		}
+		else{
+			request.setAttribute("list", list);
+			target = "/WEB-INF/jsp/user/shoppingCar.jsp";
+		}
+		
+		// 三.转发视图
+		request.getRequestDispatcher(target).forward(request, response);
+
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

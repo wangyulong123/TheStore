@@ -12,10 +12,6 @@ public class UserServiceImpl implements UserService{
 	
 	/**
 	 * 
-	 *公司: 蓝桥杯软件学院
-	 *作者: 张兆亿
-	 *时间: 2016年9月4日
-	 *功能: 用户登录
 	 *@return 如果根据用户名和密码找到该用户 返回该用户对象  没找到的话 返回null
 	 */
 	public User login(String username, String password) throws Exception{

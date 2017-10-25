@@ -1709,9 +1709,8 @@
 
 	<body>
 	<%
-    	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-		
-     %> 
+		PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+	%> 
 		<!--最顶上的一条开始-->
 		<div id="shortcut">
 			<div class="w">
@@ -2594,9 +2593,9 @@
 								<ul class="gl-wrap">
 								
 									<%
-										List<Product> list = (List<Product> )request.getAttribute("list");
-										for(Product product:list){
-									%>
+																		List<Product> list = (List<Product> )request.getAttribute("list");
+																																																																																					for(Product product:list){
+																	%>
 										<li class="gl-item">
 										<div class="gl-i-wrap">
 											<div class="p-img">

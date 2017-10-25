@@ -1,7 +1,7 @@
-* {
+﻿* {
 	margin: 0 auto;
 	font-size: 12px;
-	font-family: "微软雅黑";
+	font-family: "寰蒋闆呴粦";
 }
 
 a {
@@ -15,7 +15,7 @@ ul li {
 	padding-right: 15px;
 }
 
-/*顶部账号信息*/
+/*椤堕儴璐﹀彿淇℃伅*/
 
 #top {
 	height: 30px;
@@ -31,7 +31,7 @@ ul li {
 }
 
 .layout::before {
-	/*清除浮动*/
+	/*娓呴櫎娴姩*/
 	content: "";
 	display: table;
 }
@@ -127,7 +127,7 @@ ul li {
 }
 
 
-/*大搜索框*/
+/*澶ф悳绱㈡*/
 
 #search1 {
 	height: 110px;
@@ -151,7 +151,7 @@ ul li {
 }
 
 #sousuo {
-	height: 36px;
+	height: 42px;
 	width: 930px;
 	float: left;
 	margin-top: 35px;
@@ -160,23 +160,34 @@ ul li {
 
 #sousuokuang {
 	width: 750px;
-	height: 36px;
+	height: 38px;
 	border: solid 2px #FF4040;
 	border-right: none;
-	border-radius: 3px;
+	border-radius: 7px;
 	float: left;
+	position:relative;
 }
 
-#sousuokuang input {
+#sousuokuang #input1 {
 	padding-left: 6px;
-	width: 691px;
-	height: 31px;
-	line-height: 31px;
+	width: 686px;
+	height: 35px;
+	line-height: 35px;
 	outline: none;
 	border: none;
 	font-size: 14px;
+	position:absolute;
+	top:0;
+	left:0;
 }
-
+#input2{
+	position:absolute;
+	right:0;
+	top:0;
+}
+#categoryForm{
+	height:30px;
+}
 #sousuokuang img {
 	width: 50px;
 	height: 39px;
@@ -208,6 +219,7 @@ ul li {
 	color: #666666;
 	line-height: 36px;
 	cursor: pointer;
+	margin-top:-28px;
 }
 
 #shoppingCar img {
@@ -255,8 +267,6 @@ ul li {
 	padding-right: 25px;
 }
 
-
-/*搜索手机栏*/
 
 #search2 {
 	height: 40px;
@@ -313,7 +323,7 @@ ul li {
 }
 
 
-/*商品筛选条件*/
+/*鍟嗗搧绛涢�鏉′欢*/
 
 #category {
 	height: 329px;
@@ -407,12 +417,15 @@ a[id="aaa"] {
 	float: left;
 	margin-left: 39px;
 }
-
-.zhonglei li ul {
-	display: none;
-	width: auto;
+.xiala{
+	text-align:left;
 }
 
+.xiala2 ul li{
+	z-index:999 !important;
+	float:none !important;
+	text-align:right;
+}
 .zhonglei input {
 	height: 15px;
 	width: 35px;
@@ -487,6 +500,23 @@ a[id="aaa"] {
 #sort1 ul li:hover{
 	color: #FF855B;
 }
+.fp-txt {
+	line-height: 23px;
+	margin-right: 20px;
+	font-family: verdana
+}
+.fp-prev, .fp-next {
+	display: inline-block;
+	width: 46px;
+	height: 23px;
+	border: 1px solid #DDD;
+	background: #FFF;
+	line-height: 23px;
+	font-family: "\5b8b\4f53";
+	text-align: center;
+	font-size: 16px;
+	color: #AAA;
+}
 .xuanZhongTiaoJian{
 	color: #FFFFFF !important;
 	background: #F27E56 !important;	
@@ -518,10 +548,11 @@ a[id="aaa"] {
 	font-size:12px;
 	}
 #jiaGeLieBiao input{	
-	width:30px;
+	width:40px;
 	margin-top:9px;
 	border:solid 1px #cccccc;
 }
+
 #jiaGeLieBiao ul li{
 	width:100%;
 	height:35px;
@@ -562,7 +593,7 @@ a[id="aaa"] {
 }
 
 .layout1::before {
-	/*清除浮动*/
+	/*娓呴櫎娴姩*/
 	content: "";
 	display: table;
 }
@@ -582,10 +613,9 @@ a[id="aaa"] {
 	cursor: pointer;
 }
 
-#first,
-#second {
-	height: 452px;
-}
+#first {
+	height:450px;
+} 
 
 .goods {
 	margin: 15px 5px 10px 0;
@@ -611,7 +641,7 @@ a[id="aaa"] {
 }
 
 .goods:hover {
-	/*设置阴影*/
+	/*璁剧疆闃村奖*/
 	border: 1px solid #EAEAEA;
 	box-shadow: 1px 1px 0px 6px #FAFAFA;
 }
@@ -717,15 +747,16 @@ a[class="compare"] {
 }
 
 #page {
+	clear:left;
 	padding-top: 45px;
 	padding-bottom: 35px;
-	margin-bottom: 30px;
 	height: 25px;
 }
 
 #manYiDu {
 	width: 400px;
 	float: left;
+	margin-top:14px;
 }
 
 #manYiDu a {
@@ -738,11 +769,13 @@ a[class="compare"] {
 	border-radius: 2px;
 }
 
-#pageNumb {
+.pageNumb {
 	float: right;
+	width:580px;
+	
 }
 
-#pageNumb a {
+.pageNumb a {
 	width: auto;
 	padding: 7px 15px;
 	margin: 0 7px;
@@ -750,17 +783,50 @@ a[class="compare"] {
 	background: #FAFAFA;
 	color: #999999;
 }
+.p-skip {
+	float: left;
+	margin-left: 20px;
+}
+.p-skip em {
+	float: left;
+	line-height: 38px;
+	font-size: 14px;
+}
+.p-skip .input-txt {
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin: 0 3px;
+	line-height: 30px;
+	font-size: 14px;
+	text-align: center;
+}
+.p-skip .btn {
+	float: left;
+	height: 20px;
+	margin-left: 10px;
+	font-size: 14px;
+	line-height: 20px;
+}
+.pageNumb .p-num .disabled {
+	background: #fff;
+	color: #ccc;
+	cursor: default;
+	pointer-events: none;
+}
 
-#pageNumb a:hover {
+.pageNumb a:hover {
 	background: #FF8C64;
 	border: 1px solid #F2855F;
-	color: #FFFFFF;
+	color: #F2855F;
 }
 
 #introduce {
 	height: 170px;
 }
-
+#productForm2 a:hover{
+	color:black;
+}
 #intro {
 	margin-top: 20px;
 	border-top: 1px solid #EEEEEE;
@@ -937,4 +1003,42 @@ ul li {
 	float: left;
 	padding-left: 10px;
 	color: #666666;
+}
+.p-num a {
+	color: #333;
+	border: 1px solid #ddd;
+}
+.pageNumb .p-num .pn-next i, .pageNumb .p-num .pn-prev i {
+	vertical-align: middle;
+	font-style: normal;
+	font-size: 14px;
+	font-family: "\5b8b\4f53";
+	padding: 0 5px;
+	color: #aaa;
+}
+.pageNumb .p-num a, .page .p-num b {
+	float: left;
+	height: 36px;
+	line-height: 36px;
+	padding: 0 14px;
+	margin-right: 5px;
+	font-size: 14px;
+	background: #F3F3F3;
+}
+
+.pageNumb .p-num .pn-break {
+	color: #ccc;
+	background: #FFF;
+}
+
+.pageNumb .p-num a.curr {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: 0 none;
+	color: #e4393c;
+	cursor: default;
+	filter: none;
+	padding: 1px 15px;
+}
+#category{
+	height:auto;
 }

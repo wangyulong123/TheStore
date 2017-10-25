@@ -119,13 +119,12 @@ fieldset label {
 	<form action="ProductServlet" method="post">
 		
 		<%
-			Product product = (Product)request.getAttribute("product");
-			
-			String requestPage = request.getParameter("requestPage");
-			String searchCondition = request.getParameter("searchCondition");
-			String recordsPerPage = request.getParameter("recordsPerPage");
-			
-		 %>
+					Product product = (Product)request.getAttribute("product");
+													
+													String requestPage = request.getParameter("requestPage");
+													String searchCondition = request.getParameter("searchCondition");
+													String recordsPerPage = request.getParameter("recordsPerPage");
+				%>
 		 
 		<input type="hidden" name="action" value="update"/>
 		<input type="hidden" name="pid" value="<%=product.getPid()%>"/>

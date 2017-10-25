@@ -251,5 +251,15 @@ public class Category2ServiceImpl implements Category2Service {
 		}
 		return parentCid;
 	}
-
+	// 根据商品种类名字得到Category2
+		public Category2 getCategoryByName(String cname) throws Exception {
+			Category2 category2 = null;
+			String sql = "select * from category2 where cname='" + cname + "'";
+			List<Category2> list = dao.getPageByQuery(sql);
+			if (list.size() > 0) {
+				category2 = list.get(0);
+			}
+			return category2;
+		}
+	
 }

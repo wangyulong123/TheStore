@@ -21,4 +21,6 @@ public interface ProductDao {
 	public int updateOnSale(String sql) throws Exception;
 	//更新产品列表页的图片
 	public void updateProductImageNames(Product product);
+	
+	public List<Product> getProductByPageByQuery(String sql) throws Exception;
 }

@@ -1,0 +1,561 @@
+*{
+	margin:0px;/*为了保证每个浏览器默认间距都为0  因为不同浏览器默认间距不一样 为了兼容性*/
+}
+body{
+	overflow: :scroll;
+	overflow-x: hidden;
+}	
+
+div.head{
+	width:1366px;
+	height:82px;
+	border-bottom: solid;
+	border-color:#E1E1E1;
+	border-width: thin;
+}
+
+#hd_menu{
+	width:115px;
+	height:170px;
+	
+	position: relative;
+	left:200px;
+	bottom: 25px;
+	text-align:center;
+}
+#helpcenter{
+	color:black;
+}
+			
+#xuanting{
+	width:115px;
+	height:32px;
+	line-height: 32px;
+}
+	
+#xialakuang{
+		width:113px;
+		height:135px;
+		
+	/*	border:1px solid #DEDEDE;*/
+		display: none;
+		position: relative;
+		background-color:white;
+
+	}
+	.fenlei{
+		width:95px;
+		height:25px;
+		line-height: 25px;
+		position:relative;
+		right:25px;
+	}
+	
+	#imglogo{
+	position: absolute;
+	top:17px;
+	left:84px;
+}
+
+	#help{
+			position: relative;
+			top:5px;
+			}
+	#open1{
+			position: relative;
+			top:3px;
+		}
+
+
+	ul {
+			list-style-type:none;
+			padding:0px 25px;/*新浏览器 firefox safari 都是使用内边距控制缩进的 新ie也是*/
+			margin:0px;/*老ie是使用外边距缩进的 所以光设置padding:0px 老id 不会去掉索引 为了兼容老ie*/
+		}
+	li{
+			float: left;
+			padding:0px 8px;
+		}
+		
+		li>a:link{color:black;text-decoration:none;}
+		
+		
+		li>a:visited{color:black;}
+		li>a:hover{text-decoration:none;color:red;}
+		li>a:active{color:red;}
+			
+		ul>a:link{color:black;text-decoration:none;}
+		ul>a:visited{color:black;}
+		ul>a:hover{text-decoration:none;color:red;}
+		ul>a:active{color:red;}
+
+div.body{
+	width:1366px;
+	height:600px;
+	/*background-image: url(../img/beijing.png);*/
+}
+
+ #r_icon{width:1366px;height:600px;opacity: 0.3;}
+
+	#zhuce{
+		width:650px;
+		height:500px;
+	
+	
+		text-align: center;
+		position: absolute;
+		top:122px;
+		left:350px;
+	}
+
+		form>div:first-of-type{
+				margin-top:30px;
+			}
+		form>div{
+				margin-bottom: 10px;
+			}
+	
+		#username{width:305px;height:50px;padding-left: 25px;
+				  font-family: "微软雅黑";font-size: 14px;color: #666;
+			      border:solid;border-color:#DEDEDE;border-width:thin;}
+			      
+		#phone{width:305px;height:50px;padding-left: 25px;
+			   font-family: "微软雅黑";font-size: 14px;color: #666;				
+			   border:solid;border-color:#DEDEDE;border-width:thin;}
+		
+		
+		#yanzhengma{width:165px;height:50px;padding-left: 25px;
+					font-family: "微软雅黑";font-size: 14px;color: #666;
+					border:solid;border-color:#DEDEDE;border-width:thin;}
+					
+		#huoqu{
+				width: 126px;
+				height: 50px;
+				margin-left: 10px;
+				text-align: center;
+				background-color: #57565F;
+				line-height: 50px;
+				color: #FFF;
+				border-radius: 3px;
+				font-size: 14px;	
+				display: inline-block;
+				cursor: pointer;
+				}
+				
+		#password1{width:305px;height:50px;padding-left: 25px;
+				   font-family: "微软雅黑";font-size: 14px;color: #666;
+				   border:solid;border-color:#DEDEDE;border-width:thin;}
+		#password2{width:305px;height:50px;padding-left: 25px;
+		          font-family: "微软雅黑";font-size: 14px;color: #666;
+		          border:solid;border-color:#DEDEDE;border-width:thin;}
+		#dianjifuwu{
+			 	height: 35px;
+   			 	font-size: 12px;
+ 				font-fanily:"微软雅黑"; 	
+    		    line-height: 35px;
+  		        color: #666;
+   				text-indent: 1em;
+   			
+		}
+		#agree{
+			width:330px;
+			height:52px;
+			margin-top: 6px;
+			background-color: #FF3C3C;
+			font-size: 16px;
+			line-height: 52px;
+			color: #FFF;
+			text-align: center;
+			border-radius: 2px;
+			cursor:pointer;
+		}
+	
+div.tail{
+	width:1366px;
+	height:50px;
+	background-color:FCFCFC;
+	text-align: center;
+	line-height: 50px;
+	font: 12px Arial,Helvetica,sans-serif;
+	color:#333;
+	position:relative;
+	bottom:20px;
+}
+
+
+#imglogo{
+	position: absolute;
+	top:17px;
+	left:84px;
+}
+
+#fontlogo{
+	font-family: "SimSun";
+	font-size:12px;
+	color: #999;
+	float:left;
+	position: absolute;
+	top:21px;
+	left:990px;
+}
+
+
+a:link{color:blue;text-decoration:none;}
+a:visited{color:blue;}
+a:hover{text-decoration:none;color:red;}
+a:active{color:red;}
+
+div>a:link{color:#FFFFFF;text-decoration:none;}
+div>a:visited{color:#FFFFFF;}
+div>a:hover{text-decoration:none;color:#FFFFFF;}
+div>a:active{color:#FFFFFF;}
+
+
+
+
+
+#user1{
+    position: absolute;
+    left: 185px;
+    top: 65px;
+    display: inline-block;
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+    color: #666;
+
+}
+
+#phone1{
+    position: absolute;
+    left: 185px;
+    top: 130px;
+    display: inline-block;
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+    color: #666;
+
+}
+
+
+#yanzheng{
+    position: absolute;
+    left: 185px;
+    top: 195px;
+    display: inline-block;
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+    color: #666;
+
+}
+
+#set1{
+    position: absolute;
+    left: 185px;
+    top: 260px;
+    display: inline-block;
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+    color: #666;
+}
+#set2{
+    position: absolute;
+    left: 185px;
+    top: 325px;
+    display: inline-block;
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+    color: #666;
+}
+
+.selected{
+	border-color:#FF3C3C;
+}
+
+#success1{
+	width:29px;
+	height:29px;
+	position: absolute;
+	left:510px;
+	bottom:385px;  
+	display:none;
+}
+#success2{
+	width:29px;
+	height:29px;
+	position: absolute;
+	left:510px;
+	bottom:320px;  
+	display:none;
+}
+#success3{
+	width:29px;
+	height:29px;
+	position: absolute;
+	left:510px;
+	bottom:195px;  
+	display:none;
+}
+#success4{
+	width:29px;
+	height:29px;
+	position: absolute;
+	left:510px;
+	bottom:125px;  
+	display:none;
+}
+
+.i1{
+	position: absolute;
+	left: -10px;
+	top: 50%;
+	z-index: 2;
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+	line-height: 0;
+	margin-top: -5px;
+	border-color: transparent #FFF4D7 transparent transparent;
+	border-style: dashed solid dashed dashed;
+	border-width: 5px;
+	font-size: 0px;
+}
+	
+.i2{
+	position: absolute;
+	left: -10px;
+	top: 50%;
+	z-index: 2;
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+	line-height: 0;
+	margin-top: -5px;
+	border-color: transparent #E4E4E4 transparent transparent;
+	border-style: dashed solid dashed dashed;
+	border-width: 5px;
+	font-size: 0px;
+}
+
+#user11{
+	position:absolute;
+	right:-30px;
+    top:65px;
+    font-size:12px;
+    color:#666666;
+    background-color:#E4E4E4;
+    width:165px;
+    height:50px;
+    line-height:25px;
+    display:none;
+   
+}
+	#user12{
+		 position:absolute;
+		 right:30px;
+   		 top:68px;
+   		 font-size:12px;
+   		 color:#666666;
+   		 background-color:#FFF4D7;
+   		 width:105px;
+  		 height:40px;
+   		 line-height: 40px;
+  		 display:none;
+	}
+	#user13{
+		 position:absolute;
+		 right:-30px;
+   		 top:65px;
+   		 font-size:12px;
+   		 color:#666666;
+   		 background-color:#FFF4D7;
+   		 width:165px;
+  		 height:50px;
+  
+   		 line-height: 25px;
+  		 display:none;
+	}
+	#user14{
+		 position:absolute;
+		 right:-30px;
+   		 top:65px;
+   		 font-size:12px;
+   		 color:#666666;
+   		 background-color:#FFF4D7;
+   		 width:165px;
+  		 height:50px;
+  	
+   		 line-height: 25px;
+  		 display:none;
+	}
+	
+	#user15{
+		position:absolute;
+		 right:-30px;
+   		 top:65px;
+   		 font-size:12px;
+   		 color:#666666;
+   		 background-color:#FFF4D7;
+   		 width:165px;
+  		 height:50px;
+   		 line-height: 25px;
+  		 display:none;	
+	}
+#phone11{
+	position:absolute;
+	right:-30px;
+    top:130px;
+    font-size:12px;
+    color:#666666;
+    background-color:#E4E4E4;
+    width:165px;
+    height:50px;
+    line-height:25px;
+  	display:none;
+}
+
+#phone12{
+	position:absolute;
+	left:515px;
+    top:125px;
+    font-size:12px;
+    color:#666666;
+    background-color:#FFF4D7;
+    width:180px;
+    height:60px;
+   
+    line-height: 60px;	
+    display:none;		
+}	
+
+#password11{
+	position:absolute;
+	right:-30px;
+    top:258px;
+    font-size:12px;
+    color:#666666;
+    background-color:#E4E4E4;
+    width:165px;
+    height:50px;
+    line-height:25px;
+    display:none;
+}
+
+
+  #password12{
+	position:absolute;
+	right:30px;
+    top:260px;
+    font-size:12px;
+    color:#666666;
+    background-color:#FFF4D7;
+    width:105px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+    display:none;
+}
+  #password13{
+	position:absolute;
+	right:30px;
+    top:260px;
+    font-size:12px;
+    color:#666666;
+    background-color:#FFF4D7;
+    width:105px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+    display:none;
+}
+  #password14{
+	position:absolute;
+	right:30px;
+    top:260px;
+    font-size:12px;
+    color:#666666;
+    background-color:#FFF4D7;
+    width:105px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+    display:none;
+}
+
+#password22{
+	position:absolute;
+	right:30px;
+    top:328px;
+    font-size:12px;
+    color:#666666;
+    background-color:#E4E4E4;
+    width:105px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+    display:none;
+}
+  #password23{
+	position:absolute;
+	right:30px;
+    top:328px;
+    font-size:12px;
+    color:#666666;
+    background-color:#FFF4D7;
+    width:105px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+   display: none;
+}
+
+#passstrength{
+	position:absolute;
+	right:30px;
+    top:260px;
+}
+
+ #passwordlow{
+	position:absolute;
+	right:30px;
+    top:260px;
+    font-size:12px;
+    color:#666666;
+    background-color:#FFF4D7;
+    width:105px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+	display:none;
+}
+
+ #passwordmid{
+	position:absolute;
+	right:30px;
+    top:260px;
+    font-size:12px;
+    color:#666666;
+    background-color:#FFF4D7;
+    width:105px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+	display:none;
+}
+ #passwordstr{
+	position:absolute;
+	right:30px;
+    top:260px;
+    font-size:12px;
+    color:#666666;
+    background-color:#FFF4D7;
+    width:105px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+	display:none;
+}

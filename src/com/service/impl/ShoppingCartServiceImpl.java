@@ -18,13 +18,17 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 		if(list==null){
 			//第一次买东西
 			System.out.println("第一次买东西");
+			System.out.println("购物车数量-----"+product.getShoppingSum());
 			list = new ArrayList<Product>();
 			if(product.getShoppingSum()==0){
 				product.setShoppingSum(1);
+				
 			}
 			
 			list.add(product);//加入购物车
-			
+			for (Product product2 : list) {
+				System.out.println("list中"+product2.getShoppingSum());
+			}
 		}else{
 			//第二次买东西
 			System.out.println("第二次买东西");
@@ -36,9 +40,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 			for(Product oldProduct:list){
 				
 				if(oldProduct.getPid()==pid){//如果以前买过这个东西
-					//数量+1
-					System.out.println("数量+1");
-					
+					//数量+新增购买数量				
 					int shoppingCarSum = oldProduct.getShoppingSum();
 					oldProduct.setShoppingSum(shoppingCarSum + product.getShoppingSum());
 					
@@ -53,7 +55,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 			
 			if(!ifBeforeBuy){//之前如果没买过
 				System.out.println("之前没买过");
-				//product.setShoppingSum(1);
+				product.setShoppingSum(1);
 				list.add(product);//加入购物车
 			}
 			
