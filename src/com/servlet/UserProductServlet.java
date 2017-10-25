@@ -310,6 +310,7 @@ public class UserProductServlet extends HttpServlet {
 		
 		//1.Ìî³äÊý¾Ý
 		String searchCondition = request.getParameter("searchCondition");
+		System.out.println(searchCondition);
 		String requestPage = request.getParameter("requestPage");
 		String recordsPerPage = request.getParameter("recordsPerPage");
 		OrderCondition orderCondition = new OrderCondition(); 
