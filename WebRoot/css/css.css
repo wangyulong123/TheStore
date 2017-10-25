@@ -1,0 +1,217 @@
+  html{
+    	color:#666;background:#FFF;
+    }
+    body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,i,fieldset,legend,input,textarea,p,blockquote,th,td{
+    	margin:0;padding:0;
+    	}
+    body{
+    	font:12px/1.3 arial,helvetica,clean,sans-serif,\5b8b\4f53;	text-decoration: none;
+    	}
+    h1,h2,h3,h4,h5,h6{
+    	font-size:100%;font-weight:normal;
+    	}
+    table{
+    	border-collapse:collapse;border-spacing:0;
+    	}
+    img{
+    	border:none;
+    	}
+    a{
+    	text-decoration:none; color:#666;
+    	}
+    ul,li{
+    	list-style-type:none;
+    	}
+    	.nav{
+     position: relative ;
+    				top: -445px;
+    	/*	left: 168px;*/
+    		
+    		z-index: 3;
+    		text-decoration: none;
+    		
+    	}
+    	.thing-variety h4 a{
+    		text-decoration: none;
+    	}
+     .subitems a{
+     	text-decoration: none;
+     }
+    .nav-con{
+    	width: 1210px;
+    	margin: 0 auto;
+    	height: 44px;
+    	position: relative;
+    	}
+    .nav-con-left{
+    	float: left; position: relative; 
+    	width: 210px;height: 44px;z-index: 10;
+    	
+    	overflow: visible;
+    	}
+    .nav-con-lefttext a{
+    	display: block;
+    	width: 190px;
+    	height: 44px;
+    	padding: 0 10px;
+    	color: white;
+    	font: 400 15px/44px "microsoft yahei";
+    		text-decoration: none;
+    	}
+    	/*左侧导航栏格式*/
+    .nav-variety{
+    	height: 405px;
+    	background: #000000;
+    	opacity: 0.99;
+    	}
+    .thing-variety li{
+    position: relative;
+    z-index: 10;
+    height: 31px;
+    color: white;
+    	}
+    .thing-variety .thname{
+    	height: 200px;
+    	}
+    .thing-variety .thname h4{
+    	position: absolute;
+    	z-index: 11;
+    	height: 31px;
+    	line-height: 30px;font-size: 14px;
+    	font-weight: 400;
+    	padding: 0 10px;
+    	}
+    .thing-variety .thname h4 a{
+    	color: white;
+    	}
+    .thing-variety .thname span{
+    	position: absolute;
+    	right: 14px;
+    	top: 9px;
+    	width: 4px;
+    	height: 14px;  font: 400 9px/14px consolas;
+    	z-index: 1;
+    	}
+    .thing-variety .showLi{
+    	background: #F7F7F7;
+    	}
+    #things .showA{
+    	color: #b61d1d;
+    	}
+    #things .showSpan{
+    	display: none;
+    	}
+    /*****************商品分类*****************/
+    .dropdown{
+    	width: 995px;
+    	height: 404px;
+    	position: absolute;
+    	left: 209px;
+    	top: 43px;
+    	background: #FFFFFF;
+    	/*border: 1px solid #b61d1d;*/
+    	overflow: hidden;
+    	}
+    .item-brands{
+    	float: right;
+    	display: inline;
+    	width: 168px;
+    	margin: 19px 20px 10px 0;
+    	}
+    .item-brands a{
+    	float: left;display: inline;
+    	margin: 1px 0 0 1px;
+    	}
+    .item-brands img,.item-promotions img{
+    	border: 0;vertical-align: top;}
+    .item-promotions{
+    	float: right;display: inline;
+    	width: 168px;margin-right: 20px;
+    	}
+    .item-promotions a{
+    	display: block;margin-bottom: 1px;
+    	}
+    .item-channels{
+    	width: 790px;
+    	float: left;
+    	display: inline;
+    	height: 24px;
+    	padding: 20px 0 0 20px;
+    	/*background: #FFFFFF;*/
+    	overflow: hidden;
+    	}
+   
+    .item-channels .channels a span{
+    	display: inline-block;
+    	margin-left: 8px;
+    	width: 23px;
+    	height: 24px;
+    	font: 400 9px/24px consolas;
+    	/*background: #5c5252;*/
+    	text-align: center; 
+    	}
+    .item-channels .channels a:hover{
+ /*   	background:  #c81623;*/
+    	}
+    .item-channels .channels a:hover span{
+    /*	background:#b61d1d;*/ }
+    .subitems{
+    	width: 790px;
+    	float: left;
+    	padding: 6px 0 1006px 20px;
+    	margin-bottom: -1000px;
+    	background: #FFFFFF;
+    	min-height: 409px;
+    	}
+    .subitems dl{
+    	width: 100%;
+    	line-height: 2em;
+    	overflow: hidden;
+    	font-size: 12px;
+    	}
+    .subitems dl dt{
+    	position: relative;
+    	float: left;
+    	width: 54px;
+    	padding: 8px 30px 0 0;
+    	text-align: right;
+    	font-weight: 700;
+    	font-size: 12px;
+    	}
+    .subitems dl dt span{
+    	position: absolute;
+    	top: 13px;
+    	right: 18px;
+    	width: 4px;
+    	height: 14px;
+    	font: 400 9px/14px consolas;
+    	}
+    .subitems dl dd{
+    	border-top: 1px solid #eee;
+    	width: 620px;
+    	padding: 6px 0;
+    	overflow: hidden;}
+    .subitems dl dd a{
+    	float: left;
+    	 padding: 0 8px;margin: 4px 0;
+    	 line-height: 16px;
+    	 height: 16px;
+    	 border-left: 1px solid #e0e0e0;
+    	}
+    .subitems .sub1 dd{
+    	border-top: none;
+    	}
+    .subitems dl dt a:hover{
+    	color: #b61d1d;
+    	}
+    .subitems dl dd a:hover{
+    	 color: #b61d1d;}
+    .hiden{
+    	display: none;
+    }
+    .thname img{
+    	width: 18px;
+    	 height: 18px; 
+    	 position: relative;
+    	  top: 5px;
+    }

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import com.service.impl.OrderServiceImpl;
 import com.service.inter.OrderService;
 import com.vo.Order1;
+import com.service.impl.ProductServiceImpl;
+import com.service.inter.ProductService;
 import com.vo.Product;
 import com.vo.User;
 
@@ -32,11 +34,23 @@ public class OrderServlet extends HttpServlet {
 		System.out.println("in checkOrder");
 		String target = "";
 		//一.填充数据
+		String pid = request.getParameter("pid");
 		//二.调用业务逻辑
+		ProductService service = new ProductServiceImpl();
+		Product product;
+		try {
+			product = service.getProductById(pid);
+		} catch (Exception e) {
+			target = "/WEB-INF/msg.jsp";
+			request.setAttribute("msg", e.getMessage());
+			e.printStackTrace();
+		}
+		
 		//判断是否登录
 		HttpSession session = request.getSession(true);
 		
 		User user = (User)session.getAttribute("user");
+		
 		if(user!=null){
 			//跳到 结算页
 			
@@ -45,11 +59,11 @@ public class OrderServlet extends HttpServlet {
 			//三.转发视图
 			request.setAttribute("list", list);
 			
-			target = "/WEB-INF/jsp/user/user/jiesuan.jsp";
+			target = "/WEB-INF/jsp/user/querendingdan.jsp";
 		}else{
 			//跳到登陆页面
 			target = "/jsp/user/login.jsp";
-			request.setAttribute("toWhere", "jiesuan");
+			request.setAttribute("toWhere", "querendingdan");
 		}
 		//三.转发视图
 		request.getRequestDispatcher(target).forward(request, response);

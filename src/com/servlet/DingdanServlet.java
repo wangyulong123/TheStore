@@ -38,6 +38,8 @@ public class DingdanServlet extends HttpServlet {
 			this.querendingdan(request,response);
 		}else if("submitDingdan".equals(action)){
 			this.submit(request,response);
+		}else if("examineOrder".equals(action)){
+			this.examineOrder(request,response);
 		}else if("getAllByPage".equals(action)){	
 			this.getAllByPage(request,response);
 		}else if("getPageByQuery".equals(action)){	
@@ -49,6 +51,7 @@ public class DingdanServlet extends HttpServlet {
 		}else if("update".equals(action)){	
 			this.update(request,response);
 		}
+		
 	}
 
 	public void guanlishouhuodizhi(HttpServletRequest request, HttpServletResponse response)
@@ -71,7 +74,7 @@ System.out.println("DingdanServlet.querendingdan()");
 		Order1 order = new Order1();
 		Address addrs = new Address();
 		
-		//一.填充数据
+		//一.填充数据		
 		HttpSession session = request.getSession(true);
 		User user = (User) session.getAttribute("user");
 		List<Product> shoppingCart = (List<Product>)session.getAttribute("shoppingCart");
@@ -114,6 +117,21 @@ System.out.println("DingdanServlet.querendingdan()");
 		
 		session.setAttribute("order", order);
 		request.setAttribute("addrs", addrs);
+		
+		/*//一.填充数据
+		String pid = request.getParameter("pid");
+		String count = request.getParameter("count");
+		//二.调用业务逻辑
+		ProductService service1 = new ProductServiceImpl();
+		Product product;
+		try {
+			product = service1.getProductById(pid);
+			product.setShoppingSum(Integer.parseInt(count));
+		} catch (Exception e) {
+			target = "/WEB-INF/msg.jsp";
+			request.setAttribute("msg", e.getMessage());
+			e.printStackTrace();
+		}*/
 		//三.转发视图
 		target = "/WEB-INF/jsp/user/querendingdan2.jsp";
 		request.getRequestDispatcher(target).forward(request, response);
@@ -357,6 +375,19 @@ System.out.println("DingdanServlet.querendingdan()");
 			request.getRequestDispatcher(target).forward(request,response);
 		}
 		
+	}
+	
+	public void examineOrder(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String target = "";
+		//一.填充数据
+		
+		//二.调用业务逻辑
+		
+		//三.转发视图
+		target = "/WEB-INF/jsp/user/NewYiHaoDian.jsp";
+		request.getRequestDispatcher(target).forward(request, response);
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

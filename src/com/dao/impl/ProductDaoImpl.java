@@ -138,6 +138,13 @@ public class ProductDaoImpl implements ProductDao {
 				product.setProductSum(rs.getInt("productsum"));
 				product.setPrice(rs.getInt("price"));
 				product.setDianpuName(rs.getString("dianpuname"));
+				product.setShoppingCarImg(rs.getString("shoppingCarImg"));
+				product.setDetailLargeImg(rs.getString("detailLargeImg"));
+				product.setDetailSmallImg1(rs.getString("detailSmallImg1"));
+				product.setDetailSmallImg2(rs.getString("detailSmallImg2"));
+				product.setDetailSmallImg3(rs.getString("detailSmallImg3"));
+				product.setDetailSmallImg4(rs.getString("detailSmallImg4"));
+				product.setDetailSmallImg5(rs.getString("detailSmallImg5"));
 			}
 
 		} catch (SQLException e) {

@@ -23,11 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 			#userPay{
 				width:950px;
-				position: relative;
-				left: 200px;
-				top:-25px;
 			}
-			
+			#userPay fieldset{
+				position:relative;
+				left:200px;
+				top:-20px;
+			}
 			fieldset> div {
 				margin-bottom: 10px;
 			}
@@ -64,223 +65,90 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				position: relative;
 				left: 200px;
 			}
+			
+			#btn1{
+				border-radius:5px;
+				background-color:#A2A2A2;
+				position:relative;
+				left:100px;
+				font-size:13px;
+			}
 		</style>
-
-		<script type="text/javascript">
-			var userCardIdInput;
-			var password1Input;  
-			var password2Input;
-			var phoneInput;
-
-			window.onload = function() {
-
-				//给 银行卡号 绑定onblur事件
-				userCardIdInput = document.getElementById("userCardId");
-				userCardIdInput.onblur = checkUserCardId;
-				userCardIdInput.onkeyup = checkUserCardId;
-				//给设置密码绑定onblur事件
-				password1Input = document.getElementById("password1");
-				password1Input.onblur = checkPassword1;
-				password1Input.onkeyup = checkPassword1;
-				
-				//给确认密码绑定onblur事件
-				password2Input = document.getElementById("password2");
-				password2Input.onblur = checkPassword2;
-				password2Input.onkeyup = checkPassword2;
-				
-				//给手机号 文本框绑定onblur事件
-				phoneInput = document.getElementById("phone");
-				phoneInput.onblur = checkPhone;
-				phoneInput.onkeyup = checkPhone;
-				//给 "确认支付"按钮 绑定事件
-				var btn1 = document.getElementById("btn1");
-				btn1.onclick = confirm;
-			}
-
-			function trim(txt) {
-				var afterTrimTxt = txt.replace(/^\s*/, "").replace(/\s*$/, "");
-				return afterTrimTxt;
-			}
-
-			function isCardId(cardNumber) {
-				var regularExpression = /d{19}}/;
-				if (regularExpression.test(cardNumber)) {
-					return true;
-				} else {
-					return false;
-				}
-			}
-			function isPhone(phoneNumber) {
-				var regularExpression = /^(186\d{8})$|^(13[4-9]\d{8})$|^(15[0-2]\d{8})$/;
-				if (regularExpression.test(phoneNumber)) {
-					return true;
-				} else {
-					return false;
-				}
-			}
-
-			//验证银行卡号
-			function checkUserCardId() {
-
-				//1.银行卡号不能为空
-				var userCardId = userCardIdInput.value;
-
-				var mySpan = userCardIdInput.nextSibling;
-
-				mySpan.innerHTML = "";
-
-				if (trim(userCardId) == "") {
-					//提示 "请输入银行卡号"
-					mySpan.innerHTML = "请输入银行卡号";
-					mySpan.className = "error";
-				} else if (userCardId.length != 19) {
-					mySpan.innerHTML = "银行卡号错误";
-					mySpan.className = "error";
-				} else {
-					//验证通过
-					//弄一个 "对勾"
-					mySpan.className = "success";
-				}
-
-			}
-			
-			function checkPassword1 () {
-					
-				var password1 = password1Input.value;
-
-				var mySpan = password1Input.nextSibling;
-
-				mySpan.innerHTML = "";
-
-				if (trim(password1) == "") {
-					//提示 "密码不能为空"
-					mySpan.innerHTML = "密码不能为空";
-					mySpan.className = "error";
-				} else if (password1.length != 6) {
-					mySpan.innerHTML = "密码错误";
-					mySpan.className = "error";
-				} else {
-					//验证通过
-					//弄一个 "对勾"
-					mySpan.className = "success";
-				}
-			}
-			
-			function checkPassword2 () {
-				
-				var password1 = document.getElementById("password1").value;
-				
-				var password2 = password2Input.value;
-
-				var mySpan = password2Input.nextSibling;
-
-				mySpan.innerHTML = "";
-
-				if (trim(password2) == "") {
-					//提示 "密码不能为空"
-					mySpan.innerHTML = "确认密码不能为空";
-					mySpan.className = "error";
-				} else if (password1!=password2) {
-					mySpan.innerHTML = "两次密码输入不一致";
-					mySpan.className = "error";
-				} else {
-					//验证通过
-					//弄一个 "对勾"
-					mySpan.className = "success";
-				}
-			}
-			
-			function checkPhone() {
-
-				var phone = phoneInput.value;
-
-				var mySpan = phoneInput.nextSibling;
-
-				mySpan.innerHTML = "";
-
-				if (phone != "" && !isPhone(phone)) {
-
-					mySpan.innerHTML = "手机号格式不正确";
-					mySpan.className = "error";
-				} else {
-					mySpan.className = "success";
-				}
-
-				if (trim(phone) == '') {
-					mySpan.className = "";
-				}
-
-			}
-
-			function confirm() {
-				//验证所有信息
-				userCardIdInput.onblur();
-				password1Input.onblur();
-				password2Input.onblur();
-				phoneInput.onblur();
-
-				var spanArr = document.getElementsByClassName("error");
-				
-				//没有错误的话提交表单
-				//通过span为error的个数判断有没有错误
-				if (spanArr.length > 0) {
-					//不提交
-				} else {
-					//提交
-					var userPay = document.getElementById("userPay");
-					userPay.action = "handler.html";
-					userPay.submit();
-				}
-			}
-		</script>
 	</head>
 
 	<body>
-		<div>
-			<img src="imgs/payhead.png" />
-		</div>
-		<pre>
-			<div id="getPayment">
-		订单金额：<span id="price">999 </span>元               订单编号：<span id="orderNumber">228265382</span> 	            商户名称：<span id="merchantName">商户名称123</span>
-				
-		交易银行：<span id="dealBank">建设银行</span> 	     交易种类：直接消费                       交易币种：<span id="dealCurrency">人民币</span>
-				<div style="position:absolute;top:-10px;right: 10px;">
-					<img src="imgs/paystyle.png" />
-				</div>
+		<form id="userPay" action="https://www.yeepay.com/app-merchant-proxy/node" method="post">
+			<div>
+				<img src="imgs/payhead.png" />
 			</div>
-		</pre>
+			
+			<input type="hidden" name="pd_FrpId" value="${pd_FrpId }" />
+			<input type="hidden" name="p0_Cmd" value="${p0_Cmd }" />
+			<input type="hidden" name="p1_MerId" value="${p1_MerId }" />
+			<input type="hidden" name="p2_Order" value="${p2_Order }" />
+			<input type="hidden" name="p3_Amt" value="${p3_Amt }" />
+			<input type="hidden" name="p4_Cur" value="${p4_Cur }" />
+			<input type="hidden" name="p5_Pid" value="${p5_Pid }" />
+			<input type="hidden" name="p6_Pcat" value="${p6_Pcat }" />
+			<input type="hidden" name="p7_Pdesc" value="${p7_Pdesc }" />
+			<input type="hidden" name="p8_Url" value="${p8_Url }" />
+			<input type="hidden" name="p9_SAF" value="${p9_SAF }" />
+			<input type="hidden" name="pa_MP" value="${pa_MP }" />
+			<input type="hidden" name="pr_NeedResponse" value="${pr_NeedResponse }" />
+			<input type="hidden" name="hmac" value="${hmac }" />
+			
+			<pre>
+				<div id="getPayment">
+			订单金额：<span name="amount">${p3_Amt } </span>元                        订单编号：<span name="orderId">${p2_Order }</span> 	                  商户名称：<span name="merchantName">1号店网上支付</span>
+					
+			交易种类：直接消费                       交易币种：<span name="currency">人民币</span>
+					<div style="position:absolute;top:-10px;right: 10px;">
+						<img src="imgs/paystyle.png" />
+					</div>
+				</div>
+			</pre>
 		
-		<form id="userPay" action="#" method="post">
 			<fieldset>
-				<legend>网上支付</legend>
+				<legend><b>银联支付</b></legend>
 				<div>
-					<label>选择银行卡</label>
-					<input type="radio" name="Bank" value="JianSheBank" checked="checked"/>建设银行
-					<input type="radio" name="Bank" value="ChinaBank"/>中国银行
+					<label>选择银行卡</label><br/>
+					<div style="width:500px;position:relative;left:100px;">
+					 	<INPUT TYPE="radio" NAME="pd_FrpId" value="CCB-NET" checked="checked">建设银行
+						<INPUT TYPE="radio" NAME="pd_FrpId" value="CMBCHINA-NET">招商银行<em> </em>
+					    <INPUT TYPE="radio" NAME="pd_FrpId" value="ICBC-NET">工商银行
+					    <INPUT TYPE="radio" NAME="pd_FrpId" value="ABC-NET">农业银行
+					    <INPUT TYPE="radio" NAME="pd_FrpId" value="CMBC-NET">中国民生银行总行<br/>
+					    <INPUT TYPE="radio" NAME="pd_FrpId" value="CEB-NET" >光大银行 
+					    <INPUT TYPE="radio" NAME="pd_FrpId" value="BOCO-NET">交通银行<em> </em>
+					    <INPUT TYPE="radio" NAME="pd_FrpId" value="BCCB-NET">北京银行
+					    <INPUT TYPE="radio" NAME="pd_FrpId" value="CIB-NET">兴业银行 
+					    <INPUT TYPE="radio" NAME="pd_FrpId" value="SPDB-NET">上海浦东发展银行<br/>
+					    <INPUT TYPE="radio" NAME="pd_FrpId" value="ECITIC-NET">中信银行
+					    <INPUT TYPE="radio" NAME="pd_FrpId" value="SDB-NET">深圳发展银行
+					</div>
+					<table width="300" height="150px" border="0" align="center" cellpadding="5"
+						cellspacing="0" style="position:absolute;right:10px;top:40px;">
+						<tr>
+							<td bgcolor="#F4F8FF"><span class="STYLE5"> 温馨提示</span></td>
+						</tr>
+						<tr>
+							<td>
+								<ul>
+									<li>建行客户需到柜面签约网上银行才能支付</li>
+									<li>请关闭弹出窗口拦截功能</li>
+									<li>务必使用Google Chrome、FireFox或IE5.0以上浏览器</li>
+									<li>支付出错时勿按浏览器“后退”键</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
 				</div>
 				<div>
-					<label>卡类型</label>
-					<input type="radio" name="CardType" value="JianSheCard" checked="checked"/>储蓄卡
-					<input type="radio" name="CardType" value="ChinaCard"/>信用卡
-				</div>
-				<div>
-					<label>银行卡号</label><em>*</em>
-					<input type="text" name="userCardId" id="userCardId" /><span></span>
-				</div>
-				
-				<div>
-					<label>支付密码</label><em>*</em>
-					<input type="password" name="password1" id="password1" /><span></span>
-				</div>
-				
-				<div>
-					<label>确定密码</label><em>*</em>
-					<input type="password" name="password2" id="password2" /><span></span>
-				</div>
-
-				<div>
-					<label>银行预留手机号</label><em>*</em>
-					<input type="text" name="phone" id="phone" /><span></span>
+					<label>银行卡类型</label><br/>
+					<div style="position:relative;left:100px;">
+						<input type="radio" name="CardType" value="JianSheCard" checked="checked"/>储蓄卡
+						<input type="radio" name="CardType" value="ChinaCard"/>信用卡
+					</div>
 				</div>
 
 				<div>

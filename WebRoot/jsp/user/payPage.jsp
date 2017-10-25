@@ -17,8 +17,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  		<jsp:forward page="/PayServlet">
+  		<%-- <jsp:forward page="/PayServlet">
 			<jsp:param name="action" value="submitPay" />
-		</jsp:forward>
+		</jsp:forward> --%>
+		<%
+			String orderid = request.getParameter("orderid");
+			String money = request.getParameter("money");
+		 %>
+		<form action="PayServlet" method="post">
+			<input type="hidden" name="action" value="submitPay" />
+	  		<input type="hidden" name="pd_FrpId" value="CCB-NET" />
+	  		<input type="hidden" name="orderid" value="74185296 " />
+	  		<input type="hidden" name="money" value="0.01" />
+	  		<input type="submit" value="立即付款" />
+	  	</form>
   </body>
 </html>
