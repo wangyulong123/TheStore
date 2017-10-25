@@ -1,10 +1,10 @@
 package com.dao.inter;
 
-
 import java.util.List;
 
 import com.vo.Category;
 import com.vo.Category2;
+import com.vo.Product;
 
 public interface Category2Dao {
 
@@ -24,4 +24,5 @@ public interface Category2Dao {
 	public int updateCategory2(Category2 category) throws Exception;
 	//8.获得所有的一级二级商品名字
 	public List<Category> getAllCategorysBySql(String sql) throws Exception;
+	
 }

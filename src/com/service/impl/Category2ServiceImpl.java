@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.dao.impl.Category2DaoImpl;
@@ -8,6 +9,7 @@ import com.page.PageInfo;
 import com.service.inter.Category2Service;
 import com.vo.Category;
 import com.vo.Category2;
+import com.vo.Product;
 
 public class Category2ServiceImpl implements Category2Service {
 
@@ -249,6 +251,5 @@ public class Category2ServiceImpl implements Category2Service {
 		}
 		return parentCid;
 	}
-	
-	
+
 }

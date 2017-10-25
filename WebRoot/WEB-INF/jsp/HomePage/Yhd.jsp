@@ -56,11 +56,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 
 		 <div class="side">
 	<ul>
-		<li><a href="#" ><div class="sidebox" ><img src="staticTheStore/图片/个人中心.png" style="width:34px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">个人中心</a></div></a></li>
-		<li style="text-align: center;"><a href="#" ><div class="sidebox" style="text-align: center;"><img src="staticTheStore/图片/购物车空.png" style="width: 30px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">购物车</a></div></a></li>
-		<li><a href="javascript:void(0);" ><div class="sidebox"><img src="staticTheStore/图片/会员卡卷3.png" style="width: 32px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">我的卡卷</a></div></a></li>
-		<li style="top:370px ;"><a href="javascript:void(0);" ><div class="sidebox"><img src="staticTheStore/图片/用户反馈.png"style="width: 30px;height: 25px;"><a href="#" class="main-right-a" style="text-decoration: none;">用户反馈</a></div></a></li>
-		<li style="border:none; top: 380px; " ><a href="javascript:goTop();" class="sidetop"><img src="staticTheStore/图片/回到顶部.png"style="width: 28px;height: 25px;"><a href="#" class="main-right-a"> 	</a></a></li>
+		<li><a href="javascript:void(0);"  ><div class="sidebox" ><img src="staticTheStore/图片/个人中心.png" style="width:34px;height: 25px;"><a href="javascript:void(0);"  class="main-right-a" style="text-decoration: none;">个人中心</a></div></a></li>
+		<li style="text-align: center;"><a href="javascript:void(0);"  ><div class="sidebox" style="text-align: center;"><img src="staticTheStore/图片/购物车空.png" style="width: 30px;height: 25px;"><a href="javascript:void(0);"  class="main-right-a" style="text-decoration: none;">购物车</a></div></a></li>
+		<li><a href="javascript:void(0);" ><div class="sidebox"><img src="staticTheStore/图片/会员卡卷3.png" style="width: 32px;height: 25px;"><a href="javascript:void(0);"  class="main-right-a" style="text-decoration: none;">我的卡卷</a></div></a></li>
+		<li style="top:370px ;"><a href="javascript:void(0);" ><div class="sidebox"><img src="staticTheStore/图片/用户反馈.png"style="width: 30px;height: 25px;"><a href="javascript:void(0);"  class="main-right-a" style="text-decoration: none;">用户反馈</a></div></a></li>
+		<li style="border:none; top: 380px; " ><a href="javascript:goTop();" class="sidetop"><img src="staticTheStore/图片/回到顶部.png"style="width: 28px;height: 25px;"><a href="javascript:void(0);"  class="main-right-a"> 	</a></a></li>
 	</ul>
 </div>
 		 </div>
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input type="text" id="cityChoice"  value="送货地址：北京" style="margin: 134px 0 0 557px; width: 100px;" readonly="readonly">
 				     
 						<div style="width: 100%; height: auto; line-height: 25px; text-align: center; display: none;">
-							<a href="#"><b></b></a>
+							<a href="javascript:void(0);" ><b></b></a>
 						</div>
 					
 				</div>
@@ -96,23 +96,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 if(user==null){
 					 //显示：Hi,请登录
 					 %>	
-					<a id="pregister" href="jsp/user/Login.jsp">Hi,请登录</a>
+					<a id="pregister" href="jsp/HomePage/Login.jsp">Hi,请登录</a>
 					<a id="register" href="jsp/user/Regist.jsp">注册</a>
 					<%
 					}else{
 					 %>
 					   <b>你好!<%=user.getNickname() %></b>
-					   <a href="UsernameServlet?action=logout">退出登录</a>
+					   <a href="LoginServlet?action=logout">退出登录</a>
 					   <%
 					   }
 					    %>
 					<span>|</span>
 					
 					<!--文本标签-->
-					<a href="">我的订单</a>
+					<a href="javascript:void(0);" >我的订单</a>
 					<span>|</span>
 					<!--文本标签-->
-					<a href="">充值中心</a>
+					<a href="javascript:void(0);" >充值中心</a>
 					<span>|</span>
 					<select name="客服中心" >
 						<option value="客服中心">客服中心</option>
@@ -141,10 +141,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					action="UserProductServlet?action=getPageByQuery" method="post">
 				<div class="input-group" style="width:600px; margin:0px auto;">
 				<!-- <input  type="text" name="name" class="inputtable" id="name" /> form-control -->
-					<input type="text" class="inputtable form-control" id="searchCondition" name="name"  value="${requestScope.name}"   id="name" />
+					<input type="text" class="inputtable form-control" id="searchCondition" name="searchCondition"   value="${requestScope.searchCondition}"   id="name" />
 					<span class="input-group-btn">
-            <input type="button" name="search" value="搜索" class="btn btn-default"  style="background-color: #FF4040; color: white;"/>
-        
+            <input type="submit" name="search" value="搜索"  class="btn btn-default"  style="background-color: #FF4040; color: white;"/> 
+             	
 			</span>
 				</div>
 				</form>
@@ -153,39 +153,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 			</div>
 			<div class="logo-center-under">
-				<a href="">巧克力</a>
+		
+				<a href="javascript:void(0);" >巧克力</a>
 				<span> </span>
-				<a href="">料酒</a>
+				<a href="javascript:void(0);" >料酒</a>
 				<span> </span>
-				<a href="">湿巾</a>
+				<a href="javascript:void(0);" >湿巾</a>
 				<span> </span>
-				<a href="">洗衣粉</a>
+				<a href="javascript:void(0);" >洗衣粉</a>
 				<span> </span>
-				<a href="">蜂蜜</a>
+				<a href="javascript:void(0);" >蜂蜜</a>
 				<span> </span>
-				<a href="">手帕纸</a>
+				<a href="javascript:void(0);" >手帕纸</a>
 				<span> </span>
-				<a href="">醋</a>
+				<a href="javascript:void(0);" >醋</a>
 
 			</div>
 			<div class="logo-center-under1">
-				<a href="">1号抢购</a>
+				<a href="javascript:void(0);" >1号抢购</a>
 				<span> </span>
-				<a href="">1号团</a>
+				<a href="javascript:void(0);" >1号团</a>
 				<span> </span>
-				<a href="">领券中心</a>
+				<a href="javascript:void(0);" >领券中心</a>
 				<span> </span>
-				<a href="">商城优选</a>
+				<a href="javascript:void(0);" >商城优选</a>
 				<span> </span>
-				<a href="">全球进口</a>
+				<a href="javascript:void(0);" >全球进口</a>
 				<span> </span>
-				<a href="">1号生鲜</a>
+				<a href="javascript:void(0);" >1号生鲜</a>
 				<span> </span>
-				<a href="">美妆馆</a>
+				<a href="javascript:void(0);" >美妆馆</a>
 				<span> </span>
-				<a href="">家居馆</a>
+				<a href="javascript:void(0);" >家居馆</a>
 				<span> </span>
-				<a href="">电器城</a>
+				<a href="javascript:void(0);" >电器城</a>
 			</div>
 			<div class="logo-right">
 				<!--<input type="button" name="btn1" id="btn1" value="购物车" />-->
@@ -242,7 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="nav-con">
 				<div class="nav-con-left">
 					<div class="nav-con-lefttext">
-						<a href="#">全部商品分类</a>
+						<a href="javascript:void(0);" >全部商品分类</a>
 					</div>
 					<div class="nav-variety" id="things" >
 						<ul class="thing-variety" id="variety" >
@@ -255,7 +256,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 %>
 	
 								
-			<h4><a href="#" ><img src="staticTheStore/img/img1.png" />&nbsp;&nbsp;		
+			<h4><a href="javascript:void(0);"  ><img src="staticTheStore/img/img1.png" />&nbsp;&nbsp;		
 			<%
 			 for(int i=0;i<3;i++){
 			  %>
@@ -268,7 +269,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</li>
 		 <li class="tab-item">
 								<div class="thname">
-									<h4><a href="freeFood.html"><img src="staticTheStore/图片/食品.png" />&nbsp;&nbsp;		
+									<h4>	<a href="javascript:void(0);" ><img src="staticTheStore/图片/食品.png" />&nbsp;&nbsp;		
 									<%
 									  for(int i=3;i<5;i++){
 									   %>
@@ -285,67 +286,67 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/童装煮洗.png" />&nbsp;&nbsp;母婴/玩具/童装/</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/童装煮洗.png" />&nbsp;&nbsp;母婴/玩具/童装/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/童装煮洗.png" />&nbsp;&nbsp;纸巾/清洁用品/</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/童装煮洗.png" />&nbsp;&nbsp;纸巾/清洁用品/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/家具.png" />&nbsp;&nbsp;家具/家纺/家装/宠物/</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/家具.png" />&nbsp;&nbsp;家具/家纺/家装/宠物/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/美妆.png" />&nbsp;&nbsp;美妆个人清洁/洗护/</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/美妆.png" />&nbsp;&nbsp;美妆个人清洁/洗护/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/女装.png" />&nbsp;&nbsp;女装/男装/内衣/珠宝/</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/女装.png" />&nbsp;&nbsp;女装/男装/内衣/珠宝/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/鞋靴.png" />&nbsp;&nbsp;鞋靴/箱包/运动户外</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/鞋靴.png" />&nbsp;&nbsp;鞋靴/箱包/运动户外</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/手机.png" />&nbsp;&nbsp;手机/数码/电脑办公/</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/手机.png" />&nbsp;&nbsp;手机/数码/电脑办公/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/家用电器.png" />&nbsp;&nbsp;家用电器/汽车用品/</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/家用电器.png" />&nbsp;&nbsp;家用电器/汽车用品/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/医药.png" />&nbsp;&nbsp;医药/保健滋补/成人/</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/医药.png" />&nbsp;&nbsp;医药/保健滋补/成人/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/旅行.png" />&nbsp;&nbsp;旅行/票卷/生活广告/</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/旅行.png" />&nbsp;&nbsp;旅行/票卷/生活广告/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="#"><img src="staticTheStore/图片/理财.png" />&nbsp;&nbsp;理财/众筹/保险/</a></h4>
+									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/理财.png" />&nbsp;&nbsp;理财/众筹/保险/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
@@ -359,7 +360,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								
 							%>
 							<dl class="sub2" >
-									<dt ><a href="#" style="text-align: center; "><%=list.get(j).getCname() %><span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+									<dt ><a href="javascript:void(0);"  style="text-align: center; "><%=list.get(j).getCname() %><span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 				
 								<dd>
 										<%
@@ -369,7 +370,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 								for(Category2 category2:category2List){
 							%>	
-							  <a href="#" target="_blank"><%=category2.getCname() %></a>
+							  <%-- <a href="javascript:void(0);"  target="_blank"><%=category2.getCname() %></a> --%>
+							  <a href="UserProductServlet?action=getProductListByCategory&requestPage=1&cid=<%=category2.getCid()%>"><%=category2.getCname()%></a>  	
 						
 							 <%
 							 }
@@ -384,12 +386,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							 
 						
 									<dl class="sub3">
-										<dt><a href="#">酒水<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >酒水<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">桔汁汽水</a>
-											<a href="#" target="_blank">橙汁汽水</a>
-											<a href="#" target="_blank">菠萝汁汽水</a>
-											<a href="#" target="_blank">菠萝汁汽水</a>
+											<a href="javascript:void(0);"  target="_blank">桔汁汽水</a>
+											<a href="javascript:void(0);"  target="_blank">橙汁汽水</a>
+											<a href="javascript:void(0);"  target="_blank">菠萝汁汽水</a>
+											<a href="javascript:void(0);"  target="_blank">菠萝汁汽水</a>
 											<a href=# " target="_blank ">混合果汁汽水</a>
                                     <a href="# " target="_blank ">运动汽水</a>
                                 </dd>
@@ -402,16 +404,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">方便面</a>
                                     <a href="# " target="_blank ">罐头</a>
                                     <a href=#" target="_blank">食用油</a>
-											<a href="#" target="_blank">好吃点</a>
+											<a href="javascript:void(0);"  target="_blank">好吃点</a>
 										</dd>
 									</dl>
 									<dl class="sub5">
-										<dt><a href="#">咖啡<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >咖啡<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">浓缩咖啡</a>
-											<a href="#" target="_blank">玛奇朵</a>
-											<a href="#" target="_blank">美式咖啡</a>
-											<a href="#" target="_blank">白咖啡</a>
+											<a href="javascript:void(0);"  target="_blank">浓缩咖啡</a>
+											<a href="javascript:void(0);"  target="_blank">玛奇朵</a>
+											<a href="javascript:void(0);"  target="_blank">美式咖啡</a>
+											<a href="javascript:void(0);"  target="_blank">白咖啡</a>
 											<a href=# " target="_blank ">拿铁</a>
                                     <a href="# " target="_blank ">康宝蓝</a>
                                 </dd>
@@ -424,16 +426,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">喂药器</a>
                                     <a href="# " target="_blank ">吸奶器</a>
                                     <a href=#" target="_blank">奶瓶盖</a>
-											<a href="#" target="_blank">棉签</a>
+											<a href="javascript:void(0);"  target="_blank">棉签</a>
 										</dd>
 									</dl>
 									<dl class="sub7">
-										<dt><a href="#">家具<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >家具<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">实木家具</a>
-											<a href="#" target="_blank">板式家具</a>
-											<a href="#" target="_blank">藤艺家具</a>
-											<a href="#" target="_blank">软体类家具</a>
+											<a href="javascript:void(0);"  target="_blank">实木家具</a>
+											<a href="javascript:void(0);"  target="_blank">板式家具</a>
+											<a href="javascript:void(0);"  target="_blank">藤艺家具</a>
+											<a href="javascript:void(0);"  target="_blank">软体类家具</a>
 											<a href=# " target="_blank ">金属玻璃类家具</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -446,16 +448,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">居家氛围</a>
+											<a href="javascript:void(0);"  target="_blank">居家氛围</a>
 										</dd>
 									</dl>
 									<dl class="sub9">
-										<dt><a href="#">牛奶<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >牛奶<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">纯牛奶</a>
-											<a href="#" target="_blank">甜牛奶</a>
-											<a href="#" target="_blank">高钙奶</a>
-											<a href="#" target="_blank">脱脂奶</a>
+											<a href="javascript:void(0);"  target="_blank">纯牛奶</a>
+											<a href="javascript:void(0);"  target="_blank">甜牛奶</a>
+											<a href="javascript:void(0);"  target="_blank">高钙奶</a>
+											<a href="javascript:void(0);"  target="_blank">脱脂奶</a>
 											<a href=# " target="_blank ">儿童奶</a>
                                     <a href="# " target="_blank ">特仑苏</a>
                                 </dd>
@@ -478,7 +480,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								
 							%>
 							<dl class="sub2" >
-									<dt ><a href="#" style="text-align: center; "><%=list.get(j).getCname() %><span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+									<dt ><a href="javascript:void(0);"  style="text-align: center; "><%=list.get(j).getCname() %><span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 				
 								<dd>
 										<%
@@ -488,7 +490,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 								for(Category2 category2:category2List){
 							%>	
-							  <a href="#" target="_blank"><%=category2.getCname() %></a>
+							  <a href="javascript:void(0);"  target="_blank"><%=category2.getCname() %></a>
 						
 							 <%
 							 }
@@ -504,23 +506,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								
 									
 						<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
                            
 									<dl class="sub3">
-										<dt><a href="#">酒水<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >酒水<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">桔汁汽水</a>
-											<a href="#" target="_blank">橙汁汽水</a>
-											<a href="#" target="_blank">菠萝汁汽水</a>
-											<a href="#" target="_blank">菠萝汁汽水</a>
+											<a href="javascript:void(0);"  target="_blank">桔汁汽水</a>
+											<a href="javascript:void(0);"  target="_blank">橙汁汽水</a>
+											<a href="javascript:void(0);"  target="_blank">菠萝汁汽水</a>
+											<a href="javascript:void(0);"  target="_blank">菠萝汁汽水</a>
 											<a href=# " target="_blank ">混合果汁汽水</a>
                                     <a href="# " target="_blank ">运动汽水</a>
                                 </dd>
@@ -533,16 +535,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">方便面</a>
                                     <a href="# " target="_blank ">罐头</a>
                                     <a href=#" target="_blank">食用油</a>
-											<a href="#" target="_blank">好吃点</a>
+											<a href="javascript:void(0);"  target="_blank">好吃点</a>
 										</dd>
 									</dl>
 									<dl class="sub5">
-										<dt><a href="#">咖啡<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >咖啡<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">浓缩咖啡</a>
-											<a href="#" target="_blank">玛奇朵</a>
-											<a href="#" target="_blank">美式咖啡</a>
-											<a href="#" target="_blank">白咖啡</a>
+											<a href="javascript:void(0);"  target="_blank">浓缩咖啡</a>
+											<a href="javascript:void(0);"  target="_blank">玛奇朵</a>
+											<a href="javascript:void(0);"  target="_blank">美式咖啡</a>
+											<a href="javascript:void(0);"  target="_blank">白咖啡</a>
 											<a href=# " target="_blank ">拿铁</a>
                                     <a href="# " target="_blank ">康宝蓝</a>
                                 </dd>
@@ -555,16 +557,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">喂药器</a>
                                     <a href="# " target="_blank ">吸奶器</a>
                                     <a href=#" target="_blank">奶瓶盖</a>
-											<a href="#" target="_blank">棉签</a>
+											<a href="javascript:void(0);"  target="_blank">棉签</a>
 										</dd>
 									</dl>
 									<dl class="sub7">
-										<dt><a href="#">家具<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >家具<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">实木家具</a>
-											<a href="#" target="_blank">板式家具</a>
-											<a href="#" target="_blank">藤艺家具</a>
-											<a href="#" target="_blank">软体类家具</a>
+											<a href="javascript:void(0);"  target="_blank">实木家具</a>
+											<a href="javascript:void(0);"  target="_blank">板式家具</a>
+											<a href="javascript:void(0);"  target="_blank">藤艺家具</a>
+											<a href="javascript:void(0);"  target="_blank">软体类家具</a>
 											<a href=# " target="_blank ">金属玻璃类家具</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -591,16 +593,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -612,16 +614,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -634,16 +636,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -667,16 +669,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -688,16 +690,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -710,16 +712,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -744,16 +746,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -765,16 +767,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -787,16 +789,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -820,16 +822,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -841,16 +843,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -863,16 +865,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -896,16 +898,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -917,16 +919,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -939,16 +941,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -972,16 +974,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -993,16 +995,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1015,16 +1017,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1048,16 +1050,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -1069,16 +1071,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1091,16 +1093,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1124,16 +1126,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -1145,16 +1147,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1167,16 +1169,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1200,16 +1202,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -1221,16 +1223,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1243,16 +1245,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1276,16 +1278,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -1297,16 +1299,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1319,16 +1321,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1352,16 +1354,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub2">
-										<dt><a href="#">众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >众筹<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">智能硬件</a>
-											<a href="#" target="_blank">流行文化</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">公益</a>
+											<a href="javascript:void(0);"  target="_blank">智能硬件</a>
+											<a href="javascript:void(0);"  target="_blank">流行文化</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">公益</a>
 											<a href=# " target="_blank ">其他权益众筹</a>
                                 </dd>
                             </dl>
@@ -1373,16 +1375,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub4">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1395,16 +1397,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="# " target="_blank ">基金理财</a>
                                     <a href="# " target="_blank ">定期理财</a>
                                     <a href=#" target="_blank">固收理财</a>
-											<a href="#" target="_blank">妈妈理财</a>
+											<a href="javascript:void(0);"  target="_blank">妈妈理财</a>
 										</dd>
 									</dl>
 									<dl class="sub6">
-										<dt><a href="#">理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
+										<dt><a href="javascript:void(0);" >理财<span style="position:absolute; top: 10px;">&gt;</span></a></dt>
 										<dd>
-											<a href="#" target="_blank">理财小金库</a>
-											<a href="#" target="_blank">票据理财</a>
-											<a href="#" target="_blank">基金理财</a>
-											<a href="#" target="_blank">定期理财</a>
+											<a href="javascript:void(0);"  target="_blank">理财小金库</a>
+											<a href="javascript:void(0);"  target="_blank">票据理财</a>
+											<a href="javascript:void(0);"  target="_blank">基金理财</a>
+											<a href="javascript:void(0);"  target="_blank">定期理财</a>
 											<a href=# " target="_blank ">固收理财</a>
                                     <a href="# " target="_blank ">妈妈理财</a>
                                 </dd>
@@ -1441,7 +1443,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<span class="date-s-span s">00</span>
 			 </div>
 			 <div class="data-show-box-under">
-			 	<a href="">查看更多></a>
+			 	<a href="javascript:void(0);" >查看更多></a>
 			 </div>
 		</div>
 		<div class="time-right">
@@ -1469,7 +1471,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 							<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1484,7 +1486,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1499,7 +1501,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1514,7 +1516,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1529,7 +1531,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1544,7 +1546,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1559,7 +1561,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1574,7 +1576,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1589,7 +1591,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1604,7 +1606,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1619,7 +1621,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="danyishangpin">
 							<div class="dotted_line"></div>
-							<a href="#" title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
+							<a href="javascript:void(0);"  title="稻香村 八月十五花月圆月饼礼盒" class="danyi">
 								<div class="detail_mesg">
 									<p class="name">稻香村 八月十五花月圆月饼礼盒</p>
 									<p class="price">￥ 238</p>
@@ -1646,9 +1648,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	    <div class="sample-sale-left">
     	    	<img src="staticTheStore/图片/liudan.png" style="width: 210px; height: 320px;"/>
     	    	<div class="sample-sale-left-center img" >	
-    	    		<a href="" style="font-size: 15px; line-height: 10px;">品牌特卖</a><br />
+    	    		<a href="javascript:void(0);"  style="font-size: 15px; line-height: 10px;">品牌特卖</a><br />
     	    		<hr  style="width: 20px ; background-color: #000000;line-height: 10px;"/>
-    	    		<a href="" style="font-size:10px ;"line-height: 10px;>每天10:00上新!</a>
+    	    		<a href="javascript:void(0);"  style="font-size:10px ;"line-height: 10px;>每天10:00上新!</a>
     	    		
     	    	</div>
     	    </div>
@@ -1671,7 +1673,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		     </div>
     		</div>
     		<div class="sample-sale-right">
-    			<h4 title="团购" style="line-height: 32px; text-align: center; background-color: #FB6233;width: 120px;color:white ; margin: auto; ">排行榜</h4>	 <a href="" style="position: absolute; right: 20px; top: 8px; font-size:14px;">查看更多》</a>  
+    			<h4 title="团购" style="line-height: 32px; text-align: center; background-color: #FB6233;width: 120px;color:white ; margin: auto; ">排行榜</h4>	 <a href="javascript:void(0);"  style="position: absolute; right: 20px; top: 8px; font-size:14px;">查看更多》</a>  
     			<div class="sample-sale-right-phbang">
     			
 				<ul class="nav nav-tabs" id="myTab" style="width: 570px; height: 30px;">
@@ -1697,14 +1699,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 <div class="tab-pane-img" > 
 				  <table border="0" cellspacing="" cellpadding="" width="570px" height="260px" id="tab-pane-img-table">
 				  	<tr>
-				  		<td><img src="staticTheStore/图片/排行1.jpg"  class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">INMAN/茵曼 2017</a></td>
-				  		<td><img src="staticTheStore/图片/排行2.jpg"/><br/><a href="">洛芊 秋冬新款大码</a></td>
-				  		<td><img src="staticTheStore/图片/排行3.jpg"   class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">Meters/bonwe美特</a></td>
+				  		<td><img src="staticTheStore/图片/排行1.jpg"  class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="javascript:void(0);" >INMAN/茵曼 2017</a></td>
+				  		<td><img src="staticTheStore/图片/排行2.jpg"/><br/><a href="javascript:void(0);" >洛芊 秋冬新款大码</a></td>
+				  		<td><img src="staticTheStore/图片/排行3.jpg"   class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="javascript:void(0);" >Meters/bonwe美特</a></td>
 				  	</tr>
 				  	<tr>
-				  		<td><img src="staticTheStore/图片/排行4.jpg"  class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">初语 2017春季新</a></td>
-				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="">裂帛 女装2017秋</a></td>
-				  				<td><img src="staticTheStore/图片/排行6.jpg" class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="">洛芊 新款秋冬休闲</a></td>
+				  		<td><img src="staticTheStore/图片/排行4.jpg"  class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="javascript:void(0);" >初语 2017春季新</a></td>
+				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="javascript:void(0);" >裂帛 女装2017秋</a></td>
+				  				<td><img src="staticTheStore/图片/排行6.jpg" class="devia" style="left:0px;top:0px; position: relative;	"/><br/><a href="javascript:void(0);" >洛芊 新款秋冬休闲</a></td>
 				  	
 				  	</tr>
 				  	
@@ -1714,14 +1716,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="tab-pane" id="parameter">
 				 <table border="0" cellspacing="" cellpadding="" width="570px" height="260px" id="tab-pane-img-table">
 				  	<tr>
-				  		<td><img src="staticTheStore/排行榜图片/21.jpg" class="img"/><br/><a href="">美滋滋天天见坚果</a></td>
-				  		<td><img src="staticTheStore/排行榜图片/22.jpg"/><br/><a href="">土豆薯条</a></td>
-				  		<td><img src="staticTheStore/排行榜图片/23.jpg" class="img2"/><br/><a href="">鸡蛋干</a></td>
+				  		<td><img src="staticTheStore/排行榜图片/21.jpg" class="img"/><br/><a href="javascript:void(0);" >美滋滋天天见坚果</a></td>
+				  		<td><img src="staticTheStore/排行榜图片/22.jpg"/><br/><a href="javascript:void(0);" >土豆薯条</a></td>
+				  		<td><img src="staticTheStore/排行榜图片/23.jpg" class="img2"/><br/><a href="javascript:void(0);" >鸡蛋干</a></td>
 				  	</tr>
 				  	<tr>
-				  		<td><img src="staticTheStore/排行榜图片/24.jpg" class="img"/><br/><a href="">百草味</a></td>
-				  			<td><img src="staticTheStore/排行榜图片/25.jpg"/><br/><a href="">手撕风干牛肉干</a></td>
-				  				<td><img src="staticTheStore/排行榜图片/26.jpg" class="img"/><br/><a href="">三只松鼠</a></td>
+				  		<td><img src="staticTheStore/排行榜图片/24.jpg" class="img"/><br/><a href="javascript:void(0);" >百草味</a></td>
+				  			<td><img src="staticTheStore/排行榜图片/25.jpg"/><br/><a href="javascript:void(0);" >手撕风干牛肉干</a></td>
+				  				<td><img src="staticTheStore/排行榜图片/26.jpg" class="img"/><br/><a href="javascript:void(0);" >三只松鼠</a></td>
 				  	
 				  	</tr>
 				  	
@@ -1730,14 +1732,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="tab-pane" id="qingdan">
 				 <table border="0" cellspacing="" cellpadding="" width="570px" height="260px" id="tab-pane-img-table">
 				  	<tr>
-				  		<td><img src="staticTheStore/图片/排行1.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  		<td><img src="staticTheStore/图片/排行2.jpg"/><br/><a href="">排行1</a></td>
-				  		<td><img src="staticTheStore/图片/排行3.jpg" class="img2"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行1.jpg" class="img"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行2.jpg"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行3.jpg" class="img2"/><br/><a href="javascript:void(0);" >排行1</a></td>
 				  	</tr>
 				  	<tr>
-				  		<td><img src="staticTheStore/图片/排行4.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="">排行1</a></td>
-				  				<td><img src="staticTheStore/图片/排行6.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行4.jpg" class="img"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  				<td><img src="staticTheStore/图片/排行6.jpg" class="img"/><br/><a href="javascript:void(0);" >排行1</a></td>
 				  	
 				  	</tr>
 				  	
@@ -1746,14 +1748,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="tab-pane" id="pingjia">
 				 <table border="0" cellspacing="" cellpadding="" width="570px" height="260px" id="tab-pane-img-table">
 				  	<tr>
-				  		<td><img src="staticTheStore/图片/排行1.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  		<td><img src="staticTheStore/图片/排行2.jpg"/><br/><a href="">排行1</a></td>
-				  		<td><img src="staticTheStore/图片/排行3.jpg" class="img2"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行1.jpg" class="img"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行2.jpg"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行3.jpg" class="img2"/><br/><a href="javascript:void(0);" >排行1</a></td>
 				  	</tr>
 				  	<tr>
-				  		<td><img src="staticTheStore/图片/排行4.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="">排行1</a></td>
-				  				<td><img src="staticTheStore/图片/排行6.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行4.jpg" class="img"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  				<td><img src="staticTheStore/图片/排行6.jpg" class="img"/><br/><a href="javascript:void(0);" >排行1</a></td>
 				  	
 				  	</tr>
 				  	
@@ -1762,14 +1764,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="tab-pane" id="shouhou">
 				 <table border="0" cellspacing="" cellpadding="" width="570px" height="260px" id="tab-pane-img-table">
 				  	<tr>
-				  		<td><img src="staticTheStore/图片/排行2.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  		<td><img src="staticTheStore/图片/排行1.jpg"/><br/><a href="">排行1</a></td>
-				  		<td><img src="staticTheStore/图片/排行5.jpg" class="img2"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行2.jpg" class="img"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行1.jpg"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行5.jpg" class="img2"/><br/><a href="javascript:void(0);" >排行1</a></td>
 				  	</tr>
 				  	<tr>
-				  		<td><img src="staticTheStore/图片/排行4.jpg" class="img"/><br/><a href="">排行1</a></td>
-				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="">排行1</a></td>
-				  				<td><img src="staticTheStore/图片/排行6.jpg" class="img"/><br/><a href="">排行1</a></td>
+				  		<td><img src="staticTheStore/图片/排行4.jpg" class="img"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  			<td><img src="staticTheStore/图片/排行5.jpg"/><br/><a href="javascript:void(0);" >排行1</a></td>
+				  				<td><img src="staticTheStore/图片/排行6.jpg" class="img"/><br/><a href="javascript:void(0);" >排行1</a></td>
 				  	
 				  	</tr>
 				  	
@@ -1880,7 +1882,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 个户美妆-->
      <div id="ghmz" class="scroll-floor floor6">
 	     	<div class="cn_gobuy" style="height: 300px;">
-	    <div class="search_y"><a href="#"><img src="staticTheStore/图片/新品.png"  width="50"/></a></div>
+	    <div class="search_y"><a href="javascript:void(0);" ><img src="staticTheStore/图片/新品.png"  width="50"/></a></div>
 	    <div class="biankuang biankuang_1"></div>
 	    <div class="biankuang biankuang_2"></div>
 	    <div class="biankuang biankuang_3"></div>
@@ -1894,7 +1896,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	        <div class="a_add_divboc">
 	            <div id="boynow">
-	                <a href="#">
+	                <a href="javascript:void(0);" >
 	              <img src="staticTheStore/图片/加入购物车 .png" width="30" height="30" > &nbsp;&nbsp;<img src="staticTheStore/图片/热度对比.png" width="30" height="30"/>
 	                 	<!--<button type="button" class="btn btn-default" style="width: 90px;height: 30px; background-color: #FF4040; color: white; position: relative; top: -10px;">加入购物车</button>-->
 	                </a>
@@ -2032,23 +2034,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <!--最底部-->
      <div id="ft_wrap" class="scroll-floor floor7">
      	<div class="ft_wrap_top">
-         <a href="#">
+         <a href="javascript:void(0);" >
          	<img src="staticTheStore/图片/正常保障.png"/>
          	<b>正品保障</b>
          	<span>正品行货 放心选购</span>
          </a>
-            <a href="#">
+            <a href="javascript:void(0);" >
             	<img src="staticTheStore/图片/满68.png"/>
             	<b>满68包邮</b>
          	<span>满68元 免运费</span>
             </a>
            
-               <a href="#">
+               <a href="javascript:void(0);" >
                	<img src="staticTheStore/图片/售后无忧.png"/>
                	<b>售后无忧</b>
          	<span>7天无理由退货</span>
                </a>
-                  <a href="#">
+                  <a href="javascript:void(0);" >
                   	<img src="staticTheStore/图片/准时送达.png"/>
                   <b>准时送达</b>
          	<span>收货时间由你做主</span>
@@ -2058,38 +2060,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      		<div class="ft_wrap_center_left">
      			<dl>
      				<dt>新手入门</dt>
-     				<dd> <a href="#">购物流程</a></dd>
-     				<dd> <a href="#">会员制度</a></dd>
-     				<dd><a href="#">发票制度</a></dd>
-     				<dd><a href="#">订单查询</a></dd>
-     				<dd><a href="">常见问题</a></dd>
+     				<dd> <a href="javascript:void(0);" >购物流程</a></dd>
+     				<dd> <a href="javascript:void(0);" >会员制度</a></dd>
+     				<dd><a href="javascript:void(0);" >发票制度</a></dd>
+     				<dd><a href="javascript:void(0);" >订单查询</a></dd>
+     				<dd><a href="javascript:void(0);" >常见问题</a></dd>
      				
      			</dl>
      			<dl>
      				<dt>新手入门</dt>
-     				<dd> <a href="#">支付方式</a></dd>
-     				<dd> <a href="#">货到付款</a></dd>
-     				<dd><a href="#">网上支付</a></dd>
-     				<dd><a href="#">银行转账</a></dd>
-     				<dd><a href="">礼品卡支付</a></dd>
-     				<dd><a href="">其他支付</a></dd>
+     				<dd> <a href="javascript:void(0);" >支付方式</a></dd>
+     				<dd> <a href="javascript:void(0);" >货到付款</a></dd>
+     				<dd><a href="javascript:void(0);" >网上支付</a></dd>
+     				<dd><a href="javascript:void(0);" >银行转账</a></dd>
+     				<dd><a href="javascript:void(0);" >礼品卡支付</a></dd>
+     				<dd><a href="javascript:void(0);" >其他支付</a></dd>
      			</dl>
      			<dl>
      				<dt>配送服务</dt>
-     				<dd> <a href="#">配送范围及运费</a></dd>
-     				<dd> <a href="#">配送进度查询</a></dd>
-     				<dd><a href="#">自提服务</a></dd>
-     				<dd><a href="#">商品验收与签收</a></dd>
+     				<dd> <a href="javascript:void(0);" >配送范围及运费</a></dd>
+     				<dd> <a href="javascript:void(0);" >配送进度查询</a></dd>
+     				<dd><a href="javascript:void(0);" >自提服务</a></dd>
+     				<dd><a href="javascript:void(0);" >商品验收与签收</a></dd>
      				
      				
      			</dl>
      			<dl>
      				<dt>售后保障</dt>
-     				<dd> <a href="#">退换货政策</a></dd>
-     				<dd> <a href="#">退换货流程</a></dd>
-     				<dd><a href="#">退款说明</a></dd>
-     				<dd><a href="#">延保说明页面</a></dd>
-     				<dd><a href="">联系客服</a></dd>
+     				<dd> <a href="javascript:void(0);" >退换货政策</a></dd>
+     				<dd> <a href="javascript:void(0);" >退换货流程</a></dd>
+     				<dd><a href="javascript:void(0);" >退款说明</a></dd>
+     				<dd><a href="javascript:void(0);" >延保说明页面</a></dd>
+     				<dd><a href="javascript:void(0);" >联系客服</a></dd>
      				
      			</dl>
      			
@@ -2113,29 +2115,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	
      	<div id="foot" class="ft_wrap_under">
      		<p class="foot_p	">
-     			<a href="#">关于一号店</a>|
-     			<a href="#">我们的团队</a>|
-     			<a href="#">网站联盟</a>|
-     			<a href="#">热门搜索</a>|
-     			<a href="#">友情链接</a>|
-     			<a href="#">1号点社区</a>|
-     			<a href="#">商家登录</a>|
-     			<a href="#">供应商登录</a>|
-     			<a href="#">放心搜</a>|
-     			<a href="#">1号店新品</a>|
-     			<a href="#">开放平台</a>|
-     			<a href="#">沃尔玛</a>|
+     			<a href="javascript:void(0);" >关于一号店</a>|
+     			<a href="javascript:void(0);" >我们的团队</a>|
+     			<a href="javascript:void(0);" >网站联盟</a>|
+     			<a href="javascript:void(0);" >热门搜索</a>|
+     			<a href="javascript:void(0);" >友情链接</a>|
+     			<a href="javascript:void(0);" >1号点社区</a>|
+     			<a href="javascript:void(0);" >商家登录</a>|
+     			<a href="javascript:void(0);" >供应商登录</a>|
+     			<a href="javascript:void(0);" >放心搜</a>|
+     			<a href="javascript:void(0);" >1号店新品</a>|
+     			<a href="javascript:void(0);" >开放平台</a>|
+     			<a href="javascript:void(0);" >沃尔玛</a>|
      			
      		</p>
      		<p>
-     			<a href="#">沪ICP备16050468号</a>|
-     			<a href="#">沪B2-20170039</a>|
-     			<a href="#">经营证照</a>|
-     			<a href="#">互联网药品信息服务资格证</a>|
-     			<a href="#">违法和不良信息举报电话：0514-85899118</a>|
+     			<a href="javascript:void(0);" >沪ICP备16050468号</a>|
+     			<a href="javascript:void(0);" >沪B2-20170039</a>|
+     			<a href="javascript:void(0);" >经营证照</a>|
+     			<a href="javascript:void(0);" >互联网药品信息服务资格证</a>|
+     			<a href="javascript:void(0);" >违法和不良信息举报电话：0514-85899118</a>|
      		</p>
      		<p>
-     			<a href="#">Copyright© 1号店网上超市 2007-2017，All Rights Reserved</a>
+     			<a href="javascript:void(0);" >Copyright© 1号店网上超市 2007-2017，All Rights Reserved</a>
      			
      		</p>
      		<small class="ft_wrap_small">

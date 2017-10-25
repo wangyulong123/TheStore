@@ -302,7 +302,7 @@ public class Category2Servlet extends HttpServlet {
 			throws ServletException, IOException {
 		String target = "";
 		//1.填充数据
-		
+		System.out.println("456465");
 		try {
 			//2.调用业务逻辑
 			Category2Service service = new Category2ServiceImpl();
@@ -310,7 +310,7 @@ public class Category2Servlet extends HttpServlet {
 			
 			request.setAttribute("list", list);
 			
-			target = "/WEB-INF/jsp/user/welcome.jsp";
+			target = "/WEB-INF/jsp/HomePage/Yhd.jsp";
 		} catch (Exception e) {
 			request.setAttribute("msg", e.getMessage());
 			e.printStackTrace();

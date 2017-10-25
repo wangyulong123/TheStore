@@ -167,9 +167,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Submenu 4 -->
 				<ul data-menu="submenu-4" class="menu__level">
 					<li class="menu__item"><a class="menu__link" href="#">用户添加</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">用户删除</a></li>
+					<li class="menu__item"><a class="menu__link" href="UsernameServlet?action=getlockAll&requestPage=1" target="mainIFrame">用户加锁与解锁</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">用户修改</a></li>
-					<li class="menu__item"><a class="menu__link" href="UsernameServlet?action=getAllByPage&requestPage=1" target="mainIFrame"">用户查询</a></li>
+					<li class="menu__item"><a class="menu__link" href="UsernameServlet?action=getAllByPage&requestPage=1" target="mainIFrame">用户查询</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4-1" href="#">待开发</a></li>
 				</ul>
 				<!-- Submenu 4-1 -->

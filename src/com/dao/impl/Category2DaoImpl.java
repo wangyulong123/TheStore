@@ -16,6 +16,7 @@ import com.util.ConnOracle;
 import com.util.ConnOracleTomcatDataSource;
 import com.vo.Category;
 import com.vo.Category2;
+import com.vo.Product;
 
 public class Category2DaoImpl implements Category2Dao {
 
@@ -325,5 +326,6 @@ public class Category2DaoImpl implements Category2Dao {
 	 		}
 	 	}
 	}
+	
 }
 
