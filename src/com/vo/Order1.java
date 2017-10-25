@@ -2,6 +2,7 @@ package com.vo;
 
 public class Order1 {
 	private int orderid;
+	private String orderNo;
 	private String ordertime;
 	private double orderprice;
 	private String orderdesc;
@@ -16,6 +17,13 @@ public class Order1 {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public String getOrderNo() {
+		return orderNo;
+	}
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
 	}
 	public int getOrderid() {
 		return orderid;

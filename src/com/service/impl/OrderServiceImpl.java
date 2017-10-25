@@ -3,9 +3,15 @@ package com.service.impl;
 import java.util.List;
 
 import com.dao.impl.OrderDaoImpl;
+import com.dao.impl.OrderDetailDaoImpl;
+import com.dao.impl.ProductDaoImpl;
+import com.dao.inter.OrderDetailDao;
+import com.dao.inter.ProductDao;
 import com.page.PageInfo;
 import com.service.inter.OrderService;
+import com.util.ConnOracleDataSourceTransaction;
 import com.vo.Order1;
+import com.vo.OrderDetail;
 import com.vo.Product;
 import com.vo.User;
 
@@ -29,10 +35,72 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public int addOrder(Order1 order) throws Exception {
-		int count = dao.addOrder(order);
-		return count;
+		// 开启事务
+		ConnOracleDataSourceTransaction.beginTransaction();
+		int orderId;
+		try {
+			 orderId = dao.addOrder(order);
+		} catch (Exception e) {
+			ConnOracleDataSourceTransaction.rollbackTransaction();
+			e.printStackTrace();
+			throw new Exception("下单失败");
+		}
+		return orderId;
 	}
 
+	public int addOrder(String orderId,List<Product> shoppingCart)
+			throws Exception {
+		int success = 0;
+		for (Product product : shoppingCart) {
+
+			int pid = product.getPid();
+
+			int shoppingCarSum = product.getShoppingSum();
+			double buyPrice = product.getPrice();
+
+			// 添加订单明细
+			OrderDetail orderDetail = new OrderDetail();
+			orderDetail.setOrderid(Integer.parseInt(orderId));
+			orderDetail.setPid(pid);
+			orderDetail.setBuyPrice(buyPrice);
+			orderDetail.setBuySum(shoppingCarSum);
+
+			OrderDetailDao orderDetailDao = new OrderDetailDaoImpl();
+			try {
+				orderDetailDao.addOrderDetail(orderDetail);
+				success = 1;
+			} catch (Exception e) {
+				ConnOracleDataSourceTransaction.rollbackTransaction();
+				e.printStackTrace();
+				break;
+			}
+
+			// 修改商品库存数量
+			ProductDao productDao = new ProductDaoImpl();
+
+			int productSum = product.getProductSum();
+
+			if (shoppingCarSum <= productSum) {
+				productSum = productSum - shoppingCarSum;
+				product.setProductSum(productSum);
+				try {
+					productDao.updateProduct(product);
+					success = 2;
+				} catch (Exception e) {
+					ConnOracleDataSourceTransaction.rollbackTransaction();
+					e.printStackTrace();
+				}
+			} else {
+				ConnOracleDataSourceTransaction.rollbackTransaction();
+				throw new Exception(product.getPname() + "库存不足,请暂时选择其他商品,谢谢!");
+
+			}
+
+			ConnOracleDataSourceTransaction.commitTransaction();
+		}
+		return success;
+	}
+	
 	// 查询总共有多少条记录
 	public int getTotalRecordCount() throws Exception {
 		int totalRecordCount = -1;

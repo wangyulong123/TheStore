@@ -60,12 +60,6 @@
 		<servlet-class>com.servlet.Category2Servlet</servlet-class>
 	</servlet>
 
-<!-- 	<servlet>
-
-		<servlet-name>UserProductServlet</servlet-name>
-		<servlet-class>com.servlet.UserProductServlet</servlet-class>
-	</servlet> -->
-
 	<servlet>
 		<servlet-name>ProductServlet</servlet-name>
 		<servlet-class>com.servlet.ProductServlet</servlet-class>
@@ -120,12 +114,6 @@
 	<servlet-mapping>
 		<servlet-name>ProductServlet</servlet-name>
 		<url-pattern>/ProductServlet</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>UserProductServlet</servlet-name>
-		<url-pattern>/UserProductServlet</url-pattern>
-
 	</servlet-mapping>
 
 	<servlet-mapping>

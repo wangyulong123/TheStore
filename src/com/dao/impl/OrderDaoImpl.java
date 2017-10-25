@@ -28,7 +28,7 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public int addOrder(Order1 order) throws Exception {
-		int count = 0;
+		int orderId = 0;
 		Random random = new Random();
 		int num1 = random.nextInt(10000);
 		int num2 = random.nextInt(1000);
@@ -47,19 +47,23 @@ public class OrderDaoImpl implements OrderDao {
 			pstmt.setInt(7,order.getOrderstatus());
 
 			// 四.执行并返回结果集
-			count = pstmt.executeUpdate();
-
+			pstmt.executeUpdate();
+			
+			ResultSet rs = pstmt.getGeneratedKeys();
+			rs.next();
+			orderId = rs.getInt(1);
+			System.out.println("orderId=" + orderId);
 		} catch (SQLException e) {
 			System.out.println("建立通道失败");
 			e.printStackTrace();
 			throw new Exception("添加订单失败");
-		} finally {
+		} /*finally {
 			// 5.关闭
 			ConnOracle.closeConnection(null, pstmt, conn);
 
-		}
+		}*/
 
-		return count;
+		return orderId;
 	}
 
 	@Override

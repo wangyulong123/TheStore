@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.service.impl.OrderServiceImpl;
+import com.service.inter.OrderService;
+import com.vo.Order1;
 import com.vo.Product;
 import com.vo.User;
 
@@ -21,9 +24,7 @@ public class OrderServlet extends HttpServlet {
 		
 		if("checkOrder".equals(action)){
 			this.checkOrder(request,response);
-		}
-
-		
+		} 
 	}
 	
 	public void checkOrder(HttpServletRequest request, HttpServletResponse response)
@@ -53,7 +54,7 @@ public class OrderServlet extends HttpServlet {
 		//三.转发视图
 		request.getRequestDispatcher(target).forward(request, response);
 	}
-
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

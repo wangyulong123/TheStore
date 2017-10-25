@@ -11,11 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta charset="utf-8" />
 		<base href="<%=basePath%>">
 		<title>1号店,只为更好的生活</title>
-<<<<<<< HEAD
 		<link rel="shortcut icon" href="img/icon.png"/>
-=======
 		<link rel="shortcut icon" href="staticTheStore/img/icon.png"/>
->>>>>>> branch 'master' of https://github.com/wangyulong123/TheStore.git
 		<link rel="stylesheet" type="text/css" href="staticTheStore/css/querendingdan.css"/>
 		<script src="staticTheStore/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="staticTheStore/js/querendingdan.js" type="text/javascript" charset="utf-8"></script>
@@ -36,6 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div class="main">
 				<div id="title">
+					
 					<span>  <font><b>填写核对订单信息</b></font></span>
 				</div>
 				<div id="content">
@@ -103,7 +101,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="tijiaodingdan">
 						<span id="jin_e">           商品金额<span><b>18.4</b></span>元</span><br/>
 						<span id="xuzhifu"><b>您需为订单支付<span>18.4</span>元</b></span><br/>
-						<input type="button" name="tijiao" id="tijiao" value="提交订单" />
+						<input type="button" onclick="$('#form1').submit()" name="tijiao" id="tijiao" value="提交订单" />
+						<form id="form1" action="OrderServlet?action=placeOrder" method="post">
+			    		</form>
 					</div>
 					</div>
 				</div>

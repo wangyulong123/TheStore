@@ -25,6 +25,7 @@ import com.vo.Category;
 import com.vo.Category2;
 import com.vo.Order1;
 import com.vo.Product;
+import com.vo.User;
 //订单
 public class DingdanServlet extends HttpServlet {
 
@@ -35,8 +36,8 @@ public class DingdanServlet extends HttpServlet {
 			this.guanlishouhuodizhi(request, response);
 		}else if("querendingdan".equals(action)){	
 			this.querendingdan(request,response);
-		}else if("submitSuccess".equals(action)){
-			this.submitSuccess(request,response);
+		}else if("submitDingdan".equals(action)){
+			this.submit(request,response);
 		}else if("getAllByPage".equals(action)){	
 			this.getAllByPage(request,response);
 		}else if("getPageByQuery".equals(action)){	
@@ -72,23 +73,26 @@ System.out.println("DingdanServlet.querendingdan()");
 		
 		//一.填充数据
 		HttpSession session = request.getSession(true);
-		String userid = request.getParameter("userid");
+		User user = (User) session.getAttribute("user");
+		List<Product> shoppingCart = (List<Product>)session.getAttribute("shoppingCart");
+		double orderTotalPrice = computeOrderTotalPrice(shoppingCart);
+		
+		int userId = user.getUserid();
 		String shouhuoren = request.getParameter("uname");
 		String xiangxidizhi = request.getParameter("xiangxidizhi");
 		String tel = request.getParameter("phone");
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss"); 
 		String ordertime = sdf.format(date);
-		String price = "0.1";
 		String orderdesc = "满100减99";
 		String address = request.getParameter("xiangxidizhi");
 		String sheng = request.getParameter("select1");
 		String shi = request.getParameter("select2");
 		String qu = request.getParameter("select3");
 		
-		order.setUserid(Integer.parseInt(userid));
+		order.setUserid(userId);
 		order.setOrderdesc(orderdesc);
-		order.setOrderprice(Double.parseDouble(price));
+		order.setOrderprice(orderTotalPrice);
 		order.setOrdertime(ordertime);
 		order.setShouhuorenname(shouhuoren);
 		order.setTel(Long.parseLong(tel));
@@ -115,16 +119,49 @@ System.out.println("DingdanServlet.querendingdan()");
 		request.getRequestDispatcher(target).forward(request, response);
 	}
 	
-	public void submitSuccess(HttpServletRequest request, HttpServletResponse response)
+	public double computeOrderTotalPrice(List<Product> shoppingCart) {
+		double productTotalPrice = 0;
+
+		for (Product product : shoppingCart) {
+
+			int shoppingCarSum = product.getShoppingSum();
+			double buyPrice = product.getPrice();
+			double singleProductTotalPrice = buyPrice * shoppingCarSum;
+			productTotalPrice = productTotalPrice + singleProductTotalPrice;
+
+		}
+
+		return productTotalPrice;
+	}
+	
+	public void submit(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String target = "";
 		//一.填充数据
-		
+		String orderId = request.getParameter("orderid");
+		HttpSession session = request.getSession(true);
+		User user = (User) session.getAttribute("user");
+		List<Product> shoppingCart = (List<Product>)session.getAttribute("shoppingCart");
+		double orderTotalPrice = computeOrderTotalPrice(shoppingCart);
 		//二.调用业务逻辑
+		OrderService service = new OrderServiceImpl();
+		int success;
+		try {
+			success = service.addOrder(orderId,shoppingCart);
+		} catch (Exception e) {
+			success = 0;
+			e.printStackTrace();
+		}
+		//三.转发视图 
+		if(success == 2){
+			target = "/WEB-INF/jsp/user/submitSuccess.jsp";
+			//清空购物车
+			session.removeAttribute("shoppingCart");
+		}else{
+			target = "/WEB-INF/jsp/user/submitFailure.jsp";
+		}
 		
-		//三.转发视图
-		target = "/WEB-INF/jsp/user/submitSuccess.jsp";
 		request.getRequestDispatcher(target).forward(request, response);
 	}
 

@@ -231,7 +231,6 @@ var tijiaodingdan = (function () {
 		return flag;
 	}
 	
-	
 	//地址标签
 	function mouseInBiaoqian () {
 		biaoqian.value = "";
@@ -272,6 +271,4 @@ var tijiaodingdan = (function () {
 	
 	
 })();
-
-
 

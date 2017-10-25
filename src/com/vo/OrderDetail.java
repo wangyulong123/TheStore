@@ -1,9 +1,11 @@
 package com.vo;
 
-public class Orderdetail {
+public class OrderDetail {
 	private int detailid;
 	private int orderid;
 	private int pid;
+	private double buyPrice;
+	private int buySum;
 	private Product product;
 
 	public Product getProduct() {
@@ -12,7 +14,19 @@ public class Orderdetail {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	
+
+	public double getBuyPrice() {
+		return buyPrice;
+	}
+	public void setBuyPrice(double buyPrice) {
+		this.buyPrice = buyPrice;
+	}
+	public int getBuySum() {
+		return buySum;
+	}
+	public void setBuySum(int buySum) {
+		this.buySum = buySum;
+	}
 	public int getDetailid() {
 		return detailid;
 	}

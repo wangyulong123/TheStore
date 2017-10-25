@@ -142,8 +142,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span id="jin_e">           商品金额<span><b>18.4</b></span>元</span><br/>
 						<span id="xuzhifu"><b>您需为订单支付<span>18.4</span>元</b></span><br/>
 						<form action="DingdanServlet" method="post">
-							<input type="hidden" name="action" value="submitSuccess" />
-							
+							<input type="hidden" name="action" value="submitDingdan" />
+							<input type="hidden" name="orderid" value="<%=order.getOrderid() %>" />
 							<input type="submit" name="tijiao" id="tijiao" value="提交订单" />
 						</form>
 						

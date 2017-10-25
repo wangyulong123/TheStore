@@ -10,6 +10,7 @@ import com.vo.Product;
 public interface OrderService {
 	//添加订单
 	public int addOrder(Order1 order) throws Exception;
+	public int addOrder(String orderid, List<Product> shoppingCar) throws Exception;
 	//获得订单
 	//查询总共有多少条记录
 	public int getTotalRecordCount() throws Exception;
