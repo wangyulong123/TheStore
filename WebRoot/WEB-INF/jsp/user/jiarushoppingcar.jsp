@@ -369,9 +369,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<div id="wholeDiv">
 			<div id="loginDiv">
-				<span>Hi,请</span>
+				<!--<span>Hi,请</span>
 				<a href="#">登录</a>
-				<a class="regist" href="#">注册</a>
+				<a class="regist" href="#">注册</a>-->
+				
+				 <%
+					User user = (User)session.getAttribute("user");
+					if(user==null){
+						//显示 "Hi,请登录"	
+				%>
+				<span>Hi,请</span>
+				<a href="jsp/HomePage/Login.jsp">登录</a>
+				<a class="regist" href="jsp/user/regist.jsp">注册</a>
+				<%
+					}else{
+					//显示 "Hi,XXX" 退出
+				%>
+				<span style="color:#666;">Hi,<%=user.getNickname()%></span>
+				<a href="LoginServlet?action=logout" class="regist">退出</a>
+				<%
+					}
+				%>
+				
 				<div id="orderDiv">
 					<a href="#" target="_blank">我的订单</a>
 				</div>
@@ -550,7 +569,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							String count = request.getParameter("count"); 
 							%> --%>
 							<div class="p-extra">
-								<span class="txt" title="粉">颜色：粉</span><span class="txt" title="全网通">尺码：全网通</span><span class="txt">/  数量：${product.shoppingSum }></span>
+								<span class="txt" title="粉">颜色：粉</span><span class="txt" title="全网通">尺码：全网通</span><span class="txt">/  数量：${product.shoppingSum }</span>
 							</div>
 						</div>
 						<div class="clr"></div>

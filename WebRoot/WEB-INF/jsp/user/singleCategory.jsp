@@ -30,19 +30,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a href="#">登录</a>
 				<a class="regist" href="#">注册</a> -->
 				<%
+					Product product = (Product)request.getAttribute("product");
 					User user = (User)session.getAttribute("user");
 					if(user==null){
 						//显示 "Hi,请登录"	
 				%>
 				<span>Hi,请</span>
-				<a href="UserServlet?action=login">登录</a>
+				<a href="jsp/HomePage/Login.jsp">登录</a>
 				<a class="regist" href="jsp/user/regist.jsp">注册</a>
 				<%
 					}else{
 					//显示 "Hi,XXX" 退出
 				%>
 				<span style="color:#666;">Hi,<%=user.getNickname()%></span>
-				<a href="UserServlet?action=logout" class="regist">退出</a>
+				<a href="LoginServlet?action=logout" class="regist">退出</a>
 				<%
 					}
 				%>
@@ -231,15 +232,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a href="#" title="${product.pname }"><span></span></a>
 						<!--跟随鼠标移动的盒子-->
 					</div>
-					<div class="camera_small">
+					<div class="camera_small" pid="${product.pid }" path="${product.detailLargeImg}">
 						<!-- src="img/小图1.jpg" -->
-						<div id="camera_small_1"><img id="camera_small_1" src="img/productImage/${product.detailSmallImg1}" /></div>
-						<div id="camera_small_2"><img id="camera_small_2" src="img/productImage/${product.detailSmallImg2}" /></div>
-						<div id="camera_small_3"><img id="camera_small_3" src="img/productImage/${product.detailSmallImg3}" /></div>
-						<div id="camera_small_4"><img id="camera_small_4" src="img/productImage/${product.detailSmallImg4}" /></div>
-						<div id="camera_small_5"><img id="camera_small_5" src="img/productImage/${product.detailSmallImg5}" /></div>
+						<div id="camera_small_1"><img id="camera_small_1" src="staticTheStore/img/productImage/${product.detailSmallImg1}" /></div>
+						<div id="camera_small_2"><img id="camera_small_2" src="staticTheStore/img/productImage/${product.detailSmallImg2}" /></div>
+						<div id="camera_small_3"><img id="camera_small_3" src="staticTheStore/img/productImage/${product.detailSmallImg3}" /></div>
+						<div id="camera_small_4"><img id="camera_small_4" src="staticTheStore/img/productImage/${product.detailSmallImg4}" /></div>
+						<div id="camera_small_5"><img id="camera_small_5" src="staticTheStore/img/productImage/${product.detailSmallImg5}" /></div>
 					</div>
-					<div id="fdj_area"><img src="img/大图1_600x600.jpg" /></div>
+					<div id="fdj_area"><img src="staticTheStore/img/productImage/${product.detailLargeImg}" /></div>
 				</div>
 
 				<div id="number">商品编号<em> </em>0631020365</div>
@@ -271,7 +272,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<label style="font-size: 12px;color: #666666;margin-left: 9px;">价格</label>
 					<label style="font-family: '黑体';font-size: 18px;color: #E60012;margin-left: 30px;"><strong>¥</strong></label>
 					<!-- 4499 -->
-					<label style="font-family: '黑体';font-size: 28px;color: #E60012;"><strong>${product.price }</strong></label>
+					<label style="font-family: '黑体';font-size: 28px;color: #E60012;"><strong>${product.price}</strong></label>
 				</div>
 				<div id="transportation_expense">
 					<label style="font-size: 12px;color: #666666;margin-left: 66px;">支持</label>
@@ -303,14 +304,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<select name="province" style="width:105px;" data-province="---- 选择省 ----"></select>
 						<select name="city" style="width:90px;" data-city="---- 选择市 ----"></select>
 						<select name="district" style="width:80px;" data-district="---- 选择区 ----"></select>
-						<label style="font-size: 12px;color: #666666;"><b style="color: #333333;">现货</b>，18:00前完成订单，预计1天送达</label>
+						<label style="font-size: 12px;color: #666666;"><b style="color: #333333;">
+						<%
+							if(product.getProductSum()==0){
+						%>
+							无货
+						<%		
+							}else{
+						%>
+							有货
+						<%		
+							}	
+						
+						 %>
+						</b>，18:00前完成订单，预计1天送达</label>
 					</div>
 					<div id="freight">本商品由1号店自营提供<em> </em>
 						<a href="#">运费说明</a>
 					</div>
 					<div id="sumDiv">
 						<form>
-							<input type="text" name="count" id="count" autocomplete="off" value="1" />
+							<input type="text" maxlength="3" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'1')}else{this.value=this.value.replace(/\D/g,'')} if(''==this.value){this.value=1}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'1')}else{this.value=this.value.replace(/\D/g,'')}" name="count" id="count" autocomplete="off" value="1" />
 						</form>
 					</div>
 					<div id="add"></div>
@@ -321,8 +335,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div id="r2"><b>加入购物车</b></div>
 						</div>
 					</a>
-					<a href="#">
-						<div id="buyDiv">立即购买</div>
+					<a onclick="addShoppingCart2()" >
+						<div id="buyDiv" >立即购买</div>
 					</a>
 					<div id="securityDiv">
 						<label style="font-size: 12px;color: #666666;margin-left: 9px;margin-top: 18px;display: block;">保障</label>
@@ -1397,6 +1411,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				});
 				function addShoppingCart(){
 					location.assign("/ts0.1/ShoppingCarServlet?action=getProduct&pid=${product.pid}&count=" + $("#count").val());
+				}
+				
+				function addShoppingCart2(){
+					location.assign("OrderServlet?action=checkOrder&pid=${product.pid}&count=" + $("#count").val());
 				}
 			</script>
 	</body>

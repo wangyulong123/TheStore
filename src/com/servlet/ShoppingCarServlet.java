@@ -103,7 +103,7 @@ public class ShoppingCarServlet extends HttpServlet {
 	public void queryShoppingCart(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		//设置服务器相应地数据类型 为application/json
-		response.setContentType("application/json");
+		//response.setContentType("application/json");
 		String target = "";
 		// 一.填充数据
 		// 二.调用业务逻辑
@@ -112,11 +112,10 @@ public class ShoppingCarServlet extends HttpServlet {
 		List<Product> list = (List<Product>) session.getAttribute("shoppingCart");
 		
 		if(list==null||list.size()==0){
-			request.setAttribute("list", list);
+			session.setAttribute("list", list);
 			target = "/WEB-INF/jsp/user/shoppingCartNoProduct.jsp";
-		}
-		else{
-			request.setAttribute("list", list);
+		}else{	
+			session.setAttribute("list", list);
 			target = "/WEB-INF/jsp/user/shoppingCar.jsp";
 		}
 		

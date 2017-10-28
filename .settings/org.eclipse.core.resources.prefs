@@ -1,10 +1,12 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/wangyulong123/TheStore.git
 eclipse.preferences.version=1
-<<<<<<< HEAD
 encoding//WebRoot/staticTheStore/css/phones.css=UTF-8
-=======
+encoding//WebRoot/staticTheStore/css/regist.css=UTF-8
+encoding//src/com/dao/impl/Order1DaoImpl.java=UTF-8
 encoding//src/com/service/impl/UserProductServiceImpl.java=UTF-8
-<<<<<<< HEAD
+encoding//src/com/servlet/Order1Servlet.java=UTF-8
+encoding//src/com/util/HttpRequestUtil.java=UTF-8
 encoding//src/com/util/PaymentUtil.java=UTF-8
-=======
->>>>>>> branch 'master' of https://github.com/wangyulong123/TheStore.git
->>>>>>> branch 'master' of https://github.com/wangyulong123/TheStore.git
+encoding//src/com/util/SendMsgUtil.java=UTF-8

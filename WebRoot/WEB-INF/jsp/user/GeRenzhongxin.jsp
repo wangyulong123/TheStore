@@ -1,26 +1,28 @@
-<%@ page language="java" import="java.util.*,com.vo.*" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.vo.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE html>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-		<base href="<%=basePath%>">
+		
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		
 		<title>我的1号店</title>
 		
 		<link href="css/gerenzhongxin.css" rel="stylesheet" type="text/css" />
-		
+		<link rel="stylesheet" type="text/css" href="css/jQuery-confirm/jquery-confirm.css"/>
+	
 		<script src="js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/new_yihaodian_js.js" type="text/javascript" charset="utf-8"></script>
+		
+		
 		
 	</head>
 	
 	<body>
-		<div id="zhengtibuju">
 			<div id="top_top">
 				<div class="top_top_all">
 					<a class="yihaoshouye" href="http://www.yhd.com">
@@ -108,25 +110,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 <!--================================================================================-->				
 					<div class="top_top_right">
+						
+						<% List<Order1> order = (List<Order1>)request.getAttribute("list");%>
+						<%int i; %>
+						<%System.out.print(order.size()); %>
 						<ul class="top_top_right_ul">
 							<li class="li_one">
 								<span>hi,</span>
-								<a>cnys_pure</a>
+								
+									<%
+										if(order.size()==0){
+									%>
+										<a>请登录</a>
+									<%									
+										}else{	
+									%>
+										<%=order.get(0).getShouhuorenname() %>
+									<%
+										}
+									%>
+								
 								<span class="duanwei">新晋</span>
 								
 								<div class="xinjin_div">
 									<div id="xinjin_div_top">
 										<div id="xinjin_div_top_left">
-											<img src="staticTheStore/GRZX/img/renwu.gif"/>
+											<img src="img/img/renwu.gif"/>
 										</div>
 										
-										<a>cnys_pure</a>
+										<a id="name">
+											<%
+												if(order.size()==0){
+											%>
+												<a>请登录</a>
+											<%									
+												}else{	
+											%>
+												<%=order.get(0).getShouhuorenname()%>
+											<%
+												}
+											%>
+										 </a>
 										
 										<div id="xinjin_zhengwen">
 											<a>新晋</a>
 										</div>
 										
-										<a>退出登录</a>
+										<a class="tuichu">退出登录</a>
 										
 									</div>
 									
@@ -186,7 +216,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="top_heise">
 				<div id="zhengshi">
 					<div id="logo">
-						<img src="staticTheStore/GRZX/img/logo.png" />
+						<img src="img/img/logo.png" />
 					</div>
 					
 					<div id="shouye_jinrong">
@@ -285,11 +315,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div id="middle_right_geren">
 						<!--头像-->
 						<a id="touxiang">
-							<img src="staticTheStore/GRZX/img/renwu.gif" style="width: 74px;height: 74px;border-radius: 50px;">
+							<img src="img/img/renwu.gif" style="width: 74px;height: 74px;border-radius: 50px;">
 						</a>
 						<!--头像下边-->
 						<div id="hello">
-							<a target="_blank" href="//home.yhd.com/myinfo/index.do">你好！cnys_pure</a>
+							<a target="_blank" href="//home.yhd.com/myinfo/index.do">你好！<span>
+									<%
+										if(order.size()==0){
+									%>
+										请登录
+									<%									
+										}else{	
+									%>
+										<%=order.get(0).getShouhuorenname() %>
+									<%
+										}
+									%></span>
+							</a>
 						</div>
 						<!--用户标签-->
 						<div id="biaoqian">
@@ -312,6 +354,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<i class="iconfont">&#xe608;</i>
 									0
 								</a>
+						
 							</div>
 							
 							<div id="our_diyongquan">
@@ -378,44 +421,181 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div id="middle_right_dingdan">
 						<div class="zuijindingdan">
 							<a>最近订单</a>
+							
 						</div>
 						
 						<div id="quanbudingdan">
 							<a>全部订单</a>
 						</div>
 					</div>
+					<%
+						if(order.size()==0){
+					%>
+						<div id="kongbai">
+							<img src="img/img/dingdan.png"/>
+						</div>
+					<%
+						}else{
+					%>
+						<div id="kongbai">
+							<%
+							/* if(list.size()>3){遍历}else{全部打印} */
+							if(order.size()>3){
+								for(i =0;i<3;i++){
+							%>
+								<div class="li_div">
+									<div class="li_div_left">
+										<a class="tupian">
+											<img src="img/img/xiaotu.jpg">
+										</a>
+												
+										<div>
+											<a class="dengdai">
+													<%
+														if(order.get(i).getOrderstatus()==0){
+													%>
+															<span>等待付款</span>
+													<%	
+														}else{
+													%>
+															<span>付款成功</span>
+													<%	
+														}
+													%>
+												&nbsp;¥：<%=order.get(i).getOrderprice() %>
+											</a>
+											<a class="xiadanshijian">下单时间：<%=order.get(i).getOrdertime()%></a>				
+										</div> 
+											<div class="daojishi" >
+												<%
+													if(order.get(i).getOrderstatus()==0){		
+												%>
+													<a class="quxiaodingdan">取消订单</a>
+													<a class="dianjianniu" href="PayServlet?action=submitPay&pd_FrpId=CCB-NET&money=0.01&orderid=<%=order.get(i).getOrderid() %>">立即付款</a>
+												
+												<%
+													}else if(order.get(i).getOrderstatus()==1){
+												%>
+													<a class="quxiaodingdan">正在发货</a>
+													<a class="dianjianniu">申请退款</a>
+												<%
+													}else if(order.get(i).getOrderstatus()==2){
+												%>
+													<a class="quxiaodingdan">已经发货</a>
+													<a class="dianjianniu">申请退货</a>
+												<%	
+													}else if(order.get(i).getOrderstatus()==3){
+												%>
+													<a class="quxiaodingdan">删除订单</a>
+													<a class="dianjianniu">再次购买</a>
+												<%
+													}
+												 %>
+												
+											</div>
+										</div>
+									</div>
+								<%	
+									}
+								%> 
+								
+							<%
+								}else{
+									for(i=0;i<order.size();i++){
+							%>
+										<div class="li_div">
+											<div class="li_div_left">
+												<a class="tupian">
+													<img src="img/img/xiaotu.jpg">
+												</a>
+														
+												<div>
+													<a class="dengdai">
+															<%
+																if(order.get(i).getOrderstatus()==0){
+															%>
+																	<span>等待付款</span>
+															<%	
+																}else{
+															%>
+																	<span>付款成功</span>
+															<%	
+																}
+															%>
+															&nbsp;¥：<%=order.get(i).getOrderprice() %>
+														</a>
+													<a class="xiadanshijian">下单时间：<%=order.get(i).getOrdertime()%></a>				
+												</div>
+												 
+												<div class="daojishi" >
+													<%
+														if(order.get(i).getOrderstatus()==0){		
+													%>
+														<a class="quxiaodingdan">取消订单</a>
+														<a class="dianjianniu">立即付款</a>
+													<%
+														}else if(order.get(i).getOrderstatus()==1){
+													%>
+														<a class="quxiaodingdan">正在发货</a>
+														<a class="dianjianniu">申请退款</a>
+													<%
+														}else if(order.get(i).getOrderstatus()==2){
+													%>
+														<a class="quxiaodingdan">已经发货</a>
+														<a class="dianjianniu">申请退货</a>
+													<%	
+														}else if(order.get(i).getOrderstatus()==3){
+													%>
+														<a class="quxiaodingdan">删除订单</a>
+														<a class="dianjianniu">再次购买</a>
+													<%
+														}
+													 %>
+											
+												</div>
+											</div>
+										</div>
+							<%	
+									}
+								}
+							}
+							%>	
+						</div>
+					<%
+					if(order.size()<3){
 					
-					<div id="kongbai">
-						<img src="staticTheStore/GRZX/img/dingdan.png"/>
-					</div>
-
+					}else{
+					%>
+						<a id="chakangengduo" href="/yihaodian/Order1Servlet?action=getRecordCountFenYe&target=QuanBuDingDan&requestPage=1&shouhuorenname=<%=order.get(0).getShouhuorenname()%>">查看更多</a>
+					<%	
+					}
+					%>
 				</div>
-			
 			</div>
-			
+		
 <!------------------------------------------------------------------------------------------------>
 			<div class="botton_botton">
 				<div id="bottom_top">	
 					<a class="zhengpingbaozhang">
-						<img src="staticTheStore/GRZX/img/zheng.jpg"/>
+						<img src="img/img/zheng.jpg"/>
 						<b>正品保障</b>
 						<span>正品行货&nbsp;放心选购</span>
 					</a>
 					
 					<a class="baoyoufuwu">
-						<img src="staticTheStore/GRZX/img/bao.jpg"/>
+						<img src="img/img/bao.jpg"/>
 						<b>满68包邮</b>
 						<span>满68元&nbsp;免运费</span>
 					</a>
 					
 					<a class="shouhouwuyou">
-						<img src="staticTheStore/GRZX/img/shou.jpg"/>
+						<img src="img/img/shou.jpg"/>
 						<b>售后无忧</b>
 						<span>7天无理由退货</span>
 					</a>
 					
 					<a class="zhunshisongda">
-						<img src="staticTheStore/GRZX/img/zhun.jpg"/>
+						<img src="img/img/zhun.jpg"/>
 						<b>准时送达</b>
 						<span>收货时间由你做主</span>
 					</a>
@@ -456,12 +636,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div id="bottom_middle_right">
 						<div id="erweima">
 							<p>APP更优惠</p>
-							<img src="staticTheStore/GRZX/img/app.png"/>
+							<img src="img/img/app.png"/>
 						</div>
 						
 						<div id="erweima">
 							<p>加微信查订单</p>
-							<img src="staticTheStore/GRZX/img/search.jpg"/>
+							<img src="img/img/search.jpg"/>
 						</div>
 					</div>
 				</div>
@@ -484,29 +664,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</p>	
 				
 					<p id="bottom_daodi">
-						<a href="https://www.95516.com/static/union/pages/index/index.html" target="_blank" id="web_one"><img src="staticTheStore/GRZX/img/a.jpg"/></a>
-						<a href="http://www.gsxt.gov.cn/index.html" target="_blank" id="web_two"><img src="staticTheStore/GRZX/img/b.jpg"/></a>
-						<a href="http://www.zx110.org/" target="_blank" id="web_three"><img src="staticTheStore/GRZX/img/c.jpg"/></a>
-						<a href="http://www.12377.cn/" target="_blank" id="web_four"><img src="staticTheStore/GRZX/img/d.jpg"/></a>
-						<a href="http://shwg.dianping.com/index.html" target="_blank" id="web_five"><img src="staticTheStore/GRZX/img/e.jpg"/></a>
-						<a href="http://www.shjbzx.cn/" target="_blank" id="web_six"><img src="staticTheStore/GRZX/img/f.jpg"/></a>
-						<a href="https://credit.cecdc.com/CX20150608010268010812.html" target="_blank" id="web_senven"><img src="staticTheStore/GRZX/img/g.jpg"/></a>
-						<a href="https://ss.knet.cn/verifyseal.dll?sn=e13050631010040492h5mq000000&ct=df&a=1&pa=500267" target="_blank" id="web_eight"><img src="staticTheStore/GRZX/img/h.png"/></a>
-					</p>
-				
-				
+						<a href="https://www.95516.com/static/union/pages/index/index.html" target="_blank" id="web_one"><img src="img/img/a.jpg"/></a>
+						<a href="http://www.gsxt.gov.cn/index.html" target="_blank" id="web_two"><img src="img/img/b.jpg"/></a>
+						<a href="http://www.zx110.org/" target="_blank" id="web_three"><img src="img/img/c.jpg"/></a>
+						<a href="http://www.12377.cn/" target="_blank" id="web_four"><img src="img/img/d.jpg"/></a>
+						<a href="http://shwg.dianping.com/index.html" target="_blank" id="web_five"><img src="img/img/e.jpg"/></a>
+						<a href="http://www.shjbzx.cn/" target="_blank" id="web_six"><img src="img/img/f.jpg"/></a>
+						<a href="https://credit.cecdc.com/CX20150608010268010812.html" target="_blank" id="web_senven"><img src="img/img/g.jpg"/></a>
+						<a href="https://ss.knet.cn/verifyseal.dll?sn=e13050631010040492h5mq000000&ct=df&a=1&pa=500267" target="_blank" id="web_eight"><img src="img/img/h.png"/></a>
+					</p>		
 				</div>
-	
-				
-				
-			
 			</div>
-
-
-<!-------------------------------------------------------------------------------------------------->
-		
-		</div>
-
 	</body>
-	
 </html>

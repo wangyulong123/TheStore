@@ -168,28 +168,30 @@ $(function() {
 	});
 
 	var $bigImg = $("#camera_big");
+	var pid = $(".camera_small").attr("pid");
+	var path = $(".camera_small").attr("path");
 	$("#camera_small_1").hover(function() {
-		$bigImg.attr("src", "img/大图1.jpg");
+		$bigImg.attr("src", "staticTheStore/img/productImage/" + path);
 		$(this).alterBorderColor("#999999");
 		$(this).siblings().alterBorderColor("#fff");
 	});
 	$("#camera_small_2").hover(function() {
-		$bigImg.attr("src", "img/大图2.jpg");
+		$bigImg.attr("src", "staticTheStore/img/productImage/" + path);
 		$(this).alterBorderColor("#999999");
 		$(this).siblings().alterBorderColor("#fff");
 	});
 	$("#camera_small_3").hover(function() {
-		$bigImg.attr("src", "img/大图3.jpg");
+		$bigImg.attr("src", "staticTheStore/img/productImage/" + path);
 		$(this).alterBorderColor("#999999");
 		$(this).siblings().alterBorderColor("#fff");
 	});
 	$("#camera_small_4").hover(function() {
-		$bigImg.attr("src", "img/大图4.jpg");
+		$bigImg.attr("src", "staticTheStore/img/productImage/" + path);
 		$(this).alterBorderColor("#999999");
 		$(this).siblings().alterBorderColor("#fff");
 	});
 	$("#camera_small_5").hover(function() {
-		$bigImg.attr("src", "img/大图5.jpg");
+		$bigImg.attr("src", "staticTheStore/img/productImage/" + path);
 		$(this).alterBorderColor("#999999");
 		$(this).siblings().alterBorderColor("#fff");
 	});

@@ -35,16 +35,8 @@ public class OrderServlet extends HttpServlet {
 		String target = "";
 		//一.填充数据
 		String pid = request.getParameter("pid");
-		//二.调用业务逻辑
-		ProductService service = new ProductServiceImpl();
+		String count = request.getParameter("count");
 		Product product;
-		try {
-			product = service.getProductById(pid);
-		} catch (Exception e) {
-			target = "/WEB-INF/msg.jsp";
-			request.setAttribute("msg", e.getMessage());
-			e.printStackTrace();
-		}
 		
 		//判断是否登录
 		HttpSession session = request.getSession(true);
@@ -53,16 +45,31 @@ public class OrderServlet extends HttpServlet {
 		
 		if(user!=null){
 			//跳到 结算页
-			
 			//查询购物车里的东西 在结算页  再显示一遍  为了确认
 			List<Product> list = (List<Product>)session.getAttribute("shoppingCart");
 			//三.转发视图
-			request.setAttribute("list", list);
+			if(pid!=null){
+				//二.调用业务逻辑
+				ProductService service = new ProductServiceImpl();
+				try {
+					product = service.getProductById(pid);
+					product.setShoppingSum(Integer.parseInt(count));
+					if(list.size()==0){
+						list.add(product);
+					}
+				} catch (Exception e) {
+					target = "/WEB-INF/msg.jsp";
+					request.setAttribute("msg", e.getMessage());
+					e.printStackTrace();
+				}
+			}
+		
+			session.setAttribute("list", list);
 			
 			target = "/WEB-INF/jsp/user/querendingdan.jsp";
 		}else{
 			//跳到登陆页面
-			target = "/jsp/user/login.jsp";
+			target = "/jsp/HomePage/Login.jsp";
 			request.setAttribute("toWhere", "querendingdan");
 		}
 		//三.转发视图

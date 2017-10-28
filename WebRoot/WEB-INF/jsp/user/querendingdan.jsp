@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="top">
 				<a id="logo" href="javascript:void(0);"><img src="staticTheStore/img/yhd.png"/></a>
 				<div id="bg_head">
-					<a id="chakan" href="shoppingcar.html"><b>查看购物车</b></a>
+					<a id="chakan" href="ShoppingCarServlet?action=queryShoppingCart"><b>查看购物车</b></a>
 					
 				</div>
 						<!--<sub>下标</sub> <sup>上标</sup>-->
@@ -47,7 +47,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<!-- int userid = user.getUserid(); -->
 					<form id="shouhuoxinxi" action="DingdanServlet" method="post" class="shouhuoxinxi"><b><span class="t"> 收货信息</span></b><br/>
 						<input type="hidden" name="action" value="querendingdan"/>
-						<input type="hidden" name="userid" value="4" />
 												
 						<span class="te">  <div class="xing">* </div> 收 货 人:</span>
 						<input type="text" name="uname" id="uname" value="姓名" /><span></span><br/>
@@ -68,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="text" name="biaoqian" id="biaoqian" value="支持自定义标签" /><span></span><br/>
 						<span>           </span><input type="button" class="biaoqian" name="jia" id="jia" value="家" /><span> </span><input type="button" class="biaoqian" name="fumujia" id="fumujia" value="父母家" /><span> </span><input type="button" class="biaoqian" name="gongsi" id="gongsi" value="公司" /><span> </span><input type="button" class="biaoqian" name="xuexiao" id="xuexiao" value="学校" />
 						<br/><span>   <input type="checkbox" name="changyong" id="changyong"/> 设为常用地址</span>	
-						<br/><input type="button" name="queding" id="queding" value="确定" />
+						<br/><input type="submit" name="queding" id="queding" value="确定" />
 						<br/>
 					<hr/>
 					</form>
@@ -86,37 +85,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<hr/></div>
 					
 					<div class="shangpinxinxi"><b><span class="t"> 商品信息</span></b>
-					<%
-						List<Product> list = (List<Product>)session.getAttribute("list");
-						
-						double productTotalPrice = 0;	
-						int productTotalSum = 0;
-						if(list!=null){
-							for(Product product:list){
-								int shoppingCarSum = product.getShoppingSum();
-								double price = product.getPrice();
-								double singleProductTotalPrice = price * shoppingCarSum;
-								productTotalPrice = productTotalPrice + singleProductTotalPrice;
-					%>
+					
 						<div >
 							<table class="tab">
 								<tr class="shouhang">
 									<td>包裹</td><td>商品名称</td><td>数 量(个)</td><td >重 量(kg)</td><td>金额小计</td>
 								</tr>
+								<%
+									List<Product> list = (List<Product>)session.getAttribute("list");
+									
+									double productTotalPrice = 0;	
+									int productTotalSum = 0;
+									int i =0;
+									if(list!=null){
+										for(Product product:list){
+											int shoppingCarSum = product.getShoppingSum();
+											double price = product.getPrice();
+											double singleProductTotalPrice = price * shoppingCarSum;
+											productTotalPrice = productTotalPrice + singleProductTotalPrice;
+								%>
 								<tr>
 								<!-- 好丽友 派 巧克力味涂饰蛋类芯饼 204g/盒（6枚）  -->
-									<td>包裹1</td>
+									<td>包裹<%=++i %></td>
 									<td><%=product.getPname()%>	不支持无理由退货</td>
 									<td><%=shoppingCarSum %> </td>
 									<td>0.1 </td>
 									<td>¥<%=singleProductTotalPrice %> </td>
 								</tr>
-							</table>
-						</div><hr/>
-					<%				
+								<%				
 				    		}
 				    	}
 				    %>
+							</table>
+						</div><hr/>
+					
 					</div>
 					
 					<div class="tijiaodingdan">

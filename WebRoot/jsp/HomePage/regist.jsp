@@ -9,16 +9,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>sdsd </title>
+    <title>注册新用户</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 
   </head>
   
-  <body>
-  		<jsp:forward page="/DingdanServlet">
-			<jsp:param name="action" value="guanlishouhuodizhi" />
+ <body>
+  		<jsp:forward page="/LoginServlet">
+			<jsp:param name="action" value="gotoregist" />
 		</jsp:forward>
   </body>
 </html>

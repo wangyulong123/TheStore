@@ -124,9 +124,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<hr/></div>
 					
 					<div class="shangpinxinxi"><b><span class="t"> 商品信息</span></b>
-						<%
+					
+						<div >
+							<table class="tab">
+								<tr class="shouhang">
+									<td>包裹</td><td>商品名称</td><td>数 量(个)</td><td >重 量(kg)</td><td>金额小计</td>
+								</tr>
+									<%
 						List<Product> list = (List<Product>)session.getAttribute("list");
-						
+						int i = 0;
 						double productTotalPrice = 0;
 						//String count = (String)session.getAttribute("count");	
 						//String count = request.getParameter("count");		
@@ -138,25 +144,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								double singleProductTotalPrice = price * shoppingCarSum;
 								productTotalPrice = productTotalPrice + singleProductTotalPrice;
 					%>
-						<div >
-							<table class="tab">
-								<tr class="shouhang">
-									<td>包裹</td><td>商品名称</td><td>数 量(个)</td><td >重 量(kg)</td><td>金额小计</td>
-								</tr>
 								<tr>
 								<!-- 好丽友 派 巧克力味涂饰蛋类芯饼 204g/盒（6枚）  -->
-									<td>包裹1</td>
+									<td>包裹<%=++i %></td>
 									<td><%=product.getPname()%>	不支持无理由退货</td>
 									<td><%=shoppingCarSum %> </td>
-									<td>22 </td>
+									<td>0.1 </td>
 									<td>¥<%=singleProductTotalPrice %> </td>
 								</tr>
-							</table>
-						</div><hr/>
-					<%				
+								<%				
 				    		}
 				    	}
 				    %>
+							</table>
+						</div><hr/>
+					
 						<div id="xiadan"><img id="warning" src="staticTheStore/img/warning.png" alt="" /><span>  您的订单含不支持“7天无理由退货”商品，请确认后下单</span></div>
 					<hr/></div>
 					

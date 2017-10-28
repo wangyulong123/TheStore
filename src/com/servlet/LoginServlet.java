@@ -24,7 +24,11 @@ public class LoginServlet extends HttpServlet {
     	  this.getClock(request,response);
       }else if("logout".equals(action)){
 		    this.logout(request,response);
-	  }
+	  }else if("gotologin".equals(action)){
+			this.gotologin(request, response);
+		}else if("gotoregist".equals(action)){
+			this.gotoregist(request,response);
+		}
 	
 	}
 	public void getClock(HttpServletRequest request, HttpServletResponse response)
@@ -59,19 +63,19 @@ public class LoginServlet extends HttpServlet {
                                 //用户名和密码匹配
                                 service.insertLoginRecord(userName, "0", "0");
                                 request.getSession().setAttribute("LoginFlag", "1");
-                                response.sendRedirect("http://localhost:8080/TheStore/jsp/HomePage/Login.jsp");
+                                response.sendRedirect("jsp/HomePage/Login.jsp");
                                 return;
                             }else{
                                 //用户名密码不匹配
                                 service.insertLoginRecord(userName, "0", "1");      
-                                response.sendRedirect("http://localhost:8080/TheStore/jsp/HomePage/Login.jsp?error=2");
+                                response.sendRedirect("jsp/HomePage/Login.jsp?error=2");
                                 return;
                             }
 
                         } else {
                             // 锁定时间未满一天
                         	System.out.println("12");
-                            response.sendRedirect("http://localhost:8080/TheStore/jsp/HomePage/Login.jsp?error=3");
+                            response.sendRedirect("jsp/HomePage/Login.jsp?error=3");
                             return;
                         }
 
@@ -83,10 +87,20 @@ public class LoginServlet extends HttpServlet {
                             service.insertLoginRecord(userName, "0", "0");
                             request.getSession().setAttribute("LoginFlag", "1");
                             HttpSession session=request.getSession(true);
-                        	session.setAttribute("user", user);//把user存在session中
-                        	String toWhere =request.getParameter("toWhere");
-                           /* response.sendRedirect("http://localhost:8080//yhd/jsp/user/Yhd.jsp");*/
-                            response.sendRedirect("Category2Servlet?action=getMenuForFirstPage");
+                            //通过username查出对应的user的所有信息
+                            UserParaService service4=new UserParaService();
+                            User user1=service4.getuserall(user.getUsername());
+                        	session.setAttribute("user", user1);//把user存在session中
+                        	String toWhere = (String)request.getParameter("toWhere");
+                        	if(toWhere!=null){
+                        		System.out.println("toWhere" + toWhere);
+                        		 response.sendRedirect("ShoppingCarServlet?action=queryShoppingCart");
+                        	}else{
+                        		System.out.println("没有toWhere");
+                        		response.sendRedirect("Category2Servlet?action=getMenuForFirstPage");
+                        	}
+                           
+                            
                             return;                              
                         }else{
                             //用户名密码不匹配
@@ -94,7 +108,7 @@ public class LoginServlet extends HttpServlet {
                                 //距离上次登录失败超过5分钟
                                 service.deleteLoginRecord(userName);
                                 service.insertLoginRecord(userName, "0", "1");
-                                response.sendRedirect("http://localhost:8080/TheStore/jsp/HomePage/Login.jsp?error=2");
+                                response.sendRedirect("jsp/HomePage/Login.jsp?error=2");
                                 return;
                             }else{
                                 //未超过5分钟
@@ -105,19 +119,19 @@ public class LoginServlet extends HttpServlet {
                                         //距第一次登录错误时间大于5分钟
                                         service.deleteLoginRecord(userName);
                                         service.insertLoginRecord(userName, "0", "1");
-                                        response.sendRedirect("http://localhost:8080/TheStore/jsp/HomePage/Login.jsp?error=2");
+                                        response.sendRedirect("jsp/HomePage/Login.jsp?error=2");
                                         return;
 
                                     }else{
                                         //在5分钟以内
                                         service.insertLoginRecord(userName, "1", "3");
-                                        response.sendRedirect("http://localhost:8080/TheStore/jsp/HomePage/Login.jsp?error=4");
+                                        response.sendRedirect("jsp/HomePage/Login.jsp?error=4");
                                         return;
                                     }
                                 }else{
                                     //上次登录失败时没超过两次
                                     service.insertLoginRecord(userName, "0", String.valueOf((Integer.parseInt(failureNum)+1)));
-                                    response.sendRedirect("http://localhost:8080/TheStore/jsp/HomePage/Login.jsp?error=2");
+                                    response.sendRedirect("jsp/HomePage/Login.jsp?error=2");
                                     return;
                                 }
                             }
@@ -135,14 +149,14 @@ public class LoginServlet extends HttpServlet {
                     }else{
                         //用户名密码不匹配
                         service.insertLoginRecord(userName, "0", "1");
-                        response.sendRedirect("http://localhost:8080/TheStore/jsp/HomePage/Login.jsp?error=2");
+                        response.sendRedirect("jsp/HomePage/Login.jsp?error=2");
                         return;
 
                     }
                 }
             } else {
                 // 用户不存在
-                response.sendRedirect("http://localhost:8080/TheStore/jsp/HomePage/Login.jsp?error=1");
+                response.sendRedirect("jsp/HomePage/Login.jsp?error=1");
                 return;
             }
         } catch (Exception e) {
@@ -167,6 +181,45 @@ public class LoginServlet extends HttpServlet {
 		 request.getRequestDispatcher(target).forward(request, response);
 		
 	}
+	
+	public void gotologin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String target = "";
+		//一.填充数据
+		
+		//二.调用业务逻辑
+		
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//三.转发视图
+		target = "/WEB-INF/jsp/HomePage/Login.jsp";
+		request.getRequestDispatcher(target).forward(request, response);
+	}
+	
+	public void gotoregist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String target = "";
+		//一.填充数据
+		
+		//二.调用业务逻辑
+		
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//三.转发视图
+		target = "/WEB-INF/jsp/HomePage/regist.jsp";
+		request.getRequestDispatcher(target).forward(request, response);
+	}
+	
+
+
+
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

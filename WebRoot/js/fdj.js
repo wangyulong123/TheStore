@@ -3,9 +3,13 @@ $(function(){
 		ifdj_area = $("#fdj_area"),
 		icamera_small = $(".camera_small img"),
 		tfdj_area = $("#fdj_area img");
+	var pid = $(".camera_small").attr("pid");
+	var path = $(".camera_small").attr("path");
 	//中图
-	var arr = ["img/大图1.jpg","img/大图2.jpg","img/大图3.jpg","img/大图4.jpg","img/大图5.jpg"];
-	var oarr = ["img/大图1_600x600.jpg","img/大图2_600x600.jpg","img/大图3_600x600.jpg","img/大图4_600x600.jpg","img/大图5_600x600.jpg"];
+//	var arr = ["img/大图1.jpg","img/大图2.jpg","img/大图3.jpg","img/大图4.jpg","img/大图5.jpg"];
+//	var oarr = ["img/大图1_600x600.jpg","img/大图2_600x600.jpg","img/大图3_600x600.jpg","img/大图4_600x600.jpg","img/大图5_600x600.jpg"];
+	var arr = ["staticTheStore/img/productImage/" + path,"staticTheStore/img/productImage/" + path,"staticTheStore/img/productImage/" + path,"staticTheStore/img/productImage/" + path,"staticTheStore/img/productImage/" + path];
+	var oarr = ["staticTheStore/img/productImage/" + path,"staticTheStore/img/productImage/" + path,"staticTheStore/img/productImage/" + path,"staticTheStore/img/productImage/" + path,"staticTheStore/img/productImage/" + path];
 	
 	icamera_small.each(function(i){
 		$(this).click(function(){

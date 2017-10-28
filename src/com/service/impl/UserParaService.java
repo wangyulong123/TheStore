@@ -74,5 +74,21 @@ public class UserParaService {
 		   return dao.getFaNum2Record(userName);
 		   
 	   }
-	  
+	   //根据username得到user的全部信息
+	   public User getuserall(String username) {
+		   User user=new User();
+		   try {
+			 user= dao.getuserall(username);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;   
+	   }
+	   public static void main(String[] args) throws Exception {
+		UserParaService dao=new UserParaService();
+			String username="zzy";
+			User user=dao.getuserall(username);
+			System.out.println(user.getAddress());
+		}
 }

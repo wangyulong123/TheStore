@@ -59,10 +59,14 @@ public class DingdanServlet extends HttpServlet {
 
 		String target = "";
 		//一.填充数据
-		
+		HttpSession session = request.getSession(true);
+		User user = (User) session.getAttribute("user");
+		List<Product> shoppingCart = (List<Product>)session.getAttribute("shoppingCart");
 		//二.调用业务逻辑
 		
 		//三.转发视图
+		session.setAttribute("user", user);
+		session.setAttribute("shoppingCart", shoppingCart);
 		target = "/WEB-INF/jsp/user/querendingdan.jsp";
 		request.getRequestDispatcher(target).forward(request, response);
 	}

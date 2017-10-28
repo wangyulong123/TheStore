@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<!--文本标签-->
 						<%
-					 User user=(User)session.getAttribute("user");
+					 User user = (User)session.getAttribute("user");
 					 if(user==null){
 					 //显示：Hi,请登录
 					 %>	
@@ -322,7 +322,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="javascript:void(0);" ><img src="staticTheStore/图片/手机.png" />&nbsp;&nbsp;手机/数码/电脑办公/</a></h4>
+									<h4><a href="PhonesServlet?action=getPageByQuery&cid=62&orderCondition=price&ascOrDesc=asc&requestPage=1&searchCondition=手机" ><img src="staticTheStore/图片/手机.png" />&nbsp;&nbsp;手机/数码/电脑办公/</a></h4>
 									<span style="position:absolute; top: 10px;">&gt;</span>
 								</div>
 							</li>
@@ -371,7 +371,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								for(Category2 category2:category2List){
 							%>	
 							  <%-- <a href="javascript:void(0);"  target="_blank"><%=category2.getCname() %></a> --%>
-							  <a href="UserProductServlet?action=getProductListByCategory&requestPage=1&cid=<%=category2.getCid()%>"><%=category2.getCname()%></a>  	
+							  <a href="PhonesServlet?action=getPageByQuery&cid=<%=category2.getCid() %>&orderCondition=price&ascOrDesc=asc&requestPage=1&searchCondition=手机"><%=category2.getCname()%></a>  	
 						
 							 <%
 							 }
@@ -2152,7 +2152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      			 </span>
      		</small>
      	</div>
-     	ft_wrap_center
+     	
      </div>
      <script src="staticTheStore/js/左侧悬浮栏.js" type="text/javascript" charset="utf-8"></script>
   

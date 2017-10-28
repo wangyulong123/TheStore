@@ -22,7 +22,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
 	public int addOrderDetail(OrderDetail orderDetail) throws Exception {
 		int count = 0;
 		// 3.建立通道
-		String sql = "insert into orderDetail values(seq_orderDetail.nextval,?,?,?,?)";
+		String sql = "insert into orderDetail values(seq_orderDetail.nextval,2794077,151,0.01,1)";
 		
 		PreparedStatement pstmt = null;
 
@@ -30,10 +30,10 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, orderDetail.getOrderid());
-			pstmt.setInt(2, orderDetail.getPid());
-			pstmt.setDouble(3, orderDetail.getBuyPrice());
-			pstmt.setInt(4, orderDetail.getBuySum());
+			//pstmt.setInt(1, orderDetail.getOrderid());
+			//pstmt.setInt(2, orderDetail.getPid());
+			//pstmt.setDouble(3, orderDetail.getBuyPrice());
+			//pstmt.setInt(4, orderDetail.getBuySum());
 			// 4.执行并返回结果集
 			count = pstmt.executeUpdate();
 											

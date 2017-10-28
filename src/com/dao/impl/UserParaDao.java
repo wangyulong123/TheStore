@@ -126,4 +126,31 @@ public class UserParaDao {
 			  list.toArray();
 			
 	    }
+	   //根据username得到user所有的信息
+	   public User getuserall(String username) throws Exception{
+		   String sql="select * from user1 where username="+"'"+username+"'";
+		   User user=new User();
+		   PreparedStatement pstmt = null;
+			 ResultSet rs = null;
+			  pstmt = conn.prepareStatement(sql);
+			  rs = pstmt.executeQuery();
+			  while (rs.next()) {
+			  user.setUserid(rs.getInt(1));
+			  user.setUsername(rs.getString(2));
+		      user.setPassword(rs.getString(3));
+		      user.setIsActive(rs.getInt(4));
+		      user.setNickname(rs.getString(5));
+		      user.setAddress(rs.getString(6));
+		      user.setTelphone(rs.getString(7));
+			  }
+		   
+		   
+		   return user;
+	   }
+	   public static void main(String[] args) throws Exception {
+		UserParaDao dao=new UserParaDao();
+		String username="zzy";
+		User user=dao.getuserall(username);
+		System.out.println(user.getAddress());
+	}
 }

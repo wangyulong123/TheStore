@@ -57,7 +57,8 @@ public class OrderServiceImpl implements OrderService{
 
 			int shoppingCarSum = product.getShoppingSum();
 			double buyPrice = product.getPrice();
-
+			System.out.println("订单明细orderId"+orderId);
+			System.out.println("添加订单明细----订单id"+product);
 			// 添加订单明细
 			OrderDetail orderDetail = new OrderDetail();
 			orderDetail.setOrderid(Integer.parseInt(orderId));

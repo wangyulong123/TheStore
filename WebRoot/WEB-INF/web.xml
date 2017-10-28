@@ -51,7 +51,14 @@
 		<servlet-name>CategoryServlet</servlet-name>
 		<servlet-class>com.servlet.CategoryServlet</servlet-class>
 	</servlet>
-
+  <servlet>
+    <servlet-name>Order1Servlet</servlet-name>
+    <servlet-class>com.servlet.Order1Servlet</servlet-class>
+  </servlet>
+ <servlet-mapping>
+    <servlet-name>Order1Servlet</servlet-name>
+    <url-pattern>/Order1Servlet</url-pattern>
+  </servlet-mapping>
 	<servlet>
 		<servlet-name>JDDispatcherServlet</servlet-name>
 		<servlet-class>com.servlet.JDDispatcherServlet</servlet-class>

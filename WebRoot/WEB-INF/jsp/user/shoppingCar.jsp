@@ -1837,7 +1837,23 @@ img {
 
 <body>
 	<div id="loginDiv">
-		<span>Hi,请</span> <a href="#">登录</a> <a class="regist" href="#">注册</a>
+		<%
+			User user = (User)session.getAttribute("user");
+			if(user==null){
+				//显示 "Hi,请登录"	
+		%>
+		<span>Hi,请</span>
+		<a href="jsp/HomePage/Login.jsp">登录</a>
+		<a class="regist" href="jsp/user/regist.jsp">注册</a>
+		<%
+			}else{
+			//显示 "Hi,XXX" 退出
+		%>
+		<span style="color:#666;">Hi,<%=user.getNickname()%></span>
+		<a href="LoginServlet?action=logout" class="regist">退出</a>
+		<%
+			}
+		%>
 		<div id="orderDiv">
 			<a href="#" target="_blank">我的订单</a>
 		</div>
@@ -1886,14 +1902,14 @@ img {
 	
 	<div class="nologin-tip">
 		<span class="wicon"></span> 您还没有登录！登录后购物车的商品将保存到您账号中 <a
-			class="btn-1 ml10" href="login.html"
+			class="btn-1 ml10" href="jsp/HomePage/Login.jsp"
 			clstag="clickcart|keycount|xincart|cart_pageTopLogin">立即登录</a>
 	</div>
+
 	<!-- 标题处 -->
 	<div class="div2">
 		<a href="#" class="toRed"><em class="div2-1 ">全部商品&nbsp;</em><span
-			class="number switch">1</span></a> <a href="#"><em class="div2-1"
-			style="margin-left: 27px;">1号大药房</em></a>
+			class="number switch">1</span></a> 
 		<div class="sendToHere">
 			<div>北京朝阳区</div>
 			<b class="div2-b"></b>
@@ -1918,25 +1934,27 @@ img {
 		</div>
 	</div>
 
-
+	
 	<!-- 1号商店-->
 	<div class="goods">
+		
 		<!--1号自营那一条-->
 		<div class="shop">
 			<div class="shop-mes">
 				<span>购满￥99.00&nbsp;免运费</span> <span class="tips-icon"></span>
 			</div>
 		</div>
-		
-		<%
-			List<Product> list = (List<Product>)request.getAttribute("list");
-			double productTotalPrice = 0;
-			if(list!=null){
-				for(Product product:list){
-					int shoppingCarSum = product.getShoppingSum();
-					double price = product.getPrice();
-					double singleProductTotalPrice = price * shoppingCarSum;
-					productTotalPrice = productTotalPrice + singleProductTotalPrice;
+	<%	
+		List<Product> list = (List<Product>)session.getAttribute("list");
+		double productTotalPrice = 0;
+		//String count = request.getParameter("count");
+		if(list!=null){
+			for(Product product:list){
+				//int shoppingCarSum = Integer.parseInt(count);
+				int shoppingCarSum = product.getShoppingSum();
+				double price = product.getPrice();
+				double singleProductTotalPrice = price * shoppingCarSum;
+				productTotalPrice = productTotalPrice + singleProductTotalPrice;
 		%>
 		<!--单品-->	
     		<div class="buygoods buygoodsselected item-list">
@@ -1975,6 +1993,10 @@ img {
     					</div>
 	
  </div>
+ <%				
+    		}
+    	}
+    %>
 	<!-- 结算 -->
 	<div class="check" id="selectall_div">
 		<div class="selectall">
@@ -2000,13 +2022,10 @@ img {
 				class="price totalRePrice toolbar-right-money-span">-￥0.00</span>
 		</div>
 		<div class="btn-area">
-			<a class="submit-btn" href="OrderServlet?action=checkOrder&pid=<%=product.getPid() %>">去结算<b></b></a>
+			<a class="submit-btn" href="OrderServlet?action=checkOrder">去结算<b></b></a>
 		</div>
 	</div>
-<%				
-    		}
-    	}
-    %>
+
 	<!-- 猜你喜欢 -->
 	<div class="w">
 		<div class="m m1" id="c-tabs-new">
@@ -2281,14 +2300,14 @@ img {
 	$(function() {
 		var isnoLogin = $("#ttbar-login").hasClass("nologin");
 		if (isnoLogin) {//没有登陆
-			//$("#ttbar-login").addClass("nologin");
+			$("#ttbar-login").addClass("nologin");
 			$(".nologin-tip").show();
 			$(".div2").removeClass("div2login");
-		} /* else {
-			//$("#ttbar-login").removeClass("nologin");
+		}  else {
+			$("#ttbar-login").removeClass("nologin");
 			$(".nologin-tip").hide();
 			$(".div2").addClass("div2login");
-		} */
+		} 
 	});
 	$(function() {
 		<!--选中店铺-->

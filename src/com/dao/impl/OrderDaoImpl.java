@@ -11,6 +11,7 @@ import java.util.Random;
 
 import com.dao.inter.OrderDao;
 import com.util.ConnOracle;
+import com.util.ConnOracleDataSourceTransaction;
 import com.util.ConnOracleTomcatDataSource;
 import com.vo.Order1;
 import com.vo.Product;
@@ -22,7 +23,7 @@ public class OrderDaoImpl implements OrderDao {
 	private Connection conn;
 	
 	public OrderDaoImpl() {
-		conn = ConnOracle.getConnection();
+		conn = ConnOracleDataSourceTransaction.getConnection();
 	}
 
 
@@ -30,14 +31,14 @@ public class OrderDaoImpl implements OrderDao {
 	public int addOrder(Order1 order) throws Exception {
 		int orderId = 0;
 		Random random = new Random();
-		int num1 = random.nextInt(10000);
-		int num2 = random.nextInt(1000);
+		int num1 = random.nextInt(99);
+		int num2 = random.nextInt(9);
 		
 		String sql = "INSERT INTO order1 VALUES("+num1+"||"+num2+"||seq_order1.nextval,to_date('"+order.getOrdertime()+"','YYYY-MM-DD HH24:MI:SS'),?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null;
 		// 三.建立通道
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql,new String[]{"orderId"});
 			pstmt.setDouble(1, order.getOrderprice());
 			pstmt.setString(2,order.getOrderdesc());
 			pstmt.setString(3,order.getShouhuorenname());

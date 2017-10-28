@@ -128,7 +128,7 @@ public class PhonesServlet extends HttpServlet {
 
 		String requestPage = request.getParameter("requestPage");
 		System.out.println(requestPage);
-
+		String searchCondition = request.getParameter("searchCondition");
 		String orderCondition = request.getParameter("orderCondition");
 		String ascOrDesc = request.getParameter("ascOrDesc");
 		System.out.println(ascOrDesc);
@@ -160,6 +160,7 @@ public class PhonesServlet extends HttpServlet {
 			request.setAttribute("cid", cid);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("orderConditionObj", orderConditionObj);
+			request.setAttribute("searchCondition", searchCondition);
 			target = "/WEB-INF/jsp/user/phones.jsp";
 		} catch (Exception e) {
 			target = "/WEB-INF/msg.jsp";

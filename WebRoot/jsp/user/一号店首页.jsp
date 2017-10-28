@@ -275,7 +275,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</li>
 							<li class="tab-item">
 								<div class="thname">
-									<h4><a href="phones.html"><img src="图片/手机.png" />&nbsp;&nbsp;&nbsp;&nbsp;手机/数码/电脑办公</a></h4>
+									<h4><a href="PhonesServlet?action=getPageByQuery&cid=62&orderCondition=price&ascOrDesc=asc&requestPage=1&searchCondition=手机""><img src="图片/手机.png" />&nbsp;&nbsp;&nbsp;&nbsp;手机/数码/电脑办公</a></h4>
 									<span>&gt;</span>
 								</div>
 							</li>

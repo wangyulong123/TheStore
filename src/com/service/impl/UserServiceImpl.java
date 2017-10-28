@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dao.impl.UserDaoImpl;
 import com.service.inter.UserService;
+import com.util.SQLUtil;
 import com.vo.User;
 
 public class UserServiceImpl implements UserService{
@@ -11,9 +12,9 @@ public class UserServiceImpl implements UserService{
 	
 	
 	/**
-	 * 
 	 *@return 如果根据用户名和密码找到该用户 返回该用户对象  没找到的话 返回null
 	 */
+	
 	public User login(String username, String password) throws Exception{
 		
 		User user = null;
@@ -28,5 +29,60 @@ public class UserServiceImpl implements UserService{
 		
 		return user;
 	}
+	
+/*	public boolean activeUser(String username, Object count) throws Exception{
+		
+		boolean flag = false;
+		String sql = "update user1 set isactive=1 where username='" + username + "'";
+		
+		try {
+			SQLUtil sqlUtil = new SQLUtil();
+			int count1 = sqlUtil.executeExceptDQL(sql);
+			if(count1>0){
+				flag = true;
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			throw new Exception("激活失败");
+		}
+		
+		return flag;
+	}*/
 
+	@Override
+	public int addUser(User user) throws Exception {
+		int count = dao.addUser(user);
+		return count;
+	}
+
+	@Override
+	public boolean activeUser(String username) throws Exception {
+		boolean flag = false;
+		String sql = "update user1 set isactive=1 where username='" + username + "'";
+		System.out.println(sql);
+		try {
+			SQLUtil sqlUtil = new SQLUtil();
+			int count1 = sqlUtil.executeExceptDQL(sql);
+			if(count1>0){
+				flag = true;
+				 
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			throw new Exception("激活失败");
+		}
+		
+		return flag;
+	}
+     
+	@Override
+	public List<User> getAllUsers() throws Exception {
+		List<User> list = null;
+		String sql = "SELECT * FROM user1";
+		list = dao.getPageByQuery(sql);
+		return list;
+	}
+	
 }

@@ -1,10 +1,7 @@
 *{
-	margin:0px;/*ä¸ºäº†ä¿è¯æ¯ä¸ªæµè§ˆå™¨é»˜è®¤é—´è·éƒ½ä¸º0  å› ä¸ºä¸åŒæµè§ˆå™¨é»˜è®¤é—´è·ä¸ä¸€æ · ä¸ºäº†å…¼å®¹æ€§*/
+	margin:0px;/*ÎªÁË±£Ö¤Ã¿¸öä¯ÀÀÆ÷Ä¬ÈÏ¼ä¾à¶¼Îª0  ÒòÎª²»Í¬ä¯ÀÀÆ÷Ä¬ÈÏ¼ä¾à²»Ò»Ñù ÎªÁË¼æÈÝÐÔ*/
 }
-body{
-	overflow: :scroll;
-	overflow-x: hidden;
-}	
+		
 
 div.head{
 	width:1366px;
@@ -69,8 +66,8 @@ div.head{
 
 	ul {
 			list-style-type:none;
-			padding:0px 25px;/*æ–°æµè§ˆå™¨ firefox safari éƒ½æ˜¯ä½¿ç”¨å†…è¾¹è·æŽ§åˆ¶ç¼©è¿›çš„ æ–°ieä¹Ÿæ˜¯*/
-			margin:0px;/*è€ieæ˜¯ä½¿ç”¨å¤–è¾¹è·ç¼©è¿›çš„ æ‰€ä»¥å…‰è®¾ç½®padding:0px è€id ä¸ä¼šåŽ»æŽ‰ç´¢å¼• ä¸ºäº†å…¼å®¹è€ie*/
+			padding:0px 25px;/*ÐÂä¯ÀÀÆ÷ firefox safari ¶¼ÊÇÊ¹ÓÃÄÚ±ß¾à¿ØÖÆËõ½øµÄ ÐÂieÒ²ÊÇ*/
+			margin:0px;/*ÀÏieÊÇÊ¹ÓÃÍâ±ß¾àËõ½øµÄ ËùÒÔ¹âÉèÖÃpadding:0px ÀÏid ²»»áÈ¥µôË÷Òý ÎªÁË¼æÈÝÀÏie*/
 		}
 	li{
 			float: left;
@@ -92,7 +89,7 @@ div.head{
 div.body{
 	width:1366px;
 	height:600px;
-	/*background-image: url(../img/beijing.png);*/
+	/*background-image: url(../img/1.png);*/
 }
 
  #r_icon{width:1366px;height:600px;opacity: 0.3;}
@@ -115,17 +112,17 @@ div.body{
 				margin-bottom: 10px;
 			}
 	
-		#username{width:305px;height:50px;padding-left: 25px;
-				  font-family: "å¾®è½¯é›…é»‘";font-size: 14px;color: #666;
+		#username{width:334px;height:54px;padding-left: 25px;
+				  font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;color: #666;
 			      border:solid;border-color:#DEDEDE;border-width:thin;}
 			      
-		#phone{width:305px;height:50px;padding-left: 25px;
-			   font-family: "å¾®è½¯é›…é»‘";font-size: 14px;color: #666;				
+		#phone{width:334px;height:54px;padding-left: 25px;
+			   font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;color: #666;				
 			   border:solid;border-color:#DEDEDE;border-width:thin;}
 		
 		
-		#yanzhengma{width:165px;height:50px;padding-left: 25px;
-					font-family: "å¾®è½¯é›…é»‘";font-size: 14px;color: #666;
+		#yanzhengma{width:194px;height:54px;padding-left: 25px;
+					font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;color: #666;
 					border:solid;border-color:#DEDEDE;border-width:thin;}
 					
 		#huoqu{
@@ -142,24 +139,41 @@ div.body{
 				cursor: pointer;
 				}
 				
-		#password1{width:305px;height:50px;padding-left: 25px;
-				   font-family: "å¾®è½¯é›…é»‘";font-size: 14px;color: #666;
+		#password1{width:334px;height:54px;padding-left: 25px;
+				   font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;color: #666;
 				   border:solid;border-color:#DEDEDE;border-width:thin;}
-		#password2{width:305px;height:50px;padding-left: 25px;
-		          font-family: "å¾®è½¯é›…é»‘";font-size: 14px;color: #666;
+		#password2{width:334px;height:54px;padding-left: 25px;
+		          font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;color: #666;
 		          border:solid;border-color:#DEDEDE;border-width:thin;}
 		#dianjifuwu{
-			 	height: 35px;
+			 	height: 25px;
    			 	font-size: 12px;
- 				font-fanily:"å¾®è½¯é›…é»‘"; 	
-    		    line-height: 35px;
+ 				font-fanily:"Î¢ÈíÑÅºÚ"; 	
+    		    line-height: 25px;
   		        color: #666;
    				text-indent: 1em;
    			
 		}
-		#agree{
-			width:330px;
+		#agree1{
+			width:334px;
 			height:52px;
+			margin-top: 6px;
+			background-color: #FF3C3C;
+			font-family: "å¾®è½¯é›…é»‘";
+			font-size: 16px;
+			line-height: 52px;
+			color: #FFF;
+			text-align: center;
+			border-radius:4px;
+			border:0px soild white;
+			cursor:pointer;
+			
+		}
+		
+		#agree{
+			display: block;
+			width: 330px;
+			height: 52px;
 			margin-top: 6px;
 			background-color: #FF3C3C;
 			font-size: 16px;
@@ -309,6 +323,8 @@ div>a:active{color:#FFFFFF;}
 	display:none;
 }
 
+
+
 .i1{
 	position: absolute;
 	left: -10px;
@@ -366,6 +382,8 @@ div>a:active{color:#FFFFFF;}
    		 line-height: 40px;
   		 display:none;
 	}
+	
+
 	#user13{
 		 position:absolute;
 		 right:-30px;
@@ -404,6 +422,19 @@ div>a:active{color:#FFFFFF;}
   		 height:50px;
    		 line-height: 25px;
   		 display:none;	
+	}
+	
+	#user16{
+		 position:absolute;
+		 right:30px;
+   		 top:68px;
+   		 font-size:12px;
+   		 color:#666666;
+   		 background-color:#FFF4D7;
+   		 width:105px;
+  		 height:40px;
+   		 line-height: 40px;
+  		 display:none;
 	}
 #phone11{
 	position:absolute;
@@ -558,4 +589,81 @@ div>a:active{color:#FFFFFF;}
     text-align:center;
     line-height: 40px;
 	display:none;
+}
+
+#querenemail{
+	width:1366px;
+	height:730px;
+	background-color:rgba(158,158,158,0.5);
+	position:absolute;
+	bottom:-80px;
+	display:none;
+	float:right;
+}
+
+#shuruemail{
+	width:400px;
+	height:300px;
+	background-color:white;
+	position:relative;
+	top:150px;
+    left:480px;
+}
+
+#lastdiv{
+	width:340px;
+	height:220px;
+	font-size:14px;
+	background-color:white;
+	position:relative;
+	bottom:-30px;
+	left:30px;
+	text-align:center;
+}
+#lastwrite{
+	width:280px;
+	height:42px;
+	font-family: "å¾®è½¯é›…é»‘";
+	font-size: 14px;
+	line-height: 52px;
+	color: #787878;
+	text-align: center;
+	border-radius:4px;
+	border-bottom:2px solid #C4D8F2;
+	border-right:2px solid  #C4D8F2;
+	border-left:2px solid  #C4D8F2;
+	border-top:2px solid  #C4D8F2;
+	
+	position:relative;
+	top:20px;
+	
+	top:20px;	
+}
+
+#shuruname{
+	width:280px;
+	height:42px;
+	font-family: "å¾®è½¯é›…é»‘";
+	font-size: 14px;
+	line-height: 52px;
+	color: #787878;
+	text-align: center;
+	border-radius:4px;
+	border-bottom:2px solid #C4D8F2;
+	border-right:2px solid  #C4D8F2;
+	border-left:2px solid  #C4D8F2;
+	border-top:2px solid  #C4D8F2;	
+}
+.yincang{
+	display:none;
+}
+
+#jihuo{
+	width:100px;
+	height:30px;
+	font-size:13px;
+	color:white;
+	background-color:#FF3C3C;
+	position:relative;
+	top:30px;
 }

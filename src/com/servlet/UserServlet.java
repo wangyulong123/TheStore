@@ -1,17 +1,24 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.Random;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.portable.ApplicationException;
+
+import com.google.gson.Gson;
 import com.service.impl.CategoryServiceImpl;
 import com.service.impl.UserServiceImpl;
 import com.service.inter.CategoryService;
+import com.service.inter.UserService;
 import com.vo.Category;
 import com.vo.Product;
 import com.vo.User;
@@ -24,10 +31,17 @@ public class UserServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		String action = request.getParameter("action");
+		System.out.println(action);
 		if("login".equals(action)){
 			this.login(request,response);
 		}else if("logout".equals(action)){
 			this.logout(request,response);
+		}else if("active".equals(action)){
+			this.active(request,response);
+		}else if("addUser".equals(action)){
+			this.addUser(request, response);
+		}else if ("checkUnameUnique".equals(action)) {
+			this.checkUnameUnique(request,response);
 		}
 		
 		
@@ -57,7 +71,7 @@ public class UserServlet extends HttpServlet {
 					String toWhere = request.getParameter("toWhere");
 					System.out.println(toWhere.equals(""));
 					if(toWhere==null||toWhere.trim().equals("")){
-						//跳到京东首页 firstPage
+						//跳到首页 firstPage
 						//查询商品种类 用来显示首页的菜单
 						CategoryService categoryService = new CategoryServiceImpl();
 						List<Category> list = categoryService.getAllCategorys();
@@ -109,10 +123,103 @@ public class UserServlet extends HttpServlet {
 		request.getRequestDispatcher(target).forward(request, response);
 	}
 	
+	
+	
+	public void active(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String target = "";
+		//1.填充数据
+		String username = request.getParameter("username");
+	   
+		try {
+			//2.调用业务逻辑
+			UserService service = new UserServiceImpl();
+			boolean flag = service.activeUser(username);
+			if(flag){
+				request.setAttribute("msg", "用户激活成功!!!<a href='LoginServlet?action=gotologin'>点点这里去登录</a>");
+			}else{
+				request.setAttribute("msg", "用户激活失败!");
+			}
+		} catch (Exception e) {
+			request.setAttribute("msg", "用户激活失败!");
+			e.printStackTrace();
+		}
+		//3.转发视图
+		target = "/WEB-INF/msg.jsp";
+		request.getRequestDispatcher(target).forward(request, response);
+	}
+	
+	
+	public void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         System.out.println("用户存入 数据库连接成功 ");
+		String target = "";
+		//一.填充数据
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String telphone = request.getParameter("telphone");
+		String nickname = request.getParameter("nickname");
+		
+		System.out.println(username);
+		System.out.println(password);
+		System.out.println(telphone);
+		System.out.println(nickname);
+		//二.调用业务逻辑
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setIsActive(0);
+		user.setNickname("");
+		user.setAddress("");
+	    user.setTelphone(telphone);
+		UserService service = new UserServiceImpl();
+		try {
+			service.addUser(user);
+			request.setAttribute("msg", "申请账户成功,请后退一页，填写邮箱，激活您的账户");
+			System.out.println("添加 用户成功");
+		} catch (Exception e) {
+		 	request.setAttribute("msg", "申请账户失败");
+			e.printStackTrace();
+			System.out.println("添加用户失败");
+		}
+		//三.转发视图
+	target = "/WEB-INF/msg.jsp";
+	request.getRequestDispatcher(target).forward(request, response);
+	}
+	public void checkUnameUnique(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("checkUnameUnique----------");
+		//设置服务器相应的数据类型  application/json
+		response.setContentType("application/json");
+		//1.填充数据
+		String target="";
+
+			try {
+				//2.调用业务逻辑
+				UserService service = new UserServiceImpl();
+				
+				List<User> usersList = service.getAllUsers();
+				System.out.println(usersList);
+				//输出
+				PrintWriter out = response.getWriter();
+				
+				Gson gson = new Gson();
+				String userList = gson.toJson(usersList);
+				out.println(userList);
+				out.flush();
+				out.close();
+			} catch (Exception e) {
+				System.out.println("获取所有用户失败");
+				target="/WEB-INF/msg.jsp";
+				request.getRequestDispatcher(target).forward(request, response);
+			}
+	}
+	
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		this.doGet(request, response);
 	}
+	
 
 }

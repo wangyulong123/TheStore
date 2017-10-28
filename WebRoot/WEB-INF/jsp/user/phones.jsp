@@ -1,5 +1,5 @@
 <%@ page language="java"
-	import="java.util.*,com.page.PageInfo,com.vo.Product"
+	import="java.util.*,com.page.*,com.vo.*"
 	pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
@@ -34,7 +34,21 @@
 			</div>
 			<div id="right">
 				<div id="msg" class="menu">
-					<a href="#" title="aa">Hi,请登录 </a> <a href="#">注册&nbsp;&nbsp;</a>
+					<%
+					 User user=(User)session.getAttribute("user");
+					 if(user==null){
+					 //显示：Hi,请登录
+					 %>	
+					<a id="pregister" href="jsp/HomePage/Login.jsp">Hi,请登录</a>
+					<a id="register" href="jsp/user/Regist.jsp">注册</a>
+					<%
+					}else{
+					 %>
+					   <b>Hi!<%=user.getNickname() %></b>
+					   <a href="LoginServlet?action=logout">退出登录</a>
+					   <%
+					   }
+					    %>
 				</div>
 				<div id="mine" class="menu">
 					<a href="#"><img src="staticTheStore/img/mobile/dingdan.jpg" />我的订单</a>
@@ -74,7 +88,7 @@
 			<div id="logoRight">
 				<div id="sousuo">
 					<form id="categoryForm"
-						action="PhonesServlet?action=getPageByQuery" method="post">
+						action="PhonesServlet?action=getPageByQuery&requestPage=1" method="post">
 						<div id="sousuokuang">
 							<input id="input1" type="text" placeholder="三门智控冰箱抢免单"
 								id="searchCondition" name="searchCondition"
@@ -366,9 +380,9 @@
 								<span class="fp-txt"> <b><%=pageInfo.getCurrentPage()%></b>
 									<em>/</em> <i><%=pageInfo.getTotalPageCount()%></i>
 								</span> <a id="fp-prevLink" class="fp-prev"
-									href="/ts0.1/PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getPreviousPage()%>">
+									href="PhonesServlet?action=getPageByQuery&target=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getPreviousPage()%>">
 									<</a> <a id="fp-nextLink" class="fp-next"
-									href="/ts0.1/PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getNextPage()%>">></a>
+									href="PhonesServlet?action=getPageByQuery&target=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getNextPage()%>">></a>
 							</div>
 						
 						</li>
@@ -405,13 +419,13 @@
 				%>
 
 
-				<a href="PhonesServlet?action=getOnePhone&pid=<%=product.getPid()%>"
+				<a href="UserProductServlet?action=getOneProduct&pid=<%=product.getPid()%>"
 					target="_blank">
 					<div id="first2" class="goods">
-						<img src="staticTheStore/img/mobile/HUAWEIP10.jpg" />
-						<div class="top-right">
+						<img src="staticTheStore/img/productImage/<%=product.getProductListLargeImage()%>" />
+						<!-- <div class="top-right">
 							<img src="staticTheStore/img/mobile/new.png">
-						</div>
+						</div> -->
 						<p class="jiage"><%=product.getPrice()%></p>
 						<p class="desc1">
 							<a href="#"><%=product.getPname()%></a>
@@ -449,7 +463,7 @@
 			<div class="pageNumb">
 				<div class="p-wrap">
 					<span class="p-num"> <a id="previous"
-						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getPreviousPage()%>"
+						href="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getPreviousPage()%>"
 						class="pn-prev"> <i><</i> <em>上一页</em>
 					</a> <%
  	int totalPageCount = pageInfo.getTotalPageCount();
@@ -459,7 +473,7 @@
             									//全部打印出来
             									for(int i=1;i<=totalPageCount;i++){
  %> <a pageNum="pageNum"
-						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
+						href="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
 						<%
 							}
 																																																																							
@@ -472,36 +486,36 @@
 																																																																								//从1开始打印 打印到 当前页数 + 2页
 																																																																								for(int i=1;i<=currentPage+2;i++){
 						%> <a pageNum="pageNum"
-						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
+						href="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
 						<%
 							}
 						%> <!--  打印..--> <b class="pn-break">...</b> <!-- 打印最后一页(即总共的页数) -->
 						<a pageNum="pageNum"
-						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=totalPageCount%>"><%=totalPageCount%></a>
+						href="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=totalPageCount%>"><%=totalPageCount%></a>
 						<%
 							}else if(currentPage<totalPageCount-3){//当前页<总页数-3   8
 						%> <!--始终打印10个
 												先打印1  和 ..  --> <a pageNum="pageNum"
-						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=1">1</a>
+						href="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=1">1</a>
 						<b class="pn-break">...</b> <%
  	//从当前页-3 开始打印  打印到当前页+2
             										for(int i=currentPage-3;i<=currentPage+2;i++){
  %> <a pageNum="pageNum"
-						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
+						href="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
 						<%
 							}
 						%> <!--  打印 ..  和最后一页--> <b class="pn-break">...</b> <a
 						pageNum="pageNum"
-						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=totalPageCount%>"><%=totalPageCount%></a>
+						href="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=totalPageCount%>"><%=totalPageCount%></a>
 						<%
 							}else {//8
 						%> <!-- 先 打印 1 和 .. --> <a pageNum="pageNum"
-						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=1">1</a>
+						href="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=1">1</a>
 						<b class="pn-break">...</b> <%
  	//再打印 当前页-3 到剩下的
             										for(int i=currentPage-3;i<=totalPageCount;i++){
  %> <a pageNum="pageNum"
-						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
+						href="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=i%>"><%=i%></a>
 						<%
 							}
 																																																																							}
@@ -510,12 +524,12 @@
 																																																																						
 																																																																						}
 						%> <a id="next"
-						href="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getNextPage()%>"
+						href="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}&requestPage=<%=pageInfo.getNextPage()%>"
 						class="pn-prev"> <em>下一页</em> <i>></i>
 					</a>
 					</span> <span class="p-skip">
 						<form id="productForm2"
-							action="PhonesServlet?action=getPageByQuery&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}"
+							action="PhonesServlet?action=getPageByQuery&targer=phones&cid=${requestScope.cid}&searchCondition=${requestScope.searchCondition}&orderCondition=${orderConditionObj.orderCondition}&ascOrDesc=${orderConditionObj.ascOrDesc}"
 							method="post">
 							<em>共<b><%=totalPageCount%></b>页&nbsp;&nbsp;到第
 							</em> <input class="input-txt" type="text" name="requestPage"
@@ -697,7 +711,18 @@
 	</div>
 	<script type="text/javascript">
 		$(function() {
+						
+			//当前页的数字  变红色
+		var $pageA = $("div.pageNumb a[pageNum]");
+			$pageA.each(function() {
 
+			if ($(this).text() ==
+			<%=pageInfo.getCurrentPage()%>
+			) {
+				$(this).addClass("xuanZhongTiaoJian");
+			}
+
+			});
 			//给排序按钮绑定mouseover事件
 			/* 			$("#sort1 ul li").click(function(){
 			
@@ -839,7 +864,14 @@
 				$("#low").val("");
 				$("#high").val("");
 			});
-
+		//搜索框为空 不跳转
+		$("#input2").click(function(event){
+			if(document.getElementById('input1').value==''){
+				var event = event || window.event;
+  				event.preventDefault(); // 兼容标准浏览器
+  				window.event.returnValue = false;	// 兼容IE6~8
+			}
+		}); 
 		});
 	</script>
 </body>

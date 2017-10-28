@@ -3,17 +3,14 @@
 	font-style: normal;
 	text-decoration: none;
 }
-#zhengtibuju{
-	
-}
 
 @font-face {
 	  	font-family: 'iconfont';
-	 	src: url('../font/iconfont.eot');
-	  	src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
-	  	url('../font/iconfont.woff') format('woff'),
-	  	url('../font/iconfont.ttf') format('truetype'),
-	  	url('../font/iconfont.svg#iconfont') format('svg');
+	 	src: url('../../font/iconfont.eot');
+	  	src: url('../../font/iconfont.eot?#iefix') format('embedded-opentype'),
+	  	url('../../font/iconfont.woff') format('woff'),
+	  	url('../../font/iconfont.ttf') format('truetype'),
+	  	url('../../font/iconfont.svg#iconfont') format('svg');
 }
 
 .iconfont{
@@ -142,7 +139,7 @@
 	border-radius: 50px;
 }
 
-#xinjin_div_top>a{
+#xinjin_div_top>#name{
 	float: left;
 	left: 10px;
 	top: 15px;
@@ -158,8 +155,11 @@
 	background-color: #FF4040;
 	float: left;
 	top: 45px;
-	left: -42px;
 	position: relative;
+}
+.tuichu{
+	float:right;
+	position:relative;
 }
 
 #zunxiang{
@@ -367,13 +367,13 @@
 	width: 140px;
 	padding-left: 20px;
 	float: left;
-	z-index: 35;
+	z-index: 10;
 	position: relative;
 }
 
 
 .shezhixiala{
-	z-index: 35px;
+	z-index: 0;
 	font-size: 13px;
 	position: relative;
 	display: none;
@@ -757,6 +757,117 @@
 	top: -50px;
 	position: relative;
 }
+.DDXQ{
+	width:1000px;
+	height:347px;
+	list-style:none;
+}
+
+.DDXQ>li{
+	width:1000px;
+	height:115px;
+	border-bottom:0.3px solid #E9E9E9;
+}
+.li_div{
+	width:1000px;
+	height:100px;
+	border-bottom:1px solid #F2EDED;
+}
+.tupian{
+	 width:80px;
+	 height:80px;
+	 padding:10px 20px 15px 10px;
+	 left:0px;
+	 position:absolute;
+}
+.tupian>img{
+	 width:80px;
+	 height:80px;
+}
+.li_div_left>div{
+	 width:545px;
+	 height:78px;
+	 padding:18px 0px;
+	 left:110px;
+	 position:absolute;
+}
+.li_div>.li_div_left{
+	width:650px;
+	height:114px;
+	left:-175px;
+	position:relative;
+}
+.dengdai{
+	top: 20px;
+	float:left;
+	left:15px;
+	position: relative;
+}
+
+.xiadanshijian{
+	top: 45px;
+	left:-110px;
+	position: relative;
+}
+.daojishi{
+	width:120px;
+	height:115px;
+	left:800px;
+	position: absolute;
+}
+
+.quxiaodingdan{
+	width:100px;
+	height:25px;
+	line-height:25px;
+	text-align:center;
+	top:10px;
+	color:white;
+	font-size:14px;
+	border-radius:3px;
+	background-color:red;
+	float:right;
+	right:-200px;
+	position:relative;
+}
+.quxiaodingdan,.dianjianniu{
+	cursor: pointer;
+}
+.dianjianniu{
+	 width:100px;
+	 height:25px;
+	 top:40px;
+	 color:white;
+	 font-size:14px;
+	 border:1px solid red;
+	 border-radius:3px;
+	 line-height:25px;
+	 text-align:center;
+	 float:right;
+	 right:-300px;
+	 background-color:red;
+	 position:relative;
+}
+
+#xiangqing>li{
+	height:15px;
+	font-size:13px;
+	line-height:20px;
+}
+
+#chakangengduo{
+	 width: 120px;
+	 height: 30px;
+	 line-height:30px;
+	 text-align:center;
+	 color:#000000;
+	 background-color: #CCCCCC;
+	 border:none;
+	 float:right;
+	 right:380px;
+	 bottom:10px;
+	 position:absolute;
+}
 /*====================================================================================*/
 .zhengpingbaozhang,.baoyoufuwu,.shouhouwuyou,.zhunshisongda{
 	width: 200px;
@@ -800,10 +911,9 @@
 	 position: relative;
 }
 /*======================================================================================*/
-.botton_botton{
-	bottom: 0px;
-/*	height: 470px;*/
-}
+/* .botton_botton{
+	position:relative;
+} */
 #bottom_top{
 	width: 1200px;
 	height: 66px;
@@ -906,6 +1016,61 @@ dd a:hover{
 	height: 30px;
 	text-align: center;
 }
+/*=====================================================================================*/
+.QBDD{
+	width:1000px;
+	height:115px;
+	border-bottom:1px solid #F2EDED;	
+}
+.QBDD_li_div_left>div{
+	 width:545px;
+	 height:110px;
+	 padding:0px;
+	 left:110px;
+	 position:absolute;
+}
+.QBDD_li_div_left>div>li{
+	height:20px;
+	padding-top:2px;
+	list-style:none;
+}
+.kongbai .li_div:hover{
+	background-color: #FEF5F3;
+	cursor: pointer;
+}
 
+#tiaozhuan{
+	height:40px;
+	width:970px;
+	line-height:40px;
+	text-align:right;
+	padding-right:30px;
+	font-size:13px;
+}
 
+#tiaozhuan>#yekuang{
+	width:38px;
+	height:18px;
+} 
+
+#tiaozhuan>#anniu{
+	background-color:red;
+	width:38px;
+	height:18px;
+	border:none;
+	color:white;
+}
+#last,#next{
+	width:50px;
+	height:18px;
+	border:none;
+	color:white;
+	background-color:red;
+}
+#tiaozhuan>a{
+	width:15px;
+	height:18px;
+	line-height:18px;
+	text-align: center;
+}
 /*=====================================================================================*/

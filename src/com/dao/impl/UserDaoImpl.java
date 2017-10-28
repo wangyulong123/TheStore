@@ -7,9 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.dao.inter.UserDao;
 import com.util.ConnOracle;
+import com.util.ConnOracleTomcatDataSource;
 import com.vo.User;
 
 public class UserDaoImpl implements UserDao {
@@ -18,6 +20,7 @@ public class UserDaoImpl implements UserDao {
 	private Connection conn;
 	
 	public UserDaoImpl() {
+		//conn = ConnOracleTomcatDataSource.getConnection();
 		conn = ConnOracle.getConnection();
 	}
 
@@ -25,14 +28,22 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int addUser(User user) throws Exception {
 		int count = 0;
-		String sql = "insert into user values(seq_category.nextval,?,?)";
+		Random random = new Random();
+	     int x = random.nextInt(10000);
+		String sql = "insert into user1 values(seq_user.nextval,?,?,0,'ts'||"+x+",'',?)";
+//		String sql = "insert into user1 values(seq_user1.nextval,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null;
+		
+		
+		System.out.println(x);
+		
 		// 三.建立通道
 		try {
 			pstmt = conn.prepareStatement(sql);
+			System.out.println(sql);
 			pstmt.setString(1, user.getUsername());
 			pstmt.setString(2, user.getPassword());
-
+			pstmt.setString(3,user.getTelphone());
 			// 四.执行并返回结果集
 			count = pstmt.executeUpdate();// 执行dml 或 ddl语句的 返回受影响的行数
 			if (count >= 1) {
@@ -57,7 +68,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int deleteUser(User user) throws Exception{
 		int count = 0;
-		String sql = "delete from user where userid=?";
+		String sql = "delete from user1 where userid=?";
 		PreparedStatement pstmt = null;
 		// 三.建立通道
 		try {
@@ -88,7 +99,7 @@ public class UserDaoImpl implements UserDao {
 	// 三.修改
 	public int updateUser(User user) throws Exception{
 		int count;
-		String sql = "update user set cname=?,cdesc=? where cid=?";
+		String sql = "update user1 set cname=?,cdesc=? where cid=?";
 		PreparedStatement pstmt = null;
 		// 三.建立通道
 		try {
@@ -122,7 +133,7 @@ public class UserDaoImpl implements UserDao {
 	public User getUserById(Integer userid) throws Exception{
 		User user = new User();
 
-		String sql = "select * from user where userid=?";
+		String sql = "select * from user1 where userid=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		// 三.建立通道

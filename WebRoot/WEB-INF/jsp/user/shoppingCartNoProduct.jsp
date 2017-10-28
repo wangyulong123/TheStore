@@ -1857,7 +1857,23 @@ img {
 
 <body>
 	<div id="loginDiv">
-		<span>Hi,请</span> <a href="#">登录</a> <a class="regist" href="#">注册</a>
+	<%
+			User user = (User)session.getAttribute("user");
+			if(user==null){
+				//显示 "Hi,请登录"	
+		%>
+		<span>Hi,请</span>
+		<a href="jsp/HomePage/Login.jsp">登录</a>
+		<a class="regist" href="jsp/user/regist.jsp">注册</a>
+		<%
+			}else{
+			//显示 "Hi,XXX" 退出
+		%>
+		<span style="color:#666;">Hi,<%=user.getNickname()%></span>
+		<a href="LoginServlet?action=logout" class="regist">退出</a>
+		<%
+			}
+		%>
 		<div id="orderDiv">
 			<a href="#" target="_blank">我的订单</a>
 		</div>
@@ -1907,11 +1923,11 @@ img {
 	<div class="cart-empty" style="position:relative;left:200px;top:40px;">
 		<div class="message">
 			<ul>
-				<li class="txt" style="width:400px;">购物车内暂时没有商品，登录后将显示您之前加入的商品
+				<li class="txt" style="width:400px;">购物车内暂时没有商品<%if(user==null){ %>，登录后将显示您之前加入的商品
 				</li>
 				<li style="position:relative;right:340px;top:30px;"><a
-					href="jsp/user/login.jsp" class="btn-1 login-btn mr10">登录</a> <a
-					href="jsp/user/一号店首页.jsp" class="ftx-05"> 去购物&gt; </a></li>
+					href="jsp/HomePage/Login.jsp" class="btn-1 login-btn mr10">登录</a><%} %> <a
+					href="jsp/HomePage/index.jsp" class="ftx-05"> 去购物&gt; </a></li>
 			</ul>
 		</div>
 	</div>
@@ -2190,11 +2206,11 @@ img {
 	$(function() {
 		var isnoLogin = $("#ttbar-login").hasClass("nologin");
 		if (isnoLogin) {//没有登陆
-			//$("#ttbar-login").addClass("nologin");
+			$("#ttbar-login").addClass("nologin");
 			$(".nologin-tip").show();
 			$(".div2").removeClass("div2login");
 		} else {
-			//$("#ttbar-login").removeClass("nologin");
+			$("#ttbar-login").removeClass("nologin");
 			$(".nologin-tip").hide();
 			$(".div2").addClass("div2login");
 		}

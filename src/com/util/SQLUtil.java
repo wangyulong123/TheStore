@@ -14,7 +14,7 @@ public class SQLUtil {
 	private Connection conn;
 	
 	public SQLUtil(){
-		conn = ConnOracleTomcatDataSource.getConnection();
+		conn = ConnOracle.getConnection();
 	}
 	
 	//调用存储过程
@@ -42,23 +42,7 @@ public class SQLUtil {
 			e.printStackTrace();
 		}finally{
 			//五.关闭
-			if(cstmt!=null){
-				try {
-					cstmt.close();
-				} catch (SQLException e) {
-					System.out.println("关闭通道失败");
-					e.printStackTrace();
-				}
-			}
-			
-			if(conn!=null){
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					System.out.println("关闭数据库连接失败");
-					e.printStackTrace();
-				}
-			}
+			ConnOracle.closeConnection(null, cstmt, conn);
 			
 			
 		}
@@ -67,7 +51,36 @@ public class SQLUtil {
 	}
 	
 	//一个工具方法: 可以执行除DQL以外的任何SQL语句
-	public void executeExceptDQL(String sql){
+	public int executeExceptDQL(String sql) throws Exception{
+		int count;
+		//三.建立通道
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+			
+			//四.执行
+			count = stmt.executeUpdate(sql);//执行 除了dql以外所有的语句,  dml  或ddl
+			//如果执行的是dml 返回值是 受影响的行数   执行ddl 返回的是 0
+			System.out.println("count=" + count);
+			System.out.println("执行语句成功");
+			
+		} catch (SQLException e) {
+			System.out.println("执行语句失败");
+			e.printStackTrace();
+			throw new Exception("执行失败");
+		}finally{
+			//五.关闭
+			ConnOracle.closeConnection(null, stmt, conn);
+		}
+		
+		return count;
+	}
+	
+	
+
+	
+	//一个工具方法: 可以执行除DQL以外的任何SQL语句
+	public void executeExceptDQL2(String sql){
 		//三.建立通道
 		Statement stmt = null;
 		try {
@@ -101,25 +114,21 @@ public class SQLUtil {
 					e.printStackTrace();
 				}
 			}
+		}	
 			
-			
-		}
 	}
 	
-	
-	public static void main(String[] args) {
-		SQLUtil sqlUtil = new SQLUtil();
-		
-		//sqlUtil.callProcedure();
-		
-		String sql = "insert into account values(1,'小辉',3000);insert into account values(1,'小辉',3000);insert into account values(1,'小辉',3000);insert into account values(1,'小辉',3000);";
-		sqlUtil.executeExceptDQL(sql);
-		
-	}
-	
+}	
+//	public static void main(String[] args) {
+//		SQLUtil sqlUtil = new SQLUtil();
+//		
+//		//sqlUtil.callProcedure();
+//		
+//		String sql = "insert into account values(1,'小辉',3000);insert into account values(1,'小辉',3000);insert into account values(1,'小辉',3000);insert into account values(1,'小辉',3000);";
+//		sqlUtil.executeExceptDQL(sql);
+//		
+//	}
 	/*public static void main(String[] args) {
 		SQLUtil sqlUtil = new SQLUtil();
 		sqlUtil.callProcedure();
 	}*/
-	
-}

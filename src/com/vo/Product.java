@@ -2,6 +2,7 @@ package com.vo;
 
 import com.page.OrderCondition;
 
+
 public class Product {
 	private int pid;
 	private String pname;

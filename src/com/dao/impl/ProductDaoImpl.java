@@ -136,7 +136,7 @@ public class ProductDaoImpl implements ProductDao {
 				product.setProductListLargeImage(rs.getString("productListLargeImage"));
 				product.setPdesc(rs.getString("pdesc"));
 				product.setProductSum(rs.getInt("productsum"));
-				product.setPrice(rs.getInt("price"));
+				product.setPrice(rs.getDouble("price"));
 				product.setDianpuName(rs.getString("dianpuname"));
 				product.setShoppingCarImg(rs.getString("shoppingCarImg"));
 				product.setDetailLargeImg(rs.getString("detailLargeImg"));
@@ -351,6 +351,9 @@ public class ProductDaoImpl implements ProductDao {
 
 	}
 
-	
+	public static void main(String[] args) throws Exception {
+		//0.01 ---- > 0.0          0.1---->0.0 小数部分获取不到
+		System.out.println(new ProductDaoImpl().getProductById(151).getPrice());
+	}
 
 }

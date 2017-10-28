@@ -9,8 +9,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'Login.jsp' starting page</title>
-    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -56,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 			<center><div id="denglu" name="denglu">
 					<form action="LoginServlet" method="post"  class="form">
-	
+					<input type="hidden" name="toWhere" value="${toWhere}"/>
 					<input  type="hidden"  name="action" value="getClock">
 					
 				<div id="dengluziti">
@@ -105,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 
-				<input type="submit" class="btn btn-primary addCategoryBtn"  id="dengluanniu" value="登陆" />
+				<input type="submit" class="btn btn-primary addCategoryBtn"  id="dengluanniu" value="登录" />
 				
 				<div id="gengduo"><pre>更多合作网站账号登录         </pre></div>
 				

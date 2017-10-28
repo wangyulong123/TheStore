@@ -22,10 +22,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					function gotoshouye () {
 						span1 = document.getElementById("span1");
-						span1.innerHTML = t--;
-						if(t==0){
-							span1.innerHTML = 0;
-							location.assign("一号店首页.html");
+						span1.innerHTML = t;
+						if(t>=0){
+							--t;
+						}
+						if(t==-1){
+							location.assign("jsp/HomePage/index.jsp");
+							t=10;
 						}
 					}
 				});
@@ -46,14 +49,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="width:1100px;height:450px;position: relative;">
 					<div style="position: absolute;left:30%;top:10%;"><img src="staticTheStore/img/submitFailure.png"/></div>
 					<div style="font-size:26px;position: absolute;left:40%;top:20%;">
-						<b>提交订单失败！</b><span style="font-size:16px;">返回 <a href="GRZX/html/NewYiHaoDian.html">我的购物车</a></span>
+						<b>提交订单失败！</b><span style="font-size:16px;">返回 <a href="ShoppingCarServlet?action=queryShoppingCart">我的购物车</a></span>
 					</div>
 					<div style="font-size:16px;position: absolute;left:45%;top:40%;">
 						
 						<br/>
 							原因：库存不足或其他。<br/>
 							详情请咨询客服400-1234567。<br/>
-						  <span id="span1" style="font-size:18px;">10</span> 秒后	<a href="一号店首页.html">返回首页</a>
+						  <span id="span1" style="font-size:18px;">10</span> 秒后	<a href="jsp/HomePage/index.jsp">返回首页</a>
 					</div>
 				</div>
 				<br/>

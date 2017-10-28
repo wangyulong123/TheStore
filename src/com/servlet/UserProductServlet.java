@@ -330,7 +330,7 @@ public class UserProductServlet extends HttpServlet {
 		}
 		
 		if(recordsPerPage == null){
-			recordsPerPage = "8";
+			recordsPerPage = "10";
 		}
 		product.setPname(searchCondition);
 		product.setDianpuName(searchCondition);
@@ -357,7 +357,7 @@ public class UserProductServlet extends HttpServlet {
 			request.setAttribute("searchCondition", searchCondition);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("orderCondition", orderCondition);
-			target="/WEB-INF/jsp/user/user/list.jsp";
+			target="/WEB-INF/jsp/user/phones.jsp";
 			//target = "/WEB-INF/jsp/admin/product/"+target+".jsp";
 		} catch (Exception e) {
 			request.setAttribute("msg", e.getMessage());
@@ -557,7 +557,7 @@ public class UserProductServlet extends HttpServlet {
 			System.out.println("³ö´íÁË£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡");
 			e.printStackTrace();
 		}
-		target = "/WEB-INF/jsp/user/user/list.jsp";
+		target = "/WEB-INF/jsp/user/phones.jsp";
 		request.getRequestDispatcher(target).forward(request, response);
 	}
 	

@@ -463,7 +463,7 @@ public class UserProductServiceImpl implements UserProductService {
 		String sql = "update product set onsale=0 where pid=" + pid;
 		System.out.println(sql);
 		SQLUtil sqlUtil = new SQLUtil();
-		sqlUtil.executeExceptDQL(sql);
+		sqlUtil.executeExceptDQL2(sql);
 		
 	}
 	
@@ -472,7 +472,7 @@ public class UserProductServiceImpl implements UserProductService {
 		String sql = "update product set onsale=1 where pid=" + pid;
 		System.out.println(sql);
 		SQLUtil sqlUtil = new SQLUtil();
-		sqlUtil.executeExceptDQL(sql);
+		sqlUtil.executeExceptDQL2(sql);
 			
 	}
 	

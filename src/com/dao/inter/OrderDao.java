@@ -3,7 +3,6 @@ package com.dao.inter;
 import java.util.List;
 
 import com.vo.Order1;
-import com.vo.Product;
 import com.vo.User;
 
 public interface OrderDao {
@@ -32,4 +31,5 @@ public interface OrderDao {
 	public int updateOrder(Order1 order) throws Exception;
 	//²é1
 	public Order1 getOrderById(int orderid) throws Exception;
+	
 }

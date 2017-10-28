@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div id="right">
 					<div id="msg" class="menu">
-						<a href="#" title="aa">Hi,请登录 </a>
+						<a href="jsp/HomePage/Login.jsp" title="aa">Hi,请登录 </a>
 						<a href="#">注册&nbsp;&nbsp;</a>
 					</div>
 					<div id="mine" class="menu">
@@ -227,13 +227,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!--放大镜图片-->
 				<div id="photos">
 					<div id="photo">
-						<div class="jqzoom"><img src="staticTheStore/img/mobile/HUAWEIP10/big/pic_one_small.jpg" class="fs" alt="" jqimg="img/mobile/HUAWEIP10/big/pic_one_big.jpg" id="bigImg" /></div>
+						<div class="jqzoom"><img src="staticTheStore/img/productImage/<%=product.getDetailLargeImg()%>" /></div>
 						<ul class="imgList">
-							<li><img src="staticTheStore/img/mobile/HUAWEIP10/big/pic_one.jpg" alt="" /></li>
-							<li><img src="staticTheStore/img/mobile/HUAWEIP10/big/pic_two.jpg" alt="" /></li>
-							<li><img src="staticTheStore/img/mobile/HUAWEIP10/big/pic_three.jpg" alt="" /></li>
-							<li><img src="staticTheStore/img/mobile/HUAWEIP10/big/pic_four.jpg" alt="" /></li>
-							<li><img src="staticTheStore/img/mobile/HUAWEIP10/big/pic_five.jpg" alt="" /></li>
+							<li><img src="staticTheStore/img/productImage/<%=product.getDetailSmallImg1()%>" alt="" /></li>
+							<li><img src="staticTheStore/img/productImage/<%=product.getDetailSmallImg2()%>" alt="" /></li>
+							<li><img src="staticTheStore/img/productImage/<%=product.getDetailSmallImg3()%>" alt="" /></li>
+							<li><img src="staticTheStore/img/productImage/<%=product.getDetailSmallImg4()%>" alt="" /></li>
+							<li><img src="staticTheStore/img/productImage/<%=product.getDetailSmallImg5()%>" alt="" /></li>
 						</ul>
 					</div>
 					<div id="bianhao">
@@ -335,10 +335,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div class="up"><img src="staticTheStore/img/mobile/up.png" /></div>
 								<div class="down"><img src="staticTheStore/img/mobile/down1.png" id="img_find" /></div>
 							</div>
-
+							<a onclick="addShoppingCart()">
 							<div id="shoppingCar2">
 								<img src="staticTheStore/img/mobile/shoppingCar1.png" /><a href="shoppingcar.html">加入购物车</a>
 							</div>
+								</a>
 						</div>
 						<div id="promise">
 							<div class="left">保障</div>
