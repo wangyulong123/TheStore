@@ -91,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div>用户名已存在</div>
 						</div>
 						<div  id="success1">
-							<img src="staticTheStore/img/success1.png"  />
+							<img src="staticTheStore/img/success.png"  />
 						</div>
 						
 					
@@ -111,7 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div>格式错误，请输入正确的手机号码</div>
 						</div>
 						<div id="success2">
-							<img src="staticTheStore/img/success1.png"  />
+							<img src="staticTheStore/img/success.png"  />
 						</div>
 				
 				
@@ -122,13 +122,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<span  id="yanzheng">短信验证码</span>
 					
-					   <div  id="success6">
-							<img src="staticTheStore/img/success1.png"  />
-						</div>
-						
-						<div id="errormessage">
-								<i class="i1"></i>
-						  您输入的验证码有误，请重新输入</div>
 					</div>
 				
 				
@@ -159,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						
                         	<div id="success3">
-							<img src="staticTheStore/img/success1.png"  />
+							<img src="staticTheStore/img/success.png"  />
 							</div>	
 							
 							<div id="passwordlow">
@@ -189,7 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div>两次密码不一致</div>
 							</div>
 							<div id="success4">
-							<img src="staticTheStore/img/success1.png"  />
+							<img src="staticTheStore/img/success.png"  />
 							</div>
 							
 							
@@ -200,7 +193,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				&nbsp;&nbsp;<span id="idcode"></span>
 					 <input type="button" id="butn" value="提交"/></center></div>
 							<div id="success5">
-							    <img src="staticTheStore/img/success1.png"  />
+							    <img src="staticTheStore/img/success.png"  />
 							</div>
 							<div id="reinput">
 								<i class="i1"></i>
@@ -230,24 +223,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>	
 
   <div id="querenemail">
-         <form action="MailServlet" method="post">
+         <form id="querenmail" action="UserServlet" method="post">
+         
 		    <div id="shuruemail">
 		              <div id="lastdiv">邮箱验证<br/>此邮箱用于激活您的账号,<br/>填写后我们会发送激活邮件到您的邮箱中,<br/>请及时查收
 		                <br/> 
 		                <br/>
 		              <input type="text" class="yincang" name="from" value="thestore1@sina.com"/>
    					  <input type="text" class="yincang" name="subject" value="1号店用户账号激活"/>
-   					  
-   		              
-   		           <!--    <input id="lastwrite" name="content" cols="50" rows="10" placeholder="请再次输入您的用户名" /> -->
-   		              <input id="shuruname" name="content"  placeholder="请在此再次输入您的用户名"/><br/>
    		              <input id="lastwrite" type="text" name="to" type="text" placeholder="请在此处填写邮箱" />  <br/>
-   		              
-   		              <div id="tishiyu">请先点击下方的"邮箱验证"按钮，再前往邮箱将邮件中的的地址粘贴到下方文本框后，点击"立即激活"</div><br/>
-   		               		             
-   		              <input id="copyurl" type="text" placeholder="请在此出粘贴地址"/><br/>
-   		               <div id="tishiyu">提示：激活成功直接跳转到登录页面！！去登录</div><br/>
-		              <br/> <input type="submit" id="jihuo" value="邮箱验证"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		              <br/>
+		              <script type="text/javascript">
+						$(function(){
+						 	var username=$("#username").val();
+							 var password=$("#password1").val();
+							 var telphone=$("#phone").val();
+							
+						});
+						function test(){
+						alert('test');
+						//location.assign("/ts0.1/UserServlet?action=mail&username="+username+"&password="+password+"&telphone="+telphone);
+						//	location.assign("/ts0.1/UserServlet?action=mail&username="+username+"&password="+password+"&telphone"+telphone);
+						}
+						
+	 				</script>
+		              <input type="hidden" name="action" value="mail" />
+		              <input type="hidden" name="username" value="$('#username').val()"/>
+		              <input type="hidden" name="password" value="$('#password').val()"/>
+		              <input type="hidden" name="telphone" value="$('#telphone').val()"/>
 		              
 		               <input type="button" id="jihuo2"  value="立即激活"/>
 		              </div>
@@ -260,15 +263,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
 <script type="text/javascript">
 $(function(){
-	$("#agree").click(function(){
-	 var username=$("#username").val();
+ 	var username=$("#username").val();
 	 var password=$("#password1").val();
 	 var telphone=$("#phone").val();
+	$("#agree").click(function(){
 	
-	//	if(($("#success1").is(':visible'))&&($("#success2").is(':visible'))&&($("#success3").is(':visible'))&&($("#success4").is(':visible'))&&($("#success5").is(':visible'))&&($("#success6").is(':visible'))){
-			if(($("#success2").is(':visible'))&&($("#success3").is(':visible'))&&($("#success4").is(':visible'))&&($("#success5").is(':visible'))&&($("#success6").is(':visible'))){
+	
+		if(($("#success1").is(':visible'))&&($("#success2").is(':visible'))&&($("#success3").is(':visible'))&&($("#success4").is(':visible'))&&($("#success5").is(':visible'))){
 			
-			 location.assign("/ts0.1/UserServlet?action=addUser&username="+username+"&password="+password+"&telphone="+telphone);
+			// location.assign("/ts0.1/UserServlet?action=active&username="+username+"&password="+password+"&telphone="+telphone);
 			 $("#querenemail").fadeIn();
 			 $("#shuruname").val(username);  
 		}
@@ -291,7 +294,12 @@ $(function(){
     
   //立即激活，从文本框跳到地址栏  
    $("#jihuo2").click(function(){
-      location.assign($("#copyurl").val());
+   var username=$("#username").val();
+	 var password=$("#password1").val();
+	 var telphone=$("#phone").val();
+	 var lastwrite=$("#lastwrite").val();
+   	  location.assign("/ts0.1/UserServlet?action=mail&to="+lastwrite+"&subject=1号店用户账号激活&content="+username+"&from=thestore1@sina.com&username="+username+"&password="+password+"&telphone="+telphone);
+      //location.assign($("#copyurl").val());
    });
  
      	
@@ -300,7 +308,7 @@ $(function(){
      
 <script src="staticTheStore/js/jquery.idcode.js"></script>
 <script>
-    $.idcode.setCode();   //加载生成图形验证码方法
+    $.idcode.setCode();   //加载生成验证码方法
     $("#butn").click(function(){
         var IsBy = $.idcode.validateCode(); //调用返回值，返回值结果为true或者false
         if(IsBy){
@@ -310,24 +318,6 @@ $(function(){
                $("#success5").hide();
                $("#reinput").show(600);
         }
-    });
-    //手机验证码
-    $("#yanzhengma").blur(function(){
-   		var userAdd = $(this).val();
-   	//	alert(userAdd);
-   		if(userAdd==getCode){
-   			$("#success6").show();
-   		}else{
-   			$("#errormessage").show();
-   		}
-   });
-    $("#huoqu").click(function(){
-    	var phoneNumber = $("#phone").val();
-    	$.post("CodeServlet",{"action":"check","phoneNumber":phoneNumber},function(data){
-    //	alert(data);
-    	getCode = data;
-    	},"json");
-    	
     });
     
     

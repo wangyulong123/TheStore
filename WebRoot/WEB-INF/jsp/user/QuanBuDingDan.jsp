@@ -12,11 +12,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		
 		<title>我的1号店</title>
+		<link rel="shortcut icon" href="img/icon.png"/>
+		<link href="css/gerenzhongxin.css" rel="stylesheet" type="text/css" />
 		
-		<link href="${pageContext.request.contextPath }/css/css/gerenzhongxin.css" rel="stylesheet" type="text/css" />
-		
-		<script src="${pageContext.request.contextPath }/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
-		<script src="${pageContext.request.contextPath }/js/js/new_yihaodian_js.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/new_yihaodian_js.js" type="text/javascript" charset="utf-8"></script>
 		
 	</head>
 	
@@ -301,7 +301,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="QBDD">
 							<div class="QBDD_li_div_left">
 								<a class="tupian">
-									<img src="${pageContext.request.contextPath }/img/img/xiaotu.jpg">
+									<img src="staticTheStore/img/productImage/product148/gouwuche_1508849331663_3665_9078.jpg">
 								</a>
 										
 								<div id="xiangqing">

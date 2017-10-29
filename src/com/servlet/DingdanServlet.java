@@ -162,6 +162,8 @@ System.out.println("DingdanServlet.querendingdan()");
 		String target = "";
 		//一.填充数据
 		String orderId = request.getParameter("orderid");
+		String shouhuorenname = request.getParameter("shouhuorenname");
+		
 		HttpSession session = request.getSession(true);
 		User user = (User) session.getAttribute("user");
 		List<Product> shoppingCart = (List<Product>)session.getAttribute("shoppingCart");
@@ -180,6 +182,8 @@ System.out.println("DingdanServlet.querendingdan()");
 			target = "/WEB-INF/jsp/user/submitSuccess.jsp";
 			//清空购物车
 			session.removeAttribute("shoppingCart");
+			System.out.println("收货人"+shouhuorenname);
+			request.setAttribute("shouhuorenname", shouhuorenname);
 		}else{
 			target = "/WEB-INF/jsp/user/submitFailure.jsp";
 		}

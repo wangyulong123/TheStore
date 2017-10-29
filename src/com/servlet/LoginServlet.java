@@ -19,7 +19,6 @@ public class LoginServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
        String action=request.getParameter("action");
-       System.out.println("wshi"+action);
       if("getClock".equals(action)){
     	  this.getClock(request,response);
       }else if("logout".equals(action)){
@@ -160,7 +159,6 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
   
@@ -196,7 +194,7 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		//三.转发视图
-		target = "/WEB-INF/jsp/HomePage/Login.jsp";
+		target = "/WEB-INF/jsp/user/login.jsp";
 		request.getRequestDispatcher(target).forward(request, response);
 	}
 	
@@ -213,12 +211,9 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		//三.转发视图
-		target = "/WEB-INF/jsp/HomePage/regist.jsp";
+		target = "/WEB-INF/jsp/user/regist.jsp";
 		request.getRequestDispatcher(target).forward(request, response);
 	}
-	
-
-
 
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -91,7 +91,7 @@ public class OrderDaoImpl implements OrderDao {
 			throw new Exception("删除用户失败");
 		} finally {
 			// 5.关闭
-			ConnOracle.closeConnection(null, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
 
 		}
 
@@ -124,7 +124,7 @@ public class OrderDaoImpl implements OrderDao {
 			throw new Exception("修改用户失败");
 		} finally {
 			// 5.关闭
-			ConnOracle.closeConnection(null, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(null, pstmt, conn);
 		}
 
 		return count;
@@ -158,7 +158,7 @@ public class OrderDaoImpl implements OrderDao {
 			throw new Exception("查询单个用户失败");
 		} finally {
 			// 五.关闭
-			ConnOracle.closeConnection(rs, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(rs, pstmt, conn);
 
 		}
 
@@ -199,7 +199,7 @@ public class OrderDaoImpl implements OrderDao {
 			throw new Exception("查询用户失败");
 		} finally {
 			// 五.关闭
-			ConnOracle.closeConnection(rs, stmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(rs, stmt, conn);
 		}
 
 		return list;
@@ -230,7 +230,7 @@ public class OrderDaoImpl implements OrderDao {
 			throw new Exception("查询用户数量失败");
 		} finally {
 			// 五.关闭
-			ConnOracle.closeConnection(rs, pstmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(rs, pstmt, conn);
 
 		}
 
@@ -241,11 +241,11 @@ public class OrderDaoImpl implements OrderDao {
 	public List<Order1> getOrderPageByQuery(String sql) throws Exception{
 		Statement stmt = null;
 		ResultSet rs = null;
-
+		conn = ConnOracleTomcatDataSource.getConnection();
 		List<Order1> list = new ArrayList<Order1>();
 
 		Order1 order = null;
-
+		
 		// 三.建立通道
 		try {
 			stmt = conn.createStatement();
@@ -272,7 +272,7 @@ public class OrderDaoImpl implements OrderDao {
 			throw new Exception("查询用户失败");
 		} finally {
 			// 五.关闭
-			ConnOracle.closeConnection(rs, stmt, conn);
+			ConnOracleTomcatDataSource.closeConnection(rs, stmt, conn);
 		}
 
 		return list;

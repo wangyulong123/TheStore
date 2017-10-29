@@ -16,6 +16,7 @@ import org.omg.CORBA.portable.ApplicationException;
 
 import com.google.gson.Gson;
 import com.service.impl.CategoryServiceImpl;
+import com.service.impl.JavaMailServiceImpl;
 import com.service.impl.UserServiceImpl;
 import com.service.inter.CategoryService;
 import com.service.inter.UserService;
@@ -42,6 +43,8 @@ public class UserServlet extends HttpServlet {
 			this.addUser(request, response);
 		}else if ("checkUnameUnique".equals(action)) {
 			this.checkUnameUnique(request,response);
+		}else if("mail".equals(action)){
+			this.mail(request,response);
 		}
 		
 		
@@ -86,9 +89,6 @@ public class UserServlet extends HttpServlet {
 						target = "/WEB-INF/jsp/user/jiesuan.jsp";
 					}
 					
-					
-					
-					
 				}else{
 					//登录失败 跳回登录页面 显示 "用户尚未激活,请激活后再尝试登录"
 					request.setAttribute("msg", "用户尚未激活,请激活后再尝试登录");
@@ -123,10 +123,38 @@ public class UserServlet extends HttpServlet {
 		request.getRequestDispatcher(target).forward(request, response);
 	}
 	
-	
+	public void mail(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("MailServlet连接成功");
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		String target = "";
+		
+		//一.填充数据
+		String from = request.getParameter("from");
+		System.out.println(from);
+		String to = request.getParameter("to");
+		String subject = request.getParameter("subject");
+		String content = request.getParameter("content");
+		
+		
+		//二.调用业务逻辑
+		JavaMailServiceImpl service = new JavaMailServiceImpl();
+		
+		boolean isSuccessFlag = service.sendTextMail(from, to, subject, content);
+		
+		if(isSuccessFlag){
+			request.setAttribute("msg", "发送成功,请前往邮箱激活!");
+		}else{
+			request.setAttribute("msg", "发送失败，请重新前往注册页面");
+		}
+		target = "/WEB-INF/msg.jsp";
+		request.getRequestDispatcher(target).forward(request, response);
+	}
 	
 	public void active(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		this.addUser(request, response);
 		String target = "";
 		//1.填充数据
 		String username = request.getParameter("username");
@@ -136,9 +164,9 @@ public class UserServlet extends HttpServlet {
 			UserService service = new UserServiceImpl();
 			boolean flag = service.activeUser(username);
 			if(flag){
-				request.setAttribute("msg", "用户激活成功!!!<a href='LoginServlet?action=gotologin'>点点这里去登录</a>");
+				request.setAttribute("msg", "用户激活成功!!!<a href='LoginServlet?action=gotologin'>点这里去登录</a>");
 			}else{
-				request.setAttribute("msg", "用户激活失败!");
+				request.setAttribute("msg", "请前往邮箱激活！");
 			}
 		} catch (Exception e) {
 			request.setAttribute("msg", "用户激活失败!");
@@ -151,7 +179,7 @@ public class UserServlet extends HttpServlet {
 	
 	
 	public void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         System.out.println("用户存入 数据库连接成功 ");
+        System.out.println("用户存入 数据库连接成功 ");
 		String target = "";
 		//一.填充数据
 		String username = request.getParameter("username");
@@ -182,8 +210,9 @@ public class UserServlet extends HttpServlet {
 			System.out.println("添加用户失败");
 		}
 		//三.转发视图
-	target = "/WEB-INF/msg.jsp";
-	request.getRequestDispatcher(target).forward(request, response);
+//		this.active(request, response);
+//	target = "/WEB-INF/msg.jsp";
+//	request.getRequestDispatcher(target).forward(request, response);
 	}
 	public void checkUnameUnique(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

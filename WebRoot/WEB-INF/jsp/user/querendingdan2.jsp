@@ -168,6 +168,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<form action="DingdanServlet" method="post">
 							<input type="hidden" name="action" value="submitDingdan" />
 							<input type="hidden" name="orderid" value="<%=order.getOrderid() %>" />
+							<input type="hidden" name="shouhuorenname" value="<%=shouhuoren%>"/>
 							<input type="submit" name="tijiao" id="tijiao" value="提交订单" />
 						</form>
 						

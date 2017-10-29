@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		
 		<title>我的1号店</title>
-		
+		<link rel="shortcut icon" href="img/icon.png"/>
 		<link href="css/gerenzhongxin.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" type="text/css" href="css/jQuery-confirm/jquery-confirm.css"/>
 	
@@ -446,7 +446,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div class="li_div">
 									<div class="li_div_left">
 										<a class="tupian">
-											<img src="img/img/xiaotu.jpg">
+											<img src="staticTheStore/img/productImage/product148/gouwuche_1508849331663_3665_9078.jpg">
 										</a>
 												
 										<div>
@@ -566,7 +566,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					}else{
 					%>
-						<a id="chakangengduo" href="/yihaodian/Order1Servlet?action=getRecordCountFenYe&target=QuanBuDingDan&requestPage=1&shouhuorenname=<%=order.get(0).getShouhuorenname()%>">查看更多</a>
+						<a id="chakangengduo" href="/ts0.1/Order1Servlet?action=getRecordCountFenYe&target=QuanBuDingDan&requestPage=1&shouhuorenname=<%=order.get(0).getShouhuorenname()%>">查看更多</a>
 					<%	
 					}
 					%>

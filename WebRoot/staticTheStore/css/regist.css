@@ -1,5 +1,5 @@
 *{
-	margin:0px;/*Îªï¿½Ë±ï¿½Ö¤Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï¼ï¿½à¶¼Îª0  ï¿½ï¿½Îªï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï¼ï¿½à²»Ò»ï¿½ï¿½ Îªï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½*/
+	margin:0px;/*ÎªÁË±£Ö¤Ã¿¸öä¯ÀÀÆ÷Ä¬ÈÏ¼ä¾à¶¼Îª0  ÒòÎª²»Í¬ä¯ÀÀÆ÷Ä¬ÈÏ¼ä¾à²»Ò»Ñù ÎªÁË¼æÈÝÐÔ*/
 }
 		
 
@@ -66,8 +66,8 @@ div.head{
 
 	ul {
 			list-style-type:none;
-			padding:0px 25px;/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ firefox safari ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½Ú±ß¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ieÒ²ï¿½ï¿½*/
-			margin:0px;/*ï¿½ï¿½ieï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ß¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½ï¿½ï¿½padding:0px ï¿½ï¿½id ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Îªï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½ie*/
+			padding:0px 25px;/*ÐÂä¯ÀÀÆ÷ firefox safari ¶¼ÊÇÊ¹ÓÃÄÚ±ß¾à¿ØÖÆËõ½øµÄ ÐÂieÒ²ÊÇ*/
+			margin:0px;/*ÀÏieÊÇÊ¹ÓÃÍâ±ß¾àËõ½øµÄ ËùÒÔ¹âÉèÖÃpadding:0px ÀÏid ²»»áÈ¥µôË÷Òý ÎªÁË¼æÈÝÀÏie*/
 		}
 	li{
 			float: left;
@@ -113,16 +113,16 @@ div.body{
 			}
 	
 		#username{width:334px;height:54px;padding-left: 25px;
-				  font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½";font-size: 14px;color: #666;
+				  font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;color: #666;
 			      border:solid;border-color:#DEDEDE;border-width:thin;}
 			      
 		#phone{width:334px;height:54px;padding-left: 25px;
-			   font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½";font-size: 14px;color: #666;				
+			   font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;color: #666;				
 			   border:solid;border-color:#DEDEDE;border-width:thin;}
 		
 		
 		#yanzhengma{width:194px;height:54px;padding-left: 25px;
-					font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½";font-size: 14px;color: #666;
+					font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;color: #666;
 					border:solid;border-color:#DEDEDE;border-width:thin;}
 					
 		#huoqu{
@@ -140,15 +140,15 @@ div.body{
 				}
 				
 		#password1{width:334px;height:54px;padding-left: 25px;
-				   font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½";font-size: 14px;color: #666;
+				   font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;color: #666;
 				   border:solid;border-color:#DEDEDE;border-width:thin;}
 		#password2{width:334px;height:54px;padding-left: 25px;
-		          font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½";font-size: 14px;color: #666;
+		          font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;color: #666;
 		          border:solid;border-color:#DEDEDE;border-width:thin;}
 		#dianjifuwu{
 			 	height: 25px;
    			 	font-size: 12px;
- 				font-fanily:"Î¢ï¿½ï¿½ï¿½Åºï¿½"; 	
+ 				font-fanily:"Î¢ÈíÑÅºÚ"; 	
     		    line-height: 25px;
   		        color: #666;
    				text-indent: 1em;
@@ -322,48 +322,9 @@ div>a:active{color:#FFFFFF;}
 	bottom:125px;  
 	display:none;
 }
-#success5{
-	 width:29px;
-	height:29px;
-	position:absolute;
-	left:510px;
-		bottom:80px;
-		display:none;
-}
-#reinput{
-	position:absolute;
-	right:30px;
-    top:378px;
-    font-size:12px;
-    color:#666666;
-    background-color:#FFF4D7;
-    width:105px;
-    height:40px;
-    text-align:center;
-    line-height: 40px;
- display:none;
-  
-}
-#success6{
-    width:29px;
-	height:29px;
-	position: absolute;
-	left:510px;
-	bottom:267px;  
-	display:none;
-}
-#errormessage{
-	 position:absolute;
-		 right:-30px;
-   		 top:190px;
-   		 font-size:12px;
-   		 color:#666666;
-   		 background-color:#FFF4D7;
-   		 width:165px;
-  		 height:50px;
-   		 line-height: 25px;
-  		 display:none;	
-}
+
+
+
 .i1{
 	position: absolute;
 	left: -10px;
@@ -636,7 +597,7 @@ div>a:active{color:#FFFFFF;}
 	background-color:rgba(158,158,158,0.5);
 	position:absolute;
 	bottom:-20px;
-	display:none;
+    display:none;
 	float:right;
 }
 
@@ -723,7 +684,7 @@ div>a:active{color:#FFFFFF;}
 	color:white;
 	background-color:#FF3C3C;
 	position:relative;
-	top:-15px;
+	top:40px;
 }
 
 #jihuo2{
@@ -733,7 +694,7 @@ div>a:active{color:#FFFFFF;}
 	color:white;
 	background-color:#FF3C3C;
 	position:relative;
-	top:-15px;
+	top:100px;
 }
 
 #tishiyu {

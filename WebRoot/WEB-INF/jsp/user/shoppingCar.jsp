@@ -1980,7 +1980,7 @@ img {
 							<div class="cell p-price p-div3" ><strong><%=price %></strong></div>
 							<div class="quantity-form">
 									<a class="decrement">-</a>
-									<input value="<%=shoppingCarSum %>" type="text" autocomplete="off" class="p-quantity-itxt" />
+									<input id="shoppingCarSum" value="<%=shoppingCarSum %>" type="text" autocomplete="off" class="p-quantity-itxt" />
 									<a class="increment">+</a>
 							</div>
 				

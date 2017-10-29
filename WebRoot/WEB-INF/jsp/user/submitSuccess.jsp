@@ -48,8 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="main">
 				<div style="width:1100px;height:450px;position: relative;">
 					<div style="position: absolute;left:30%;top:10%;"><img src="staticTheStore/img/submitSuccess.png"/></div>
-					<div style="font-size:26px;position: absolute;left:40%;top:20%;"><!--  -->
-						<b>您已成功提交订单！</b><span style="font-size:16px;">查看 <a href="/ts0.1/Order1Servlet?action=getshouhuorenname&target=GeRenzhongxin&shouhuorenname=2336">我的订单</a> 
+					<div style="font-size:26px;position: absolute;left:40%;top:20%;"><!--  --><%String shouhuorenname = (String)request.getAttribute("shouhuorenname"); %>
+						<b>您已成功提交订单！</b><span style="font-size:16px;">查看 <a href="/ts0.1/Order1Servlet?action=getshouhuorenname&target=GeRenzhongxin&shouhuorenname=7">我的订单</a> 
 					</div>
 					<div style="font-size:16px;position: absolute;left:45%;top:40%;">
 						

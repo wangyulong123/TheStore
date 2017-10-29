@@ -5,6 +5,7 @@ eclipse.preferences.version=1
 encoding//WebRoot/staticTheStore/css/phones.css=UTF-8
 encoding//WebRoot/staticTheStore/css/regist.css=UTF-8
 encoding//src/com/dao/impl/Order1DaoImpl.java=UTF-8
+encoding//src/com/demo/util/SendMsgUtil.java=UTF-8
 encoding//src/com/service/impl/UserProductServiceImpl.java=UTF-8
 encoding//src/com/servlet/Order1Servlet.java=UTF-8
 encoding//src/com/util/HttpRequestUtil.java=UTF-8

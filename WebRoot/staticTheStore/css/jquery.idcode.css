@@ -5,6 +5,7 @@
 	width:42px;
 	letter-spacing:2px;
 	margin:0px 8px 0px 0px;
+	
 }
 .ehong-idcode-val{
 	position:relative;
@@ -51,5 +52,50 @@
 	*top:-3px;	
 	position:relative;	
 	margin:0px 0px 0px 4px;
-	cursor:pointer;	
+	cursor:pointer;
+}
+
+#Txtidcode{
+	width:203px;
+	height:22px;
+	border:1px solid #DEDEDE;	
+	padding-left: 25px;
+}
+
+#butn{
+	background-color:#57565F;
+	color:white;
+}
+
+#reinput{
+	position:absolute;
+	right:30px;
+    top:375px;
+    font-size:12px;
+    color:#666666;
+    background-color:#FFF4D7;
+    width:105px;
+    height:40px;
+    text-align:center;
+    line-height: 40px;
+    display:none;
+}
+#success5{
+	width:29px;
+	height:29px;
+	position: absolute;
+	left:510px;
+	bottom:83px;  
+    display:none;
+}
+
+#setcode{
+    position: absolute;
+    left: 185px;
+    top: 370px;
+    display: inline-block;
+    height: 50px;
+    font-size: 12px;
+    line-height: 50px;
+    color: #666;
 }

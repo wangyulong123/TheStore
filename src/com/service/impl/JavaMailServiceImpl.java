@@ -76,7 +76,7 @@ public class JavaMailServiceImpl implements JavaMailService{
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
 		message.setSubject(subject);
 		message.setSentDate(new Date());
-		message.setText("请把后面的url粘贴到 地址栏中 即可激活用户      http://localhost:8080/ts0.1/UserServlet?action=active&username="+content);
+		message.setText("请把后面的url粘贴到 地址栏中 即可激活用户    http://localhost:8080/ts0.1/UserServlet?action=active&username="+content);
 		
 		return message;
 	}

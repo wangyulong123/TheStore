@@ -48,7 +48,7 @@ public class CallbackServlet extends HttpServlet {
 				response.setContentType("text/html;charset=utf-8");
 				response.getWriter().println("您已经支付成功！成功支付金额: " + amount);
 				//重定向 到首页
-//				response.sendRedirect("http://localhost:8080/jsp/user/user.jsp");
+				response.sendRedirect("/WEB-INF/jsp/user/chargeSuccess.jsp");
 			} else if (r9_BType.equals("2")) {
 				// 服务器点对点，易宝通知你
 				System.out.println("服务器进行支付成功数据处理...");
